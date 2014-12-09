@@ -1,0 +1,38 @@
+from a10sdk.common.A10BaseClass import A10BaseClass
+
+
+class BindingTable(A10BaseClass):
+    
+    """    :param tunnel_address_list: {"minItems": 1, "items": {"type": "tunnel-address"}, "uniqueItems": true, "array": [{"required": ["ipv6-tunnel-addr"], "properties": {"ipv6-tunnel-addr": {"optional": false, "type": "string", "description": "Tunnel IPv6 Endpoint Address", "format": "ipv6-address"}, "nat-address-list": {"minItems": 1, "items": {"type": "nat-address"}, "uniqueItems": true, "array": [{"required": ["ipv4-nat-addr"], "properties": {"ipv4-nat-addr": {"optional": false, "type": "string", "description": "NAT IPv4 Address", "format": "ipv4-address"}, "port-list": {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "port-start": {"type": "number", "description": "Single Port or Port Range Start", "format": "number"}, "port-end": {"type": "number", "description": "Port Range End", "format": "number"}}}]}}}], "type": "array", "$ref": "/axapi/v3/cgnv6/lw-4o6/binding-table/{name}/tunnel-address/{ipv6-tunnel-addr}/nat-address/{ipv4-nat-addr}"}}}], "type": "array", "$ref": "/axapi/v3/cgnv6/lw-4o6/binding-table/{name}/tunnel-address/{ipv6-tunnel-addr}"}
+    :param name: {"description": "LW-4over6 Binding Table Name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    Configure LW-4over6 Binding Table.
+
+    Class binding-table supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
+
+    
+
+    URL for this object::
+    `https://<Hostname|Ip address>//axapi/v3/cgnv6/lw-4o6/binding-table/{name}`.
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        self.required = [ "name"]
+
+        self.b_key = "binding-table"
+        self.a10_url="/axapi/v3/cgnv6/lw-4o6/binding-table/{name}"
+        self.DeviceProxy = ""
+        self.tunnel_address_list = []
+        self.name = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+

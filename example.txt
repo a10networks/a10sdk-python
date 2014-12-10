@@ -1,0 +1,46 @@
+# vim: tabstop=4 shiftwidth=4 softtabstop=4
+'''
+Author: Mthompson
+Date: March 4, 2014
+Description: Example for utilizing the ACOS 4.0 SDK.
+__file__=example.py
+'''
+
+"""
+The SDK is composed of two packages: common and core.
+a10sdk
+|->common
+|        |_A10BaseClass.py <--- This base class is inherited by a class instance. It is also 
+         contains the factory that transforms json into objects
+|        |_device_proxy.py <--- RestClient for making RestCalls. This client should be passed to the base object.
+|
+|->core
+|        |_slb <-- slb Module Directory, Contains actual Python Directory.
+         |    |_slb_virtual_server.py <---actual module that would be imported.
+|        |_* other Modules
+
+
+USAGE: To utilize the sdk you must import the modules for the objects you would like to manage.
+
+
+Import the device_proxy:
+"""
+from a10sdk.common.device_proxy import DeviceProxy
+
+"""
+In order to get a session id for continued use we need to create a device_proxy object. The example below will get the session id. In the example we will print the session ID.
+The DeviceProxy class require the hostname or ip, username, password.
+"""
+host = "172.17.0.232"
+username = "admin"
+password = "a10"
+dp = DeviceProxy(host, username, password)
+"""
+interface management
+"""
+from a10sdk.core.interface.interface_management import Management
+
+mgmt = Management(DeviceProxy=dp).get()
+print mgmt.DEBUG_Response
+print mgmt.__json__(mgmt)
+print mgmt.access_list.acl_id

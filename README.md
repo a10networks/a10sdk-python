@@ -11,7 +11,7 @@ In order to get a session ID for continued use we need to create a `DeviceProxy`
 
 ```python
 from a10sdk.common.device_proxy import DeviceProxy
-dp = DeviceProxy(host="10.48.5.181", port=443, username="admin", password="a10", use_https=False)
+dp = DeviceProxy(host="10.48.5.181", port=443, username="admin", password="a10")
 ```
 
 #### Example setting up an SLB:

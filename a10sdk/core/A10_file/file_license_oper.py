@@ -5,7 +5,7 @@ class FileList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param file_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param file_name: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -27,7 +27,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"file_name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true}}]}
+    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"file_name": {"type": "string", "format": "string"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

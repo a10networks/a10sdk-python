@@ -5,9 +5,9 @@ class EntryList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param active: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param modified: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param active: {"type": "string", "format": "string"}
+    :param name: {"type": "string", "format": "string"}
+    :param modified: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,7 +31,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param entry_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"active": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "modified": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param entry_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"active": {"type": "string", "format": "string"}, "optional": true, "name": {"type": "string", "format": "string"}, "modified": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

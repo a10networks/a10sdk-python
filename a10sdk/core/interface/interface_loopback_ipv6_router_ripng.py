@@ -9,6 +9,7 @@ class Ripng(A10BaseClass):
     Class ripng supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param rip: {"default": 0, "optional": true, "type": "number", "description": "RIP Routing for IPv6", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -27,6 +28,7 @@ class Ripng(A10BaseClass):
         self.b_key = "ripng"
         self.a10_url="/axapi/v3/interface/loopback/{ifnum}/ipv6/router/ripng"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.rip = ""
 
         for keys, value in kwargs.items():

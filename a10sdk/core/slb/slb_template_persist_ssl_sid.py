@@ -10,8 +10,9 @@ class SslSid(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param dont_honor_conn_rules: {"default": 0, "optional": true, "type": "number", "description": "Do not observe connection rate rules", "format": "flag"}
-    :param name: {"description": "SSL session ID persistence template name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
-    :param timeout: {"description": "Persistence timeout (in minutes)", "format": "number", "type": "number", "maximum": 2000, "minimum": 1, "optional": true}
+    :param name: {"description": "SSL session ID persistence template name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param timeout: {"description": "Persistence timeout (in minutes)", "format": "number", "default": 5, "optional": true, "maximum": 2000, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -33,6 +34,7 @@ class SslSid(A10BaseClass):
         self.dont_honor_conn_rules = ""
         self.name = ""
         self.timeout = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

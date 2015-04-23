@@ -4,7 +4,7 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 class Exception(A10BaseClass):
     
     """    :param action: {"optional": true, "enum": ["add", "delete", "clean"], "type": "string", "description": "'add': Add an exception; 'delete': Delete an exception; 'clean': Delete all exception; ", "format": "enum"}
-    :param certificate_name: {"description": "The certificate name", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
+    :param certificate_name: {"description": "The certificate name", "format": "string", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

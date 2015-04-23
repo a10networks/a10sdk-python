@@ -11,6 +11,7 @@ class SrcIp(A10BaseClass):
 
     :param protocol: {"optional": false, "enum": ["tcp", "udp"], "type": "string", "description": "'tcp': Set TCP connection rate limit; 'udp': Set UDP packet rate limit; ", "format": "enum"}
     :param log: {"default": 0, "optional": true, "type": "number", "description": "Send log if threshold exceeded", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param lock_out: {"description": "Set lockout period in seconds if threshold exceeded", "format": "number", "type": "number", "maximum": 3600, "minimum": 1, "optional": true}
     :param limit: {"description": "Set max packets per period", "format": "number", "type": "number", "maximum": 1000000, "minimum": 1, "optional": true}
     :param exceed_action: {"default": 0, "optional": true, "type": "number", "description": "Set action if threshold exceeded", "format": "flag"}
@@ -36,6 +37,7 @@ class SrcIp(A10BaseClass):
         self.DeviceProxy = ""
         self.protocol = ""
         self.log = ""
+        self.uuid = ""
         self.lock_out = ""
         self.limit = ""
         self.exceed_action = ""

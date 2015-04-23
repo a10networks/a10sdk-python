@@ -60,6 +60,7 @@ class Ipv4Address(A10BaseClass):
     :param ports_per_user: {"description": "Configure Ports per Inside User (ports-per-user)", "format": "number", "type": "number", "maximum": 64512, "minimum": 1, "optional": true}
     :param vrid: {"description": "VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "type": "number", "maximum": 31, "minimum": 1, "optional": true}
     :param inside_netmask: {"optional": false, "type": "string", "description": "IPv4 Netmask", "format": "ipv4-netmask-brief"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param nat_end_address: {"optional": true, "type": "string", "description": "IPv4 End NAT Address", "format": "ipv4-address"}
     :param partition: {"description": "Inside User Partition (Partition Name)", "partition-visibility": "shared", "minLength": 1, "format": "string", "optional": false, "maxLength": 63, "type": "string"}
     :param nat_netmask: {"optional": true, "type": "string", "description": "NAT Addresses IP Netmask", "format": "ipv4-netmask-brief"}
@@ -93,6 +94,7 @@ class Ipv4Address(A10BaseClass):
         self.ports_per_user = ""
         self.vrid = ""
         self.inside_netmask = ""
+        self.uuid = ""
         self.nat_end_address = ""
         self.usable_nat_ports = {}
         self.partition = ""

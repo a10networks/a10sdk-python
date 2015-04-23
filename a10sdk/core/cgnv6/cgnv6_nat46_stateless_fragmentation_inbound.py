@@ -10,6 +10,7 @@ class Inbound(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param action: {"description": "'drop': Drop Silently; 'ipv4': Use IPv4 fragmentation for oversize packets (default); 'send-icmpv6': Send ICMP Type 2 Code 0 (Packet Too Big); ", "format": "enum", "default": "ipv4", "type": "string", "enum": ["drop", "ipv4", "send-icmpv6"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class Inbound(A10BaseClass):
         self.a10_url="/axapi/v3/cgnv6/nat46-stateless/fragmentation/inbound"
         self.DeviceProxy = ""
         self.action = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

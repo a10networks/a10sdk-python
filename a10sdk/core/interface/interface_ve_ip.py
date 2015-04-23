@@ -55,6 +55,7 @@ class Ip(A10BaseClass):
     Class ip supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param generate_membership_query: {"default": 0, "optional": true, "type": "number", "description": "Enable Membership Query", "format": "flag"}
     :param address_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ipv4-address": {"type": "string", "description": "IP address", "format": "ipv4-address"}, "optional": true, "ipv4-netmask": {"type": "string", "description": "IP subnet mask", "format": "ipv4-netmask"}}}]}
     :param inside: {"default": 0, "optional": true, "type": "number", "description": "Configure interface as inside", "format": "flag"}
@@ -82,6 +83,7 @@ class Ip(A10BaseClass):
         self.b_key = "ip"
         self.a10_url="/axapi/v3/interface/ve/{ifnum}/ip"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.generate_membership_query = ""
         self.address_list = []
         self.inside = ""

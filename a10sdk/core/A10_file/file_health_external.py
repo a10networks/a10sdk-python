@@ -4,11 +4,11 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 class HealthExternal(A10BaseClass):
     
     """    :param dst_file: {"description": "destination file name for copy and rename action", "format": "string", "minLength": 1, "optional": true, "maxLength": 32, "type": "string"}
-    :param description: {"description": "Describe the Program Function briefly", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param description: {"description": "Describe the Program Function briefly", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param file: {"description": "Specify the Program Name", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param action: {"optional": true, "enum": ["create", "import", "export", "copy", "rename", "check", "replace", "delete"], "type": "string", "description": "'create': create; 'import': import; 'export': export; 'copy': copy; 'rename': rename; 'check': check; 'replace': replace; 'delete': delete; ", "format": "enum"}
     :param file_handle: {"description": "full path of the uploaded file", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
-    :param size: {"optional": true, "type": "number", "description": "syslog file size in byte", "format": "number"}
+    :param size: {"description": "syslog file size in byte", "format": "number", "type": "number", "maximum": 2147483647, "minimum": 0, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

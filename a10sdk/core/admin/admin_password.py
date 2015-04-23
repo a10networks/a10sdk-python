@@ -10,6 +10,7 @@ class Password(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param password_in_module: {"description": "Config admin user password", "format": "password", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param encrypted_in_module: {"optional": true, "type": "encrypted", "description": "Specify an ENCRYPTED password string (System admin user password)", "format": "encrypted"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -29,6 +30,7 @@ class Password(A10BaseClass):
         self.a10_url="/axapi/v3/admin/{user}/password"
         self.DeviceProxy = ""
         self.password_in_module = ""
+        self.uuid = ""
         self.encrypted_in_module = ""
 
         for keys, value in kwargs.items():

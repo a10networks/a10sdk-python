@@ -11,10 +11,11 @@ class ServiceGroup(A10BaseClass):
 
     :param health_check_disable: {"description": "Disable health check", "format": "flag", "default": 0, "optional": true, "not": "health-check", "type": "number"}
     :param protocol: {"description": "'tcp': TCP AAM service; 'udp': UDP AAM service; ", "format": "enum", "type": "string", "enum": ["tcp", "udp"], "modify-not-allowed": 1, "optional": true}
-    :param name: {"description": "Specify AAM service group name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 127, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param lb_method: {"optional": true, "enum": ["round-robin"], "type": "string", "description": "'round-robin': Round robin on server level; ", "format": "enum"}
-    :param member_list: {"minItems": 1, "items": {"type": "member"}, "uniqueItems": true, "array": [{"required": ["name", "port"], "properties": {"member-priority": {"description": "Priority of Port in the Group", "format": "number", "type": "number", "maximum": 16, "minimum": 1, "optional": true}, "name": {"description": "Member name", "format": "comp-string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/aam/authentication/server/ldap"}, "member-state": {"description": "'enable': Enable member service port; 'disable': Disable member service port; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable"], "optional": true}, "port": {"description": "Port number", "format": "number", "default": 65534, "optional": false, "maximum": 65534, "minimum": 0, "type": "number"}}}], "type": "array", "$ref": "/axapi/v3/aam/authentication/service-group/{name}/member/{name}+{port}"}
+    :param member_list: {"minItems": 1, "items": {"type": "member"}, "uniqueItems": true, "array": [{"required": ["name", "port"], "properties": {"uuid": {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}, "member-priority": {"description": "Priority of Port in the Group", "format": "number", "type": "number", "maximum": 16, "minimum": 1, "optional": true}, "name": {"description": "Member name", "format": "comp-string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/aam/authentication/server/ldap"}, "member-state": {"description": "'enable': Enable member service port; 'disable': Disable member service port; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable"], "optional": true}, "port": {"description": "Port number", "format": "number", "default": 65534, "optional": false, "maximum": 65534, "minimum": 1, "type": "number"}}}], "type": "array", "$ref": "/axapi/v3/aam/authentication/service-group/{name}/member/{name}+{port}"}
     :param health_check: {"description": "Health Check (Monitor Name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "not": "health-check-disable", "type": "string", "$ref": "/axapi/v3/health/monitor"}
+    :param name: {"description": "Specify AAM service group name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 127, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -35,10 +36,11 @@ class ServiceGroup(A10BaseClass):
         self.DeviceProxy = ""
         self.health_check_disable = ""
         self.protocol = ""
-        self.name = ""
+        self.uuid = ""
         self.lb_method = ""
         self.member_list = []
         self.health_check = ""
+        self.name = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

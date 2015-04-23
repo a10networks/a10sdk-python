@@ -63,6 +63,7 @@ class Bfd(A10BaseClass):
     Class bfd supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param demand: {"default": 0, "optional": true, "type": "number", "description": "Demand mode", "format": "flag"}
     :param echo: {"default": 0, "optional": true, "type": "number", "description": "Enable BFD Echo", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -82,6 +83,7 @@ class Bfd(A10BaseClass):
         self.b_key = "bfd"
         self.a10_url="/axapi/v3/interface/trunk/{ifnum}/bfd"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.authentication = {}
         self.demand = ""
         self.interval_cfg = {}

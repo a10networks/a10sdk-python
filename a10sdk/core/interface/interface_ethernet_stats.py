@@ -63,7 +63,6 @@ class Ethernet(A10BaseClass):
     Class ethernet supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param trunk_group_list: {"minItems": 1, "items": {"type": "trunk-group"}, "uniqueItems": true, "array": [{"required": ["trunk-number"], "properties": {}}], "type": "array", "$ref": "/axapi/v3/interface/ethernet/{ifnum}/lldp/ddos/ip/ipv6/lw-4o6/trunk-group/{trunk-number}"}
     :param ifnum: {"optional": false, "oid": "1001", "type": "number", "description": "Ethernet interface number", "format": "interface"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -83,16 +82,8 @@ class Ethernet(A10BaseClass):
         self.b_key = "ethernet"
         self.a10_url="/axapi/v3/interface/ethernet/{ifnum}/stats"
         self.DeviceProxy = ""
-        self.lldp = {}
-        self.stats = {}
-        self.bfd = {}
-        self.ip = {}
-        self.ddos = {}
-        self.trunk_group_list = []
         self.ifnum = ""
-        self.lw_4o6 = {}
-        self.ipv6 = {}
-        self.isis = {}
+        self.stats = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

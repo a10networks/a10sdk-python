@@ -5,48 +5,48 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param fan3a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param power_unit1: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param power_unit3: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param power_unit2: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan8a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_17: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_16: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_15: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_14: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_13: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_12: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_11: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_10: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan6b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_3: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param physical_temperature: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan5a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan8b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan2a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan5b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan10b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan7b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_4: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan9b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param power_unit4: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan1b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_9: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan10a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan2b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan4b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan9a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_2: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_1: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_7: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_6: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_5: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan6a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan1a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan4a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan7a_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param voltage_label_8: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fan3b_report: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param fan3a_report: {"type": "string", "format": "string"}
+    :param power_unit1: {"type": "string", "format": "string"}
+    :param power_unit3: {"type": "string", "format": "string"}
+    :param power_unit2: {"type": "string", "format": "string"}
+    :param fan8a_report: {"type": "string", "format": "string"}
+    :param voltage_label_17: {"type": "string", "format": "string"}
+    :param voltage_label_16: {"type": "string", "format": "string"}
+    :param voltage_label_15: {"type": "string", "format": "string"}
+    :param voltage_label_14: {"type": "string", "format": "string"}
+    :param voltage_label_13: {"type": "string", "format": "string"}
+    :param voltage_label_12: {"type": "string", "format": "string"}
+    :param voltage_label_11: {"type": "string", "format": "string"}
+    :param voltage_label_10: {"type": "string", "format": "string"}
+    :param fan6b_report: {"type": "string", "format": "string"}
+    :param voltage_label_3: {"type": "string", "format": "string"}
+    :param physical_temperature: {"type": "string", "format": "string"}
+    :param fan5a_report: {"type": "string", "format": "string"}
+    :param fan8b_report: {"type": "string", "format": "string"}
+    :param fan2a_report: {"type": "string", "format": "string"}
+    :param fan5b_report: {"type": "string", "format": "string"}
+    :param fan10b_report: {"type": "string", "format": "string"}
+    :param fan7b_report: {"type": "string", "format": "string"}
+    :param voltage_label_4: {"type": "string", "format": "string"}
+    :param fan9b_report: {"type": "string", "format": "string"}
+    :param power_unit4: {"type": "string", "format": "string"}
+    :param fan1b_report: {"type": "string", "format": "string"}
+    :param voltage_label_9: {"type": "string", "format": "string"}
+    :param fan10a_report: {"type": "string", "format": "string"}
+    :param fan2b_report: {"type": "string", "format": "string"}
+    :param fan4b_report: {"type": "string", "format": "string"}
+    :param fan9a_report: {"type": "string", "format": "string"}
+    :param voltage_label_2: {"type": "string", "format": "string"}
+    :param voltage_label_1: {"type": "string", "format": "string"}
+    :param voltage_label_7: {"type": "string", "format": "string"}
+    :param voltage_label_6: {"type": "string", "format": "string"}
+    :param voltage_label_5: {"type": "string", "format": "string"}
+    :param fan6a_report: {"type": "string", "format": "string"}
+    :param fan1a_report: {"type": "string", "format": "string"}
+    :param fan4a_report: {"type": "string", "format": "string"}
+    :param fan7a_report: {"type": "string", "format": "string"}
+    :param voltage_label_8: {"type": "string", "format": "string"}
+    :param fan3b_report: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

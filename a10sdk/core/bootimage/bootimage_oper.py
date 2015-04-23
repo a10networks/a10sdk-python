@@ -5,12 +5,12 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param hd_sec: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param cf_default: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param hd_pri: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param cf_pri: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param cf_sec: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param hd_default: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param hd_sec: {"type": "string", "format": "string"}
+    :param cf_default: {"type": "string", "format": "string"}
+    :param hd_pri: {"type": "string", "format": "string"}
+    :param cf_pri: {"type": "string", "format": "string"}
+    :param cf_sec: {"type": "string", "format": "string"}
+    :param hd_default: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

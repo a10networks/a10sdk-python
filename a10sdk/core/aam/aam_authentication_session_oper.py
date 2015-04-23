@@ -7,14 +7,14 @@ class SessionList(A10BaseClass):
 
     :param Session_id: {"type": "number", "format": "number"}
     :param TTL_in_seconds: {"type": "number", "format": "number"}
-    :param Domain: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Client_IP: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Domain_Group: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param VIP: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param User: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param VPort: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Created_Time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Domain: {"type": "string", "format": "string"}
+    :param Client_IP: {"type": "string", "format": "string"}
+    :param Domain_Group: {"type": "string", "format": "string"}
+    :param VIP: {"type": "string", "format": "string"}
+    :param User: {"type": "string", "format": "string"}
+    :param VPort: {"type": "string", "format": "string"}
+    :param Type: {"type": "string", "format": "string"}
+    :param Created_Time: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -45,7 +45,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Session-id": {"type": "number", "format": "number"}, "TTL-in-seconds": {"type": "number", "format": "number"}, "Domain": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "Client-IP": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "Domain-Group": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "VIP": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "User": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "VPort": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "Type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "Created-Time": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Session-id": {"type": "number", "format": "number"}, "TTL-in-seconds": {"type": "number", "format": "number"}, "Domain": {"type": "string", "format": "string"}, "Client-IP": {"type": "string", "format": "string"}, "optional": true, "Domain-Group": {"type": "string", "format": "string"}, "VIP": {"type": "string", "format": "string"}, "User": {"type": "string", "format": "string"}, "VPort": {"type": "string", "format": "string"}, "Type": {"type": "string", "format": "string"}, "Created-Time": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

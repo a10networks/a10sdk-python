@@ -12,6 +12,7 @@ class Ftp(A10BaseClass):
     :param trans_epsv_to_pasv: {"optional": true, "enum": ["disable"], "type": "string", "description": "'disable': disable; ", "format": "enum"}
     :param trans_eprt_to_port: {"optional": true, "enum": ["disable"], "type": "string", "description": "'disable': disable; ", "format": "enum"}
     :param xlat_no_trans_pasv: {"optional": true, "enum": ["enable"], "type": "string", "description": "'enable': enable; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ftp_enable: {"optional": true, "enum": ["disable"], "type": "string", "description": "'disable': Disable NAT64 FTP ALG; ", "format": "enum"}
     :param trans_lpsv_to_pasv: {"optional": true, "enum": ["disable"], "type": "string", "description": "'disable': disable; ", "format": "enum"}
     :param trans_lprt_to_port: {"optional": true, "enum": ["disable"], "type": "string", "description": "'disable': disable; ", "format": "enum"}
@@ -35,6 +36,7 @@ class Ftp(A10BaseClass):
         self.trans_epsv_to_pasv = ""
         self.trans_eprt_to_port = ""
         self.xlat_no_trans_pasv = ""
+        self.uuid = ""
         self.ftp_enable = ""
         self.trans_lpsv_to_pasv = ""
         self.trans_lprt_to_port = ""

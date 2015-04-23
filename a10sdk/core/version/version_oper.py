@@ -5,20 +5,20 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param firmware_version: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param hw_code: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param hd_sec: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param hd_pri: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param copyright: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param sw_version: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param boot_from: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param plat_features: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param hw_platform: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param serial_number: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param up_time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param current_time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param aflex_version: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param last_config_saved_time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param firmware_version: {"type": "string", "format": "string"}
+    :param hw_code: {"type": "string", "format": "string"}
+    :param hd_sec: {"type": "string", "format": "string"}
+    :param hd_pri: {"type": "string", "format": "string"}
+    :param copyright: {"type": "string", "format": "string"}
+    :param sw_version: {"type": "string", "format": "string"}
+    :param boot_from: {"type": "string", "format": "string"}
+    :param plat_features: {"type": "string", "format": "string"}
+    :param hw_platform: {"type": "string", "format": "string"}
+    :param serial_number: {"type": "string", "format": "string"}
+    :param up_time: {"type": "string", "format": "string"}
+    :param current_time: {"type": "string", "format": "string"}
+    :param aflex_version: {"type": "string", "format": "string"}
+    :param last_config_saved_time: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

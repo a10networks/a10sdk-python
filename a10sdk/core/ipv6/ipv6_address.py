@@ -10,8 +10,9 @@ class Address(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ipv6_address: {"optional": true, "type": "string", "description": "IPV6 address", "format": "ipv6-address-plen"}
-    :param link_local: {"default": 0, "optional": true, "type": "number", "description": "Configure an IPv6 link local address", "format": "flag"}
-    :param anycast: {"default": 0, "optional": true, "type": "number", "description": "Configure an IPv6 anycast address", "format": "flag"}
+    :param link_local: {"description": "Configure an IPv6 link local address", "format": "flag", "default": 0, "optional": true, "not": "anycast", "type": "number"}
+    :param anycast: {"description": "Configure an IPv6 anycast address", "format": "flag", "default": 0, "optional": true, "not": "link-local", "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,6 +33,7 @@ class Address(A10BaseClass):
         self.ipv6_address = ""
         self.link_local = ""
         self.anycast = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

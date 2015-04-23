@@ -22,6 +22,7 @@ class Pcp(A10BaseClass):
     :param announce: {"default": 0, "optional": true, "type": "number", "description": "PCP ANNOUNCE Opcode (default is enabled)", "format": "flag"}
     :param source_ip: {"optional": true, "type": "string", "description": "Specify source IP address for IPv4 ANNOUNCE message", "format": "ipv4-address"}
     :param pcp_server_port: {"description": "PCP server listening port (default 5351) (PCP UDP destination port)", "format": "number", "default": 5351, "optional": true, "maximum": 65535, "minimum": 1024, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -53,6 +54,7 @@ class Pcp(A10BaseClass):
         self.announce = ""
         self.source_ip = ""
         self.pcp_server_port = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

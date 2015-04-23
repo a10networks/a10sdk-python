@@ -5,10 +5,10 @@ class Stats(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param Tickets: {"description": "Tickets", "format": "counter", "type": "number", "oid": "4", "optional": true, "size": "8"}
+    :param Current_requests_of_user: {"description": "Current Pending Requests of User", "format": "counter", "type": "number", "oid": "3", "optional": true, "size": "8"}
     :param Response_receive: {"description": "Response Receive", "format": "counter", "type": "number", "oid": "2", "optional": true, "size": "8"}
     :param Request_send: {"description": "Request Send", "format": "counter", "type": "number", "oid": "1", "optional": true, "size": "8"}
-    :param Current_requets_of_user: {"description": "Current Pending Requests of User", "format": "counter", "type": "number", "oid": "3", "optional": true, "size": "8"}
+    :param Tickets: {"description": "Tickets", "format": "counter", "type": "number", "oid": "4", "optional": true, "size": "8"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -20,10 +20,10 @@ class Stats(A10BaseClass):
         
         self.b_key = "stats"
         self.DeviceProxy = ""
-        self.Tickets = ""
+        self.Current_requests_of_user = ""
         self.Response_receive = ""
         self.Request_send = ""
-        self.Current_requets_of_user = ""
+        self.Tickets = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

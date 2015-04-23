@@ -19,6 +19,7 @@ class Imap(A10BaseClass):
     :param pwd_auth: {"default": 0, "optional": true, "type": "number", "description": "Specify the Authentication method", "format": "flag"}
     :param imap_plain: {"default": 0, "optional": true, "type": "number", "description": "Plain text", "format": "flag"}
     :param imap: {"default": 0, "optional": true, "type": "number", "description": "IMAP type", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -46,6 +47,7 @@ class Imap(A10BaseClass):
         self.pwd_auth = ""
         self.imap_plain = ""
         self.imap = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

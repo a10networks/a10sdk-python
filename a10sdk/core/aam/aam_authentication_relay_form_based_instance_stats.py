@@ -46,7 +46,6 @@ class Instance(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param name: {"description": "Specify form-based authentication relay name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 63, "type": "string"}
-    :param request_uri_list: {"minItems": 1, "items": {"type": "request-uri"}, "uniqueItems": true, "array": [{"required": ["match-type", "uri"], "properties": {}}], "type": "array", "$ref": "/axapi/v3/aam/authentication/relay/form-based/instance/{name}/request-uri/{match-type}+{uri}"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -67,7 +66,6 @@ class Instance(A10BaseClass):
         self.DeviceProxy = ""
         self.stats = {}
         self.name = ""
-        self.request_uri_list = []
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

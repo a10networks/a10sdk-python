@@ -6,7 +6,7 @@ class IpServerPort(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param vport: {"type": "number", "format": "number"}
-    :param vport_state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param vport_state: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,10 +29,10 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param ip_server: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param ip_server_port: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "vport": {"type": "number", "format": "number"}, "vport-state": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
-    :param ip_address: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param state: {"type": "string", "format": "string"}
+    :param ip_server: {"type": "string", "format": "string"}
+    :param ip_server_port: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "vport": {"type": "number", "format": "number"}, "vport-state": {"type": "string", "format": "string"}}}]}
+    :param ip_address: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

@@ -9,9 +9,10 @@ class RouteMap(A10BaseClass):
     Class route-map supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param action: {"optional": false, "enum": ["permit", "deny"], "type": "string", "description": "'permit': Route map permits set operations; 'deny': Route map denies set operations; ", "format": "enum"}
-    :param tag: {"description": "Route map tag", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param sequence: {"description": "Sequence to insert to/delete from existing route-map entry", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
+    :param tag: {"description": "Route map tag", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
+    :param action: {"optional": false, "enum": ["permit", "deny"], "type": "string", "description": "'permit': Route map permits set operations; 'deny': Route map denies set operations; ", "format": "enum"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -30,11 +31,12 @@ class RouteMap(A10BaseClass):
         self.b_key = "route-map"
         self.a10_url="/axapi/v3/route-map/{tag}+{action}+{sequence}"
         self.DeviceProxy = ""
-        self.action = ""
-        self.tag = ""
         self.A10WW_set = {}
-        self.match = {}
+        self.uuid = ""
         self.sequence = ""
+        self.tag = ""
+        self.action = ""
+        self.match = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

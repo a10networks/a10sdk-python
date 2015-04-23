@@ -9,10 +9,11 @@ class Member(A10BaseClass):
     Class member supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param member_priority: {"description": "Priority of Port in the Group", "format": "number", "type": "number", "maximum": 16, "minimum": 1, "optional": true}
     :param name: {"description": "Member name", "format": "comp-string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/aam/authentication/server/ldap"}
     :param member_state: {"description": "'enable': Enable member service port; 'disable': Disable member service port; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable"], "optional": true}
-    :param port: {"description": "Port number", "format": "number", "default": 65534, "optional": false, "maximum": 65534, "minimum": 0, "type": "number"}
+    :param port: {"description": "Port number", "format": "number", "default": 65534, "optional": false, "maximum": 65534, "minimum": 1, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class Member(A10BaseClass):
         self.b_key = "member"
         self.a10_url="/axapi/v3/aam/authentication/service-group/{name}/member/{name}+{port}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.member_priority = ""
         self.name = ""
         self.member_state = ""

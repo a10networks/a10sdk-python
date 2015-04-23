@@ -295,6 +295,7 @@ class Redistribute(A10BaseClass):
     Class redistribute supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -314,6 +315,7 @@ class Redistribute(A10BaseClass):
         self.DeviceProxy = ""
         self.ip_nat_list_cfg = {}
         self.lw4o6_cfg = {}
+        self.uuid = ""
         self.connected_cfg = {}
         self.ip_nat_cfg = {}
         self.floating_ip_cfg = {}

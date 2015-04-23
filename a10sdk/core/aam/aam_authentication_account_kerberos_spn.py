@@ -13,6 +13,7 @@ class KerberosSpn(A10BaseClass):
     :param realm: {"description": "Specify Kerberos realm", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param name: {"description": "Specify AD account name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param encrypted: {"optional": true, "type": "encrypted", "description": "Do NOT use this option manually. (This is an A10 reserved keyword.)", "format": "encrypted"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param password: {"default": 0, "optional": true, "type": "number", "description": "Specify password of domain account", "format": "flag"}
     :param service_principal_name: {"description": "Specify service principal name", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param secret_string: {"description": "Password of AD account", "format": "password", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
@@ -38,6 +39,7 @@ class KerberosSpn(A10BaseClass):
         self.realm = ""
         self.name = ""
         self.encrypted = ""
+        self.uuid = ""
         self.password = ""
         self.service_principal_name = ""
         self.secret_string = ""

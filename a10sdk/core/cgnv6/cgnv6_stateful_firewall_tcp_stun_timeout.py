@@ -9,6 +9,7 @@ class StunTimeout(A10BaseClass):
     Class stun-timeout supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param stun_timeout_val_port_range: {"description": "STUN timeout (default: 2minutes)", "format": "number", "default": 2, "optional": true, "maximum": 60, "minimum": 0, "type": "number"}
     :param port: {"description": "Single Destination Port or Port Range Start", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
     :param port_end: {"description": "Port Range End", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
@@ -30,6 +31,7 @@ class StunTimeout(A10BaseClass):
         self.b_key = "stun-timeout"
         self.a10_url="/axapi/v3/cgnv6/stateful-firewall/tcp/stun-timeout/{port}+{port_end}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.stun_timeout_val_port_range = ""
         self.port = ""
         self.port_end = ""

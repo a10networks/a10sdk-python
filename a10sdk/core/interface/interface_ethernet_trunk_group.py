@@ -33,6 +33,7 @@ class TrunkGroup(A10BaseClass):
     Class trunk-group supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param trunk_number: {"description": "Trunk Number", "format": "number", "type": "number", "maximum": 16, "minimum": 1, "optional": false}
     :param mode: {"description": "'active': enable initiation of LACP negotiation on a port(default); 'passive': disable initiation of LACP negotiation on a port; ", "format": "enum", "default": "active", "type": "string", "enum": ["active", "passive"], "optional": true}
     :param timeout: {"description": "'long': Set LACP long timeout (default); 'short': Set LACP short timeout; ", "format": "enum", "default": "long", "type": "string", "enum": ["long", "short"], "optional": true}
@@ -57,6 +58,7 @@ class TrunkGroup(A10BaseClass):
         self.b_key = "trunk-group"
         self.a10_url="/axapi/v3/interface/ethernet/{ifnum}/trunk-group/{trunk_number}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.trunk_number = ""
         self.udld_timeout_cfg = {}
         self.mode = ""

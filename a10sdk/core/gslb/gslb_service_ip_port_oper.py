@@ -11,7 +11,7 @@ class Oper(A10BaseClass):
     :param dynamic: {"type": "number", "format": "number"}
     :param tcp: {"type": "number", "format": "number"}
     :param disabled: {"type": "number", "format": "number"}
-    :param state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param state: {"type": "string", "format": "string"}
     :param local_protocol: {"type": "number", "format": "number"}
     :param manually_health_check: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`

@@ -110,6 +110,7 @@ class Instance(A10BaseClass):
     Class instance supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param retry: {"description": "Specify max. number of failure retry (1 ~ 32), default is 3", "format": "number", "default": 3, "optional": true, "maximum": 32, "minimum": 1, "type": "number"}
     :param name: {"description": "Specify HTTP-Authenticate logon name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -130,6 +131,7 @@ class Instance(A10BaseClass):
         self.b_key = "instance"
         self.a10_url="/axapi/v3/aam/authentication/logon/http-authenticate/instance/{name}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.retry = ""
         self.name = ""
         self.auth_method = {}

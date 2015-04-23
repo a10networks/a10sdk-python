@@ -13,6 +13,7 @@ class ServiceTimeout(A10BaseClass):
     :param service_type: {"optional": false, "enum": ["tcp", "udp"], "type": "string", "description": "'tcp': TCP Protocol; 'udp': UDP Protocol; ", "format": "enum"}
     :param timeout_type: {"optional": true, "enum": ["age", "fast"], "type": "string", "description": "'age': Expiration time; 'fast': Use Fast aging; ", "format": "enum"}
     :param port: {"description": "Port Number", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -35,6 +36,7 @@ class ServiceTimeout(A10BaseClass):
         self.service_type = ""
         self.timeout_type = ""
         self.port = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

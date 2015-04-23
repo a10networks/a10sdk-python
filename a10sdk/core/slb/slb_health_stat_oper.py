@@ -5,17 +5,17 @@ class HealthCheckList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param status: {"type": "string", "format": "string"}
     :param retries: {"type": "number", "format": "number"}
     :param down_state: {"type": "number", "format": "number"}
     :param up_retries: {"type": "number", "format": "number"}
     :param down_cause: {"type": "number", "format": "number"}
     :param partition_id: {"type": "number", "format": "number"}
     :param up_cause: {"type": "number", "format": "number"}
-    :param ip_address: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param ip_address: {"type": "string", "format": "string"}
     :param total_retry: {"type": "number", "format": "number"}
-    :param health_monitor: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param port: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param health_monitor: {"type": "string", "format": "string"}
+    :param port: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -47,7 +47,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param health_check_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "retries": {"type": "number", "format": "number"}, "down-state": {"type": "number", "format": "number"}, "up-retries": {"type": "number", "format": "number"}, "down-cause": {"type": "number", "format": "number"}, "partition-id": {"type": "number", "format": "number"}, "up-cause": {"type": "number", "format": "number"}, "ip-address": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "total-retry": {"type": "number", "format": "number"}, "health-monitor": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "port": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param health_check_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"type": "string", "format": "string"}, "retries": {"type": "number", "format": "number"}, "down-state": {"type": "number", "format": "number"}, "up-retries": {"type": "number", "format": "number"}, "down-cause": {"type": "number", "format": "number"}, "partition-id": {"type": "number", "format": "number"}, "up-cause": {"type": "number", "format": "number"}, "ip-address": {"type": "string", "format": "string"}, "total-retry": {"type": "number", "format": "number"}, "health-monitor": {"type": "string", "format": "string"}, "optional": true, "port": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

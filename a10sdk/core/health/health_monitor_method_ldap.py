@@ -10,6 +10,7 @@ class Ldap(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ldap_port: {"description": "Specify the LDAP port (Speciry port number, default is 389, or 636 if LDAP over SSL)", "format": "number", "default": 389, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ldap_password_string: {"description": "Configure password, '' means empty passworddd", "format": "password", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param ldap_encrypted: {"optional": true, "type": "encrypted", "description": "Do NOT use this option manually. (This is an A10 reserved keyword.) (The ENCRYPTED password string)", "format": "encrypted"}
     :param BaseDN: {"description": "Specify LDAP DN distinguished name", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
@@ -38,6 +39,7 @@ class Ldap(A10BaseClass):
         self.a10_url="/axapi/v3/health/monitor/{name}/method/ldap"
         self.DeviceProxy = ""
         self.ldap_port = ""
+        self.uuid = ""
         self.ldap_password_string = ""
         self.ldap_encrypted = ""
         self.BaseDN = ""

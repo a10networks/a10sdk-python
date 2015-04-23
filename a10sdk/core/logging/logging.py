@@ -3,14 +3,14 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class Logging(A10BaseClass):
     
-    """Class Description::
+    """    :param single_priority_list: {"minItems": 1, "items": {"type": "single-priority"}, "uniqueItems": true, "array": [{"required": ["levelname"], "properties": {"uuid": {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}, "levelname": {"optional": false, "enum": ["emergency", "alert", "critical", "error", "warning", "notification", "information", "debugging"], "type": "string", "description": "'emergency': System unusable log messages      (severity=0); 'alert': Action must be taken immediately  (severity=1); 'critical': Critical conditions               (severity=2); 'error': Error conditions                  (severity=3); 'warning': Warning conditions                (severity=4); 'notification': Normal but significant conditions (severity=5); 'information': Informational messages            (severity=6); 'debugging': Debug level messages              (severity=7); ", "format": "enum"}}}], "type": "array", "$ref": "/axapi/v3/logging/single-priority/{levelname}"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     System logging configuration.
 
     Class logging supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param single_priority_list: {"minItems": 1, "items": {"type": "single-priority"}, "uniqueItems": true, "array": [{"required": ["levelname"], "properties": {"levelname": {"optional": false, "enum": ["emergency", "alert", "critical", "error", "warning", "notification", "information", "debugging"], "type": "string", "description": "'emergency': System unusable log messages      (severity=0); 'alert': Action must be taken immediately  (severity=1); 'critical': Critical conditions               (severity=2); 'error': Error conditions                  (severity=3); 'warning': Warning conditions                (severity=4); 'notification': Normal but significant conditions (severity=5); 'information': Informational messages            (severity=6); 'debugging': Debug level messages              (severity=7); ", "format": "enum"}}}], "type": "array", "$ref": "/axapi/v3/logging/single-priority/{levelname}"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 

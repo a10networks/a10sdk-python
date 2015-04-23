@@ -47,18 +47,19 @@ class NoReverseMatch(A10BaseClass):
 
 class Global(A10BaseClass):
     
-    """Class Description::
-    Configure LW-4over6 parameters.
-
-    Class global supports CRUD Operations and inherits from `common/A10BaseClass`.
-    This class is the `"PARENT"` class for this module.`
-
-    :param nat_prefix_list: {"description": "Configure LW-4over6 NAT Prefix List (LW-4over6 NAT Prefix Class-list)", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
+    """    :param nat_prefix_list: {"description": "Configure LW-4over6 NAT Prefix List (LW-4over6 NAT Prefix Class-list)", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param hairpinning: {"description": "'filter-all': Disable all Hairpinning; 'filter-none': Allow all Hairpinning (default); 'filter-self-ip': Block Hairpinning to same IP; 'filter-self-ip-port': Block hairpinning to same IP and Port combination; ", "format": "enum", "default": "filter-none", "type": "string", "enum": ["filter-all", "filter-none", "filter-self-ip", "filter-self-ip-port"], "optional": true}
     :param icmp_inbound: {"description": "'drop': Drop Inbound ICMP packets; 'handle': Handle Inbound ICMP packets(default); ", "format": "enum", "default": "handle", "type": "string", "enum": ["drop", "handle"], "optional": true}
     :param use_binding_table: {"description": "Bind LW-4over6 binding table for use (LW-4over6 Binding Table Name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
     :param tunnel_endpoint_address: {"optional": true, "type": "string", "description": "Configure LW-4over6 IPIP Tunnel Endpoint Address (LW-4over6 Tunnel Endpoint Address)", "format": "ipv6-address"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    Configure LW-4over6 parameters.
+
+    Class global supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
 
     
 
@@ -77,6 +78,7 @@ class Global(A10BaseClass):
         self.DeviceProxy = ""
         self.no_forward_match = {}
         self.nat_prefix_list = ""
+        self.uuid = ""
         self.hairpinning = ""
         self.icmp_inbound = ""
         self.use_binding_table = ""

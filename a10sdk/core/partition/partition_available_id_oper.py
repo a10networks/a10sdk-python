@@ -5,8 +5,8 @@ class RangeList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param start: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param end: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param start: {"type": "string", "format": "string"}
+    :param end: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,7 +29,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param range_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"start": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "end": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true}}]}
+    :param range_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"start": {"type": "string", "format": "string"}, "end": {"type": "string", "format": "string"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

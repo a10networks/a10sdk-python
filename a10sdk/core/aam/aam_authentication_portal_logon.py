@@ -1,6 +1,44 @@
 from a10sdk.common.A10BaseClass import A10BaseClass
 
 
+class PasscodeCfg(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param passcode_font_custom: {"description": "Specify custom font", "format": "string-rlx", "minLength": 1, "maxLength": 63, "not": "passcode-face", "type": "string"}
+    :param passcode_color: {"default": 0, "type": "number", "description": "Specify font color", "format": "flag"}
+    :param passcode_face: {"not": "passcode-font-custom", "enum": ["Arial", "Courier_New", "Georgia", "Times_New_Roman", "Verdana"], "type": "string", "description": "'Arial': Arial; 'Courier_New': Courier New; 'Georgia': Georgia; 'Times_New_Roman': Times New Roman; 'Verdana': Verdana; ", "format": "enum"}
+    :param passcode_font: {"default": 0, "type": "number", "description": "Sepcify font", "format": "flag"}
+    :param passcode_text: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify passcode text (Default: Passcode)", "format": "string-rlx"}
+    :param passcode_color_value: {"description": "Specify 6-digit HEX color value", "format": "string", "minLength": 6, "maxLength": 6, "not": "passcode-color-name", "type": "string"}
+    :param passcode_color_name: {"not": "passcode-color-value", "enum": ["aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "orange", "purple", "red", "silver", "teal", "white", "yellow"], "type": "string", "description": "'aqua': aqua; 'black': black; 'blue': blue; 'fuchsia': fuchsia; 'gray': gray; 'green': green; 'lime': lime; 'maroon': maroon; 'navy': navy; 'olive': olive; 'orange': orange; 'purple': purple; 'red': red; 'silver': silver; 'teal': teal; 'white': white; 'yellow': yellow; ", "format": "enum"}
+    :param passcode_size: {"description": "Specify font size", "minimum": 1, "type": "number", "maximum": 7, "format": "number"}
+    :param passcode: {"default": 0, "type": "number", "description": "Configure passcode text in default logon page", "format": "flag"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "passcode-cfg"
+        self.DeviceProxy = ""
+        self.passcode_font_custom = ""
+        self.passcode_color = ""
+        self.passcode_face = ""
+        self.passcode_font = ""
+        self.passcode_text = ""
+        self.passcode_color_value = ""
+        self.passcode_color_name = ""
+        self.passcode_size = ""
+        self.passcode = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class Background(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -155,8 +193,11 @@ class Logon(A10BaseClass):
 
     :param action_url: {"description": "Specify form action URL in default logon page (Default: /logon.fo)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param password_var: {"description": "Specify password variable name in default logon page (Default: pwd)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param enable_passcode: {"default": 0, "optional": true, "type": "number", "description": "Enable passcode field in default logon page", "format": "flag"}
     :param username_var: {"description": "Specify username variable name in default logon page (Default: user)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param submit_text: {"description": "Specify submit button text in default logon page (Default: Log In)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param passcode_var: {"description": "Specify passcode variable name in default logon page (Default: passcode)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -176,12 +217,16 @@ class Logon(A10BaseClass):
         self.DeviceProxy = ""
         self.action_url = ""
         self.password_var = ""
+        self.passcode_cfg = {}
+        self.enable_passcode = ""
         self.username_var = ""
         self.submit_text = ""
         self.background = {}
+        self.passcode_var = ""
         self.fail_msg_cfg = {}
         self.password_cfg = {}
         self.username_cfg = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

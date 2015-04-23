@@ -11,6 +11,7 @@ class Lw4O6(A10BaseClass):
 
     :param outside: {"default": 0, "optional": true, "type": "number", "description": "Configure LW-4over6 inside interface", "format": "flag"}
     :param inside: {"default": 0, "optional": true, "type": "number", "description": "Configure LW-4over6 outside interface", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -30,6 +31,7 @@ class Lw4O6(A10BaseClass):
         self.DeviceProxy = ""
         self.outside = ""
         self.inside = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

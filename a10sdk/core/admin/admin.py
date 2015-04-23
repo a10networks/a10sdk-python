@@ -38,6 +38,7 @@ class Admin(A10BaseClass):
     :param privilege_global: {"optional": true, "enum": ["read", "write"], "type": "string", "description": "'read': Set read privilege; 'write': Set write privilege; ", "format": "enum"}
     :param trusted_host: {"default": 0, "optional": true, "type": "number", "description": "Set trusted network administrator can login in", "format": "flag"}
     :param privilege_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"partition-name": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Partition Name", "format": "string"}, "privilege-partition": {"enum": ["partition-enable-disable", "partition-read", "partition-write"], "type": "string", "description": "'partition-enable-disable': Set per-partition enable/disable privilege; 'partition-read': Set per-partition read privilege; 'partition-write': Set per-partition write privilege; ", "format": "enum"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param access_list: {"description": "Specify an ACL to classify a trusted host", "format": "flag", "default": 0, "optional": true, "not": "trusted-host-addr", "type": "number"}
     :param unlock: {"default": 0, "optional": true, "type": "number", "description": "Unlock admin user", "format": "flag"}
     :param password_key: {"default": 0, "optional": true, "type": "number", "description": "Config admin user password", "format": "flag"}
@@ -68,6 +69,7 @@ class Admin(A10BaseClass):
         self.privilege_global = ""
         self.trusted_host = ""
         self.privilege_list = []
+        self.uuid = ""
         self.access = {}
         self.access_list = ""
         self.unlock = ""

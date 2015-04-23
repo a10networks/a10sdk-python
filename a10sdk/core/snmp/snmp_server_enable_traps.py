@@ -11,6 +11,7 @@ class Traps(A10BaseClass):
 
     :param lldp: {"default": 0, "optional": true, "type": "number", "description": "Enable lldp traps", "format": "flag"}
     :param all: {"default": 0, "optional": true, "type": "number", "description": "Enable all SNMP traps", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,7 +32,7 @@ class Traps(A10BaseClass):
         self.lldp = ""
         self.A10WW_all = ""
         self.slb_change = {}
-        self.network = {}
+        self.uuid = ""
         self.lsn = {}
         self.vrrp_a = {}
         self.snmp = {}
@@ -39,6 +40,7 @@ class Traps(A10BaseClass):
         self.routing = {}
         self.gslb = {}
         self.slb = {}
+        self.network = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

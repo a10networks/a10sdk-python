@@ -10,6 +10,7 @@ class Ntp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ntp: {"default": 0, "optional": true, "type": "number", "description": "NTP type", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ntp_port: {"description": "Specify the NTP port, default is 123 (Port Number (default 123))", "format": "number", "default": 123, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -29,6 +30,7 @@ class Ntp(A10BaseClass):
         self.a10_url="/axapi/v3/health/monitor/{name}/method/ntp"
         self.DeviceProxy = ""
         self.ntp = ""
+        self.uuid = ""
         self.ntp_port = ""
 
         for keys, value in kwargs.items():

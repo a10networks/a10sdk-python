@@ -225,6 +225,7 @@ class IkeGateway(A10BaseClass):
     :param dh_group: {"optional": true, "enum": ["1", "2", "5", "14", "15", "16", "18"], "type": "string", "description": "'1': Diffie-Hellman group 1 (Default); '2': Diffie-Hellman group 2; '5': Diffie-Hellman group 5; '14': Diffie-Hellman group 14; '15': Diffie-Hellman group 15; '16': Diffie-Hellman group 16; '18': Diffie-Hellman group 18; ", "format": "enum"}
     :param nat_traversal: {"default": 0, "optional": true, "type": "number", "format": "flag"}
     :param ike_version: {"optional": true, "enum": ["v1", "v2"], "type": "string", "description": "'v1': IKEv1 key exchange; 'v2': IKEv2 key exchange; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param mode: {"optional": true, "enum": ["main", "aggressive"], "type": "string", "description": "'main': Negotiate Main mode (Default); 'aggressive': Negotiate Aggressive mode; ", "format": "enum"}
     :param lifetime: {"description": "IKE SA age in seconds", "format": "number", "default": 86400, "optional": true, "maximum": 86400, "minimum": 300, "type": "number"}
     :param remote_id: {"description": "Remote Gateway Identity", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
@@ -255,6 +256,7 @@ class IkeGateway(A10BaseClass):
         self.nat_traversal = ""
         self.vrid = {}
         self.ike_version = ""
+        self.uuid = ""
         self.local_cert = {}
         self.dpd = {}
         self.mode = ""

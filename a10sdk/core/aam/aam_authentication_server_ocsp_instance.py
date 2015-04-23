@@ -18,6 +18,7 @@ class Instance(A10BaseClass):
     :param port_health_check_disable: {"description": "Disable configured port health check configuration", "format": "flag", "default": 0, "optional": true, "not": "port-health-check", "type": "number"}
     :param port_health_check: {"description": "Check port's health status", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "not": "port-health-check-disable", "type": "string", "$ref": "/axapi/v3/health/monitor"}
     :param health_check: {"description": "Check server's health status", "format": "flag", "default": 0, "optional": true, "not": "health-check-disable", "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -45,6 +46,7 @@ class Instance(A10BaseClass):
         self.port_health_check_disable = ""
         self.port_health_check = ""
         self.health_check = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -98,7 +98,7 @@ class PortDiameter(A10BaseClass):
     
 
     URL for this object::
-    `https://<Hostname|Ip address>//axapi/v3/counter/port-diameter/stats`.
+    `https://<Hostname|Ip address>//axapi/v3/counter/port-diameter/{sampling_enable}/stats`.
 
     
 
@@ -106,9 +106,10 @@ class PortDiameter(A10BaseClass):
     """
     def __init__(self, **kwargs):
         self.ERROR_MSG = ""
-        self.required=[]
+        self.required = [ "sampling_enable"]
+
         self.b_key = "port-diameter"
-        self.a10_url="/axapi/v3/counter/port-diameter/stats"
+        self.a10_url="/axapi/v3/counter/port-diameter/{sampling_enable}/stats"
         self.DeviceProxy = ""
         self.stats = {}
 

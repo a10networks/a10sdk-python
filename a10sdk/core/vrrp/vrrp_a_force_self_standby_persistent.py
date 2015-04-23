@@ -10,6 +10,7 @@ class ForceSelfStandbyPersistent(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param vrid: {"description": "Specify one VRRP-A vrid to force into standby state", "format": "number", "type": "number", "maximum": 31, "minimum": 0, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,6 +30,7 @@ class ForceSelfStandbyPersistent(A10BaseClass):
         self.a10_url="/axapi/v3/vrrp-a/force-self-standby-persistent/{vrid}"
         self.DeviceProxy = ""
         self.vrid = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

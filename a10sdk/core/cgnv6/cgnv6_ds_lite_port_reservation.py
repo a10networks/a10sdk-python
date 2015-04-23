@@ -10,6 +10,7 @@ class PortReservation(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param nat_end_port: {"description": "NAT End Port", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param inside: {"optional": false, "type": "string", "description": "Inside User Address and Port Range (DS-Lite Inside User's Tunnel Source IPv6 Address)", "format": "ipv6-address"}
     :param tunnel_dest_address: {"optional": false, "type": "string", "description": "DS-Lite Inside User's Tunnel Destination IPv6 Address", "format": "ipv6-address"}
     :param inside_start_port: {"description": "Inside Start Port", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
@@ -36,6 +37,7 @@ class PortReservation(A10BaseClass):
         self.a10_url="/axapi/v3/cgnv6/ds-lite/port-reservation/{inside}+{tunnel_dest_address}+{inside_addr}+{inside_start_port}+{inside_end_port}+{nat}+{nat_start_port}+{nat_end_port}"
         self.DeviceProxy = ""
         self.nat_end_port = ""
+        self.uuid = ""
         self.inside = ""
         self.tunnel_dest_address = ""
         self.inside_start_port = ""

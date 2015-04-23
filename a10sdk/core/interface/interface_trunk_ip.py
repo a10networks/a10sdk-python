@@ -79,6 +79,7 @@ class Ip(A10BaseClass):
     Class ip supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param generate_membership_query: {"default": 0, "optional": true, "type": "number", "description": "Enable Membership Query", "format": "flag"}
     :param cache_spoofing_port: {"default": 0, "optional": true, "type": "number", "description": "This interface connects to spoofing cache", "format": "flag"}
     :param allow_promiscuous_vip: {"default": 0, "optional": true, "type": "number", "description": "Allow traffic to be associated with promiscuous VIP", "format": "flag"}
@@ -105,6 +106,7 @@ class Ip(A10BaseClass):
         self.b_key = "ip"
         self.a10_url="/axapi/v3/interface/trunk/{ifnum}/ip"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.generate_membership_query = ""
         self.cache_spoofing_port = ""
         self.router = {}

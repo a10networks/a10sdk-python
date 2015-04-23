@@ -5,13 +5,13 @@ class GeolocList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param tomask: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param tomask: {"type": "string", "format": "string"}
     :param hits: {"type": "number", "format": "number"}
-    :param from: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param from: {"type": "string", "format": "string"}
     :param subcnt: {"type": "number", "format": "number"}
-    :param last: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param last: {"type": "string", "format": "string"}
+    :param type: {"type": "string", "format": "string"}
+    :param name: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -40,7 +40,7 @@ class Oper(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param ipv6rangestrt: {"type": "string", "format": "ipv6-address"}
-    :param pol_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param pol_name: {"type": "string", "format": "string"}
     :param total_geolocs: {"type": "number", "format": "number"}
     :param iprangestrt: {"type": "string", "format": "ipv4-address"}
     :param filter4: {"enum": ["ip", "ipv6", "ipstat", "ipv6stat"], "type": "string", "format": "enum"}
@@ -48,8 +48,8 @@ class Oper(A10BaseClass):
     :param filter1: {"enum": ["directory", "statistics", "global"], "type": "string", "format": "enum"}
     :param filter3: {"enum": ["directory", "statistics", "global"], "type": "string", "format": "enum"}
     :param filter2: {"enum": ["directory", "statistics", "global"], "type": "string", "format": "enum"}
-    :param geo_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param geoloc_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"tomask": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "hits": {"type": "number", "format": "number"}, "from": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "subcnt": {"type": "number", "format": "number"}, "optional": true, "last": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param geo_name: {"type": "string", "format": "string"}
+    :param geoloc_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"tomask": {"type": "string", "format": "string"}, "hits": {"type": "number", "format": "number"}, "from": {"type": "string", "format": "string"}, "subcnt": {"type": "number", "format": "number"}, "optional": true, "last": {"type": "string", "format": "string"}, "type": {"type": "string", "format": "string"}, "name": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

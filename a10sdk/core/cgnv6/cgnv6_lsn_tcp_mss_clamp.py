@@ -12,6 +12,7 @@ class MssClamp(A10BaseClass):
     :param mss_subtract: {"description": "Specify the value to subtract from the TCP MSS (default: not configured)", "format": "number", "type": "number", "maximum": 1460, "minimum": 0, "optional": true}
     :param mss_value: {"description": "The max value allowed for the TCP MSS (default: not configured)},", "format": "number", "type": "number", "maximum": 1460, "minimum": 0, "optional": true}
     :param mss_clamp_type: {"description": "'fixed': Specify a fixed max value for the TCP MSS; 'subtract': Specify the value to subtract from the TCP MSS; 'none': No TCP MSS clamping (default); ", "format": "enum", "default": "none", "type": "string", "enum": ["fixed", "subtract", "none"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param min: {"description": "Specify the min value allowed for the TCP MSS (Specify the min value allowed for the TCP MSS (default: ((576 - 60 - 60))))", "format": "number", "default": 456, "optional": true, "maximum": 1460, "minimum": 0, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -33,6 +34,7 @@ class MssClamp(A10BaseClass):
         self.mss_subtract = ""
         self.mss_value = ""
         self.mss_clamp_type = ""
+        self.uuid = ""
         self.A10WW_min = ""
 
         for keys, value in kwargs.items():

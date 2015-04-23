@@ -30,7 +30,7 @@ class LoginBannerCfg(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param login: {"default": 0, "partition-visibility": "shared", "type": "number", "description": "Set login banner", "format": "flag"}
-    :param login_banner: {"type": "string", "description": "Banner text", "format": "string-rlx"}
+    :param login_banner: {"partition-visibility": "shared", "type": "string", "description": "Banner text", "format": "string-rlx"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -57,6 +57,7 @@ class Banner(A10BaseClass):
     Class banner supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -75,6 +76,7 @@ class Banner(A10BaseClass):
         self.a10_url="/axapi/v3/banner"
         self.DeviceProxy = ""
         self.exec_banner_cfg = {}
+        self.uuid = ""
         self.login_banner_cfg = {}
 
         for keys, value in kwargs.items():

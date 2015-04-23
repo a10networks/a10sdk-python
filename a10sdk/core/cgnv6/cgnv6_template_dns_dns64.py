@@ -13,6 +13,7 @@ class Dns64(A10BaseClass):
     :param answer_only_disable: {"default": 0, "optional": true, "type": "number", "description": "Disable Only translate the Answer Section", "format": "flag"}
     :param enable: {"default": 0, "optional": true, "type": "number", "description": "Enable DNS64 (Need to config this option before config any other dns64 options)", "format": "flag"}
     :param single_response_disable: {"default": 0, "optional": true, "type": "number", "description": "Disable Single Response which is used to avoid ambiguity", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param max_qr_length: {"description": "Max Question Record Length, default is 128", "format": "number", "default": 128, "optional": true, "maximum": 1023, "minimum": 1, "type": "number"}
     :param ignore_rcode3_disable: {"default": 0, "optional": true, "type": "number", "description": "Disable Ignore DNS error Response with rcode 3", "format": "flag"}
     :param ttl: {"description": "Specify Max TTL in DNS Response, unit: second", "format": "number", "type": "number", "maximum": 1000000000, "minimum": 1, "optional": true}
@@ -48,6 +49,7 @@ class Dns64(A10BaseClass):
         self.answer_only_disable = ""
         self.enable = ""
         self.single_response_disable = ""
+        self.uuid = ""
         self.max_qr_length = ""
         self.ignore_rcode3_disable = ""
         self.ttl = ""

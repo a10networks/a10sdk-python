@@ -9,6 +9,7 @@ class ConnectionLoad(A10BaseClass):
     Class connection-load supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param connection_load_enable: {"default": 0, "optional": true, "type": "number", "description": "Enable connection-load", "format": "flag"}
     :param connection_load_interval: {"description": "Interval between two samples, Unit: second (Interval value,default is 5)", "format": "number", "default": 5, "optional": true, "maximum": 60, "minimum": 1, "type": "number"}
     :param limit: {"default": 0, "optional": true, "type": "number", "description": "Limit of maxinum connection load, default is unlimited", "format": "flag"}
@@ -32,6 +33,7 @@ class ConnectionLoad(A10BaseClass):
         self.b_key = "connection-load"
         self.a10_url="/axapi/v3/gslb/policy/{name}/connection-load"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.connection_load_enable = ""
         self.connection_load_interval = ""
         self.limit = ""

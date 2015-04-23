@@ -9,7 +9,7 @@ class SessionList(A10BaseClass):
     :param tcp_quota: {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}
     :param nat_address: {"type": "string", "format": "ipv4-address"}
     :param icmp_quota: {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}
-    :param nat_pool_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param nat_pool_name: {"type": "string", "format": "string"}
     :param session_count: {"type": "number", "format": "number"}
     :param inside_address: {"type": "string", "format": "ipv6-address"}
     :param udp_quota: {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}
@@ -41,8 +41,10 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
+    :param all_paritions: {"enum": ["true"], "type": "string", "format": "enum"}
     :param prefix_filter: {"type": "string", "format": "ipv6-address-plen"}
-    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"lid-number": {"type": "number", "format": "number"}, "tcp-quota": {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}, "nat-address": {"type": "string", "format": "ipv4-address"}, "icmp-quota": {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}, "nat-pool-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "session-count": {"type": "number", "format": "number"}, "optional": true, "inside-address": {"type": "string", "format": "ipv6-address"}, "udp-quota": {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}}}]}
+    :param partition: {"type": "string", "format": "string"}
+    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"lid-number": {"type": "number", "format": "number"}, "tcp-quota": {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}, "nat-address": {"type": "string", "format": "ipv4-address"}, "icmp-quota": {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}, "nat-pool-name": {"type": "string", "format": "string"}, "session-count": {"type": "number", "format": "number"}, "optional": true, "inside-address": {"type": "string", "format": "ipv6-address"}, "udp-quota": {"minimum": 1, "type": "number", "maximum": 65535, "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -54,7 +56,9 @@ class Oper(A10BaseClass):
         
         self.b_key = "oper"
         self.DeviceProxy = ""
+        self.all_paritions = ""
         self.prefix_filter = ""
+        self.partition = ""
         self.session_list = []
 
         for keys, value in kwargs.items():

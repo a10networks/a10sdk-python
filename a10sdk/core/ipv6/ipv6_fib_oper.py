@@ -6,9 +6,9 @@ class Ipv6Fib(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param Distance: {"type": "number", "format": "number"}
-    :param Nexthop: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Nexthop: {"type": "string", "format": "string"}
     :param Interface: {"enum": ["Management", "ethernet", "trunk"], "type": "string", "format": "enum"}
-    :param Prefix: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Prefix: {"type": "string", "format": "string"}
     :param PrefixLen: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -36,7 +36,7 @@ class Oper(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param Total: {"type": "number", "format": "number"}
-    :param IPv6_fib: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Distance": {"type": "number", "format": "number"}, "Nexthop": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "Interface": {"enum": ["Management", "ethernet", "trunk"], "type": "string", "format": "enum"}, "Prefix": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "PrefixLen": {"type": "number", "format": "number"}, "optional": true}}]}
+    :param IPv6_fib: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Distance": {"type": "number", "format": "number"}, "Nexthop": {"type": "string", "format": "string"}, "Interface": {"enum": ["Management", "ethernet", "trunk"], "type": "string", "format": "enum"}, "Prefix": {"type": "string", "format": "string"}, "PrefixLen": {"type": "number", "format": "number"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

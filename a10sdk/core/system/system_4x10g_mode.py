@@ -10,6 +10,7 @@ class System4X10GMode(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param enable: {"default": 0, "optional": true, "type": "number", "description": "Enable/Disable 40G port to split into 4x10g ports", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class System4X10GMode(A10BaseClass):
         self.a10_url="/axapi/v3/system-4x10g-mode"
         self.DeviceProxy = ""
         self.enable = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

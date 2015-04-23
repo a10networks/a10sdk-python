@@ -11,12 +11,12 @@ class SessionList(A10BaseClass):
     :param retry: {"type": "number", "format": "number"}
     :param update_packet_sent: {"type": "number", "format": "number"}
     :param open_packet_received: {"type": "number", "format": "number"}
-    :param protocol_info: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param protocol_info: {"type": "string", "format": "string"}
     :param keepalive_packet_received: {"type": "number", "format": "number"}
     :param update_packet_received: {"type": "number", "format": "number"}
     :param notify_packet_sent: {"type": "number", "format": "number"}
     :param open_packet_sent: {"type": "number", "format": "number"}
-    :param state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param state: {"type": "string", "format": "string"}
     :param keepalive_packet_sent: {"type": "number", "format": "number"}
     :param message_header_error: {"type": "number", "format": "number"}
     :param open_session_failed: {"type": "number", "format": "number"}
@@ -61,7 +61,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"session-id": {"type": "number", "format": "number"}, "connection-succeeded": {"type": "number", "format": "number"}, "sessions-dropped": {"type": "number", "format": "number"}, "retry": {"type": "number", "format": "number"}, "update-packet-sent": {"type": "number", "format": "number"}, "open-packet-received": {"type": "number", "format": "number"}, "protocol-info": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "keepalive-packet-received": {"type": "number", "format": "number"}, "update-packet-received": {"type": "number", "format": "number"}, "notify-packet-sent": {"type": "number", "format": "number"}, "open-packet-sent": {"type": "number", "format": "number"}, "state": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "keepalive-packet-sent": {"type": "number", "format": "number"}, "message-header-error": {"type": "number", "format": "number"}, "open-session-failed": {"type": "number", "format": "number"}, "notify-packet-received": {"type": "number", "format": "number"}, "optional": true, "open-session-succeeded": {"type": "number", "format": "number"}, "connection-failed": {"type": "number", "format": "number"}}}]}
+    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"session-id": {"type": "number", "format": "number"}, "connection-succeeded": {"type": "number", "format": "number"}, "sessions-dropped": {"type": "number", "format": "number"}, "retry": {"type": "number", "format": "number"}, "update-packet-sent": {"type": "number", "format": "number"}, "open-packet-received": {"type": "number", "format": "number"}, "protocol-info": {"type": "string", "format": "string"}, "keepalive-packet-received": {"type": "number", "format": "number"}, "update-packet-received": {"type": "number", "format": "number"}, "notify-packet-sent": {"type": "number", "format": "number"}, "open-packet-sent": {"type": "number", "format": "number"}, "state": {"type": "string", "format": "string"}, "keepalive-packet-sent": {"type": "number", "format": "number"}, "message-header-error": {"type": "number", "format": "number"}, "open-session-failed": {"type": "number", "format": "number"}, "notify-packet-received": {"type": "number", "format": "number"}, "optional": true, "open-session-succeeded": {"type": "number", "format": "number"}, "connection-failed": {"type": "number", "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

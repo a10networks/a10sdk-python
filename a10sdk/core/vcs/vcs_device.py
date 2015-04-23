@@ -76,13 +76,14 @@ class Device(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param management: {"default": 0, "optional": true, "type": "number", "description": "Management interface", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ethernet_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ethernet": {"type": "number", "description": "Ethernet (Ethernet interface number)", "format": "interface"}, "optional": true}}]}
     :param priority: {"description": "Device priority", "format": "number", "type": "number", "maximum": 255, "minimum": 1, "optional": true}
     :param enable: {"default": 0, "optional": true, "type": "number", "description": "Enable", "format": "flag"}
     :param ve_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "ve": {"description": "VE interface (VE interface number)", "minimum": 2, "type": "number", "maximum": 4094, "format": "number"}}}]}
-    :param device: {"description": "Device ID", "format": "number", "type": "number", "maximum": 8, "minimum": 1, "optional": false}
+    :param device: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Device ID", "format": "number", "optional": false, "type": "number"}
     :param affinity_vrrp_a_vrid: {"description": "vrid-group", "format": "number", "type": "number", "maximum": 31, "minimum": 0, "optional": true}
-    :param unicast_port: {"description": "Port used in unicast communication (Port number)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1024, "optional": true}
+    :param unicast_port: {"description": "Port used in unicast communication (Port number)", "format": "number", "default": 41216, "optional": true, "maximum": 65535, "minimum": 1024, "type": "number"}
     :param trunk_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "trunk": {"description": "Trunk interface (Trunk interface number)", "minimum": 1, "type": "number", "maximum": 16, "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -103,6 +104,7 @@ class Device(A10BaseClass):
         self.a10_url="/axapi/v3/vcs/device/{device}"
         self.DeviceProxy = ""
         self.management = ""
+        self.uuid = ""
         self.ethernet_cfg = []
         self.priority = ""
         self.enable = ""

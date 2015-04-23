@@ -42,6 +42,7 @@ class Rib(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ipv6_address: {"optional": false, "type": "string", "description": "IPV6 address", "format": "ipv6-address-plen"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ipv6_nexthop_ipv6: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"distance": {"description": "Distance value for this route", "format": "number", "default": 1, "maximum": 255, "minimum": 1, "type": "number"}, "ipv6-nexthop": {"type": "string", "description": "Forwarding router's address", "format": "ipv6-address"}, "description": {"minLength": 1, "maxLength": 63, "type": "string", "description": "Description for static route", "format": "string-rlx"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "ethernet": {"type": "number", "description": "Ethernet interface (Ethernet interface number)", "format": "interface"}, "optional": true, "ve": {"type": "number", "description": "Virtual Ethernet interface (Virtual Ethernet interface number)", "format": "interface"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -62,6 +63,7 @@ class Rib(A10BaseClass):
         self.a10_url="/axapi/v3/ipv6/route/rib/{ipv6_address}"
         self.DeviceProxy = ""
         self.ipv6_address = ""
+        self.uuid = ""
         self.ipv6_nexthop_ipv6 = []
 
         for keys, value in kwargs.items():

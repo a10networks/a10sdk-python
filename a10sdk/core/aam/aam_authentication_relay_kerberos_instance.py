@@ -13,6 +13,7 @@ class Instance(A10BaseClass):
     :param name: {"description": "Specify Kerberos authentication relay name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param encrypted: {"optional": true, "type": "encrypted", "description": "Do NOT use this option manually. (This is an A10 reserved keyword.) (The ENCRYPTED secret string)", "format": "encrypted"}
     :param kerberos_realm: {"description": "Specify the kerberos realm", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param kerberos_kdc_service_group: {"description": "Specify an authentication service group as multiple KDCs", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "not": "kerberos-kdc", "type": "string", "$ref": "/axapi/v3/aam/authentication/service-group"}
     :param timeout: {"description": "Specify timeout for kerberos transport, default is 10 seconds (The timeout, default is 10 seconds)", "format": "number", "default": 10, "optional": true, "maximum": 255, "minimum": 1, "type": "number"}
     :param password: {"default": 0, "optional": true, "type": "number", "description": "Specify password of Kerberos password", "format": "flag"}
@@ -41,6 +42,7 @@ class Instance(A10BaseClass):
         self.name = ""
         self.encrypted = ""
         self.kerberos_realm = ""
+        self.uuid = ""
         self.kerberos_kdc_service_group = ""
         self.timeout = ""
         self.password = ""

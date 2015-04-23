@@ -39,44 +39,6 @@ class NewPwdCfg(A10BaseClass):
             setattr(self,keys, value)
 
 
-class WelcomeMsgCfg(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param wel_color_value: {"description": "Specify 6-digit HEX color value", "format": "string", "minLength": 6, "maxLength": 6, "not": "wel-color-name", "type": "string"}
-    :param wel_color_name: {"not": "wel-color-value", "enum": ["aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "orange", "purple", "red", "silver", "teal", "white", "yellow"], "type": "string", "description": "'aqua': aqua; 'black': black; 'blue': blue; 'fuchsia': fuchsia; 'gray': gray; 'green': green; 'lime': lime; 'maroon': maroon; 'navy': navy; 'olive': olive; 'orange': orange; 'purple': purple; 'red': red; 'silver': silver; 'teal': teal; 'white': white; 'yellow': yellow; ", "format": "enum"}
-    :param wel_font_custom: {"description": "Specify custom font", "format": "string-rlx", "minLength": 1, "maxLength": 63, "not": "wel-face", "type": "string"}
-    :param wel_face: {"not": "wel-font-custom", "enum": ["Arial", "Courier_New", "Georgia", "Times_New_Roman", "Verdana"], "type": "string", "description": "'Arial': Arial; 'Courier_New': Courier New; 'Georgia': Georgia; 'Times_New_Roman': Times New Roman; 'Verdana': Verdana; ", "format": "enum"}
-    :param wel_font: {"default": 0, "type": "number", "description": "Sepcify font", "format": "flag"}
-    :param wel_size: {"description": "Specify font size", "minimum": 1, "type": "number", "maximum": 7, "format": "number"}
-    :param wel_color: {"default": 0, "type": "number", "description": "Specify font color", "format": "flag"}
-    :param wel_text: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify welcome message (Default: Please change your password.)", "format": "string-rlx"}
-    :param welcome_msg: {"default": 0, "type": "number", "description": "Configure welcome message in default change password page", "format": "flag"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "welcome-msg-cfg"
-        self.DeviceProxy = ""
-        self.wel_color_value = ""
-        self.wel_color_name = ""
-        self.wel_font_custom = ""
-        self.wel_face = ""
-        self.wel_font = ""
-        self.wel_size = ""
-        self.wel_color = ""
-        self.wel_text = ""
-        self.welcome_msg = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
 class TitleCfg(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -88,7 +50,7 @@ class TitleCfg(A10BaseClass):
     :param title_face: {"not": "title-font-custom", "enum": ["Arial", "Courier_New", "Georgia", "Times_New_Roman", "Verdana"], "type": "string", "description": "'Arial': Arial; 'Courier_New': Courier New; 'Georgia': Georgia; 'Times_New_Roman': Times New Roman; 'Verdana': Verdana; ", "format": "enum"}
     :param title_color_value: {"description": "Specify 6-digit HEX color value", "format": "string", "minLength": 6, "maxLength": 6, "not": "title-color-name", "type": "string"}
     :param title_size: {"description": "Specify font size", "minimum": 1, "type": "number", "maximum": 7, "format": "number"}
-    :param title_text: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify title", "format": "string-rlx"}
+    :param title_text: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify title (Default: Please Change Your Password)", "format": "string-rlx"}
     :param title_font: {"default": 0, "type": "number", "description": "Sepcify font", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -259,44 +221,6 @@ class UsernameCfg(A10BaseClass):
             setattr(self,keys, value)
 
 
-class NoteCfg(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param note_text: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify notes", "format": "string-rlx"}
-    :param note_color_value: {"description": "Specify 6-digit HEX color value", "format": "string", "minLength": 6, "maxLength": 6, "not": "note-color-name", "type": "string"}
-    :param note_face: {"not": "note-font-custom", "enum": ["Arial", "Courier_New", "Georgia", "Times_New_Roman", "Verdana"], "type": "string", "description": "'Arial': Arial; 'Courier_New': Courier New; 'Georgia': Georgia; 'Times_New_Roman': Times New Roman; 'Verdana': Verdana; ", "format": "enum"}
-    :param note_font: {"default": 0, "type": "number", "description": "Sepcify font", "format": "flag"}
-    :param note_color: {"default": 0, "type": "number", "description": "Specify font color", "format": "flag"}
-    :param note_size: {"description": "Specify font size", "minimum": 1, "type": "number", "maximum": 7, "format": "number"}
-    :param note: {"default": 0, "type": "number", "description": "Configure notes in default change password page", "format": "flag"}
-    :param note_font_custom: {"description": "Specify custom font", "format": "string-rlx", "minLength": 1, "maxLength": 63, "not": "note-face", "type": "string"}
-    :param note_color_name: {"not": "note-color-value", "enum": ["aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "orange", "purple", "red", "silver", "teal", "white", "yellow"], "type": "string", "description": "'aqua': aqua; 'black': black; 'blue': blue; 'fuchsia': fuchsia; 'gray': gray; 'green': green; 'lime': lime; 'maroon': maroon; 'navy': navy; 'olive': olive; 'orange': orange; 'purple': purple; 'red': red; 'silver': silver; 'teal': teal; 'white': white; 'yellow': yellow; ", "format": "enum"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "note-cfg"
-        self.DeviceProxy = ""
-        self.note_text = ""
-        self.note_color_value = ""
-        self.note_face = ""
-        self.note_font = ""
-        self.note_color = ""
-        self.note_size = ""
-        self.note = ""
-        self.note_font_custom = ""
-        self.note_color_name = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
 class ChangePassword(A10BaseClass):
     
     """Class Description::
@@ -307,9 +231,10 @@ class ChangePassword(A10BaseClass):
 
     :param action_url: {"description": "Specify form action URL in default change password page (Default: /change.fo)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param new_password_var: {"description": "Specify new password variable name in default change password page (Default: cp_new_pwd)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
-    :param submit_text: {"description": "Specify submit button text in default change password page (Default: Submit)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param submit_text: {"description": "Specify submit button text in default change password page (Default: Submit)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param confirm_password_var: {"description": "Specify confirm password variable name in default change password page (Default: cp_cfm_pwd)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
-    :param reset_text: {"description": "Specify reset button text in default change password page (Default: Reset)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param reset_text: {"description": "Specify reset button text in default change password page (Default: Reset)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param username_var: {"description": "Specify username variable name in default change password page (Default: cp_usr)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param old_password_var: {"description": "Specify old password variable name in default change password page (Default: cp_old_pwd)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -333,7 +258,7 @@ class ChangePassword(A10BaseClass):
         self.new_password_var = ""
         self.new_pwd_cfg = {}
         self.submit_text = ""
-        self.welcome_msg_cfg = {}
+        self.uuid = ""
         self.confirm_password_var = ""
         self.title_cfg = {}
         self.reset_text = ""
@@ -343,7 +268,6 @@ class ChangePassword(A10BaseClass):
         self.old_password_var = ""
         self.cfm_pwd_cfg = {}
         self.username_cfg = {}
-        self.note_cfg = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -177,6 +177,7 @@ class Ospf(A10BaseClass):
     Class ospf supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param bfd: {"default": 0, "optional": true, "type": "number", "description": "Bidirectional Forwarding Detection (BFD)", "format": "flag"}
     :param cost_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"cost": {"description": "Interface cost", "minimum": 1, "type": "number", "maximum": 65535, "format": "number"}, "optional": true, "instance-id": {"description": "Specify the interface instance ID", "format": "number", "default": 0, "maximum": 255, "minimum": 0, "type": "number"}}}]}
     :param hello_interval_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "hello-interval": {"description": "Time between HELLO packets (Seconds)", "format": "number", "default": 10, "maximum": 65535, "minimum": 1, "type": "number"}, "instance-id": {"description": "Specify the interface instance ID", "format": "number", "default": 0, "maximum": 255, "minimum": 0, "type": "number"}}}]}
@@ -203,6 +204,7 @@ class Ospf(A10BaseClass):
         self.b_key = "ospf"
         self.a10_url="/axapi/v3/interface/loopback/{ifnum}/ipv6/ospf"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.bfd = ""
         self.cost_cfg = []
         self.hello_interval_cfg = []

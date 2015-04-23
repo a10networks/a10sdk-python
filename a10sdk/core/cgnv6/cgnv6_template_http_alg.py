@@ -16,6 +16,7 @@ class HttpAlg(A10BaseClass):
     :param request_insert_msisdn: {"default": 0, "optional": true, "type": "number", "description": "Insert MSISDN into HTTP request", "format": "flag"}
     :param radius_sg: {"description": "RADIUS service group (RADIUS service group name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/cgnv6/service-group"}
     :param encrypted: {"optional": true, "type": "encrypted", "description": "Do NOT use this option manually. (This is an A10 reserved keyword.) (The ENCRYPTED secret string)", "format": "encrypted"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param request_insert_client_ip: {"default": 0, "optional": true, "type": "number", "description": "Insert Client IP into HTTP request", "format": "flag"}
     :param header_name_msisdn: {"description": "Header name (default: X-MSISDN)", "format": "string", "default": "X-MSISDN", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param timeout: {"description": "The maximum time allowed for waiting for a response from a radius server (default 2)", "format": "number", "default": 2, "optional": true, "maximum": 3, "minimum": 1, "type": "number"}
@@ -47,6 +48,7 @@ class HttpAlg(A10BaseClass):
         self.request_insert_msisdn = ""
         self.radius_sg = ""
         self.encrypted = ""
+        self.uuid = ""
         self.request_insert_client_ip = ""
         self.header_name_msisdn = ""
         self.timeout = ""

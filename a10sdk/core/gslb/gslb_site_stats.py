@@ -32,8 +32,8 @@ class Site(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ip_server_list: {"minItems": 1, "items": {"type": "ip-server"}, "uniqueItems": true, "array": [{"required": ["ip-server-name"], "properties": {"ip-server-name": {"description": "Specify the real server name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 63, "type": "string"}, "stats": {"type": "object", "properties": {"hits": {"description": "Number of times the IP was selected", "format": "counter", "type": "number", "oid": "1", "optional": true, "size": "8"}}}}}], "type": "array", "$ref": "/axapi/v3/gslb/site/{site-name}/ip-server/{ip-server-name}"}
+    :param slb_dev_list: {"minItems": 1, "items": {"type": "slb-dev"}, "uniqueItems": true, "array": [{"required": ["device-name"], "properties": {}}], "type": "array", "$ref": "/axapi/v3/gslb/site/{site-name}/ip-server/{ip-server-name}/slb-dev/{device-name}"}
     :param site_name: {"description": "Specify GSLB site name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 63, "type": "string"}
-    :param slb_dev_list: {"minItems": 1, "items": {"type": "slb-dev"}, "uniqueItems": true, "array": [{"required": ["device-name"], "properties": {}}], "type": "array", "$ref": "/axapi/v3/gslb/site/{site-name}/ip-server/{ip-server-name}/active-rdt/easy-rdt/slb-dev/{device-name}"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -53,11 +53,9 @@ class Site(A10BaseClass):
         self.a10_url="/axapi/v3/gslb/site/{site_name}/stats"
         self.DeviceProxy = ""
         self.ip_server_list = []
-        self.stats = {}
-        self.site_name = ""
         self.slb_dev_list = []
-        self.easy_rdt = {}
-        self.active_rdt = {}
+        self.site_name = ""
+        self.stats = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

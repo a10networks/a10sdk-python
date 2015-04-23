@@ -25,6 +25,28 @@ class Uri(A10BaseClass):
             setattr(self,keys, value)
 
 
+class SamplingEnable(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param counters1: {"enum": ["all", "total_count", "hit_count"], "type": "string", "description": "'all': all; 'total_count': total_count; 'hit_count': hit_count; ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "sampling-enable"
+        self.DeviceProxy = ""
+        self.counters1 = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class AccessList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -60,9 +82,12 @@ class AaaRule(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param index: {"description": "Specify AAA rule index", "format": "number", "type": "number", "maximum": 256, "minimum": 1, "optional": false}
+    :param match_encoded_uri: {"default": 0, "optional": true, "type": "number", "description": "Enable URL decoding for URI matching", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param authorize_policy: {"description": "Specify authorization policy to bind to the AAA rule", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/aam/authorization/policy"}
     :param uri: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "match-type": {"enum": ["contains", "ends-with", "equals", "starts-with"], "type": "string", "description": "'contains': Match URI if request URI contains specified URI; 'ends-with': Match URI if request URI ends with specified URI; 'equals': Match URI if request URI equals specified URI; 'starts-with': Match URI if request URI starts with specified URI; ", "format": "enum"}, "uri-str": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Specify URI string", "format": "string-rlx"}}}]}
     :param action: {"optional": true, "enum": ["allow", "deny"], "type": "string", "description": "'allow': Allow traffic that matches this rule; 'deny': Deny traffic that matches this rule; ", "format": "enum"}
+    :param sampling_enable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "total_count", "hit_count"], "type": "string", "description": "'all': all; 'total_count': total_count; 'hit_count': hit_count; ", "format": "enum"}}}]}
     :param domain_name: {"description": "Specify domain name to bind to the AAA rule (ex: a10networks.com, www.a10networks.com)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param authentication_template: {"description": "Specify authentication template name to bind to the AAA rule", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/aam/authentication/template"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -84,9 +109,12 @@ class AaaRule(A10BaseClass):
         self.a10_url="/axapi/v3/aam/aaa-policy/{name}/aaa-rule/{index}"
         self.DeviceProxy = ""
         self.index = ""
+        self.match_encoded_uri = ""
+        self.uuid = ""
         self.authorize_policy = ""
         self.uri = []
         self.action = ""
+        self.sampling_enable = []
         self.domain_name = ""
         self.authentication_template = ""
         self.access_list = {}

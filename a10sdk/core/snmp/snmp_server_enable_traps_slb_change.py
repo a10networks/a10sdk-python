@@ -11,6 +11,7 @@ class SlbChange(A10BaseClass):
 
     :param all: {"default": 0, "optional": true, "type": "number", "description": "Enable all system group traps", "format": "flag"}
     :param resource_usage_warning: {"default": 0, "optional": true, "type": "number", "description": "Enable partition resource usage warning trap", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ssl_cert_change: {"default": 0, "optional": true, "type": "number", "description": "Enable SSL certificate change trap", "format": "flag"}
     :param ssl_cert_expire: {"default": 0, "optional": true, "type": "number", "description": "Enable SSL certificate expiring trap", "format": "flag"}
     :param server: {"default": 0, "optional": true, "type": "number", "description": "Enable slb server create/delete trap", "format": "flag"}
@@ -37,6 +38,7 @@ class SlbChange(A10BaseClass):
         self.DeviceProxy = ""
         self.A10WW_all = ""
         self.resource_usage_warning = ""
+        self.uuid = ""
         self.ssl_cert_change = ""
         self.ssl_cert_expire = ""
         self.server = ""

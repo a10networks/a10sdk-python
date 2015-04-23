@@ -3,13 +3,7 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class FailSafe(A10BaseClass):
     
-    """Class Description::
-    Fail Safe Global Commands.
-
-    Class fail-safe supports CRUD Operations and inherits from `common/A10BaseClass`.
-    This class is the `"PARENT"` class for this module.`
-
-    :param session_mem_recovery_threshold: {"description": "Session memory recovery threshold (percentage) (Percentage of available session memory (default 30%))", "format": "number", "default": 30, "optional": true, "maximum": 100, "minimum": 1, "type": "number"}
+    """    :param session_mem_recovery_threshold: {"description": "Session memory recovery threshold (percentage) (Percentage of available session memory (default 30%))", "format": "number", "default": 30, "optional": true, "maximum": 100, "minimum": 1, "type": "number"}
     :param log: {"description": "Log the event", "format": "flag", "default": 0, "optional": true, "not": "kill", "type": "number"}
     :param fpga_buff_recovery_threshold: {"description": "FPGA buffers recovery threshold (Units of 256 buffers (default 2))", "format": "number", "default": 2, "optional": true, "maximum": 10, "minimum": 1, "type": "number"}
     :param hw_error_recovery_timeout: {"description": "Hardware error recovery timeout (minutes) (waiting time of recovery from hardware errors (default 0))", "format": "number", "type": "number", "maximum": 1440, "minimum": 1, "optional": true}
@@ -19,7 +13,14 @@ class FailSafe(A10BaseClass):
     :param hw_error_monitor_enable: {"description": "Enable fail-safe hardware error monitor", "format": "flag", "default": 1, "optional": true, "not": "hw-error-monitor-disable", "type": "number"}
     :param total_memory_size_check: {"description": "Check total memory size of current system (Size of memory (GB))", "format": "number", "type": "number", "maximum": 256, "minimum": 1, "optional": true}
     :param sw_error_recovery_timeout: {"description": "Software error recovery timeout (minutes) (waiting time of recovery from software errors (default 3))", "format": "number", "default": 3, "optional": true, "maximum": 1440, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    Fail Safe Global Commands.
+
+    Class fail-safe supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
 
     
 
@@ -46,6 +47,7 @@ class FailSafe(A10BaseClass):
         self.hw_error_monitor_enable = ""
         self.total_memory_size_check = ""
         self.sw_error_recovery_timeout = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -10,7 +10,8 @@ class ConnectionReuse(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param preopen: {"default": 0, "optional": true, "type": "number", "description": "Preopen server connection", "format": "flag"}
-    :param name: {"description": "Connection Reuse Template Name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param name: {"description": "Connection Reuse Template Name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param keep_alive_conn: {"default": 0, "optional": true, "type": "number", "description": "Keep a number of server connections open", "format": "flag"}
     :param timeout: {"description": "Timeout in seconds. Multiple of 60 (def 2400)", "format": "number", "default": 2400, "optional": true, "maximum": 3600, "minimum": 60, "type": "number"}
     :param num_conn_per_port: {"description": "Connections per Server Port (default 100)", "format": "number", "default": 100, "optional": true, "maximum": 1024, "minimum": 1, "type": "number"}
@@ -34,6 +35,7 @@ class ConnectionReuse(A10BaseClass):
         self.a10_url="/axapi/v3/slb/template/connection-reuse/{name}"
         self.DeviceProxy = ""
         self.preopen = ""
+        self.uuid = ""
         self.name = ""
         self.keep_alive_conn = ""
         self.timeout = ""

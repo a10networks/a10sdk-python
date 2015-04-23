@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "a10sdk",
-    version = "4.0.0.528",
+    version = "4.0.1.214",
     packages = find_packages(),
 
     author = "A10 Networks",

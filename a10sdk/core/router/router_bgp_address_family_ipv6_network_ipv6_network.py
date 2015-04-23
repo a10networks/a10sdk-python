@@ -9,11 +9,12 @@ class Ipv6Network(A10BaseClass):
     Class ipv6-network supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param description: {"description": "Network specific description (Up to 80 characters describing this network)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 80, "type": "string"}
+    :param route_map: {"description": "Route-map to modify the attributes (Name of the route map)", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
+    :param comm_value: {"optional": true, "type": "string", "description": "community value in the format 1-4294967295|AA:NN|internet|local-AS|no-advertise|no-export", "format": "string-rlx"}
     :param network_ipv6: {"optional": false, "type": "string", "description": "Specify a network to announce via BGP", "format": "ipv6-address-plen"}
     :param backdoor: {"default": 0, "optional": true, "type": "number", "description": "Specify a BGP backdoor route", "format": "flag"}
-    :param route_map: {"description": "Route-map to modify the attributes (Name of the route map)", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
-    :param description: {"optional": true, "type": "string", "description": "Network specific description (Up to 80 characters describing this network)", "format": "string-rlx"}
-    :param comm_value: {"optional": true, "type": "string", "description": "community value in the format 1-4294967295|AA:NN|internet|local-AS|no-advertise|no-export", "format": "string-rlx"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,11 +33,12 @@ class Ipv6Network(A10BaseClass):
         self.b_key = "ipv6-network"
         self.a10_url="/axapi/v3/router/bgp/{as_number}/address-family/ipv6/network/ipv6-network/{network_ipv6}"
         self.DeviceProxy = ""
+        self.description = ""
+        self.route_map = ""
+        self.comm_value = ""
         self.network_ipv6 = ""
         self.backdoor = ""
-        self.route_map = ""
-        self.description = ""
-        self.comm_value = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

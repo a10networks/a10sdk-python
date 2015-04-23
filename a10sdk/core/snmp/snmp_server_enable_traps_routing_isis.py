@@ -16,6 +16,7 @@ class Isis(A10BaseClass):
     :param isisMaxAreaAddressesMismatch: {"default": 0, "optional": true, "type": "number", "description": "Enable isisMaxAreaAddressesMismatch traps", "format": "flag"}
     :param isisProtocolsSupportedMismatch: {"default": 0, "optional": true, "type": "number", "description": "Enable isisProtocolsSupportedMismatch traps", "format": "flag"}
     :param isisSequenceNumberSkip: {"default": 0, "optional": true, "type": "number", "description": "Enable isisSequenceNumberSkip traps", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param isisAreaMismatch: {"default": 0, "optional": true, "type": "number", "description": "Enable isisAreaMismatch traps", "format": "flag"}
     :param isisLSPTooLargeToPropagate: {"default": 0, "optional": true, "type": "number", "description": "Enable isisLSPTooLargeToPropagate traps", "format": "flag"}
     :param isisDatabaseOverload: {"default": 0, "optional": true, "type": "number", "description": "Enable isisDatabaseOverload traps", "format": "flag"}
@@ -50,6 +51,7 @@ class Isis(A10BaseClass):
         self.isisMaxAreaAddressesMismatch = ""
         self.isisProtocolsSupportedMismatch = ""
         self.isisSequenceNumberSkip = ""
+        self.uuid = ""
         self.isisAreaMismatch = ""
         self.isisLSPTooLargeToPropagate = ""
         self.isisDatabaseOverload = ""

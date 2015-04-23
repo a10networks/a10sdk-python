@@ -20,6 +20,7 @@ class ActiveRdt(A10BaseClass):
     :param single_shot: {"default": 0, "optional": true, "type": "number", "description": "Single Shot RDT", "format": "flag"}
     :param difference: {"description": "The difference between the round-delay-time, default is 0", "format": "number", "default": 0, "optional": true, "maximum": 16383, "minimum": 0, "type": "number"}
     :param tolerance: {"description": "The difference percentage between the round-delay-time, default is 10 (Tolerance)", "format": "number", "default": 10, "optional": true, "maximum": 100, "minimum": 0, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -48,6 +49,7 @@ class ActiveRdt(A10BaseClass):
         self.single_shot = ""
         self.difference = ""
         self.tolerance = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -9,6 +9,7 @@ class RangeList(A10BaseClass):
     Class range-list supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param global_start_ipv6_addr: {"optional": true, "modify-not-allowed": 1, "type": "string", "description": "Global Start IPv6 Address of this list", "format": "ipv6-address-plen"}
     :param v4_vrid: {"description": "VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "optional": true, "maximum": 31, "minimum": 1, "modify-not-allowed": 1, "type": "number"}
     :param global_netmaskv4: {"optional": true, "modify-not-allowed": 1, "type": "string", "description": "Mask for this Address range", "format": "ipv4-netmask"}
@@ -38,6 +39,7 @@ class RangeList(A10BaseClass):
         self.b_key = "range-list"
         self.a10_url="/axapi/v3/cgnv6/nat/range-list/{name}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.global_start_ipv6_addr = ""
         self.v4_vrid = ""
         self.global_netmaskv4 = ""

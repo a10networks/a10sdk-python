@@ -10,10 +10,11 @@ class Gslb(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param all: {"default": 0, "optional": true, "type": "number", "description": "Enable all GSLB traps", "format": "flag"}
-    :param service_ip: {"default": 0, "optional": true, "type": "number", "description": "Enable GSLB service-ip related traps", "format": "flag"}
     :param group: {"default": 0, "optional": true, "type": "number", "description": "Enable GSLB group related traps", "format": "flag"}
-    :param site: {"default": 0, "optional": true, "type": "number", "description": "Enable GSLB site related traps", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param zone: {"default": 0, "optional": true, "type": "number", "description": "Enable GSLB zone related traps", "format": "flag"}
+    :param site: {"default": 0, "optional": true, "type": "number", "description": "Enable GSLB site related traps", "format": "flag"}
+    :param service_ip: {"default": 0, "optional": true, "type": "number", "description": "Enable GSLB service-ip related traps", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,10 +33,11 @@ class Gslb(A10BaseClass):
         self.a10_url="/axapi/v3/snmp-server/enable/traps/gslb"
         self.DeviceProxy = ""
         self.A10WW_all = ""
-        self.service_ip = ""
         self.group = ""
-        self.site = ""
+        self.uuid = ""
         self.zone = ""
+        self.site = ""
+        self.service_ip = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -32,6 +32,7 @@ class GeoLocation(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param forward_type: {"optional": true, "enum": ["both", "query", "response"], "type": "string", "description": "'both': Forward both query and response; 'query': Forward query from this geo-location; 'response': Forward response to this geo-location; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param alias: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"alias": {"minLength": 1, "maxLength": 127, "type": "string", "description": "Send CNAME response for this geo-location (Specify a CNAME record)", "format": "string"}, "optional": true}}]}
     :param action_type: {"optional": true, "enum": ["allow", "drop", "forward", "ignore", "reject"], "type": "string", "description": "'allow': Allow query from this geo-location; 'drop': Drop query from this geo-location; 'forward': Forward packet for this geo-location; 'ignore': Send empty response to this geo-location; 'reject': Send refuse response to this geo-location; ", "format": "enum"}
     :param policy: {"description": "Policy for this geo-location (Specify the policy name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "not": "action", "type": "string"}
@@ -56,6 +57,7 @@ class GeoLocation(A10BaseClass):
         self.a10_url="/axapi/v3/gslb/zone/{name}/service/{service_port}+{service_name}/geo-location/{geo_name}"
         self.DeviceProxy = ""
         self.forward_type = ""
+        self.uuid = ""
         self.alias = []
         self.action_type = ""
         self.policy = ""

@@ -97,30 +97,6 @@ class BfdCfg(A10BaseClass):
             setattr(self,keys, value)
 
 
-class CsnpIntervalList(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param level: {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Speficy interval for level-1 CSNPs; 'level-2': Specify interval for level-2 CSNPs; ", "format": "enum"}
-    :param csnp_interval: {"description": "Set CSNP interval in seconds (CSNP interval value)", "format": "number", "default": 10, "maximum": 65535, "minimum": 1, "type": "number"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "csnp-interval-list"
-        self.DeviceProxy = ""
-        self.level = ""
-        self.csnp_interval = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
 class PasswordList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -339,6 +315,30 @@ class MetricList(A10BaseClass):
             setattr(self,keys, value)
 
 
+class CsnpIntervalList(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param level: {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Speficy interval for level-1 CSNPs; 'level-2': Specify interval for level-2 CSNPs; ", "format": "enum"}
+    :param csnp_interval: {"description": "Set CSNP interval in seconds (CSNP interval value)", "format": "number", "default": 10, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "csnp-interval-list"
+        self.DeviceProxy = ""
+        self.level = ""
+        self.csnp_interval = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class Isis(A10BaseClass):
     
     """Class Description::
@@ -348,18 +348,19 @@ class Isis(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param priority_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"priority": {"description": "Set priority for Designated Router election (Priority value)", "format": "number", "default": 64, "maximum": 127, "minimum": 0, "type": "number"}, "optional": true, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Specify priority for level-1 routing; 'level-2': Specify priority for level-2 routing; ", "format": "enum"}}}]}
+    :param retransmit_interval: {"description": "Set per-LSP retransmission interval (Interval between retransmissions of the same LSP (seconds))", "format": "number", "default": 5, "optional": true, "maximum": 65535, "minimum": 0, "type": "number"}
     :param hello_interval_minimal_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"hello-interval-minimal": {"default": 0, "type": "number", "description": "Set Hello holdtime 1 second, interval depends on multiplier", "format": "flag"}, "optional": true, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Specify hello-interval for level-1 IIHs; 'level-2': Specify hello-interval for level-2 IIHs; ", "format": "enum"}}}]}
     :param network: {"optional": true, "enum": ["broadcast", "point-to-point"], "type": "string", "description": "'broadcast': Specify IS-IS broadcast multi-access network; 'point-to-point': Specify IS-IS point-to-point network; ", "format": "enum"}
-    :param csnp_interval_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Speficy interval for level-1 CSNPs; 'level-2': Specify interval for level-2 CSNPs; ", "format": "enum"}, "optional": true, "csnp-interval": {"description": "Set CSNP interval in seconds (CSNP interval value)", "format": "number", "default": 10, "maximum": 65535, "minimum": 1, "type": "number"}}}]}
-    :param retransmit_interval: {"description": "Set per-LSP retransmission interval (Interval between retransmissions of the same LSP (seconds))", "format": "number", "default": 5, "optional": true, "maximum": 65535, "minimum": 0, "type": "number"}
+    :param lsp_interval: {"description": "Set LSP transmission interval (LSP transmission interval (milliseconds))", "format": "number", "default": 33, "optional": true, "maximum": 4294967295, "minimum": 1, "type": "number"}
+    :param padding: {"default": 1, "optional": true, "type": "number", "description": "Add padding to IS-IS hello packets", "format": "flag"}
     :param password_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"password": {"minLength": 1, "maxLength": 254, "type": "string", "description": "Configure the authentication password for interface", "format": "string-rlx"}, "optional": true, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Specify password for level-1 PDUs; 'level-2': Specify password for level-2 PDUs; ", "format": "enum"}}}]}
     :param wide_metric_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "wide-metric": {"description": "Configure the wide metric for interface", "format": "number", "default": 10, "maximum": 16777214, "minimum": 1, "type": "number"}, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Apply metric to level-1 links; 'level-2': Apply metric to level-2 links; ", "format": "enum"}}}]}
     :param hello_interval_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "hello-interval": {"description": "Set Hello interval in seconds (Hello interval value)", "format": "number", "default": 10, "maximum": 65535, "minimum": 1, "type": "number"}, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Specify hello-interval for level-1 IIHs; 'level-2': Specify hello-interval for level-2 IIHs; ", "format": "enum"}}}]}
-    :param lsp_interval: {"description": "Set LSP transmission interval (LSP transmission interval (milliseconds))", "format": "number", "default": 33, "optional": true, "maximum": 4294967295, "minimum": 1, "type": "number"}
     :param circuit_type: {"description": "'level-1': Level-1 only adjacencies are formed; 'level-1-2': Level-1-2 adjacencies are formed; 'level-2-only': Level-2 only adjacencies are formed; ", "format": "enum", "default": "level-1-2", "type": "string", "enum": ["level-1", "level-1-2", "level-2-only"], "optional": true}
     :param hello_multiplier_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "hello-multiplier": {"description": "Set multiplier for Hello holding time (Hello multiplier value)", "format": "number", "default": 3, "maximum": 100, "minimum": 2, "type": "number"}, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Specify hello multiplier for level-1 IIHs; 'level-2': Specify hello multiplier for level-2 IIHs; ", "format": "enum"}}}]}
     :param metric_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"metric": {"description": "Configure the metric for interface (Default metric)", "format": "number", "default": 10, "maximum": 63, "minimum": 1, "type": "number"}, "optional": true, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Apply metric to level-1 links; 'level-2': Apply metric to level-2 links; ", "format": "enum"}}}]}
-    :param hello: {"optional": true, "enum": ["padding"], "type": "string", "description": "'padding': Pad hello packets; ", "format": "enum"}
+    :param csnp_interval_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Speficy interval for level-1 CSNPs; 'level-2': Specify interval for level-2 CSNPs; ", "format": "enum"}, "optional": true, "csnp-interval": {"description": "Set CSNP interval in seconds (CSNP interval value)", "format": "number", "default": 10, "maximum": 65535, "minimum": 1, "type": "number"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -378,21 +379,22 @@ class Isis(A10BaseClass):
         self.a10_url="/axapi/v3/interface/ve/{ifnum}/isis"
         self.DeviceProxy = ""
         self.priority_list = []
+        self.retransmit_interval = ""
         self.hello_interval_minimal_list = []
         self.mesh_group = {}
         self.network = ""
         self.bfd_cfg = {}
-        self.csnp_interval_list = []
-        self.retransmit_interval = ""
+        self.lsp_interval = ""
+        self.padding = ""
         self.password_list = []
         self.authentication = {}
         self.wide_metric_list = []
         self.hello_interval_list = []
-        self.lsp_interval = ""
         self.circuit_type = ""
         self.hello_multiplier_list = []
         self.metric_list = []
-        self.hello = ""
+        self.csnp_interval_list = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

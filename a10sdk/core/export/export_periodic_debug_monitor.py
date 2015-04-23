@@ -10,6 +10,7 @@ class DebugMonitor(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param remote_file: {"optional": true, "type": "string", "description": "profile name for remote url", "format": "url"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param debug_monitor: {"description": "Debug Monitor Output", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param use_mgmt_port: {"default": 0, "optional": true, "type": "number", "description": "Use management port as source port", "format": "flag"}
     :param period: {"description": "Specify the period in second", "format": "number", "type": "number", "maximum": 31536000, "minimum": 60, "optional": true}
@@ -32,6 +33,7 @@ class DebugMonitor(A10BaseClass):
         self.a10_url="/axapi/v3/export-periodic/debug-monitor/{debug_monitor}"
         self.DeviceProxy = ""
         self.remote_file = ""
+        self.uuid = ""
         self.debug_monitor = ""
         self.use_mgmt_port = ""
         self.period = ""

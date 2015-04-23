@@ -5,11 +5,11 @@ class SessionList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param cfg_mode: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param src_ip: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param sid: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param name: {"type": "string", "format": "string"}
+    :param cfg_mode: {"type": "string", "format": "string"}
+    :param src_ip: {"type": "string", "format": "string"}
+    :param sid: {"type": "string", "format": "string"}
+    :param type: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -35,7 +35,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "cfg_mode": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "src_ip": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "sid": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"name": {"type": "string", "format": "string"}, "optional": true, "cfg_mode": {"type": "string", "format": "string"}, "src_ip": {"type": "string", "format": "string"}, "sid": {"type": "string", "format": "string"}, "type": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

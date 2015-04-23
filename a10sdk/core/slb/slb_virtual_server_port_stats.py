@@ -10,12 +10,12 @@ class Stats(A10BaseClass):
     :param compression_miss: {"description": "Number of requests NOT compressed", "format": "counter", "type": "number", "oid": "16", "optional": true, "size": "2"}
     :param fastest_rsp_time: {"description": "Fastest response time", "format": "counter", "type": "number", "oid": "25", "optional": true, "size": "8"}
     :param total_fwd_pkts: {"description": "Total forward packets", "format": "counter", "type": "number", "oid": "7", "optional": true, "size": "8"}
+    :param total_tcp_conn: {"description": "Total TCP connections", "format": "counter", "type": "number", "oid": "4", "optional": true, "size": "8"}
     :param total_mf_dns_pkts: {"description": "Total MF DNS packets", "format": "counter", "type": "number", "oid": "11", "optional": true, "size": "2"}
     :param compression_miss_template_exclusion: {"description": "Compression miss template exclusion", "format": "counter", "type": "number", "oid": "18", "optional": true, "size": "2"}
     :param total_dns_pkts: {"description": "Total DNS packets", "format": "counter", "type": "number", "oid": "10", "optional": true, "size": "2"}
     :param peak_conn: {"description": "Peak connections", "format": "counter", "type": "number", "oid": "22", "optional": true, "size": "8"}
     :param compression_bytes_after: {"description": "Data out of compression engine", "format": "counter", "type": "number", "oid": "14", "optional": true, "size": "2"}
-    :param toatal_tcp_conn: {"description": "Total TCP connections", "format": "counter", "type": "number", "oid": "4", "optional": true, "size": "8"}
     :param total_req: {"description": "Total requests", "format": "counter", "type": "number", "oid": "20", "optional": true, "size": "8"}
     :param compression_bytes_before: {"description": "Data into compression engine", "format": "counter", "type": "number", "oid": "13", "optional": true, "size": "2"}
     :param last_rsp_time: {"description": "Last response time", "format": "counter", "type": "number", "oid": "24", "optional": true, "size": "8"}
@@ -47,12 +47,12 @@ class Stats(A10BaseClass):
         self.compression_miss = ""
         self.fastest_rsp_time = ""
         self.total_fwd_pkts = ""
+        self.total_tcp_conn = ""
         self.total_mf_dns_pkts = ""
         self.compression_miss_template_exclusion = ""
         self.total_dns_pkts = ""
         self.peak_conn = ""
         self.compression_bytes_after = ""
-        self.toatal_tcp_conn = ""
         self.total_req = ""
         self.compression_bytes_before = ""
         self.last_rsp_time = ""
@@ -81,7 +81,7 @@ class Port(A10BaseClass):
     Class port supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param protocol: {"enum": ["tcp", "udp", "others", "diameter", "dns-tcp", "dns-udp", "fast-http", "fix", "ftp", "ftp-proxy", "http", "https", "mlb", "mms", "mysql", "mssql", "radius", "rtsp", "sip", "sip-tcp", "sips", "smpp-tcp", "spdy", "spdys", "smtp", "ssl-proxy", "tcp-proxy", "tftp"], "description": "'tcp': TCP LB service; 'udp': UDP Port; 'others': for no tcp/udp protocol, do IP load balancing; 'diameter': diameter port; 'dns-tcp': DNS service over TCP; 'dns-udp': DNS service over UDP; 'fast-http': Fast HTTP Port; 'fix': FIX Port; 'ftp': File Transfer Protocol Port; 'ftp-proxy': ftp proxy port; 'http': HTTP Port; 'https': HTTPS port; 'mlb': Message based load balancing; 'mms': Microsoft Multimedia Service Port; 'mysql': mssql port; 'mssql': mssql; 'radius': Radius Port; 'rtsp': Real Time Streaming Protocol Port; 'sip': Session initiation protocol over UDP; 'sip-tcp': Session initiation protocol over TCP; 'sips': Session initiation protocol over TLS; 'smpp-tcp': SMPP service over TCP; 'spdy': spdy port; 'spdys': spdys port; 'smtp': SMTP Port; 'ssl-proxy': Generic SSL proxy; 'tcp-proxy': Generic TCP proxy; 'tftp': TFTP Port; ", "format": "enum", "type": "string", "oid": "1002", "optional": false}
+    :param protocol: {"enum": ["tcp", "udp", "others", "diameter", "dns-tcp", "dns-udp", "fast-http", "fix", "ftp", "ftp-proxy", "http", "https", "mlb", "mms", "mysql", "mssql", "radius", "rtsp", "sip", "sip-tcp", "sips", "smpp-tcp", "spdy", "spdys", "smtp", "ssl-proxy", "tcp-proxy", "tftp"], "description": "'tcp': TCP LB service; 'udp': UDP Port; 'others': for no tcp/udp protocol, do IP load balancing; 'diameter': diameter port; 'dns-tcp': DNS service over TCP; 'dns-udp': DNS service over UDP; 'fast-http': Fast HTTP Port; 'fix': FIX Port; 'ftp': File Transfer Protocol Port; 'ftp-proxy': ftp proxy port; 'http': HTTP Port; 'https': HTTPS port; 'mlb': Message based load balancing; 'mms': Microsoft Multimedia Service Port; 'mysql': mssql port; 'mssql': mssql; 'radius': RADIUS Port; 'rtsp': Real Time Streaming Protocol Port; 'sip': Session initiation protocol over UDP; 'sip-tcp': Session initiation protocol over TCP; 'sips': Session initiation protocol over TLS; 'smpp-tcp': SMPP service over TCP; 'spdy': spdy port; 'spdys': spdys port; 'smtp': SMTP Port; 'ssl-proxy': Generic SSL proxy; 'tcp-proxy': Generic TCP proxy; 'tftp': TFTP Port; ", "format": "enum", "type": "string", "oid": "1002", "optional": false}
     :param port_number: {"description": "Port", "format": "number", "optional": false, "oid": "1001", "maximum": 65534, "minimum": 0, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

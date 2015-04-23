@@ -9,7 +9,7 @@ class BwList(A10BaseClass):
     :param dst_file: {"minLength": 1, "maxLength": 32, "type": "string", "description": "destination file name for copy and rename action", "format": "string"}
     :param file_handle: {"minLength": 1, "maxLength": 255, "type": "string", "description": "full path of the uploaded file", "format": "string-rlx"}
     :param file: {"minLength": 1, "maxLength": 63, "type": "string", "description": "bw-list file name", "format": "string"}
-    :param size: {"type": "number", "description": "bw-list file size in byte", "format": "number"}
+    :param size: {"description": "bw-list file size in byte", "minimum": 0, "type": "number", "maximum": 2147483647, "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -39,7 +39,7 @@ class IpMapList(A10BaseClass):
     :param dst_file: {"minLength": 1, "maxLength": 32, "type": "string", "description": "destination file name for copy and rename action", "format": "string"}
     :param file_handle: {"minLength": 1, "maxLength": 255, "type": "string", "description": "full path of the uploaded file", "format": "string-rlx"}
     :param file: {"minLength": 1, "maxLength": 63, "type": "string", "description": "ip map list file name", "format": "string"}
-    :param size: {"type": "number", "description": "ip map list file size in byte", "format": "number"}
+    :param size: {"description": "ip map list file size in byte", "minimum": 0, "type": "number", "maximum": 2147483647, "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -69,7 +69,7 @@ class ClassList(A10BaseClass):
     :param dst_file: {"minLength": 1, "maxLength": 32, "type": "string", "description": "destination file name for copy and rename action", "format": "string"}
     :param file_handle: {"minLength": 1, "maxLength": 255, "type": "string", "description": "full path of the uploaded file", "format": "string-rlx"}
     :param file: {"minLength": 1, "maxLength": 63, "type": "string", "description": "class list local file name", "format": "string"}
-    :param size: {"type": "number", "description": "class list file size in byte", "format": "number"}
+    :param size: {"description": "class list file size in byte", "minimum": 0, "type": "number", "maximum": 2147483647, "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -93,13 +93,13 @@ class ClassList(A10BaseClass):
 
 class File(A10BaseClass):
     
-    """Class Description::
+    """    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Local file Mangement.
 
     Class file supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -124,8 +124,11 @@ class File(A10BaseClass):
         self.auth_portal = {}
         self.aflex = {}
         self.health_postfile = {}
+        self.web_category_license = {}
+        self.log_backup = {}
         self.ssl_crl = {}
         self.debug_monitor = {}
+        self.system_backup = {}
         self.policy = {}
         self.auth_portal_image = {}
         self.class_list = {}

@@ -10,6 +10,7 @@ class Limit(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ardt_response: {"description": "Response Messages of Active RDT, default is 1000 (Number)", "format": "number", "default": 1000, "optional": true, "maximum": 1000000, "minimum": 0, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param conn_response: {"description": "Response Messages of Connection Load, default is no limit (Number)", "format": "number", "default": 0, "optional": true, "maximum": 1000000, "minimum": 0, "type": "number"}
     :param ardt_session: {"description": "Sessions of Active RDT, default is 32768 (Number)", "format": "number", "default": 32768, "optional": true, "maximum": 1000000, "minimum": 0, "type": "number"}
     :param ardt_query: {"description": "Query Messages of Active RDT, default is 200 (Number)", "format": "number", "default": 200, "optional": true, "maximum": 1000000, "minimum": 0, "type": "number"}
@@ -33,6 +34,7 @@ class Limit(A10BaseClass):
         self.a10_url="/axapi/v3/gslb/protocol/limit"
         self.DeviceProxy = ""
         self.ardt_response = ""
+        self.uuid = ""
         self.conn_response = ""
         self.ardt_session = ""
         self.ardt_query = ""

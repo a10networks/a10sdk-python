@@ -538,6 +538,7 @@ class Logging(A10BaseClass):
     :param facility: {"description": "'kernel': 0: Kernel; 'user': 1: User-level; 'mail': 2: Mail; 'daemon': 3: System daemons; 'security-authorization': 4: Security/authorization; 'syslog': 5: Syslog internal; 'line-printer': 6: Line printer; 'news': 7: Network news; 'uucp': 8: UUCP subsystem; 'cron': 9: Time-related; 'security-authorization-private': 10: Private security/authorization; 'ftp': 11: FTP; 'ntp': 12: NTP; 'audit': 13: Audit; 'alert': 14: Alert; 'clock': 15: Clock-related; 'local0': 16: Local use 0; 'local1': 17: Local use 1; 'local2': 18: Local use 2; 'local3': 19: Local use 3; 'local4': 20: Local use 4; 'local5': 21: Local use 5; 'local6': 22: Local use 6; 'local7': 23: Local use 7; ", "format": "enum", "default": "local0", "type": "string", "enum": ["kernel", "user", "mail", "daemon", "security-authorization", "syslog", "line-printer", "news", "uucp", "cron", "security-authorization-private", "ftp", "ntp", "audit", "alert", "clock", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7"], "optional": true}
     :param include_destination: {"default": 0, "optional": true, "type": "number", "description": "Include the destination IP and port in logs", "format": "flag"}
     :param format: {"description": "'binary': Binary logging format; 'compact': Compact ASCII logging format (Hex format with compact representation); 'custom': Arbitrary custom logging format; 'default': Default A10 logging format (ASCII); 'rfc5424': RFC5424 compliant logging format; ", "format": "enum", "default": "default", "type": "string", "enum": ["binary", "compact", "custom", "default", "rfc5424"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param service_group: {"description": "Set NAT logging service-group", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param shared: {"description": "Service group is in shared patition", "partition-visibility": "private", "default": 0, "type": "number", "format": "flag", "optional": true}
     :param resolution: {"description": "'seconds': Logging timestamp resolution in seconds (default); '10-milliseconds': Logging timestamp resolution in 10s of milli-seconds; ", "format": "enum", "default": "seconds", "type": "string", "enum": ["seconds", "10-milliseconds"], "optional": true}
@@ -569,6 +570,7 @@ class Logging(A10BaseClass):
         self.severity = {}
         self.A10WW_format = ""
         self.include_radius_attribute = {}
+        self.uuid = ""
         self.rule = {}
         self.custom = {}
         self.service_group = ""

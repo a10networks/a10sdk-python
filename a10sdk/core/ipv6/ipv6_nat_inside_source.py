@@ -9,7 +9,7 @@ class Source(A10BaseClass):
     Class source supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param list_list: {"minItems": 1, "items": {"type": "list"}, "uniqueItems": true, "array": [{"required": ["list-name"], "properties": {"list-name": {"description": "IPv6 access-list name", "format": "string", "minLength": 1, "optional": false, "maxLength": 16, "type": "string", "$ref": "/axapi/v3/ipv6/access-list"}, "pool": {"description": "IPv6 NAT Pool (Pool Name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/ipv6/nat/pool-group"}}}], "type": "array", "$ref": "/axapi/v3/ipv6/nat/inside/source/list/{list-name}"}
+    :param list_list: {"minItems": 1, "items": {"type": "list"}, "uniqueItems": true, "array": [{"required": ["list-name"], "properties": {"list-name": {"description": "IPv6 access-list name", "format": "string", "minLength": 1, "optional": false, "maxLength": 16, "type": "string", "$ref": "/axapi/v3/ipv6/access-list"}, "pool": {"description": "IPv6 NAT Pool (Pool Name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/ipv6/nat/pool-group"}, "uuid": {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}}}], "type": "array", "$ref": "/axapi/v3/ipv6/nat/inside/source/list/{list-name}"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

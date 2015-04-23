@@ -7,7 +7,7 @@ class DnssecDnskey(A10BaseClass):
     :param dst_file: {"description": "destination file name for copy and rename action", "format": "string", "minLength": 1, "optional": true, "maxLength": 32, "type": "string"}
     :param file_handle: {"description": "full path of the uploaded file", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
     :param file: {"description": "dnssec dnskey local file name", "format": "string", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
-    :param size: {"optional": true, "type": "number", "description": "dnssec dnskey file size in byte", "format": "number"}
+    :param size: {"description": "dnssec dnskey file size in byte", "format": "number", "type": "number", "maximum": 2147483647, "minimum": 0, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

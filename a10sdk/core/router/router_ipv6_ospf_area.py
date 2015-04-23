@@ -67,6 +67,7 @@ class Area(A10BaseClass):
     Class area supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param area_ipv4: {"optional": false, "type": "string", "description": "OSPFv3 area ID in IP address format", "format": "ipv4-address"}
     :param virtual_link_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"dead-interval": {"description": "Dead router detection time (Seconds)", "minimum": 1, "type": "number", "maximum": 65535, "format": "number"}, "hello-interval": {"description": "Hello packet interval (Seconds)", "minimum": 1, "type": "number", "maximum": 65535, "format": "number"}, "bfd": {"default": 0, "type": "number", "description": "Bidirectional Forwarding Detection (BFD)", "format": "flag"}, "transmit-delay": {"description": "LSA transmission delay (Seconds)", "format": "number", "default": 1, "maximum": 3600, "minimum": 1, "type": "number"}, "value": {"type": "string", "description": "ID (IP addr) associated with virtual link neighbor", "format": "ipv4-address"}, "retransmit-interval": {"description": "LSA retransmit interval (Seconds)", "minimum": 1, "type": "number", "maximum": 3600, "format": "number"}, "optional": true, "instance-id": {"description": "OSPFv3 instance ID", "format": "number", "default": 0, "maximum": 255, "minimum": 0, "type": "number"}}}]}
     :param no_summary: {"default": 0, "optional": true, "type": "number", "description": "Do not inject inter-area routes into area", "format": "flag"}
@@ -92,6 +93,7 @@ class Area(A10BaseClass):
         self.b_key = "area"
         self.a10_url="/axapi/v3/router/ipv6/ospf/{process_id}/area/{area_ipv4}+{area_num}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.area_ipv4 = ""
         self.virtual_link_list = []
         self.no_summary = ""

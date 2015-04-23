@@ -10,6 +10,7 @@ class OverlayMgmtInfo(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param appstring: {"description": "Application string", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param plugin_name: {"description": "Plugin string", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -30,6 +31,7 @@ class OverlayMgmtInfo(A10BaseClass):
         self.a10_url="/axapi/v3/overlay-mgmt-info/{plugin_name}+{appstring}"
         self.DeviceProxy = ""
         self.appstring = ""
+        self.uuid = ""
         self.plugin_name = ""
 
         for keys, value in kwargs.items():

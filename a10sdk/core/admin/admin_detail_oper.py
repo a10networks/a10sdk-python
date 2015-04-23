@@ -5,18 +5,18 @@ class UserList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param priviledge: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param lock_time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param unlock_time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param trusted_host: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param partition: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param access_type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param password: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param gui_role: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param lock_status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param password_type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param user_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param status: {"type": "string", "format": "string"}
+    :param priviledge: {"type": "string", "format": "string"}
+    :param lock_time: {"type": "string", "format": "string"}
+    :param unlock_time: {"type": "string", "format": "string"}
+    :param trusted_host: {"type": "string", "format": "string"}
+    :param partition: {"type": "string", "format": "string"}
+    :param access_type: {"type": "string", "format": "string"}
+    :param password: {"type": "string", "format": "string"}
+    :param gui_role: {"type": "string", "format": "string"}
+    :param lock_status: {"type": "string", "format": "string"}
+    :param password_type: {"type": "string", "format": "string"}
+    :param user_name: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -49,7 +49,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param user_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "priviledge": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "lock_time": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "unlock_time": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "trusted_host": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "partition": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "access_type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "password": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "gui_role": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "lock_status": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "password_type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "user_name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param user_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"type": "string", "format": "string"}, "priviledge": {"type": "string", "format": "string"}, "lock_time": {"type": "string", "format": "string"}, "unlock_time": {"type": "string", "format": "string"}, "trusted_host": {"type": "string", "format": "string"}, "optional": true, "partition": {"type": "string", "format": "string"}, "access_type": {"type": "string", "format": "string"}, "password": {"type": "string", "format": "string"}, "gui_role": {"type": "string", "format": "string"}, "lock_status": {"type": "string", "format": "string"}, "password_type": {"type": "string", "format": "string"}, "user_name": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

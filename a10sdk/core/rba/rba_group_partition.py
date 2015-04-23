@@ -5,7 +5,7 @@ class RoleList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param role: {"description": "Role in a given partition", "format": "string", "minLength": 1, "maxLength": 128, "type": "string", "$ref": "/axapi/v3/rba/role"}
+    :param role: {"description": "Role in a given partition", "format": "string", "minLength": 1, "maxLength": 32, "type": "string", "$ref": "/axapi/v3/rba/role"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -56,7 +56,8 @@ class Partition(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param partition_name: {"description": "partition name", "format": "string", "minLength": 1, "optional": false, "maxLength": 14, "type": "string"}
-    :param role_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "role": {"description": "Role in a given partition", "format": "string", "minLength": 1, "maxLength": 128, "type": "string", "$ref": "/axapi/v3/rba/role"}}}]}
+    :param role_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "role": {"description": "Role in a given partition", "format": "string", "minLength": 1, "maxLength": 32, "type": "string", "$ref": "/axapi/v3/rba/role"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param rule_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"operation": {"enum": ["no-access", "read", "write"], "type": "string", "description": "'no-access': no-access; 'read': read; 'write': write; ", "format": "enum"}, "object": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Lineage of object class for permitted operation", "format": "string"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -78,6 +79,7 @@ class Partition(A10BaseClass):
         self.DeviceProxy = ""
         self.partition_name = ""
         self.role_list = []
+        self.uuid = ""
         self.rule_list = []
 
         for keys, value in kwargs.items():

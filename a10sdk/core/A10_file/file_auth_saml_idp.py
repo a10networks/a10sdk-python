@@ -8,7 +8,7 @@ class AuthSamlIdp(A10BaseClass):
     :param verify_xml_signature: {"default": 0, "optional": true, "type": "number", "description": "Verify metadata's XML signature", "format": "flag"}
     :param action: {"optional": true, "enum": ["create", "import", "export", "copy", "rename", "check", "replace", "delete"], "type": "string", "description": "'create': create; 'import': import; 'export': export; 'copy': copy; 'rename': rename; 'check': check; 'replace': replace; 'delete': delete; ", "format": "enum"}
     :param file_handle: {"description": "Full path of the uploaded file", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
-    :param size: {"optional": true, "type": "number", "description": "SAML metadata file size in byte", "format": "number"}
+    :param size: {"description": "SAML metadata file size in byte", "format": "number", "type": "number", "maximum": 2147483647, "minimum": 0, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

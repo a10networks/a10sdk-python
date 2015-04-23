@@ -89,6 +89,7 @@ class Lldp(A10BaseClass):
     Class lldp supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param system_description: {"description": "Configure lldp system description", "format": "string", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param system_name: {"description": "Configure lldp system name", "format": "string", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -108,9 +109,10 @@ class Lldp(A10BaseClass):
         self.b_key = "lldp"
         self.a10_url="/axapi/v3/network/lldp"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.system_description = ""
-        self.notification_cfg = {}
         self.management_address = {}
+        self.notification_cfg = {}
         self.tx_set = {}
         self.enable_cfg = {}
         self.system_name = ""

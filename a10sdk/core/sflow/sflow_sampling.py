@@ -51,15 +51,16 @@ class VeList(A10BaseClass):
 
 class Sampling(A10BaseClass):
     
-    """Class Description::
+    """    :param eth_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"eth-end": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}, "optional": true, "eth-start": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param ve_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve-end": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "ve-start": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "optional": true}}]}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Configure sFlow sampling on specified interfaces.
 
     Class sampling supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param eth_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"eth-end": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}, "optional": true, "eth-start": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}}}]}
-    :param ve_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve-end": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "ve-start": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "optional": true}}]}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -77,6 +78,7 @@ class Sampling(A10BaseClass):
         self.a10_url="/axapi/v3/sflow/sampling"
         self.DeviceProxy = ""
         self.eth_list = []
+        self.uuid = ""
         self.ve_list = []
 
         for keys, value in kwargs.items():

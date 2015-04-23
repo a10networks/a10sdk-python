@@ -25,6 +25,28 @@ class Priorities(A10BaseClass):
             setattr(self,keys, value)
 
 
+class SamplingEnable(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param counters1: {"enum": ["all", "server_selection_fail_drop", "server_selection_fail_reset", "service_peak_conn"], "type": "string", "description": "'all': all; 'server_selection_fail_drop': Service selection fail drop; 'server_selection_fail_reset': Service selection fail reset; 'service_peak_conn': Service peak connection; ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "sampling-enable"
+        self.DeviceProxy = ""
+        self.counters1 = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class ServiceGroup(A10BaseClass):
     
     """Class Description::
@@ -41,18 +63,19 @@ class ServiceGroup(A10BaseClass):
     :param traffic_replication_mirror_ip_repl: {"default": 0, "optional": true, "type": "number", "description": "Replaces IP with server-IP", "format": "flag"}
     :param reset_priority_affinity: {"default": 0, "optional": true, "type": "number", "description": "Reset", "format": "flag"}
     :param min_active_member: {"description": "Minimum Active Member Per Priority (Minimum Active Member before Action)", "format": "number", "type": "number", "maximum": 63, "minimum": 1, "optional": true}
-    :param member_list: {"minItems": 1, "items": {"type": "member"}, "uniqueItems": true, "array": [{"required": ["name", "port"], "properties": {"member-priority": {"description": "Priority of Port in the Group", "format": "number", "type": "number", "maximum": 16, "minimum": 1, "optional": true}, "name": {"description": "Member name", "format": "comp-string", "minLength": 1, "optional": false, "maxLength": 127, "type": "string", "$ref": "/axapi/v3/slb/server"}, "fqdn-name": {"description": "Server hostname - Not applicable if real server is already defined", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}, "member-template": {"description": "Real server port template (Real server port template name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/port"}, "host": {"optional": true, "type": "string", "description": "IP Address - Not applicable if real server is already defined", "format": "ipv4-address"}, "member-state": {"description": "'enable': Enable member service port; 'disable': Disable member service port; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable"], "optional": true}, "server-ipv6-addr": {"optional": true, "type": "string", "description": "IPV6 Address - Not applicable if real server is already defined", "format": "ipv6-address"}, "port": {"description": "Port number", "format": "number", "default": 65534, "optional": false, "maximum": 65534, "minimum": 0, "type": "number", "$ref": "/axapi/v3/slb/server/port"}, "member-stats-data-disable": {"default": 0, "optional": true, "type": "number", "description": "Disable statistical data collection", "format": "flag"}}}], "type": "array", "$ref": "/axapi/v3/slb/service-group/{name}/member/{name}+{port}"}
+    :param member_list: {"minItems": 1, "items": {"type": "member"}, "uniqueItems": true, "array": [{"required": ["name", "port"], "properties": {"member-priority": {"description": "Priority of Port in the Group (Priority of Port in the Group, default is 1)", "format": "number", "default": 1, "optional": true, "maximum": 16, "minimum": 1, "type": "number"}, "name": {"description": "Member name", "format": "comp-string", "minLength": 1, "optional": false, "maxLength": 127, "type": "string", "$ref": "/axapi/v3/slb/server"}, "fqdn-name": {"description": "Server hostname - Not applicable if real server is already defined", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}, "uuid": {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}, "member-template": {"description": "Real server port template (Real server port template name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/port"}, "host": {"optional": true, "type": "string", "description": "IP Address - Not applicable if real server is already defined", "format": "ipv4-address"}, "sampling-enable": {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "curr_conn", "total_fwd_bytes", "total_fwd_pkts", "total_rev_bytes", "total_rev_pkts", "total_conn", "total_rev_pkts_inspected", "total_rev_pkts_inspected_status_code_2xx", "total_rev_pkts_inspected_status_code_non_5xx", "curr_req", "total_req", "total_req_succ", "peak_conn", "response_time", "fastest_rsp_time", "slowest_rsp_time"], "type": "string", "description": "'all': all; 'curr_conn': Current connections; 'total_fwd_bytes': Total forward bytes; 'total_fwd_pkts': Total forward packets; 'total_rev_bytes': Total reverse bytes; 'total_rev_pkts': Total reverse packets; 'total_conn': Total connections; 'total_rev_pkts_inspected': Total reverse packets inspected; 'total_rev_pkts_inspected_status_code_2xx': Total reverse packets inspected status code 2xx; 'total_rev_pkts_inspected_status_code_non_5xx': Total reverse packets inspected status code non 5xx; 'curr_req': Current requests; 'total_req': Total requests; 'total_req_succ': Total requests successful; 'peak_conn': Peak connections; 'response_time': Response time; 'fastest_rsp_time': Fastest response time; 'slowest_rsp_time': Slowest response time; ", "format": "enum"}}}]}, "member-state": {"description": "'enable': Enable member service port; 'disable': Disable member service port; 'disable-with-health-check': disable member service port, but health check work; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable", "disable-with-health-check"], "optional": true}, "server-ipv6-addr": {"optional": true, "type": "string", "description": "IPV6 Address - Not applicable if real server is already defined", "format": "ipv6-address"}, "port": {"description": "Port number", "format": "number", "default": 65534, "optional": false, "maximum": 65534, "minimum": 0, "type": "number", "$ref": "/axapi/v3/slb/server/port"}, "member-stats-data-disable": {"default": 0, "optional": true, "type": "number", "description": "Disable statistical data collection", "format": "flag"}}}], "type": "array", "$ref": "/axapi/v3/slb/service-group/{name}/member/{name}+{port}"}
     :param stats_data_action: {"description": "'stats-data-enable': Enable statistical data collection for service group; 'stats-data-disable': Disable statistical data collection for service group; ", "format": "enum", "default": "stats-data-enable", "type": "string", "enum": ["stats-data-enable", "stats-data-disable"], "optional": true}
     :param traffic_replication_mirror_da_repl: {"default": 0, "optional": true, "type": "number", "description": "Replace Destination MAC", "format": "flag"}
     :param rpt_ext_server: {"default": 0, "optional": true, "type": "number", "description": "Report top 10 fastest/slowest servers", "format": "flag"}
-    :param template_port: {"description": "Port template (Port template name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/port"}
+    :param template_port: {"description": "Port template (Port template name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/port"}
     :param conn_rate_grace_period: {"description": "Define the grace period during transition (Define the grace period during transition(seconds))", "format": "number", "type": "number", "maximum": 600, "minimum": 1, "optional": true}
     :param l4_session_usage_duration: {"description": "Period that trigger condition consistently happens(seconds)", "format": "number", "type": "number", "maximum": 600, "minimum": 1, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param backup_server_event_log: {"default": 0, "optional": true, "type": "number", "description": "Send log info on back up server events", "format": "flag"}
     :param lc_method: {"description": "'least-connection': Least connection on server level; 'service-least-connection': Least connection on service port level; 'weighted-least-connection': Weighted least connection on server level; 'service-weighted-least-connection': Weighted least connection on service port level; ", "format": "enum", "optional": true, "enum": ["least-connection", "service-least-connection", "weighted-least-connection", "service-weighted-least-connection"], "not-list": ["lb-method", "stateless-lb-method"], "type": "string"}
     :param pseudo_round_robin: {"default": 0, "optional": true, "type": "number", "description": "PRR, select the oldest node for sub-select", "format": "flag"}
     :param l4_session_usage_revert_rate: {"description": "Usage to revert to statelful method", "format": "number", "type": "number", "maximum": 100, "minimum": 1, "optional": true}
-    :param template_server: {"description": "Server template (Server template name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/server"}
+    :param template_server: {"description": "Server template (Server template name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/server"}
     :param stateless_lb_method: {"description": "'stateless-dst-ip-hash': Stateless load-balancing based on Dst IP and Dst port hash; 'stateless-per-pkt-round-robin': Stateless load-balancing using per-packet round-robin; 'stateless-src-dst-ip-hash': Stateless load-balancing based on IP and port hash for both Src and Dst; 'stateless-src-ip-hash': Stateless load-balancing based on Src IP and Src port hash; 'stateless-src-ip-only-hash': Stateless load-balancing based on only Src IP hash; ", "format": "enum", "optional": true, "enum": ["stateless-dst-ip-hash", "stateless-per-pkt-round-robin", "stateless-src-dst-ip-hash", "stateless-src-ip-hash", "stateless-src-ip-only-hash"], "not-list": ["lb-method", "lc-method"], "type": "string"}
     :param l4_session_revert_duration: {"description": "Period that revert condition consistently happens(seconds)", "format": "number", "type": "number", "maximum": 600, "minimum": 1, "optional": true}
     :param traffic_replication_mirror_sa_da_repl: {"default": 0, "optional": true, "type": "number", "description": "Replace Source MAC and Destination MAC", "format": "flag"}
@@ -69,10 +92,11 @@ class ServiceGroup(A10BaseClass):
     :param l4_session_usage_log: {"default": 0, "optional": true, "type": "number", "description": "Send log if transition happens", "format": "flag"}
     :param conn_rate_duration: {"description": "Period that trigger condition consistently happens(seconds)", "format": "number", "type": "number", "maximum": 600, "minimum": 1, "optional": true}
     :param l4_session_usage_grace_period: {"description": "Define the grace period during transition (Define the grace period during transition(seconds))", "format": "number", "type": "number", "maximum": 600, "minimum": 1, "optional": true}
-    :param template_policy: {"description": "Policy template (Policy template name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/policy"}
+    :param template_policy: {"description": "Policy template (Policy template name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/policy"}
     :param stateless_lb_method2: {"optional": true, "enum": ["stateless-dst-ip-hash", "stateless-per-pkt-round-robin", "stateless-src-dst-ip-hash", "stateless-src-ip-hash", "stateless-src-ip-only-hash"], "type": "string", "description": "'stateless-dst-ip-hash': Stateless load-balancing based on Dst IP and Dst port hash; 'stateless-per-pkt-round-robin': Stateless load-balancing using per-packet round-robin; 'stateless-src-dst-ip-hash': Stateless load-balancing based on IP and port hash for both Src and Dst; 'stateless-src-ip-hash': Stateless load-balancing based on Src IP and Src port hash; 'stateless-src-ip-only-hash': Stateless load-balancing based on only Src IP hash; ", "format": "enum"}
     :param priorities: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"priority": {"description": "Priority option. Define different action for each priority node. (Priority in the Group)", "minimum": 1, "type": "number", "maximum": 16, "format": "number"}, "priority-action": {"default": "proceed", "enum": ["drop", "drop-if-exceed-limit", "proceed", "reset", "reset-if-exceed-limit"], "type": "string", "description": "'drop': Drop request when all priority nodes fail; 'drop-if-exceed-limit': Drop request when connection over limit; 'proceed': Proceed to next priority when all priority nodes fail(default); 'reset': Send client reset when all priority nodes fail; 'reset-if-exceed-limit': Send client reset when connection over limit; ", "format": "enum"}, "optional": true}}]}
     :param sample_rsp_time: {"default": 0, "optional": true, "type": "number", "description": "sample server response time", "format": "flag"}
+    :param sampling_enable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "server_selection_fail_drop", "server_selection_fail_reset", "service_peak_conn"], "type": "string", "description": "'all': all; 'server_selection_fail_drop': Service selection fail drop; 'server_selection_fail_reset': Service selection fail reset; 'service_peak_conn': Service peak connection; ", "format": "enum"}}}]}
     :param top_fastest: {"default": 0, "optional": true, "type": "number", "description": "Report top 10 fastest servers", "format": "flag"}
     :param conn_revert_rate: {"description": "Rate to revert to statelful method (conn/sec)", "format": "number", "type": "number", "maximum": 1000000, "minimum": 1, "optional": true}
     :param priority_affinity: {"default": 0, "optional": true, "type": "number", "description": "Priority affinity. Persist to the same priority if possible.", "format": "flag"}
@@ -111,6 +135,7 @@ class ServiceGroup(A10BaseClass):
         self.template_port = ""
         self.conn_rate_grace_period = ""
         self.l4_session_usage_duration = ""
+        self.uuid = ""
         self.backup_server_event_log = ""
         self.lc_method = ""
         self.pseudo_round_robin = ""
@@ -137,6 +162,7 @@ class ServiceGroup(A10BaseClass):
         self.stateless_lb_method2 = ""
         self.priorities = []
         self.sample_rsp_time = ""
+        self.sampling_enable = []
         self.top_fastest = ""
         self.conn_revert_rate = ""
         self.priority_affinity = ""

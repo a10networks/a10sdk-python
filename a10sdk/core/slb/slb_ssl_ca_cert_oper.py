@@ -5,16 +5,16 @@ class SslCerts(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param notbefore: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param notafter: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param common_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param organization: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param serial: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param issuer: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param subject: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param status: {"type": "string", "format": "string"}
+    :param name: {"type": "string", "format": "string"}
+    :param notbefore: {"type": "string", "format": "string"}
+    :param notafter: {"type": "string", "format": "string"}
+    :param common_name: {"type": "string", "format": "string"}
+    :param organization: {"type": "string", "format": "string"}
+    :param serial: {"type": "string", "format": "string"}
+    :param issuer: {"type": "string", "format": "string"}
+    :param type: {"type": "string", "format": "string"}
+    :param subject: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -45,7 +45,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param ssl_certs: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "notbefore": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "notafter": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "common-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "organization": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "serial": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "issuer": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "subject": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param ssl_certs: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"type": "string", "format": "string"}, "name": {"type": "string", "format": "string"}, "notbefore": {"type": "string", "format": "string"}, "optional": true, "notafter": {"type": "string", "format": "string"}, "common-name": {"type": "string", "format": "string"}, "organization": {"type": "string", "format": "string"}, "serial": {"type": "string", "format": "string"}, "issuer": {"type": "string", "format": "string"}, "type": {"type": "string", "format": "string"}, "subject": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

@@ -17,6 +17,7 @@ class EasyRdt(A10BaseClass):
     :param ignore_count: {"description": "Ignore count if RDT is out of range, default is 5", "format": "number", "default": 5, "optional": true, "maximum": 15, "minimum": 0, "type": "number"}
     :param aging_time: {"description": "Aging Time, Unit: min, default is 10", "format": "number", "default": 10, "optional": true, "maximum": 15360, "minimum": 1, "type": "number"}
     :param bind_geoloc: {"default": 0, "optional": true, "type": "number", "description": "Bind RDT to geo-location", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -42,6 +43,7 @@ class EasyRdt(A10BaseClass):
         self.ignore_count = ""
         self.aging_time = ""
         self.bind_geoloc = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

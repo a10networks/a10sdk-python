@@ -19,6 +19,7 @@ class DestinationIp(A10BaseClass):
     :param timeout: {"description": "Persistence timeout (in minutes)", "format": "number", "default": 5, "optional": true, "maximum": 2000, "minimum": 1, "type": "number"}
     :param hash_persist: {"default": 0, "optional": true, "type": "number", "description": "Use hash value of destination IP address", "format": "flag"}
     :param match_type: {"default": 0, "optional": true, "type": "number", "description": "Persistence type", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -47,6 +48,7 @@ class DestinationIp(A10BaseClass):
         self.timeout = ""
         self.hash_persist = ""
         self.match_type = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

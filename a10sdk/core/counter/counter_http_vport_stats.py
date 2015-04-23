@@ -210,7 +210,7 @@ class Http_Vport(A10BaseClass):
     
 
     URL for this object::
-    `https://<Hostname|Ip address>//axapi/v3/counter/http-vport/stats`.
+    `https://<Hostname|Ip address>//axapi/v3/counter/http-vport/{sampling_enable}/stats`.
 
     
 
@@ -218,9 +218,10 @@ class Http_Vport(A10BaseClass):
     """
     def __init__(self, **kwargs):
         self.ERROR_MSG = ""
-        self.required=[]
+        self.required = [ "sampling_enable"]
+
         self.b_key = "http_vport"
-        self.a10_url="/axapi/v3/counter/http-vport/stats"
+        self.a10_url="/axapi/v3/counter/http-vport/{sampling_enable}/stats"
         self.DeviceProxy = ""
         self.stats = {}
 

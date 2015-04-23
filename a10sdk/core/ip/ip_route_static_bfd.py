@@ -11,6 +11,7 @@ class Bfd(A10BaseClass):
 
     :param local_ip: {"optional": false, "type": "string", "description": "Local IP address", "format": "ipv4-address"}
     :param nexthop_ip: {"optional": false, "type": "string", "description": "Nexthop IP address", "format": "ipv4-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class Bfd(A10BaseClass):
         self.DeviceProxy = ""
         self.local_ip = ""
         self.nexthop_ip = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

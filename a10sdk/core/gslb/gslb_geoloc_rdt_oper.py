@@ -6,9 +6,9 @@ class GeolocRdtList(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param rdt: {"type": "number", "format": "number"}
-    :param site_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param gl_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param site_name: {"type": "string", "format": "string"}
+    :param gl_name: {"type": "string", "format": "string"}
+    :param type: {"type": "string", "format": "string"}
     :param age: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -35,10 +35,10 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param geoloc_rdt_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"rdt": {"type": "number", "format": "number"}, "optional": true, "site-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "gl-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "age": {"type": "number", "format": "number"}}}]}
-    :param geo_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param site_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param active_status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param geoloc_rdt_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"rdt": {"type": "number", "format": "number"}, "optional": true, "site-name": {"type": "string", "format": "string"}, "gl-name": {"type": "string", "format": "string"}, "type": {"type": "string", "format": "string"}, "age": {"type": "number", "format": "number"}}}]}
+    :param geo_name: {"type": "string", "format": "string"}
+    :param site_name: {"type": "string", "format": "string"}
+    :param active_status: {"type": "string", "format": "string"}
     :param total_rdt: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

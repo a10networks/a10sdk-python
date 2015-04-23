@@ -11,6 +11,7 @@ class Address(A10BaseClass):
 
     :param ip_addr: {"optional": true, "type": "string", "description": "IP address", "format": "ipv4-address"}
     :param ip_mask: {"optional": true, "type": "string", "description": "IP subnet mask", "format": "ipv4-netmask"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -30,6 +31,7 @@ class Address(A10BaseClass):
         self.DeviceProxy = ""
         self.ip_addr = ""
         self.ip_mask = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

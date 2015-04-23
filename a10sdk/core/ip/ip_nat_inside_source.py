@@ -6,6 +6,7 @@ class ClassList(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param name: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Class List Name", "format": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -18,6 +19,7 @@ class ClassList(A10BaseClass):
         self.b_key = "class-list"
         self.DeviceProxy = ""
         self.name = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -31,7 +33,7 @@ class Source(A10BaseClass):
     Class source supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param static_list: {"minItems": 1, "items": {"type": "static"}, "uniqueItems": true, "array": [{"required": ["src-address", "nat-address"], "properties": {"nat-address": {"optional": false, "type": "string", "description": "NAT Address", "format": "ipv4-address"}, "vrid": {"description": "VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "type": "number", "maximum": 31, "minimum": 1, "optional": true}, "src-address": {"optional": false, "type": "string", "description": "Original Source Address", "format": "ipv4-address"}}}], "type": "array", "$ref": "/axapi/v3/ip/nat/inside/source/static/{src-address}+{nat-address}"}
+    :param static_list: {"minItems": 1, "items": {"type": "static"}, "uniqueItems": true, "array": [{"required": ["src-address", "nat-address"], "properties": {"nat-address": {"optional": false, "type": "string", "description": "NAT Address", "format": "ipv4-address"}, "vrid": {"description": "VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "type": "number", "maximum": 31, "minimum": 1, "optional": true}, "uuid": {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}, "src-address": {"optional": false, "type": "string", "description": "Original Source Address", "format": "ipv4-address"}}}], "type": "array", "$ref": "/axapi/v3/ip/nat/inside/source/static/{src-address}+{nat-address}"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

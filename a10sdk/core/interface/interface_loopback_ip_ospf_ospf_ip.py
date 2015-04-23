@@ -37,6 +37,7 @@ class OspfIp(A10BaseClass):
 
     :param dead_interval: {"description": "Interval after which a neighbor is declared dead (Seconds)", "format": "number", "default": 40, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
     :param authentication_key: {"description": "Authentication password (key) (The OSPF password (key))", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 8, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param mtu_ignore: {"default": 0, "optional": true, "type": "number", "description": "Ignores the MTU in DBD packets", "format": "flag"}
     :param priority: {"description": "Router priority", "format": "number", "default": 1, "optional": true, "maximum": 255, "minimum": 0, "type": "number"}
     :param transmit_delay: {"description": "Link state transmit delay (Seconds)", "format": "number", "default": 1, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
@@ -69,6 +70,7 @@ class OspfIp(A10BaseClass):
         self.DeviceProxy = ""
         self.dead_interval = ""
         self.authentication_key = ""
+        self.uuid = ""
         self.mtu_ignore = ""
         self.priority = ""
         self.transmit_delay = ""

@@ -10,6 +10,7 @@ class DefaultGateway(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ipv6_default_gateway: {"optional": true, "$ref": "/axapi/v3/ipv6/address", "type": "string", "description": "Default gateway address", "format": "ipv6-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class DefaultGateway(A10BaseClass):
         self.a10_url="/axapi/v3/ipv6/default-gateway"
         self.DeviceProxy = ""
         self.ipv6_default_gateway = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

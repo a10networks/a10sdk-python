@@ -10,6 +10,7 @@ class BfdIpv6(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param local_ipv6: {"optional": false, "type": "string", "description": "Local IPv6 address", "format": "ipv6-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param nexthop_ipv6: {"optional": false, "type": "string", "description": "Nexthop IPv6 address", "format": "ipv6-address"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -30,6 +31,7 @@ class BfdIpv6(A10BaseClass):
         self.a10_url="/axapi/v3/ipv6/route/static/bfd/bfd-ipv6/{local_ipv6}+{nexthop_ipv6}"
         self.DeviceProxy = ""
         self.local_ipv6 = ""
+        self.uuid = ""
         self.nexthop_ipv6 = ""
 
         for keys, value in kwargs.items():

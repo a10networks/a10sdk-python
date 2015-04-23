@@ -9,6 +9,7 @@ class Enable(A10BaseClass):
     Class enable supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param service: {"default": 0, "optional": true, "type": "number", "description": "Enable SNMP service", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -27,8 +28,9 @@ class Enable(A10BaseClass):
         self.b_key = "enable"
         self.a10_url="/axapi/v3/snmp-server/enable"
         self.DeviceProxy = ""
-        self.traps = {}
+        self.uuid = ""
         self.service = ""
+        self.traps = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

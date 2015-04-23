@@ -41,6 +41,7 @@ class Prefix(A10BaseClass):
     Class prefix supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param prefix_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}, "prefix-list": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Filter prefixes in routing updates (Name of a prefix list)", "format": "string"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "prefix-list-direction": {"enum": ["in", "out"], "type": "string", "description": "'in': Filter incoming routing updates; 'out': Filter outgoing routing updates; ", "format": "enum"}, "ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -59,6 +60,7 @@ class Prefix(A10BaseClass):
         self.b_key = "prefix"
         self.a10_url="/axapi/v3/router/rip/distribute-list/prefix"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.prefix_cfg = []
 
         for keys, value in kwargs.items():

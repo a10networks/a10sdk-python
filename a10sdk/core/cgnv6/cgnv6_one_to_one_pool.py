@@ -9,8 +9,9 @@ class Pool(A10BaseClass):
     Class pool supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param partition: {"description": "Share with a single partition (Partition Name)", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 14, "type": "string"}
-    :param group: {"description": "Share with a partition group (Partition Group Name)", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param partition: {"description": "Share with a single partition (Partition Name)", "partition-visibility": "shared", "minLength": 1, "format": "string", "modify-not-allowed": 1, "optional": true, "maxLength": 14, "type": "string"}
+    :param group: {"description": "Share with a partition group (Partition Group Name)", "partition-visibility": "shared", "minLength": 1, "format": "string", "modify-not-allowed": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param start_address: {"optional": true, "modify-not-allowed": 1, "type": "string", "description": "Configure start IP address of NAT pool", "format": "ipv4-address"}
     :param vrid: {"description": "Configure VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "optional": true, "maximum": 31, "minimum": 1, "modify-not-allowed": 1, "type": "number"}
     :param netmask: {"optional": true, "modify-not-allowed": 1, "type": "string", "description": "Configure mask for pool", "format": "ipv4-netmask-brief"}
@@ -37,6 +38,7 @@ class Pool(A10BaseClass):
         self.DeviceProxy = ""
         self.partition = ""
         self.group = ""
+        self.uuid = ""
         self.start_address = ""
         self.vrid = ""
         self.netmask = ""

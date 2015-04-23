@@ -5,15 +5,15 @@ class MemberList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param status: {"type": "string", "format": "string"}
     :param passive: {"type": "number", "format": "number"}
     :param connect_success: {"type": "number", "format": "number"}
-    :param member_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param member_name: {"type": "string", "format": "string"}
     :param address: {"type": "string", "format": "ipv4-address"}
     :param sync_sequence_number: {"type": "number", "format": "number"}
     :param connect_fail: {"type": "number", "format": "number"}
     :param priority: {"type": "number", "format": "number"}
-    :param group_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param group_name: {"type": "string", "format": "string"}
     :param open_out: {"type": "number", "format": "number"}
     :param learn: {"type": "number", "format": "number"}
     :param is_master: {"type": "number", "format": "number"}
@@ -57,7 +57,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param member_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "passive": {"type": "number", "format": "number"}, "connect-success": {"type": "number", "format": "number"}, "member-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "address": {"type": "string", "format": "ipv4-address"}, "sync-sequence-number": {"type": "number", "format": "number"}, "connect-fail": {"type": "number", "format": "number"}, "priority": {"type": "number", "format": "number"}, "group-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "open-out": {"type": "number", "format": "number"}, "learn": {"type": "number", "format": "number"}, "is_master": {"type": "number", "format": "number"}, "open-success": {"type": "number", "format": "number"}, "open-in": {"type": "number", "format": "number"}, "optional": true, "sys-id": {"type": "number", "format": "number"}, "update-in": {"type": "number", "format": "number"}}}]}
+    :param member_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"type": "string", "format": "string"}, "passive": {"type": "number", "format": "number"}, "connect-success": {"type": "number", "format": "number"}, "member-name": {"type": "string", "format": "string"}, "address": {"type": "string", "format": "ipv4-address"}, "sync-sequence-number": {"type": "number", "format": "number"}, "connect-fail": {"type": "number", "format": "number"}, "priority": {"type": "number", "format": "number"}, "group-name": {"type": "string", "format": "string"}, "open-out": {"type": "number", "format": "number"}, "learn": {"type": "number", "format": "number"}, "is_master": {"type": "number", "format": "number"}, "open-success": {"type": "number", "format": "number"}, "open-in": {"type": "number", "format": "number"}, "optional": true, "sys-id": {"type": "number", "format": "number"}, "update-in": {"type": "number", "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

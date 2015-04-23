@@ -5,7 +5,7 @@ class SslException(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param exception_cert: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param exception_cert: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -27,10 +27,10 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param email_address2: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param email_address: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param email_address2: {"type": "string", "format": "string"}
+    :param email_address: {"type": "string", "format": "string"}
     :param interval: {"type": "number", "format": "number"}
-    :param ssl_exception: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "exception-cert": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param ssl_exception: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "exception-cert": {"type": "string", "format": "string"}}}]}
     :param before: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

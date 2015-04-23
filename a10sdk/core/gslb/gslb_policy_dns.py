@@ -79,6 +79,7 @@ class Dns(A10BaseClass):
     Class dns supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param server_mode_only: {"default": 0, "optional": true, "type": "number", "description": "Only run GSLB as DNS server mode", "format": "flag"}
     :param external_soa: {"default": 0, "optional": true, "type": "number", "description": "Return DNS response with external SOA Record", "format": "flag"}
     :param server_sec: {"default": 0, "optional": true, "type": "number", "description": "Provide DNSSEC support", "format": "flag"}
     :param sticky_ipv6_mask: {"description": "Specify IPv6 mask length, default is 128", "format": "number", "default": 128, "optional": true, "maximum": 128, "minimum": 1, "type": "number"}
@@ -120,6 +121,7 @@ class Dns(A10BaseClass):
     :param backup_server: {"default": 0, "optional": true, "type": "number", "description": "Return fallback server when fail", "format": "flag"}
     :param sticky_aging_time: {"description": "Specify aging-time, unit: min, default is 5 (Aging time)", "format": "number", "default": 5, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
     :param geoloc_policy: {"default": 0, "optional": true, "type": "number", "description": "Apply different policy by geo-location", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param server: {"default": 0, "optional": true, "type": "number", "description": "Run GSLB as DNS server mode", "format": "flag"}
     :param server_ns_list: {"default": 0, "optional": true, "type": "number", "description": "Append All NS Records in Authoritative Section", "format": "flag"}
     :param server_auto_ns: {"default": 0, "optional": true, "type": "number", "description": "Provide PTR Records automatically", "format": "flag"}
@@ -143,6 +145,7 @@ class Dns(A10BaseClass):
         self.b_key = "dns"
         self.a10_url="/axapi/v3/gslb/policy/{name}/dns"
         self.DeviceProxy = ""
+        self.server_mode_only = ""
         self.external_soa = ""
         self.server_sec = ""
         self.sticky_ipv6_mask = ""
@@ -184,6 +187,7 @@ class Dns(A10BaseClass):
         self.backup_server = ""
         self.sticky_aging_time = ""
         self.geoloc_policy = ""
+        self.uuid = ""
         self.server = ""
         self.server_ns_list = ""
         self.server_auto_ns = ""

@@ -59,6 +59,7 @@ class RequestUri(A10BaseClass):
     :param domain_variable: {"description": "Specify domain variable name", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param password_variable: {"description": "Specify password variable name", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param match_type: {"optional": false, "enum": ["equals", "contains", "starts-with", "ends-with"], "type": "string", "description": "'equals': URI exactly matches the string; 'contains': URI string contains another sub string; 'starts-with': URI string starts with sub string; 'ends-with': URI string ends with sub string; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -85,6 +86,7 @@ class RequestUri(A10BaseClass):
         self.domain_variable = ""
         self.password_variable = ""
         self.match_type = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

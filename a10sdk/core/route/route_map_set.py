@@ -501,6 +501,7 @@ class Set(A10BaseClass):
 
     :param atomic_aggregate: {"default": 0, "optional": true, "type": "number", "description": "BGP atomic aggregate attribute", "format": "flag"}
     :param community: {"optional": true, "type": "string", "description": "BGP community attribute", "format": "string-rlx"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -535,6 +536,7 @@ class Set(A10BaseClass):
         self.dampening_cfg = {}
         self.originator_id = {}
         self.metric_type = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -47,6 +47,7 @@ class Lid(A10BaseClass):
     :param lockout: {"description": "Don't accept any new connection for certain time (Lockout duration in minutes)", "format": "number", "type": "number", "maximum": 1023, "minimum": 1, "optional": true}
     :param action_value: {"optional": true, "enum": ["forward", "reset"], "type": "string", "description": "'forward': Forward the traffic even it exceeds limit; 'reset': Reset the connection when it exceeds limit; ", "format": "enum"}
     :param over_limit_action: {"default": 0, "optional": true, "type": "number", "description": "Set action when exceeds limit", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -78,6 +79,7 @@ class Lid(A10BaseClass):
         self.lockout = ""
         self.action_value = ""
         self.over_limit_action = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

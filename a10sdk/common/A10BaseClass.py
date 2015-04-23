@@ -10,8 +10,13 @@ import re
 import os
 import keyword
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 class A10BaseClass(object):
+    is_POST = True
+
     def __init__(self):
         self.ERROR_MSG = ""
 
@@ -102,7 +107,8 @@ class A10BaseClass(object):
                 new_obj[key] = v
 
             # If it's an attribute and it's value is None, use None
-            elif v is None:
+            # (grao): adding null value attributes only when POST (avoiding for PUT)
+            elif v is None and A10BaseClass.is_POST:
                 new_obj[key] = v
 
         return new_obj
@@ -418,6 +424,13 @@ class A10BaseClass(object):
             self.a10_url_parent()
         request = self.DeviceProxy.GET(self, query_params)
         try:
+            #Hack decode unicode something:zli, bug:237218
+            hack = kwargs.get("json_before_load", None)
+            if hack and callable(hack):
+                try:
+                    request = hack(request)
+                except:
+                    pass
             request = json.loads(request, encoding='utf-8')
         except:
             if request is None:
@@ -493,7 +506,20 @@ class A10BaseClass(object):
 
         return r_list
 
+
+    def get_stream_response(self, **kwargs):
+        A10BaseClass.is_POST = True
+        o_url = self.a10_url
+        if len(kwargs) > 0:
+            self.a10_url_update(**kwargs)
+        else:
+            self.a10_url_parent()
+        response = self.DeviceProxy.POST(self)
+        self.a10_url = o_url
+        return response
+
     def create(self, **kwargs):
+        A10BaseClass.is_POST = True
         o_url = self.a10_url
         if len(kwargs) > 0:
             self.a10_url_update(**kwargs)
@@ -504,6 +530,7 @@ class A10BaseClass(object):
         return response
 
     def update(self, **kwargs):
+        A10BaseClass.is_POST = True
         o_url = self.a10_url
         if len(kwargs) > 0:
             self.a10_url_update(**kwargs)
@@ -515,6 +542,7 @@ class A10BaseClass(object):
         return response
 
     def replace(self, **kwargs):
+        A10BaseClass.is_POST = False
         o_url = self.a10_url
         if len(kwargs) > 0:
             self.a10_url_update(**kwargs)
@@ -525,6 +553,7 @@ class A10BaseClass(object):
         return response
 
     def replace_all(self, obj_list):
+        A10BaseClass.is_POST = False
         o_url = self.a10_url
         self.a10_url_parent()
         response = self.response_handler(self.DeviceProxy.PUT_ALL(self, obj_list))
@@ -532,6 +561,7 @@ class A10BaseClass(object):
         return response
 
     def create_all(self, obj_list):
+        A10BaseClass.is_POST = True
         o_url = self.a10_url
         self.a10_url_parent()
         response = self.response_handler(self.DeviceProxy.POST_ALL(self, obj_list))
@@ -539,13 +569,13 @@ class A10BaseClass(object):
         return response
 
 
-    def delete(self, **kwargs):
+    def delete(self, query_params=None, **kwargs):
         o_url = self.a10_url
         if len(kwargs) > 0:
             self.a10_url_update(**kwargs)
         else:
             self.a10_url_parent()
-        response = self.response_handler(self.DeviceProxy.DELETE(self))
+        response = self.response_handler(self.DeviceProxy.DELETE(self, query_params))
         self.a10_url = o_url
         return response
 
@@ -564,7 +594,7 @@ class A10BaseClass(object):
                     #Modifying this behavior to use %20 encoding instead
                     value = urllib.quote_plus(str(value).replace(' ', '%20'))
                     value = value.replace('%2520', '%20')
-                    self.a10_url = self.a10_url.replace('{%s}' % key, value)
+                    self.a10_url = self.a10_url.replace('{%s}' % key, value, 1)
             #Removing any unresolved keys and removing the +
             while(len(kwargs)> 0 and '{' in self.a10_url):
                 try:
@@ -576,7 +606,10 @@ class A10BaseClass(object):
                     break
             self.a10_url = self.a10_url.replace('+/', '/')
             self.a10_url = self.a10_url.replace('/+', '/')
-            self.a10_url = self.a10_url.replace('+', '', -1) if self.a10_url.endswith('+') else self.a10_url
+            #zli fixed bug:243614
+            p = re.compile('\+$')
+            #self.a10_url = self.a10_url.replace('+', '', -1) if self.a10_url.endswith('+') else self.a10_url
+            self.a10_url = p.sub('', self.a10_url) if self.a10_url.endswith('+') else self.a10_url
             if '{' in self.a10_url:
                 self.a10_url_parent(**kwargs)
         except:

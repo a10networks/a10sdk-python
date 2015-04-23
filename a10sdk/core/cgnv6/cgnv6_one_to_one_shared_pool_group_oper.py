@@ -5,7 +5,7 @@ class SharedPoolGroupList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param pool_group_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param pool_group_name: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -27,7 +27,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param shared_pool_group_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"pool-group-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true}}]}
+    :param shared_pool_group_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"pool-group-name": {"type": "string", "format": "string"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

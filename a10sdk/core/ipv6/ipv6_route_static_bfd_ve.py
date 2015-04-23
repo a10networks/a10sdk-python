@@ -10,6 +10,7 @@ class Ve(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param nexthop_ipv6_ll: {"optional": false, "type": "string", "description": "Nexthop IPv6 address (Link-local)", "format": "ipv6-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ve_num: {"optional": false, "type": "number", "description": "Virtual ethernet interface", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -30,6 +31,7 @@ class Ve(A10BaseClass):
         self.a10_url="/axapi/v3/ipv6/route/static/bfd/ve/{ve_num}+{nexthop_ipv6_ll}"
         self.DeviceProxy = ""
         self.nexthop_ipv6_ll = ""
+        self.uuid = ""
         self.ve_num = ""
 
         for keys, value in kwargs.items():

@@ -33,7 +33,7 @@ class NameCfg(A10BaseClass):
 
     :param vrid_value: {"description": "Specify ha VRRP-A vrid", "minimum": 0, "type": "number", "maximum": 7, "format": "number"}
     :param vrid: {"default": 0, "type": "number", "description": "VRRP-A id", "format": "flag"}
-    :param name: {"description": "Partition name", "format": "string", "minLength": 1, "maxLength": 14, "not": "shared", "type": "string"}
+    :param name: {"description": "Partition name", "format": "string", "minLength": 1, "maxLength": 14, "not": "shared", "type": "string", "$ref": "/axapi/v3/partition"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -86,6 +86,7 @@ class VridLead(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param vrid_lead_str: {"description": "VRRP-A VRID leader name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -106,6 +107,7 @@ class VridLead(A10BaseClass):
         self.DeviceProxy = ""
         self.vrid_lead_str = ""
         self.partition = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

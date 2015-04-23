@@ -10,6 +10,7 @@ class Tunnel(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ifnum: {"description": "Tunnel interface number", "format": "number", "type": "number", "maximum": 128, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -30,6 +31,7 @@ class Tunnel(A10BaseClass):
         self.DeviceProxy = ""
         self.ip = {}
         self.ifnum = ""
+        self.uuid = ""
         self.ipv6 = {}
 
         for keys, value in kwargs.items():

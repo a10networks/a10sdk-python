@@ -35,6 +35,7 @@ class Authorization(A10BaseClass):
 
     :param debug: {"description": "Specify the debug level for authorization (Debug level for command authorization. bitwise OR of the following: 1(common), 2(packet),4(packet detail), 8(md5))", "format": "number", "type": "number", "maximum": 15, "minimum": 1, "optional": true}
     :param commands: {"description": "Commands level for authorization", "format": "number", "type": "number", "maximum": 15, "minimum": 0, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -55,6 +56,7 @@ class Authorization(A10BaseClass):
         self.debug = ""
         self.commands = ""
         self.method = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

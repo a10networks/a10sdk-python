@@ -12,6 +12,7 @@ class View(A10BaseClass):
     :param mask: {"description": "Hex octets, separated by '.', mask of oid", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "not": "type", "type": "string"}
     :param oid: {"description": "MIB view family name or oid", "format": "string", "minLength": 1, "optional": false, "maxLength": 31, "type": "string"}
     :param type: {"description": "'included': MIB family is included in the view; 'excluded': MIB family is excluded from the view; ", "format": "enum", "type": "string", "enum": ["included", "excluded"], "not": "mask", "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param viewname: {"description": "Name of the view", "format": "string", "minLength": 1, "optional": false, "maxLength": 31, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -34,6 +35,7 @@ class View(A10BaseClass):
         self.mask = ""
         self.oid = ""
         self.A10WW_type = ""
+        self.uuid = ""
         self.viewname = ""
 
         for keys, value in kwargs.items():

@@ -51,16 +51,40 @@ class Logging(A10BaseClass):
             setattr(self,keys, value)
 
 
+class SamplingEnable(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param counters1: {"enum": ["all", "entry_added", "entry_deleted", "entry_added_to_hw", "entry_removed_from_hw", "hw_out_of_entries", "entry_match_drop", "entry_match_drop_hw", "entry_list_alloc", "entry_list_free", "entry_list_alloc_failure", "ip_node_alloc", "ip_node_free", "ip_node_alloc_failure", "ip_port_block_alloc", "ip_port_block_free", "ip_port_block_alloc_failure", "ip_other_block_alloc", "ip_other_block_free", "ip_other_block_alloc_failure", "entry_added_shadow", "entry_invalidated"], "type": "string", "description": "'all': all; 'entry_added': entry_added; 'entry_deleted': entry_deleted; 'entry_added_to_hw': entry_added_to_hw; 'entry_removed_from_hw': entry_removed_from_hw; 'hw_out_of_entries': hw_out_of_entries; 'entry_match_drop': entry_match_drop; 'entry_match_drop_hw': entry_match_drop_hw; 'entry_list_alloc': entry_list_alloc; 'entry_list_free': entry_list_free; 'entry_list_alloc_failure': entry_list_alloc_failure; 'ip_node_alloc': ip_node_alloc; 'ip_node_free': ip_node_free; 'ip_node_alloc_failure': ip_node_alloc_failure; 'ip_port_block_alloc': ip_port_block_alloc; 'ip_port_block_free': ip_port_block_free; 'ip_port_block_alloc_failure': ip_port_block_alloc_failure; 'ip_other_block_alloc': ip_other_block_alloc; 'ip_other_block_free': ip_other_block_free; 'ip_other_block_alloc_failure': ip_other_block_alloc_failure; 'entry_added_shadow': entry_added_shadow; 'entry_invalidated': entry_invalidated; ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "sampling-enable"
+        self.DeviceProxy = ""
+        self.counters1 = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class DdosProtection(A10BaseClass):
     
-    """Class Description::
+    """    :param toggle: {"description": "'enable': Enable CGNV6 NAT pool DDoS protection (default); 'disable': Disable CGNV6 NAT pool DDoS protection; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param sampling_enable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "entry_added", "entry_deleted", "entry_added_to_hw", "entry_removed_from_hw", "hw_out_of_entries", "entry_match_drop", "entry_match_drop_hw", "entry_list_alloc", "entry_list_free", "entry_list_alloc_failure", "ip_node_alloc", "ip_node_free", "ip_node_alloc_failure", "ip_port_block_alloc", "ip_port_block_free", "ip_port_block_alloc_failure", "ip_other_block_alloc", "ip_other_block_free", "ip_other_block_alloc_failure", "entry_added_shadow", "entry_invalidated"], "type": "string", "description": "'all': all; 'entry_added': entry_added; 'entry_deleted': entry_deleted; 'entry_added_to_hw': entry_added_to_hw; 'entry_removed_from_hw': entry_removed_from_hw; 'hw_out_of_entries': hw_out_of_entries; 'entry_match_drop': entry_match_drop; 'entry_match_drop_hw': entry_match_drop_hw; 'entry_list_alloc': entry_list_alloc; 'entry_list_free': entry_list_free; 'entry_list_alloc_failure': entry_list_alloc_failure; 'ip_node_alloc': ip_node_alloc; 'ip_node_free': ip_node_free; 'ip_node_alloc_failure': ip_node_alloc_failure; 'ip_port_block_alloc': ip_port_block_alloc; 'ip_port_block_free': ip_port_block_free; 'ip_port_block_alloc_failure': ip_port_block_alloc_failure; 'ip_other_block_alloc': ip_other_block_alloc; 'ip_other_block_free': ip_other_block_free; 'ip_other_block_alloc_failure': ip_other_block_alloc_failure; 'entry_added_shadow': entry_added_shadow; 'entry_invalidated': entry_invalidated; ", "format": "enum"}}}]}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Configure CGNV6 DDoS Protection.
 
     Class ddos-protection supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param toggle: {"description": "'enable': Enable CGNV6 NAT pool DDoS protection (default); 'disable': Disable CGNV6 NAT pool DDoS protection; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable"], "optional": true}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -80,6 +104,8 @@ class DdosProtection(A10BaseClass):
         self.packets_per_second = {}
         self.toggle = ""
         self.logging = {}
+        self.uuid = ""
+        self.sampling_enable = []
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

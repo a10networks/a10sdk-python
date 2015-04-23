@@ -79,6 +79,7 @@ class Dns(A10BaseClass):
     :param dns_domain: {"description": "Specify fully qualified domain name of the host", "format": "string", "minLength": 1, "optional": true, "maxLength": 255, "not": "dns-ip-key", "type": "string"}
     :param dns_domain_recurse: {"description": "'enabled': Set the recursion bit; 'disabled': Clear the recursion bit; ", "format": "enum", "default": "enabled", "type": "string", "enum": ["enabled", "disabled"], "optional": true}
     :param dns_ipv4_recurse: {"description": "'enabled': Set the recursion bit; 'disabled': Clear the recursion bit; ", "format": "enum", "default": "enabled", "type": "string", "enum": ["enabled", "disabled"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param dns_ipv6_port: {"description": "Specify DNS port, default is 53 (DNS Port(default 53))", "format": "number", "default": 53, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
     :param dns_ipv4_port: {"description": "Specify DNS port, default is 53 (DNS Port(default 53))", "format": "number", "default": 53, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
     :param dns_domain_port: {"description": "Specify DNS port, default is 53 (DNS Port(default 53))", "format": "number", "default": 53, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
@@ -111,6 +112,7 @@ class Dns(A10BaseClass):
         self.dns_domain = ""
         self.dns_domain_recurse = ""
         self.dns_ipv4_recurse = ""
+        self.uuid = ""
         self.dns_ipv6_port = ""
         self.dns_domain_expect = {}
         self.dns_ipv4_port = ""

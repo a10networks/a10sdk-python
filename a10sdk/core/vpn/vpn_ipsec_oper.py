@@ -5,19 +5,19 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param Hash_Algorithm: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Protocol: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Hash_Algorithm: {"type": "string", "format": "string"}
+    :param Protocol: {"type": "string", "format": "string"}
     :param DH_Group: {"type": "number", "format": "number"}
-    :param Peer_IP: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Local_IP: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Anti_Replay: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Lifebytes: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Peer_IP: {"type": "string", "format": "string"}
+    :param Local_IP: {"type": "string", "format": "string"}
+    :param Anti_Replay: {"type": "string", "format": "string"}
+    :param Lifebytes: {"type": "string", "format": "string"}
     :param NAT_Traversal: {"type": "number", "format": "number"}
     :param SA_Index: {"type": "number", "format": "number"}
-    :param Remote_SPI: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Mode: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Encryption_Algorithm: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Local_SPI: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Remote_SPI: {"type": "string", "format": "string"}
+    :param Mode: {"type": "string", "format": "string"}
+    :param Encryption_Algorithm: {"type": "string", "format": "string"}
+    :param Local_SPI: {"type": "string", "format": "string"}
     :param Lifetime: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

@@ -7,6 +7,7 @@ class Ddos(A10BaseClass):
 
     :param outside: {"default": 0, "type": "number", "description": "DDoS outside (untrusted) interface", "format": "flag"}
     :param inside: {"default": 0, "type": "number", "description": "DDoS inside (trusted) interface", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -20,6 +21,7 @@ class Ddos(A10BaseClass):
         self.DeviceProxy = ""
         self.outside = ""
         self.inside = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -44,6 +46,28 @@ class AccessList(A10BaseClass):
         self.DeviceProxy = ""
         self.acl_name = ""
         self.acl_id = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
+class SamplingEnable(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param counters1: {"enum": ["all", "packets_input", "bytes_input", "received_broadcasts", "received_multicasts", "received_unicasts", "input_errors", "crc", "frame", "runts", "giants", "packets_output", "bytes_output", "transmitted_broadcasts", "transmitted_multicasts", "transmitted_unicasts", "output_errors", "collisions"], "type": "string", "description": "'all': all; 'packets_input': Input packets; 'bytes_input': Input bytes; 'received_broadcasts': Received broadcasts; 'received_multicasts': Received multicasts; 'received_unicasts': Received unicasts; 'input_errors': Input errors; 'crc': CRC; 'frame': Frames; 'runts': Runts; 'giants': Giants; 'packets_output': Output packets; 'bytes_output': Output bytes; 'transmitted_broadcasts': Transmitted braodcasts; 'transmitted_multicasts': Transmitted multicasts; 'transmitted_unicasts': Transmitted unicasts; 'output_errors': Output errors; 'collisions': Collisions; ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "sampling-enable"
+        self.DeviceProxy = ""
+        self.counters1 = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -79,9 +103,9 @@ class MonitorList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param monitor_vlan: {"description": "VLAN number", "format": "number", "maximum": 4094, "minimum": 2, "type": "number", "plat-neg-list": ["non-fpga"]}
+    :param monitor_vlan: {"description": "VLAN number", "format": "number", "maximum": 4094, "minimum": 2, "type": "number", "plat-neg-list": ["non-fpga", "pure-fpga"]}
     :param monitor: {"description": "'input': Incoming packets; 'output': Outgoing packets; 'both': Both incoming and outgoing packets; ", "partition-visibility": "shared", "format": "enum", "enum": ["input", "output", "both"], "type": "string", "plat-neg-list": ["soft-ax"]}
-    :param mirror_index: {"description": "Mirror index", "format": "number", "maximum": 4, "minimum": 1, "type": "number", "plat-neg-list": ["soft-ax"], "$ref": "/axapi/v3/mirror-port"}
+    :param mirror_index: {"description": "Mirror index", "partition-visibility": "shared", "format": "number", "maximum": 4, "minimum": 1, "type": "number", "plat-neg-list": ["soft-ax"], "$ref": "/axapi/v3/mirror-port"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -129,28 +153,30 @@ class IcmpRateLimit(A10BaseClass):
 
 class Ethernet(A10BaseClass):
     
-    """Class Description::
-    Ethernet interface.
-
-    Class ethernet supports CRUD Operations and inherits from `common/A10BaseClass`.
-    This class is the `"PARENT"` class for this module.`
-
-    :param trap_source: {"default": 0, "optional": true, "type": "number", "description": "The trap source", "format": "flag"}
+    """    :param trap_source: {"description": "The trap source", "partition-visibility": "shared", "default": 0, "type": "number", "format": "flag", "optional": true}
     :param speed: {"description": "'10': 10; '100': 100; '1000': 1000; 'auto': auto; ", "format": "enum", "default": "auto", "optional": true, "enum": ["10", "100", "1000", "auto"], "type": "string", "plat-neg-list": ["soft-ax"]}
-    :param media_type_copper: {"description": "Set the media type to copper", "format": "flag", "default": 0, "type": "number", "optional": true, "plat-neg-list": ["non-fpga", "soft-ax"]}
-    :param remove_vlan_tag: {"description": "Remove the vlan tag for egressing packets", "format": "flag", "default": 0, "type": "number", "optional": true, "plat-neg-list": ["non-fpga", "soft-ax"]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param media_type_copper: {"description": "Set the media type to copper", "format": "flag", "default": 0, "type": "number", "optional": true, "plat-neg-list": ["non-fpga", "soft-ax", "pure-fpga"]}
+    :param sampling_enable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "packets_input", "bytes_input", "received_broadcasts", "received_multicasts", "received_unicasts", "input_errors", "crc", "frame", "runts", "giants", "packets_output", "bytes_output", "transmitted_broadcasts", "transmitted_multicasts", "transmitted_unicasts", "output_errors", "collisions"], "type": "string", "description": "'all': all; 'packets_input': Input packets; 'bytes_input': Input bytes; 'received_broadcasts': Received broadcasts; 'received_multicasts': Received multicasts; 'received_unicasts': Received unicasts; 'input_errors': Input errors; 'crc': CRC; 'frame': Frames; 'runts': Runts; 'giants': Giants; 'packets_output': Output packets; 'bytes_output': Output bytes; 'transmitted_broadcasts': Transmitted braodcasts; 'transmitted_multicasts': Transmitted multicasts; 'transmitted_unicasts': Transmitted unicasts; 'output_errors': Output errors; 'collisions': Collisions; ", "format": "enum"}}}]}
+    :param remove_vlan_tag: {"description": "Remove the vlan tag for egressing packets", "format": "flag", "default": 0, "type": "number", "optional": true, "plat-neg-list": ["non-fpga", "soft-ax", "pure-fpga"]}
     :param load_interval: {"description": "Configure Load Interval (Seconds (5-300, Multiple of 5), default 300)", "format": "number", "default": 300, "optional": true, "maximum": 300, "minimum": 5, "type": "number"}
-    :param cpu_process: {"description": "All Packets to this port are processed by CPU", "format": "flag", "default": 0, "type": "number", "optional": true, "plat-neg-list": ["non-fpga", "soft-ax"]}
-    :param trunk_group_list: {"minItems": 1, "items": {"type": "trunk-group"}, "uniqueItems": true, "array": [{"required": ["trunk-number"], "properties": {"trunk-number": {"description": "Trunk Number", "format": "number", "type": "number", "maximum": 16, "minimum": 1, "optional": false}, "udld-timeout-cfg": {"type": "object", "properties": {"slow": {"description": "slow timeout in unit of seconds", "format": "number", "default": 1, "maximum": 60, "minimum": 1, "not": "fast", "type": "number"}, "fast": {"description": "fast timeout in unit of milli-seconds", "format": "number", "default": 1000, "maximum": 1000, "minimum": 100, "not": "slow", "type": "number"}}}, "mode": {"description": "'active': enable initiation of LACP negotiation on a port(default); 'passive': disable initiation of LACP negotiation on a port; ", "format": "enum", "default": "active", "type": "string", "enum": ["active", "passive"], "optional": true}, "timeout": {"description": "'long': Set LACP long timeout (default); 'short': Set LACP short timeout; ", "format": "enum", "default": "long", "type": "string", "enum": ["long", "short"], "optional": true}, "type": {"description": "'static': Static (default); 'lacp': lacp; 'lacp-udld': lacp-udld; ", "format": "enum", "default": "static", "optional": true, "enum": ["static", "lacp", "lacp-udld"], "modify-not-allowed": 1, "type": "string"}, "admin-key": {"description": "LACP admin key (Admin key value)", "format": "number", "type": "number", "maximum": 65535, "minimum": 10000, "optional": true}, "port-priority": {"description": "Set LACP priority for a port (LACP port priority)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}}}], "type": "array", "$ref": "/axapi/v3/interface/ethernet/{ifnum}/trunk-group/{trunk-number}"}
+    :param cpu_process: {"description": "All Packets to this port are processed by CPU", "format": "flag", "default": 0, "type": "number", "optional": true, "plat-neg-list": ["non-fpga", "soft-ax", "pure-fpga"]}
+    :param trunk_group_list: {"minItems": 1, "items": {"type": "trunk-group"}, "uniqueItems": true, "array": [{"required": ["trunk-number"], "properties": {"uuid": {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}, "trunk-number": {"description": "Trunk Number", "format": "number", "type": "number", "maximum": 16, "minimum": 1, "optional": false}, "udld-timeout-cfg": {"type": "object", "properties": {"slow": {"description": "slow timeout in unit of seconds", "format": "number", "default": 1, "maximum": 60, "minimum": 1, "not": "fast", "type": "number"}, "fast": {"description": "fast timeout in unit of milli-seconds", "format": "number", "default": 1000, "maximum": 1000, "minimum": 100, "not": "slow", "type": "number"}}}, "mode": {"description": "'active': enable initiation of LACP negotiation on a port(default); 'passive': disable initiation of LACP negotiation on a port; ", "format": "enum", "default": "active", "type": "string", "enum": ["active", "passive"], "optional": true}, "timeout": {"description": "'long': Set LACP long timeout (default); 'short': Set LACP short timeout; ", "format": "enum", "default": "long", "type": "string", "enum": ["long", "short"], "optional": true}, "type": {"description": "'static': Static (default); 'lacp': lacp; 'lacp-udld': lacp-udld; ", "format": "enum", "default": "static", "optional": true, "enum": ["static", "lacp", "lacp-udld"], "modify-not-allowed": 1, "type": "string"}, "admin-key": {"description": "LACP admin key (Admin key value)", "format": "number", "type": "number", "maximum": 65535, "minimum": 10000, "optional": true}, "port-priority": {"description": "Set LACP priority for a port (LACP port priority)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}}}], "type": "array", "$ref": "/axapi/v3/interface/ethernet/{ifnum}/trunk-group/{trunk-number}"}
     :param l3_vlan_fwd_disable: {"default": 0, "optional": true, "type": "number", "format": "flag"}
     :param name: {"description": "Name for the interface", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 32, "type": "string"}
     :param duplexity: {"description": "'Full': Full; 'Half': Half; 'auto': auto; ", "format": "enum", "default": "auto", "optional": true, "enum": ["Full", "Half", "auto"], "type": "string", "plat-neg-list": ["soft-ax"]}
     :param mtu: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Interface mtu (Interface MTU, default 1500 (min MTU is 1280 for IPv6))", "format": "number", "optional": true, "type": "number"}
     :param ifnum: {"optional": false, "type": "number", "description": "Ethernet interface number", "format": "interface"}
-    :param monitor_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "monitor-vlan": {"description": "VLAN number", "format": "number", "maximum": 4094, "minimum": 2, "type": "number", "plat-neg-list": ["non-fpga"]}, "monitor": {"description": "'input': Incoming packets; 'output': Outgoing packets; 'both': Both incoming and outgoing packets; ", "partition-visibility": "shared", "format": "enum", "enum": ["input", "output", "both"], "type": "string", "plat-neg-list": ["soft-ax"]}, "mirror-index": {"description": "Mirror index", "format": "number", "maximum": 4, "minimum": 1, "type": "number", "plat-neg-list": ["soft-ax"], "$ref": "/axapi/v3/mirror-port"}}}]}
+    :param monitor_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "monitor-vlan": {"description": "VLAN number", "format": "number", "maximum": 4094, "minimum": 2, "type": "number", "plat-neg-list": ["non-fpga", "pure-fpga"]}, "monitor": {"description": "'input': Incoming packets; 'output': Outgoing packets; 'both': Both incoming and outgoing packets; ", "partition-visibility": "shared", "format": "enum", "enum": ["input", "output", "both"], "type": "string", "plat-neg-list": ["soft-ax"]}, "mirror-index": {"description": "Mirror index", "partition-visibility": "shared", "format": "number", "maximum": 4, "minimum": 1, "type": "number", "plat-neg-list": ["soft-ax"], "$ref": "/axapi/v3/mirror-port"}}}]}
     :param action: {"description": "'enable': Enable; 'disable': Disable; ", "format": "enum", "default": "disable", "type": "string", "enum": ["enable", "disable"], "optional": true}
     :param flow_control: {"description": "Enable 802.3x flow control on full duplex port", "format": "flag", "default": 0, "type": "number", "optional": true, "plat-neg-list": ["soft-ax"]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    Ethernet interface.
+
+    Class ethernet supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
 
     
 
@@ -174,8 +200,10 @@ class Ethernet(A10BaseClass):
         self.access_list = {}
         self.speed = ""
         self.lldp = {}
+        self.uuid = ""
         self.bfd = {}
         self.media_type_copper = ""
+        self.sampling_enable = []
         self.remove_vlan_tag = ""
         self.load_interval = ""
         self.cpu_process = ""

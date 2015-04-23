@@ -5,7 +5,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param last_server: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param last_server: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

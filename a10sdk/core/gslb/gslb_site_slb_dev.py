@@ -10,6 +10,7 @@ class SlbDev(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param client_ip: {"optional": true, "type": "string", "description": "Specify client IP address", "format": "ipv4-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param device_name: {"description": "Specify SLB device name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param proto_aging_fast: {"default": 1, "optional": true, "type": "number", "description": "Fast GSLB Protocol aging", "format": "flag"}
     :param proto_compatible: {"default": 0, "optional": true, "type": "number", "description": "Run GSLB Protocol in compatible mode", "format": "flag"}
@@ -41,6 +42,7 @@ class SlbDev(A10BaseClass):
         self.a10_url="/axapi/v3/gslb/site/{site_name}/slb-dev/{device_name}"
         self.DeviceProxy = ""
         self.client_ip = ""
+        self.uuid = ""
         self.vip_server = {}
         self.device_name = ""
         self.proto_aging_fast = ""

@@ -1,38 +1,6 @@
 from a10sdk.common.A10BaseClass import A10BaseClass
 
 
-class Distance(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param ext_routes_dist: {"description": "Distance for routes external to the AS", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
-    :param src_prefix: {"type": "string", "description": "IP source prefix", "format": "ipv4-cidr"}
-    :param int_routes_dist: {"description": "Distance for routes internal to the AS", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
-    :param acl_str: {"minLength": 1, "maxLength": 128, "type": "string", "description": "Access list name", "format": "string"}
-    :param admin_distance: {"description": "Define an administrative distance", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
-    :param local_routes_dist: {"description": "Distance for local routes", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "distance"
-        self.DeviceProxy = ""
-        self.ext_routes_dist = ""
-        self.src_prefix = ""
-        self.int_routes_dist = ""
-        self.acl_str = ""
-        self.admin_distance = ""
-        self.local_routes_dist = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
 class AggregateAddressList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -187,6 +155,38 @@ class Timers(A10BaseClass):
             setattr(self,keys, value)
 
 
+class DistanceList(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param ext_routes_dist: {"description": "Distance for routes external to the AS", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
+    :param src_prefix: {"type": "string", "description": "IP source prefix", "format": "ipv4-cidr"}
+    :param int_routes_dist: {"description": "Distance for routes internal to the AS", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
+    :param acl_str: {"minLength": 1, "maxLength": 128, "type": "string", "description": "Access list name", "format": "string"}
+    :param admin_distance: {"description": "Define an administrative distance", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
+    :param local_routes_dist: {"description": "Distance for local routes", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "distance-list"
+        self.DeviceProxy = ""
+        self.ext_routes_dist = ""
+        self.src_prefix = ""
+        self.int_routes_dist = ""
+        self.acl_str = ""
+        self.admin_distance = ""
+        self.local_routes_dist = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class Bgp(A10BaseClass):
     
     """Class Description::
@@ -195,12 +195,14 @@ class Bgp(A10BaseClass):
     Class bgp supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param originate: {"default": 0, "optional": true, "type": "number", "description": "Distribute a default route", "format": "flag"}
-    :param aggregate_address_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"as-set": {"default": 0, "type": "number", "description": "Generate AS set path information", "format": "flag"}, "summary-only": {"default": 0, "type": "number", "description": "Filter more specific routes from updates", "format": "flag"}, "optional": true, "aggregate-address": {"type": "string", "description": "Configure BGP aggregate entries (Aggregate prefix)", "format": "ipv4-cidr"}}}]}
     :param as_number: {"description": "AS number", "format": "number", "type": "number", "maximum": 4294967295, "minimum": 1, "optional": false}
+    :param aggregate_address_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"as-set": {"default": 0, "type": "number", "description": "Generate AS set path information", "format": "flag"}, "summary-only": {"default": 0, "type": "number", "description": "Filter more specific routes from updates", "format": "flag"}, "optional": true, "aggregate-address": {"type": "string", "description": "Configure BGP aggregate entries (Aggregate prefix)", "format": "ipv4-cidr"}}}]}
+    :param originate: {"default": 0, "optional": true, "type": "number", "description": "Distribute a default route", "format": "flag"}
     :param auto_summary: {"default": 0, "optional": true, "type": "number", "description": "Enable automatic network number summarization", "format": "flag"}
-    :param maximum_paths_value: {"description": "Supported BGP multipath numbers", "format": "number", "default": 1, "optional": true, "maximum": 10, "minimum": 1, "type": "number"}
+    :param maximum_paths_value: {"description": "Supported BGP multipath numbers", "format": "number", "default": 1, "optional": true, "maximum": 64, "minimum": 1, "type": "number"}
     :param synchronization: {"default": 0, "optional": true, "type": "number", "description": "Perform IGP synchronization", "format": "flag"}
+    :param distance_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "ext-routes-dist": {"description": "Distance for routes external to the AS", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "src-prefix": {"type": "string", "description": "IP source prefix", "format": "ipv4-cidr"}, "int-routes-dist": {"description": "Distance for routes internal to the AS", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "acl-str": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Access list name", "format": "string"}, "admin-distance": {"description": "Define an administrative distance", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "local-routes-dist": {"description": "Distance for local routes", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -219,19 +221,20 @@ class Bgp(A10BaseClass):
         self.b_key = "bgp"
         self.a10_url="/axapi/v3/router/bgp/{as_number}"
         self.DeviceProxy = ""
-        self.distance = {}
         self.redistribute = {}
-        self.originate = ""
-        self.aggregate_address_list = []
         self.as_number = ""
+        self.aggregate_address_list = []
+        self.originate = ""
         self.auto_summary = ""
         self.bgp = {}
+        self.network = {}
         self.maximum_paths_value = ""
         self.synchronization = ""
         self.timers = {}
         self.neighbor = {}
+        self.distance_list = []
         self.address_family = {}
-        self.network = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

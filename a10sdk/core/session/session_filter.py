@@ -45,6 +45,7 @@ class SessionFilter(A10BaseClass):
 
     :param set: {"default": 0, "optional": true, "type": "number", "description": "Set filter criteria", "format": "flag"}
     :param name: {"description": "Session filter name", "format": "string", "minLength": 1, "optional": false, "maxLength": 31, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -66,6 +67,7 @@ class SessionFilter(A10BaseClass):
         self.filter_cfg = {}
         self.A10WW_set = ""
         self.name = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

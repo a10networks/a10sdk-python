@@ -8,8 +8,8 @@ class Geofiles(A10BaseClass):
     :param success: {"type": "number", "format": "number"}
     :param error_warning: {"type": "number", "format": "number"}
     :param lines: {"type": "number", "format": "number"}
-    :param filename: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param template: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param filename: {"type": "string", "format": "string"}
+    :param template: {"type": "string", "format": "string"}
     :param percentage_loaded: {"type": "number", "format": "number"}
     :param type: {"enum": ["template", "builtin"], "type": "string", "format": "enum"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -39,7 +39,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param geofiles: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"success": {"type": "number", "format": "number"}, "error-warning": {"type": "number", "format": "number"}, "lines": {"type": "number", "format": "number"}, "filename": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "template": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "percentage-loaded": {"type": "number", "format": "number"}, "type": {"enum": ["template", "builtin"], "type": "string", "format": "enum"}}}]}
+    :param geofiles: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"success": {"type": "number", "format": "number"}, "error-warning": {"type": "number", "format": "number"}, "lines": {"type": "number", "format": "number"}, "filename": {"type": "string", "format": "string"}, "optional": true, "template": {"type": "string", "format": "string"}, "percentage-loaded": {"type": "number", "format": "number"}, "type": {"enum": ["template", "builtin"], "type": "string", "format": "enum"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

@@ -10,6 +10,7 @@ class Global(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param disable_auto_adjust: {"default": 0, "optional": true, "type": "number", "description": "Disable the Health Check Rate Auto Adjustment", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param external_rate: {"description": "Define the External Health Check Rate (Number of External Script Programs (default 2))", "format": "number", "default": 2, "optional": true, "maximum": 999, "minimum": 1, "type": "number"}
     :param multi_process: {"description": "Start Health Monitoring in Multi-Process Mode (Specify the number of multiple processes (default 1))", "format": "number", "default": 1, "optional": true, "maximum": 20, "minimum": 1, "type": "number"}
     :param interval: {"description": "Specify the Healthcheck Interval (Interval Value, in seconds (default 5))", "format": "number", "default": 5, "optional": true, "maximum": 180, "minimum": 1, "type": "number"}
@@ -36,6 +37,7 @@ class Global(A10BaseClass):
         self.a10_url="/axapi/v3/health/global"
         self.DeviceProxy = ""
         self.disable_auto_adjust = ""
+        self.uuid = ""
         self.external_rate = ""
         self.multi_process = ""
         self.interval = ""

@@ -10,6 +10,7 @@ class Log(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param log_buffer: {"default": 1, "optional": true, "type": "number", "description": "Logging goes to log-buffer", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class Log(A10BaseClass):
         self.a10_url="/axapi/v3/router/log"
         self.DeviceProxy = ""
         self.log_buffer = ""
+        self.uuid = ""
         self.A10WW_file = {}
 
         for keys, value in kwargs.items():

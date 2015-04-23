@@ -37,7 +37,8 @@ class LdapHostname(A10BaseClass):
 
     :param cn_value: {"description": "LDAP common name identifier (i.e.: cn, uid)", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param hostname: {"description": "Hostname of LDAP server", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
-    :param dn_value: {"description": "LDAP distinguished name (dn)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param dn_value: {"description": "LDAP distinguished name (dn)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -60,6 +61,7 @@ class LdapHostname(A10BaseClass):
         self.cn_value = ""
         self.hostname = ""
         self.dn_value = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

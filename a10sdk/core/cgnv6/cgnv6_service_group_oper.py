@@ -5,7 +5,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param state: {"enum": ["All-Up", "Functional-Up", "Partial-Up", "Down", "Disabled", "Unknown"], "type": "string", "format": "enum"}
+    :param state: {"enum": ["All Up", "Functional Up", "Partial Up", "Down", "Disabled", "Unknown"], "type": "string", "format": "enum"}
     :param servers_down: {"type": "number", "format": "number"}
     :param servers_up: {"type": "number", "format": "number"}
     :param servers_disable: {"type": "number", "format": "number"}

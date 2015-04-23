@@ -12,6 +12,7 @@ class Hostname(A10BaseClass):
     :param action: {"description": "'enable': Enable this NTP server; 'disable': Disable this NTP server; ", "format": "enum", "default": "enable", "type": "string", "enum": ["enable", "disable"], "optional": true}
     :param prefer: {"default": 0, "optional": true, "type": "number", "description": "Set this NTP server as preferred", "format": "flag"}
     :param host_servername: {"description": "IPV4 address, IPV6 address or host name of NTP server(string1~63)", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param key: {"description": "Use trusted key to authenticate this NTP server (The trusted key number to use)", "format": "number", "optional": true, "maximum": 65535, "minimum": 1, "type": "number", "$ref": "/axapi/v3/ntp/trusted-key"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -34,6 +35,7 @@ class Hostname(A10BaseClass):
         self.action = ""
         self.prefer = ""
         self.host_servername = ""
+        self.uuid = ""
         self.key = ""
 
         for keys, value in kwargs.items():

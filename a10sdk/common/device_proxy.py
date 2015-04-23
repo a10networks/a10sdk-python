@@ -8,9 +8,8 @@ import string
 import urllib
 import urlparse
 
-
 class DeviceProxy():
-    def __init__(self, host, port, username, password, use_https=True, keep_alive=False):
+    def __init__(self, host, port, username, password, use_https=True, keep_alive=False, forwarded_ip=""):
         self.username = username
         self.password = password
         self.host = host
@@ -19,6 +18,7 @@ class DeviceProxy():
         #self.lastResult = "No Data"
         self.keep_alive = keep_alive
         self.use_https = use_https
+        self.forwarded_ip = forwarded_ip
         self.logon()
 
     def get_connection(self):
@@ -28,19 +28,23 @@ class DeviceProxy():
             return httplib.HTTPConnection(self.host, port=self.port)
 
     def logon(self):
-        headers = {'Content-type': 'application/json'}
+        headers = {'Content-type': 'application/json', 'X-Forwarded-For':self.forwarded_ip}
         conn = self.get_connection()
         conn.request("POST", "/axapi/v3/auth",
                      json.dumps({'credentials': {"username": self.username, "password": self.password}}), headers)
         self.password = ''
+        self.error_msg = ''
         try:
             response = json.loads(conn.getresponse().read())
+            if "authorizationschema" in response:
+                self.error_msg = str(response['authorizationschema']['error'])
             if "authresponse" in response:
                 self.session_id = str(response['authresponse']['signature'])
-                self.headers = {'Content-type': 'application/json', 'Authorization': "A10 %s" % self.session_id}
+                self.headers = {'Content-type': 'application/json', 'Authorization': "A10 %s" % self.session_id, 'X-Forwarded-For':self.forwarded_ip}
             else:
                 self.session_id = "AUTHENTICATION FAILED"
-                self.headers = {'Content-type': 'application/json', 'Authorization': "A10 %s" % self.session_id}
+                self.error_msg = response['response']['err']['msg']
+                self.headers = {'Content-type': 'application/json', 'Authorization': "A10 %s" % self.session_id, 'X-Forwarded-For':self.forwarded_ip}
 
         except:
             return None
@@ -56,7 +60,7 @@ class DeviceProxy():
         response_payload = response.read()
         obj.__setattr__("DEBUG_Response", response_payload)
         obj.__setattr__("_HTTP_RESPONSE", response)
-        if response.status == 401:
+        if response.status == 401 or response_payload.find('Invalid admin session') > -1:
             if self.keep_alive:
                 self.logon()
                 if method == "GET":
@@ -89,7 +93,6 @@ class DeviceProxy():
         if query_params:
             obj.a10_url += '?' + urlparse.unquote(urllib.urlencode(query_params))
 
-        print "URL:", obj.a10_url
         conn = self.get_connection()
         conn.request("GET", obj.a10_url, "", self.headers)
         response = conn.getresponse()
@@ -112,7 +115,7 @@ class DeviceProxy():
         else:
             payload = obj.__json__(obj)
             if payload:
-                payload = json.dumps(payload)
+                payload = json.dumps(payload, ensure_ascii=False).encode('UTF-8')
 
         conn.request("POST", self.url_encoder(obj.a10_url), payload, self.headers)
         response = conn.getresponse()
@@ -132,7 +135,7 @@ class DeviceProxy():
         else:
             json_output = obj.__json__(obj)
             if json_output:
-                payload = json.dumps(obj.__json__(obj))
+                payload = json.dumps(obj.__json__(obj), ensure_ascii=False).encode('UTF-8')
             else:
                 payload = ''
         conn.request("PUT", self.url_encoder(obj.a10_url), payload, self.headers)
@@ -154,7 +157,7 @@ class DeviceProxy():
                 json_data.append(obj.__json__(obj).get(formatted_key))
         json_packet = {}
         json_packet[json_key] = json_data
-        payload = json.dumps(json_packet)
+        payload = json.dumps(json_packet, ensure_ascii=False).encode('UTF-8')
         conn = self.get_connection()
         conn.request("POST", self.url_encoder(caller.a10_url), payload, self.headers)
         response = conn.getresponse()
@@ -175,7 +178,7 @@ class DeviceProxy():
                 json_data.append(obj.__json__(obj).get(formatted_key))
         json_packet = {}
         json_packet[json_key] = json_data
-        payload = json.dumps(json_packet)
+        payload = json.dumps(json_packet, ensure_ascii=False).encode('UTF-8')
         conn = self.get_connection()
         conn.request("PUT", self.url_encoder(caller.a10_url), payload, self.headers)
         response = conn.getresponse()
@@ -188,8 +191,10 @@ class DeviceProxy():
         return self.request_handler("PUT", caller, response)
 
 
-    def DELETE(self, obj):
+    def DELETE(self, obj, query_params=None):
         obj.a10_url = self.url_encoder(obj.a10_url)
+        if query_params:
+            obj.a10_url += '?' + urlparse.unquote(urllib.urlencode(query_params))
         conn = self.get_connection()
         payload = None
         conn.request("DELETE", self.url_encoder(obj.a10_url), "", self.headers)
@@ -222,6 +227,7 @@ class DeviceProxy():
         conn.putheader('content-type', content_type)
         conn.putheader('Authorization', "A10 %s" % self.session_id)
         conn.putheader('content-length', str(len(body)))
+        conn.putheader('X-Forwarded-For', self.forwarded_ip)
         conn.endheaders()
         conn.send(body)
         response = conn.getresponse()

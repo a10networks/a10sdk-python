@@ -34,8 +34,9 @@ class Translation(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param tcp_timeout: {"description": "TCP protocol extended translations (Timeout in seconds (Interval of 60 seconds), default is 300 seconds (5 minutes))", "format": "number", "default": 300, "optional": true, "maximum": 15000, "minimum": 2, "type": "number"}
-    :param service_timeout_list: {"minItems": 1, "items": {"type": "service-timeout"}, "uniqueItems": true, "array": [{"required": ["service-type", "port"], "properties": {"timeout-val": {"description": "Timeout in seconds (Interval of 60 seconds)", "format": "number", "type": "number", "maximum": 15000, "minimum": 2, "optional": true}, "service-type": {"optional": false, "enum": ["tcp", "udp"], "type": "string", "description": "'tcp': TCP Protocol; 'udp': UDP Protocol; ", "format": "enum"}, "timeout-type": {"optional": true, "enum": ["age", "fast"], "type": "string", "description": "'age': Expiration time; 'fast': Use Fast aging; ", "format": "enum"}, "port": {"description": "Port Number", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}}}], "type": "array", "$ref": "/axapi/v3/ip/nat/translation/service-timeout/{service-type}+{port}"}
+    :param service_timeout_list: {"minItems": 1, "items": {"type": "service-timeout"}, "uniqueItems": true, "array": [{"required": ["service-type", "port"], "properties": {"timeout-val": {"description": "Timeout in seconds (Interval of 60 seconds)", "format": "number", "type": "number", "maximum": 15000, "minimum": 2, "optional": true}, "service-type": {"optional": false, "enum": ["tcp", "udp"], "type": "string", "description": "'tcp': TCP Protocol; 'udp': UDP Protocol; ", "format": "enum"}, "timeout-type": {"optional": true, "enum": ["age", "fast"], "type": "string", "description": "'age': Expiration time; 'fast': Use Fast aging; ", "format": "enum"}, "port": {"description": "Port Number", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}, "uuid": {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}}}], "type": "array", "$ref": "/axapi/v3/ip/nat/translation/service-timeout/{service-type}+{port}"}
     :param udp_timeout: {"description": "UDP protocol extended translations (Timeout in seconds (Interval of 60 seconds), default is 300 seconds (5 minutes))", "format": "number", "default": 300, "optional": true, "maximum": 15000, "minimum": 2, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -57,6 +58,7 @@ class Translation(A10BaseClass):
         self.service_timeout_list = []
         self.udp_timeout = ""
         self.icmp_timeout = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

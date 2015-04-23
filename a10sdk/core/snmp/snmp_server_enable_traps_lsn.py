@@ -12,6 +12,7 @@ class Lsn(A10BaseClass):
     :param all: {"default": 0, "optional": true, "type": "number", "description": "Enable all system group traps", "format": "flag"}
     :param traffic_exceeded: {"default": 0, "optional": true, "type": "number", "description": "Enable LSN trap when NAT pool reaches the threshold", "format": "flag"}
     :param per_ip_port_usage_threshold: {"default": 0, "optional": true, "type": "number", "description": "Enable LSN trap when IP total port usage reaches the threshold (default 64512)", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param total_port_usage_threshold: {"default": 0, "optional": true, "type": "number", "description": "Enable LSN trap when NAT total port usage reaches the threshold (default 655350000)", "format": "flag"}
     :param max_port_threshold: {"description": "Maximum threshold", "format": "number", "default": 655350000, "optional": true, "maximum": 655355000, "minimum": 10000, "type": "number"}
     :param max_ipport_threshold: {"description": "Maximum threshold", "format": "number", "default": 64512, "optional": true, "maximum": 64512, "minimum": 10000, "type": "number"}
@@ -35,6 +36,7 @@ class Lsn(A10BaseClass):
         self.A10WW_all = ""
         self.traffic_exceeded = ""
         self.per_ip_port_usage_threshold = ""
+        self.uuid = ""
         self.total_port_usage_threshold = ""
         self.max_port_threshold = ""
         self.max_ipport_threshold = ""

@@ -105,6 +105,7 @@ class Vlan(A10BaseClass):
     Class vlan supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ve: {"description": "ve number", "format": "number", "type": "number", "maximum": 4094, "minimum": 2, "optional": true}
     :param untagged_trunk_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"untagged-trunk-start": {"type": "number", "description": "Trunk groups", "format": "number"}, "optional": true, "untagged-trunk-end": {"type": "number", "description": "Trunk Group", "format": "number"}}}]}
     :param untagged_lif: {"description": "Logical tunnel interface (Logical tunnel interface number)", "format": "number", "type": "number", "maximum": 128, "minimum": 1, "optional": true}
@@ -131,6 +132,7 @@ class Vlan(A10BaseClass):
         self.b_key = "vlan"
         self.a10_url="/axapi/v3/network/vlan/{vlan_num}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.ve = ""
         self.untagged_trunk_list = []
         self.untagged_lif = ""

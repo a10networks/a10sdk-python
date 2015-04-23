@@ -12,6 +12,7 @@ class User(A10BaseClass):
     :param username: {"description": "Name of the user", "format": "string", "minLength": 1, "optional": false, "maxLength": 31, "type": "string"}
     :param auth_val: {"optional": true, "enum": ["md5", "sha"], "type": "string", "description": "'md5': Use HMAC MD5 algorithm for authentication; 'sha': Use HMAC SHA algorithm for authentication; ", "format": "enum"}
     :param group: {"description": "Group to which the user belongs", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param encpasswd: {"description": "Passphrase for encryption", "format": "password", "minLength": 8, "optional": true, "maxLength": 31, "type": "string"}
     :param passwd: {"description": "Password of this user", "format": "password", "minLength": 8, "optional": true, "maxLength": 31, "type": "string"}
     :param priv_pw_encrypted: {"optional": true, "type": "encrypted", "description": "Do NOT use this option manually. (This is an A10 reserved keyword.) (The ENCRYPTED passphrase string)", "format": "encrypted"}
@@ -39,6 +40,7 @@ class User(A10BaseClass):
         self.username = ""
         self.auth_val = ""
         self.group = ""
+        self.uuid = ""
         self.encpasswd = ""
         self.passwd = ""
         self.priv_pw_encrypted = ""

@@ -12,6 +12,7 @@ class Outbound(A10BaseClass):
     :param count: {"description": "Configure number of ICMP messages sent when DF set. Default is 1", "format": "number", "default": 1, "optional": true, "maximum": 5, "minimum": 1, "type": "number"}
     :param action: {"description": "'drop': Drop Silently; 'ipv6': Use IPv6 Fragmentation for oversize packets (default); 'send-icmp': Send ICMP Type 3 Code 4 (Fragmentation Needed and DF Set); ", "format": "enum", "default": "ipv6", "type": "string", "enum": ["drop", "ipv6", "send-icmp"], "optional": true}
     :param df_set: {"description": "'drop': Drop Silently; 'ipv6': Use IPv6 Fragmentation for oversize packets; 'send-icmp': Send ICMP Type 3 Code 4 (Fragmentation Needed and DF Set) (default); ", "format": "enum", "default": "send-icmp", "type": "string", "enum": ["drop", "ipv6", "send-icmp"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,6 +33,7 @@ class Outbound(A10BaseClass):
         self.count = ""
         self.action = ""
         self.df_set = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

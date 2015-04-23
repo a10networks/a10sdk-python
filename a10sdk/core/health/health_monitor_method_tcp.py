@@ -31,10 +31,11 @@ class Tcp(A10BaseClass):
     Class tcp supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param port_send: {"description": "Send a string to server (Specify the string)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "not": "port-halfopen", "type": "string"}
-    :param method_tcp: {"default": 0, "optional": true, "type": "number", "description": "TCP type", "format": "flag"}
-    :param port_halfopen: {"description": "Set TCP SYN check", "format": "flag", "default": 0, "optional": true, "not": "port-send", "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param tcp_port: {"description": "Specify TCP port (Specify port number)", "format": "number", "type": "number", "maximum": 65534, "minimum": 1, "optional": true}
+    :param method_tcp: {"default": 0, "optional": true, "type": "number", "description": "TCP type", "format": "flag"}
+    :param port_send: {"description": "Send a string to server (Specify the string)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "not": "port-halfopen", "type": "string"}
+    :param port_halfopen: {"description": "Set TCP SYN check", "format": "flag", "default": 0, "optional": true, "not": "port-send", "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -52,11 +53,12 @@ class Tcp(A10BaseClass):
         self.b_key = "tcp"
         self.a10_url="/axapi/v3/health/monitor/{name}/method/tcp"
         self.DeviceProxy = ""
-        self.port_send = ""
-        self.method_tcp = ""
-        self.port_halfopen = ""
-        self.port_resp = {}
+        self.uuid = ""
         self.tcp_port = ""
+        self.port_resp = {}
+        self.method_tcp = ""
+        self.port_send = ""
+        self.port_halfopen = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

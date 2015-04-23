@@ -8,7 +8,7 @@ class V6NeighborList(A10BaseClass):
     :param Age: {"type": "number", "format": "number"}
     :param Vlan: {"minimum": 1, "type": "number", "maximum": 4094, "format": "number"}
     :param Interface: {"enum": ["Management", "ethernet", "trunk"], "type": "string", "format": "enum"}
-    :param State: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param State: {"type": "string", "format": "string"}
     :param IPV6_Address: {"type": "string", "format": "ipv6-address"}
     :param Type: {"enum": ["Incomplete", "Dynamic", "Static"], "type": "string", "format": "enum"}
     :param MAC_Address: {"minLength": 11, "maxLength": 17, "type": "string", "format": "mac-address"}
@@ -39,7 +39,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param v6neighbor_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "Age": {"type": "number", "format": "number"}, "Vlan": {"minimum": 1, "type": "number", "maximum": 4094, "format": "number"}, "Interface": {"enum": ["Management", "ethernet", "trunk"], "type": "string", "format": "enum"}, "State": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "IPV6-Address": {"type": "string", "format": "ipv6-address"}, "Type": {"enum": ["Incomplete", "Dynamic", "Static"], "type": "string", "format": "enum"}, "MAC-Address": {"minLength": 11, "maxLength": 17, "type": "string", "format": "mac-address"}}}]}
+    :param v6neighbor_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "Age": {"type": "number", "format": "number"}, "Vlan": {"minimum": 1, "type": "number", "maximum": 4094, "format": "number"}, "Interface": {"enum": ["Management", "ethernet", "trunk"], "type": "string", "format": "enum"}, "State": {"type": "string", "format": "string"}, "IPV6-Address": {"type": "string", "format": "ipv6-address"}, "Type": {"enum": ["Incomplete", "Dynamic", "Static"], "type": "string", "format": "enum"}, "MAC-Address": {"minLength": 11, "maxLength": 17, "type": "string", "format": "mac-address"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

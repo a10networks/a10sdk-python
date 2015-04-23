@@ -11,6 +11,7 @@ class ActiveRdt(A10BaseClass):
 
     :param domain: {"description": "Specify Query Domain (Specify Domain Name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param retry: {"description": "Specify Retry Count, default is 3", "format": "number", "default": 3, "optional": true, "maximum": 16, "minimum": 0, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param track: {"description": "Specify Tracking Time, unit: second, default is 60", "format": "number", "default": 60, "optional": true, "maximum": 16383, "minimum": 3, "type": "number"}
     :param interval: {"description": "Specify Query Interval, unit: second, default is 1", "format": "number", "default": 1, "optional": true, "maximum": 16383, "minimum": 1, "type": "number"}
     :param sleep: {"description": "Specify Sleep Time when query fail, unit: second, default is 3", "format": "number", "default": 3, "optional": true, "maximum": 300, "minimum": 1, "type": "number"}
@@ -35,6 +36,7 @@ class ActiveRdt(A10BaseClass):
         self.DeviceProxy = ""
         self.domain = ""
         self.retry = ""
+        self.uuid = ""
         self.track = ""
         self.interval = ""
         self.sleep = ""

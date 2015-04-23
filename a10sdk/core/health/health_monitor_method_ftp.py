@@ -10,6 +10,7 @@ class Ftp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ftp: {"default": 0, "optional": true, "type": "number", "description": "FTP type", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ftp_password_string: {"description": "Specify the user password, '' means empty passworddd", "format": "password", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param ftp_password: {"default": 0, "optional": true, "type": "number", "description": "Specify the user password", "format": "flag"}
     :param ftp_port: {"description": "Specify FTP port (Specify port number, default is 21)", "format": "number", "default": 21, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
@@ -33,6 +34,7 @@ class Ftp(A10BaseClass):
         self.a10_url="/axapi/v3/health/monitor/{name}/method/ftp"
         self.DeviceProxy = ""
         self.ftp = ""
+        self.uuid = ""
         self.ftp_password_string = ""
         self.ftp_password = ""
         self.ftp_port = ""

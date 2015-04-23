@@ -64,6 +64,7 @@ class GeoLocation(A10BaseClass):
     :param ip_multiple_fields: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ip-addr2-sub": {"type": "string", "description": "Specify IP address range", "format": "ipv4-address"}, "optional": true, "ip-sub": {"type": "string", "description": "Specify IP information", "format": "ipv4-address"}, "ip-mask-sub": {"type": "string", "description": "Specify IP/mask format (Specify IP address mask)", "format": "ipv4-netmask-brief"}}}]}
     :param name: {"description": "Specify geo-location name, section range is (1-15)", "format": "string", "minLength": 1, "optional": false, "maxLength": 127, "type": "string"}
     :param ipv6_multiple_fields: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ipv6-mask-sub": {"description": "Specify IPv6/mask format (Specify IP address mask)", "minimum": 0, "type": "number", "maximum": 128, "format": "number"}, "ipv6-sub": {"type": "string", "description": "Specify IPv6 information", "format": "ipv6-address"}, "optional": true, "ipv6-addr2-sub": {"type": "string", "description": "Specify IPv6 address range", "format": "ipv6-address"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -85,6 +86,7 @@ class GeoLocation(A10BaseClass):
         self.ip_multiple_fields = []
         self.name = ""
         self.ipv6_multiple_fields = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

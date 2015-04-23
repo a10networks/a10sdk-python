@@ -78,14 +78,8 @@ class Ve(A10BaseClass):
         self.b_key = "ve"
         self.a10_url="/axapi/v3/interface/ve/{ifnum}/stats"
         self.DeviceProxy = ""
-        self.stats = {}
-        self.bfd = {}
-        self.ip = {}
-        self.ddos = {}
         self.ifnum = ""
-        self.lw_4o6 = {}
-        self.ipv6 = {}
-        self.isis = {}
+        self.stats = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -7,16 +7,17 @@ class Stats(A10BaseClass):
 
     :param Responses_from_A10SAML: {"description": "Total Response from A10 SAML Service", "format": "counter", "type": "number", "oid": "2", "optional": true, "size": "8"}
     :param Login_auth_req: {"description": "Total Login Authentication Request", "format": "counter", "type": "number", "oid": "5", "optional": true, "size": "8"}
-    :param SLO_error: {"description": "Total Single Logout Error", "format": "counter", "type": "number", "oid": "12", "optional": true, "size": "8"}
+    :param SLO_error: {"description": "Total Single Logout Error", "format": "counter", "type": "number", "oid": "13", "optional": true, "size": "8"}
     :param SP_metadata_export_success: {"description": "Toal Metadata Export Success", "format": "counter", "type": "number", "oid": "4", "optional": true, "size": "8"}
     :param SP_metadata_export_req: {"description": "Total Metadata Export Request", "format": "counter", "type": "number", "oid": "3", "optional": true, "size": "8"}
-    :param SLO_req: {"description": "Total Single Logout Request", "format": "counter", "type": "number", "oid": "10", "optional": true, "size": "8"}
+    :param SLO_req: {"description": "Total Single Logout Request", "format": "counter", "type": "number", "oid": "11", "optional": true, "size": "8"}
     :param Login_auth_resp: {"description": "Total Login Authentication Response", "format": "counter", "type": "number", "oid": "6", "optional": true, "size": "8"}
-    :param SLO_success: {"description": "Total Single Logout Success", "format": "counter", "type": "number", "oid": "11", "optional": true, "size": "8"}
-    :param ACS_success: {"description": "Total Assertion Consuming Service Success", "format": "counter", "type": "number", "oid": "8", "optional": true, "size": "8"}
-    :param ACS_error: {"description": "Total Assertion Consuming Service Error", "format": "counter", "type": "number", "oid": "9", "optional": true, "size": "8"}
-    :param Other_error: {"description": "Total Other Error", "format": "counter", "type": "number", "oid": "13", "optional": true, "size": "8"}
-    :param ACS_req: {"description": "Total Assertion Consuming Service Request", "format": "counter", "type": "number", "oid": "7", "optional": true, "size": "8"}
+    :param ACS_authz_fail: {"description": "Total SAML Single-Sign-On Authorization Fail", "format": "counter", "type": "number", "oid": "9", "optional": true, "size": "8"}
+    :param SLO_success: {"description": "Total Single Logout Success", "format": "counter", "type": "number", "oid": "12", "optional": true, "size": "8"}
+    :param ACS_success: {"description": "Total SAML Single-Sign-On Success", "format": "counter", "type": "number", "oid": "8", "optional": true, "size": "8"}
+    :param ACS_error: {"description": "Total SAML Single-Sign-On Error", "format": "counter", "type": "number", "oid": "10", "optional": true, "size": "8"}
+    :param Other_error: {"description": "Total Other Error", "format": "counter", "type": "number", "oid": "14", "optional": true, "size": "8"}
+    :param ACS_req: {"description": "Total SAML Single-Sign-On Request", "format": "counter", "type": "number", "oid": "7", "optional": true, "size": "8"}
     :param Requests_to_A10SAML: {"description": "Total Request to A10 SAML Service", "format": "counter", "type": "number", "oid": "1", "optional": true, "size": "8"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -36,6 +37,7 @@ class Stats(A10BaseClass):
         self.SP_metadata_export_req = ""
         self.SLO_req = ""
         self.Login_auth_resp = ""
+        self.ACS_authz_fail = ""
         self.SLO_success = ""
         self.ACS_success = ""
         self.ACS_error = ""

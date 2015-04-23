@@ -10,7 +10,7 @@ class SslCert(A10BaseClass):
     :param action: {"optional": true, "enum": ["create", "import", "export", "copy", "rename", "check", "replace", "delete"], "type": "string", "description": "'create': create; 'import': import; 'export': export; 'copy': copy; 'rename': rename; 'check': check; 'replace': replace; 'delete': delete; ", "format": "enum"}
     :param certificate_type: {"optional": true, "enum": ["pem", "der", "pfx", "p7b"], "type": "string", "description": "'pem': pem; 'der': der; 'pfx': pfx; 'p7b': p7b; ", "format": "enum"}
     :param file_handle: {"description": "full path of the uploaded file", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
-    :param size: {"optional": true, "type": "number", "description": "ssl certificate file size in byte", "format": "number"}
+    :param size: {"description": "ssl certificate file size in byte", "format": "number", "type": "number", "maximum": 2147483647, "minimum": 0, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

@@ -11,6 +11,7 @@ class Auditlog(A10BaseClass):
 
     :param host6: {"not": "host4", "optional": true, "type": "string", "description": "Configure the auditlog host", "format": "ipv6-address"}
     :param host4: {"description": "Configure the auditlog host", "format": "host", "minLength": 1, "optional": true, "maxLength": 31, "not": "host6", "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param audit_facility: {"optional": true, "enum": ["local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7"], "type": "string", "description": "'local0': Local use; 'local1': Local use; 'local2': Local use; 'local3': Local use; 'local4': Local use; 'local5': Local use; 'local6': Local use; 'local7': Local use;  (Configure the facility of auditlog)", "format": "enum"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -31,6 +32,7 @@ class Auditlog(A10BaseClass):
         self.DeviceProxy = ""
         self.host6 = ""
         self.host4 = ""
+        self.uuid = ""
         self.audit_facility = ""
 
         for keys, value in kwargs.items():

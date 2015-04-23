@@ -11,6 +11,7 @@ class LacpPassthrough(A10BaseClass):
 
     :param peer_from: {"optional": false, "type": "number", "description": "Peer member to forward received LACP packets", "format": "interface"}
     :param peer_to: {"optional": false, "type": "number", "description": "Peer member to forward received LACP packets", "format": "interface"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class LacpPassthrough(A10BaseClass):
         self.DeviceProxy = ""
         self.peer_from = ""
         self.peer_to = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

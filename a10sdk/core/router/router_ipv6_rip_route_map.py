@@ -42,6 +42,7 @@ class RouteMap(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param map_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"map": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map name", "format": "string"}, "ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}, "route-map-direction": {"enum": ["in", "out"], "type": "string", "description": "'in': Route map set for input filtering; 'out': Route map set for output filtering; ", "format": "enum"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -60,6 +61,7 @@ class RouteMap(A10BaseClass):
         self.a10_url="/axapi/v3/router/ipv6/rip/route-map"
         self.DeviceProxy = ""
         self.map_cfg = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

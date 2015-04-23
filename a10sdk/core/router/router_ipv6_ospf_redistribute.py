@@ -147,7 +147,6 @@ class Redistribute(A10BaseClass):
     :param ospf_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "process-id": {"minLength": 1, "maxLength": 128, "type": "string", "description": "OSPF process ID", "format": "string"}, "route-map-ospf": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map reference (Pointer to route-map entries)", "format": "string"}, "metric-ospf": {"description": "OSPF default metric (OSPF metric)", "minimum": 0, "type": "number", "maximum": 16777214, "format": "number"}, "ospf": {"default": 0, "type": "number", "description": "Open Shortest Path First (OSPF)", "format": "flag"}, "metric-type-ospf": {"default": "2", "enum": ["1", "2"], "type": "string", "description": "'1': Set OSPF External Type 1 metrics; '2': Set OSPF External Type 2 metrics; ", "format": "enum"}}}]}
     :param ip_nat_floating_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ip-nat-floating-IP-forward": {"type": "string", "description": "Floating-IP as forward address", "format": "ipv6-address"}, "optional": true, "ip-nat-prefix": {"type": "string", "description": "Address", "format": "ipv6-address-plen"}}}]}
     :param vip_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"metric-vip": {"description": "OSPF default metric (OSPF metric)", "minimum": 0, "type": "number", "maximum": 16777214, "format": "number"}, "metric-type-vip": {"default": "2", "enum": ["1", "2"], "type": "string", "description": "'1': Set OSPF External Type 1 metrics; '2': Set OSPF External Type 2 metrics; ", "format": "enum"}, "optional": true, "type-vip": {"enum": ["only-flagged", "only-not-flagged"], "type": "string", "description": "'only-flagged': Selected Virtual IP (VIP); 'only-not-flagged': Only not flagged; ", "format": "enum"}, "route-map-vip": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map reference (Pointer to route-map entries)", "format": "string"}}}]}
-    :param vip: {"default": 0, "optional": true, "type": "number", "description": "Virtual IP (VIP)", "format": "flag"}
     :param ip_nat: {"default": 0, "optional": true, "type": "number", "description": "IP-NAT", "format": "flag"}
     :param metric_ip_nat: {"description": "OSPF default metric (OSPF metric)", "format": "number", "type": "number", "maximum": 16777214, "minimum": 0, "optional": true}
     :param route_map_ip_nat: {"description": "Route map reference (Pointer to route-map entries)", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
@@ -174,7 +173,6 @@ class Redistribute(A10BaseClass):
         self.ospf_list = []
         self.ip_nat_floating_list = []
         self.vip_list = []
-        self.vip = ""
         self.ip_nat = ""
         self.metric_ip_nat = ""
         self.route_map_ip_nat = ""

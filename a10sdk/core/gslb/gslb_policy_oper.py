@@ -5,7 +5,7 @@ class MetricList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param type: {"type": "string", "format": "string"}
     :param order: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -29,7 +29,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param metric_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "order": {"type": "number", "format": "number"}}}]}
+    :param metric_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "type": {"type": "string", "format": "string"}, "order": {"type": "number", "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

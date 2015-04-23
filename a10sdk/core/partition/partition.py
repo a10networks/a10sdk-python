@@ -11,7 +11,8 @@ class Partition(A10BaseClass):
 
     :param partition_name: {"description": "Object partition name", "format": "string", "minLength": 1, "optional": false, "maxLength": 14, "type": "string"}
     :param application_type: {"optional": true, "enum": ["adc", "cgnv6"], "type": "string", "description": "'adc': Application type ADC; 'cgnv6': Application type CGNv6; ", "format": "enum"}
-    :param id: {"description": "Specify unique Partition id", "format": "number", "optional": true, "maximum": 127, "minimum": 1, "modify-not-allowed": 1, "type": "number"}
+    :param id: {"description": "Specify unique Partition id", "format": "number", "optional": true, "maximum": 1023, "minimum": 1, "modify-not-allowed": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -33,6 +34,7 @@ class Partition(A10BaseClass):
         self.partition_name = ""
         self.application_type = ""
         self.A10WW_id = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

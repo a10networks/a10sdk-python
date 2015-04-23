@@ -10,7 +10,7 @@ class Oper(A10BaseClass):
     :param ha_group_id: {"enum": ["default"], "type": "string", "format": "enum"}
     :param ip: {"type": "string", "format": "ipv4-address"}
     :param ports_consumed: {"type": "number", "format": "number"}
-    :param state: {"enum": ["UP", "DOWN", "DELETE", "DISABLED", "MAINTENANCE"], "type": "string", "format": "enum"}
+    :param state: {"enum": ["Up", "Down", "Disabled", "Maintenance", "Unknown", "DIS-UP", "DIS-DOWN", "DIS-MAINTENANCE"], "type": "string", "format": "enum"}
     :param ipv6: {"type": "string", "format": "ipv6-address"}
     :param ports_freed_total: {"type": "number", "format": "number"}
     :param ports_consumed_total: {"type": "number", "format": "number"}

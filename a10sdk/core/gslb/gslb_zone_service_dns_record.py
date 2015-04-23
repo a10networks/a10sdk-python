@@ -11,6 +11,7 @@ class DnsRecord(A10BaseClass):
 
     :param data: {"description": "Specify DNS Data", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 512, "type": "string"}
     :param type: {"description": "Specify DNS Type", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class DnsRecord(A10BaseClass):
         self.DeviceProxy = ""
         self.data = ""
         self.A10WW_type = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

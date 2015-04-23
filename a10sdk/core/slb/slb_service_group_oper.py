@@ -5,7 +5,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param state: {"enum": ["All-Up", "Functional-Up", "Partial-Up", "Down", "Disabled", "Unknown"], "type": "string", "format": "enum"}
+    :param state: {"enum": ["All Up", "Functional Up", "Down", "Disb", "Unkn"], "type": "string", "format": "enum"}
     :param servers_down: {"type": "number", "format": "number"}
     :param servers_up: {"type": "number", "format": "number"}
     :param servers_disable: {"type": "number", "format": "number"}
@@ -39,7 +39,7 @@ class ServiceGroup(A10BaseClass):
     Class service-group supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param member_list: {"minItems": 1, "items": {"type": "member"}, "uniqueItems": true, "array": [{"required": ["name", "port"], "properties": {"oper": {"type": "object", "properties": {"state": {"enum": ["UP", "DOWN", "MAINTENANCE"], "type": "string", "format": "enum"}}}, "name": {"description": "Member name", "format": "comp-string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}, "port": {"description": "Port number", "format": "number", "default": 65534, "optional": false, "oid": "1002", "maximum": 65534, "minimum": 0, "type": "number"}}}], "type": "array", "$ref": "/axapi/v3/slb/service-group/{name}/member/{name}+{port}"}
+    :param member_list: {"minItems": 1, "items": {"type": "member"}, "uniqueItems": true, "array": [{"required": ["name", "port"], "properties": {"oper": {"type": "object", "properties": {"state": {"enum": ["UP", "DOWN", "MAINTENANCE", "DIS-UP", "DIS-DOWN", "DIS-MAINTENANCE"], "type": "string", "format": "enum"}}}, "name": {"description": "Member name", "format": "comp-string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}, "port": {"description": "Port number", "format": "number", "default": 65534, "optional": false, "oid": "1002", "maximum": 65534, "minimum": 0, "type": "number"}}}], "type": "array", "$ref": "/axapi/v3/slb/service-group/{name}/member/{name}+{port}"}
     :param name: {"description": "SLB Service Name", "format": "string-rlx", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

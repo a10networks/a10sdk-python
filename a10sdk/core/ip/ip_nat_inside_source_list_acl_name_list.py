@@ -12,6 +12,7 @@ class AclNameList(A10BaseClass):
     :param msl: {"description": "Maximum Session Life Value", "format": "number", "type": "number", "maximum": 1800, "minimum": 1, "optional": true}
     :param name: {"description": "Apply an access list", "format": "string", "minLength": 1, "optional": false, "maxLength": 16, "type": "string", "$ref": "/axapi/v3/ip/access-list"}
     :param pool: {"description": "Pool or Pool Group (Pool or Pool Group Nam)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 128, "type": "string", "$ref": "/axapi/v3/ip/nat/pool"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -33,6 +34,7 @@ class AclNameList(A10BaseClass):
         self.msl = ""
         self.name = ""
         self.pool = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -11,6 +11,7 @@ class Ethernet(A10BaseClass):
 
     :param pre_eth: {"optional": false, "type": "number", "description": "Ethernet interface number", "format": "interface"}
     :param pre_vlan: {"description": "Interface VLAN (VLAN ID)", "format": "number", "type": "number", "maximum": 4094, "minimum": 1, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class Ethernet(A10BaseClass):
         self.DeviceProxy = ""
         self.pre_eth = ""
         self.pre_vlan = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

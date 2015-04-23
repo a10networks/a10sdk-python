@@ -10,8 +10,9 @@ class DnsMxRecord(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param priority: {"description": "Specify Priority", "format": "number", "type": "number", "maximum": 65535, "minimum": 0, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param mx_name: {"description": "Specify Domain Name", "format": "string", "minLength": 1, "optional": false, "maxLength": 127, "type": "string"}
-    :param ttl: {"optional": true, "type": "number", "description": "Specify TTL", "format": "number"}
+    :param ttl: {"description": "Specify TTL", "format": "number", "default": 0, "optional": true, "maximum": 2147483647, "minimum": 0, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class DnsMxRecord(A10BaseClass):
         self.a10_url="/axapi/v3/gslb/zone/{name}/service/{service_port}+{service_name}/dns-mx-record/{mx_name}"
         self.DeviceProxy = ""
         self.priority = ""
+        self.uuid = ""
         self.mx_name = ""
         self.ttl = ""
 

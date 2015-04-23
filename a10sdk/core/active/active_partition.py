@@ -14,7 +14,7 @@ class ActivePartition(A10BaseClass):
     
 
     URL for this object::
-    `https://<Hostname|Ip address>//axapi/v3/active-partition`.
+    `https://<Hostname|Ip address>//axapi/v3/active-partition/{partition_name}`.
 
     
 
@@ -24,7 +24,7 @@ class ActivePartition(A10BaseClass):
         self.ERROR_MSG = ""
         self.required=[]
         self.b_key = "active-partition"
-        self.a10_url="/axapi/v3/active-partition"
+        self.a10_url="/axapi/v3/active-partition/{partition_name}"
         self.DeviceProxy = ""
         
         for keys, value in kwargs.items():

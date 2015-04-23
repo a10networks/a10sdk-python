@@ -19,6 +19,7 @@ class Stats(A10BaseClass):
     :param parsereq_fail: {"description": "Parse req fail", "format": "counter", "type": "number", "oid": "10", "optional": true, "size": "8"}
     :param req: {"description": "HTTP requests", "format": "counter", "type": "number", "oid": "4", "optional": true, "size": "8"}
     :param full_proxy: {"description": "Full proxy tot", "format": "counter", "type": "number", "oid": "27", "optional": true, "size": "8"}
+    :param full_proxy_put: {"description": "Full proxy PUT", "format": "counter", "type": "number", "oid": "259", "optional": true, "size": "8"}
     :param full_proxy_fpga_err: {"description": "Full proxy fpga err", "format": "counter", "type": "number", "oid": "30", "optional": true, "size": "8"}
     :param server_rst: {"description": "Server RST", "format": "counter", "type": "number", "oid": "8", "optional": true, "size": "8"}
     :param notuple: {"description": "No tuple error", "format": "counter", "type": "number", "oid": "9", "optional": true, "size": "8"}
@@ -56,6 +57,7 @@ class Stats(A10BaseClass):
         self.parsereq_fail = ""
         self.req = ""
         self.full_proxy = ""
+        self.full_proxy_put = ""
         self.full_proxy_fpga_err = ""
         self.server_rst = ""
         self.notuple = ""

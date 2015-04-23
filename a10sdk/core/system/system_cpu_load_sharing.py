@@ -49,14 +49,15 @@ class CpuUsage(A10BaseClass):
 
 class CpuLoadSharing(A10BaseClass):
     
-    """Class Description::
+    """    :param disable: {"default": 0, "optional": true, "type": "number", "description": "Disable CPU load sharing in overload situations", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Redistribute packets uniformly to all CPUs during overload situations.
 
     Class cpu-load-sharing supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param disable: {"default": 0, "optional": true, "type": "number", "description": "Disable CPU load sharing in overload situations", "format": "flag"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -76,6 +77,7 @@ class CpuLoadSharing(A10BaseClass):
         self.packets_per_second = {}
         self.cpu_usage = {}
         self.disable = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

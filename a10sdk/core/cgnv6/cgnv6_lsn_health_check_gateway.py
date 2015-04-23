@@ -11,6 +11,7 @@ class HealthCheckGateway(A10BaseClass):
 
     :param ipv4_addr: {"optional": false, "type": "string", "description": "Specify IPv4 Gateway", "format": "ipv4-address"}
     :param ipv6_addr: {"optional": false, "type": "string", "description": "Specify IPv6 Gateway", "format": "ipv6-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class HealthCheckGateway(A10BaseClass):
         self.DeviceProxy = ""
         self.ipv4_addr = ""
         self.ipv6_addr = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

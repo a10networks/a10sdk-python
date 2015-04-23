@@ -57,6 +57,7 @@ class Revocation(A10BaseClass):
     Class revocation supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ca: {"description": "Certificate Authority file name", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param name: {"description": "Revocation name", "format": "string", "minLength": 1, "optional": false, "maxLength": 31, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -77,6 +78,7 @@ class Revocation(A10BaseClass):
         self.b_key = "revocation"
         self.a10_url="/axapi/v3/vpn/revocation/{name}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.ca = ""
         self.name = ""
         self.crl = {}

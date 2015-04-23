@@ -10,6 +10,7 @@ class Address(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ip: {"not": "ipv6", "optional": true, "type": "string", "description": "Configure sFlow agent IP address", "format": "ipv4-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ipv6: {"not": "ip", "optional": true, "type": "string", "description": "Configure sFlow agent IPv6 address", "format": "ipv6-address"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -29,6 +30,7 @@ class Address(A10BaseClass):
         self.a10_url="/axapi/v3/sflow/agent/address"
         self.DeviceProxy = ""
         self.ip = ""
+        self.uuid = ""
         self.ipv6 = ""
 
         for keys, value in kwargs.items():

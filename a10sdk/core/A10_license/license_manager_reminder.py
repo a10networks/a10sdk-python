@@ -10,6 +10,7 @@ class Reminder(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param reminder_value: {"description": "Configure reminder for grace time (Hour)", "format": "number", "type": "number", "maximum": 1000000, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,6 +30,7 @@ class Reminder(A10BaseClass):
         self.a10_url="/axapi/v3/license-manager/reminder/{reminder_value}"
         self.DeviceProxy = ""
         self.reminder_value = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

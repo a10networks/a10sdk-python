@@ -10,6 +10,7 @@ class RadiusServer(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param default_privilege_read_write: {"default": 0, "optional": true, "type": "number", "description": "Specify the RADIUS default privilege", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,6 +30,7 @@ class RadiusServer(A10BaseClass):
         self.DeviceProxy = ""
         self.default_privilege_read_write = ""
         self.host = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

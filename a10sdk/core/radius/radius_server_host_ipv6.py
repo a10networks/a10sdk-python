@@ -57,12 +57,13 @@ class Secret(A10BaseClass):
 class Ipv6(A10BaseClass):
     
     """Class Description::
-    Specify the hostname of Radius server.
+    Specify the hostname of RADIUS server.
 
     Class ipv6 supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
     :param ipv6_addr: {"optional": false, "type": "string", "description": "IPV6 address of RADIUS server", "format": "ipv6-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -83,6 +84,7 @@ class Ipv6(A10BaseClass):
         self.DeviceProxy = ""
         self.secret = {}
         self.ipv6_addr = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

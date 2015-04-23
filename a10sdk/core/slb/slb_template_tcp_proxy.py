@@ -17,8 +17,9 @@ class TcpProxy(A10BaseClass):
     :param reno: {"default": 0, "optional": true, "type": "number", "description": "Enable Reno Congestion Control Algorithm", "format": "flag"}
     :param timewait: {"description": "Timewait Threshold (sec), default 5 (number)", "format": "number", "default": 5, "optional": true, "maximum": 60, "minimum": 1, "type": "number"}
     :param dynamic_buffer_allocation: {"default": 0, "optional": true, "type": "number", "description": "Optimally adjust the transmit and receive buffer sizes of TCP proxy while keeping their sum constant", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param alive_if_active: {"default": 0, "optional": true, "type": "number", "description": "keep connection alive if active traffic", "format": "flag"}
-    :param mss: {"description": "Responding MSS to use if client MSS is large, default is off (number)", "format": "number", "default": 1460, "optional": true, "maximum": 4312, "minimum": 128, "type": "number"}
+    :param mss: {"description": "Responding MSS to use if client MSS is large, default is off (number)", "format": "number", "default": 1460, "optional": true, "maximum": 1460, "minimum": 128, "type": "number"}
     :param keepalive_interval: {"description": "Interval between keepalive probes (sec), default is off (number)", "format": "number", "type": "number", "maximum": 12000, "minimum": 60, "optional": true}
     :param retransmit_retries: {"description": "Number of Retries for Retransmit, default is 3", "format": "number", "default": 3, "optional": true, "maximum": 20, "minimum": 1, "type": "number"}
     :param insert_client_ip: {"default": 0, "optional": true, "type": "number", "description": "Insert client ip into TCP option", "format": "flag"}
@@ -31,7 +32,7 @@ class TcpProxy(A10BaseClass):
     :param reset_rev: {"default": 0, "optional": true, "type": "number", "description": "send reset to client if error happens", "format": "flag"}
     :param receive_buffer: {"description": "TCP Receive Buffer (default 50k) (number)", "format": "number", "default": 51200, "optional": true, "maximum": 2147483647, "minimum": 1, "type": "number"}
     :param transmit_buffer: {"description": "TCP Transmit Buffer (default 50k) (number)", "format": "number", "default": 51200, "optional": true, "maximum": 2147483647, "minimum": 1, "type": "number"}
-    :param name: {"description": "TCP Proxy Template Name", "format": "string", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param name: {"description": "TCP Proxy Template Name", "format": "string-rlx", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param reset_fwd: {"default": 0, "optional": true, "type": "number", "description": "send reset to server if error happens", "format": "flag"}
     :param syn_retries: {"description": "SYN Retry Numbers, default is 5", "format": "number", "default": 5, "optional": true, "maximum": 20, "minimum": 1, "type": "number"}
     :param force_delete_timeout: {"description": "The maximum time that a session can stay in the system before being deleted, default is off (number (second))", "format": "number", "optional": true, "maximum": 31, "minimum": 1, "not": "force-delete-timeout-100ms", "type": "number"}
@@ -62,6 +63,7 @@ class TcpProxy(A10BaseClass):
         self.reno = ""
         self.timewait = ""
         self.dynamic_buffer_allocation = ""
+        self.uuid = ""
         self.alive_if_active = ""
         self.mss = ""
         self.keepalive_interval = ""

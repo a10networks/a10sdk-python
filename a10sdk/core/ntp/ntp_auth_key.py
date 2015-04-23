@@ -9,6 +9,7 @@ class AuthKey(A10BaseClass):
     Class auth-key supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param encrypted: {"not": "hex-encrypted", "optional": true, "type": "encrypted", "description": "Do NOT use this option manually. (This is an A10 reserved keyword.) (The ENCRYPTED password string)", "format": "encrypted"}
     :param key_type: {"optional": true, "enum": ["ascii", "hex"], "type": "string", "description": "'ascii': key string in ASCII form; 'hex': key string in hex form; ", "format": "enum"}
     :param hex_encrypted: {"not": "encrypted", "optional": true, "type": "encrypted", "description": "Do NOT use this option manually. (This is an A10 reserved keyword.) (The ENCRYPTED password string)", "format": "encrypted"}
@@ -34,6 +35,7 @@ class AuthKey(A10BaseClass):
         self.b_key = "auth-key"
         self.a10_url="/axapi/v3/ntp/auth-key/{key}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.encrypted = ""
         self.key_type = ""
         self.hex_encrypted = ""

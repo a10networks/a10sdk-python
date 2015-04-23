@@ -9,6 +9,7 @@ class Ipv6(A10BaseClass):
     Class ipv6 supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param addr: {"optional": false, "type": "string", "description": "Configure sFlow collector IPv6 address", "format": "ipv6-address"}
     :param port: {"description": "Port number (default is 6343)", "format": "number", "default": 6343, "optional": false, "maximum": 65535, "minimum": 1, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -29,6 +30,7 @@ class Ipv6(A10BaseClass):
         self.b_key = "ipv6"
         self.a10_url="/axapi/v3/sflow/collector/ipv6/{addr}+{port}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.addr = ""
         self.port = ""
 

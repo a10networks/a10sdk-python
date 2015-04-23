@@ -9,6 +9,7 @@ class Rtsp(A10BaseClass):
     Class rtsp supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param rtsp_enable: {"optional": true, "enum": ["enable"], "type": "string", "description": "'enable': Enable NAT64 RTSP ALG; ", "format": "enum"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -27,6 +28,7 @@ class Rtsp(A10BaseClass):
         self.b_key = "rtsp"
         self.a10_url="/axapi/v3/cgnv6/nat64/alg/rtsp"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.rtsp_enable = ""
 
         for keys, value in kwargs.items():

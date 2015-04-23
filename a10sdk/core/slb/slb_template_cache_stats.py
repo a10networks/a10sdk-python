@@ -89,7 +89,7 @@ class Cache(A10BaseClass):
     Class cache supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param name: {"description": "Specify cache template name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 63, "type": "string"}
+    :param name: {"description": "Specify cache template name", "format": "string-rlx", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 63, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

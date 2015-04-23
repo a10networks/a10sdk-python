@@ -31,6 +31,7 @@ class EmailAddress(A10BaseClass):
     Class email-address supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param email_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"email-address": {"minLength": 1, "maxLength": 63, "type": "string", "description": "Email address information of recipients", "format": "email-addr"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -49,6 +50,7 @@ class EmailAddress(A10BaseClass):
         self.b_key = "email-address"
         self.a10_url="/axapi/v3/logging/email-address"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.email_list = []
 
         for keys, value in kwargs.items():

@@ -34,6 +34,7 @@ class BpduFwdGroup(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param bpdu_fwd_group_number: {"optional": false, "minimum": 1, "type": "number", "maximum": 8, "format": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ethernet_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ethernet-start": {"type": "number", "description": "Ethernet Port (Interface number)", "format": "interface"}, "ethernet-end": {"type": "number", "description": "Ethernet Port", "format": "interface"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -54,6 +55,7 @@ class BpduFwdGroup(A10BaseClass):
         self.a10_url="/axapi/v3/network/bpdu-fwd-group/{bpdu_fwd_group_number}"
         self.DeviceProxy = ""
         self.bpdu_fwd_group_number = ""
+        self.uuid = ""
         self.ethernet_list = []
 
         for keys, value in kwargs.items():

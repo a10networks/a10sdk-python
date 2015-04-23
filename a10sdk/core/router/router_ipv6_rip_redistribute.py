@@ -5,9 +5,9 @@ class VipList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param metric: {"description": "Metric for redistributed routes (metric value)", "minimum": 0, "type": "number", "maximum": 16, "format": "number"}
-    :param route_map: {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map reference (Pointer to route-map entries)", "format": "string"}
-    :param type: {"enum": ["only-flagged", "only-not-flagged"], "type": "string", "description": "'only-flagged': Selected Virtual IP (VIP); 'only-not-flagged': Only not flagged; ", "format": "enum"}
+    :param vip_metric: {"description": "Metric for redistributed routes (metric value)", "minimum": 0, "type": "number", "maximum": 16, "format": "number"}
+    :param vip_route_map: {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map reference (Pointer to route-map entries)", "format": "string"}
+    :param vip_type: {"enum": ["only-flagged", "only-not-flagged"], "type": "string", "description": "'only-flagged': Selected Virtual IP (VIP); 'only-not-flagged': Only not flagged; ", "format": "enum"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -19,9 +19,9 @@ class VipList(A10BaseClass):
         
         self.b_key = "vip-list"
         self.DeviceProxy = ""
-        self.metric = ""
-        self.route_map = ""
-        self.A10WW_type = ""
+        self.vip_metric = ""
+        self.vip_route_map = ""
+        self.vip_type = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -61,8 +61,9 @@ class Redistribute(A10BaseClass):
     Class redistribute supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param vip_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "metric": {"description": "Metric for redistributed routes (metric value)", "minimum": 0, "type": "number", "maximum": 16, "format": "number"}, "route-map": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map reference (Pointer to route-map entries)", "format": "string"}, "type": {"enum": ["only-flagged", "only-not-flagged"], "type": "string", "description": "'only-flagged': Selected Virtual IP (VIP); 'only-not-flagged': Only not flagged; ", "format": "enum"}}}]}
+    :param vip_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"vip-metric": {"description": "Metric for redistributed routes (metric value)", "minimum": 0, "type": "number", "maximum": 16, "format": "number"}, "vip-route-map": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map reference (Pointer to route-map entries)", "format": "string"}, "optional": true, "vip-type": {"enum": ["only-flagged", "only-not-flagged"], "type": "string", "description": "'only-flagged': Selected Virtual IP (VIP); 'only-not-flagged': Only not flagged; ", "format": "enum"}}}]}
     :param redist_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "metric": {"description": "Metric for redistributed routes (metric value)", "minimum": 0, "type": "number", "maximum": 16, "format": "number"}, "route-map": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Route map reference (Pointer to route-map entries)", "format": "string"}, "type": {"enum": ["bgp", "connected", "floating-ip", "ip-nat-list", "ip-nat", "isis", "lw4o6", "nat64", "ospf", "static"], "type": "string", "description": "'bgp': Border Gateway Protocol (BGP); 'connected': Connected; 'floating-ip': Floating IP; 'ip-nat-list': IP NAT list; 'ip-nat': IP NAT; 'isis': ISO IS-IS; 'lw4o6': LW4O6 Prefix; 'nat64': NAT64 Prefix; 'ospf': Open Shortest Path First (OSPF); 'static': Static routes; ", "format": "enum"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -82,6 +83,7 @@ class Redistribute(A10BaseClass):
         self.DeviceProxy = ""
         self.vip_list = []
         self.redist_list = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

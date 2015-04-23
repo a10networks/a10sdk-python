@@ -39,7 +39,7 @@ class Oper(A10BaseClass):
 
     :param cpu_usage: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"cpu-id": {"type": "number", "format": "number"}, "30-sec": {"type": "number", "format": "number"}, "optional": true, "60-sec": {"type": "number", "format": "number"}, "10-sec": {"type": "number", "format": "number"}, "5-sec": {"type": "number", "format": "number"}, "1-sec": {"type": "number", "format": "number"}}}]}
     :param number_of_cpu: {"type": "number", "format": "number"}
-    :param current_time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param current_time: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

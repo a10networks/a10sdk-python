@@ -32,6 +32,7 @@ class MgmtTraffic(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param traffic_type: {"optional": false, "enum": ["all", "ftp", "ntp", "rcp", "snmp", "ssh", "syslog", "telnet", "tftp", "web"], "type": "string", "description": "'all': All; 'ftp': FTP; 'ntp': NTP; 'rcp': RCP; 'snmp': SNMP; 'ssh': SSH and SCP; 'syslog': SYSLOG; 'telnet': Telnet; 'tftp': TFTP; 'web': Web - HTTP and HTTPS; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -52,6 +53,7 @@ class MgmtTraffic(A10BaseClass):
         self.DeviceProxy = ""
         self.traffic_type = ""
         self.source_interface = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -12,6 +12,7 @@ class Rtsp(A10BaseClass):
     :param rtsp_port: {"description": "Specify RTSP port, default is 554 (Port Number (default 554))", "format": "number", "default": 554, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
     :param rtsp: {"default": 0, "optional": true, "type": "number", "description": "RTSP type", "format": "flag"}
     :param rtspurl: {"description": "Specify URL string (Specify the path on the server)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,6 +33,7 @@ class Rtsp(A10BaseClass):
         self.rtsp_port = ""
         self.rtsp = ""
         self.rtspurl = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

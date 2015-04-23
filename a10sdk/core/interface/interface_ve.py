@@ -77,12 +77,35 @@ class AccessList(A10BaseClass):
             setattr(self,keys, value)
 
 
+class SamplingEnable(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param counters1: {"enum": ["all", "num_pkts", "num_total_bytes", "num_unicast_pkts", "num_broadcast_pkts", "num_multicast_pkts", "num_tx_pkts", "num_total_tx_bytes", "num_unicast_tx_pkts", "num_broadcast_tx_pkts", "num_multicast_tx_pkts", "rate_pkt_sent", "rate_byte_sent", "rate_pkt_rcvd", "rate_byte_rcvd", "load_interval"], "type": "string", "description": "'all': all; 'num_pkts': Input packets; 'num_total_bytes': Input bytes; 'num_unicast_pkts': Received unicasts; 'num_broadcast_pkts': Received braodcasts; 'num_multicast_pkts': Received multicasts; 'num_tx_pkts': Transmitted packtes; 'num_total_tx_bytes': Transmitte bytes; 'num_unicast_tx_pkts': Trasnmitted unicasts; 'num_broadcast_tx_pkts': Transmitted broadcasts; 'num_multicast_tx_pkts': Transmitted multicasts; 'rate_pkt_sent': Packet sent rate packets/sec; 'rate_byte_sent': Byte sent rate bits/sec; 'rate_pkt_rcvd': Packet received rate packets/sec; 'rate_byte_rcvd': Byte received rate bits/sec; 'load_interval': Load Interval; ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "sampling-enable"
+        self.DeviceProxy = ""
+        self.counters1 = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class Ddos(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
     :param outside: {"default": 0, "type": "number", "description": "DDoS inside (trusted) or outside (untrusted) interface", "format": "flag"}
     :param inside: {"default": 0, "type": "number", "description": "DDoS inside (trusted) or outside (untrusted) interface", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -96,6 +119,7 @@ class Ddos(A10BaseClass):
         self.DeviceProxy = ""
         self.outside = ""
         self.inside = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -110,11 +134,13 @@ class Ve(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param name: {"description": "Name for the interface", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 32, "type": "string"}
-    :param trap_source: {"default": 0, "optional": true, "type": "number", "description": "The trap source", "format": "flag"}
+    :param trap_source: {"description": "The trap source", "partition-visibility": "shared", "default": 0, "type": "number", "format": "flag", "optional": true}
     :param mtu: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Interface mtu (Interface MTU, default 1500 (min MTU is 1280 for IPv6))", "format": "number", "optional": true, "type": "number"}
     :param ifnum: {"optional": false, "$ref": "/axapi/v3/network/vlan", "type": "number", "description": "Virtual ethernet interface number", "format": "number"}
+    :param sampling_enable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "num_pkts", "num_total_bytes", "num_unicast_pkts", "num_broadcast_pkts", "num_multicast_pkts", "num_tx_pkts", "num_total_tx_bytes", "num_unicast_tx_pkts", "num_broadcast_tx_pkts", "num_multicast_tx_pkts", "rate_pkt_sent", "rate_byte_sent", "rate_pkt_rcvd", "rate_byte_rcvd", "load_interval"], "type": "string", "description": "'all': all; 'num_pkts': Input packets; 'num_total_bytes': Input bytes; 'num_unicast_pkts': Received unicasts; 'num_broadcast_pkts': Received braodcasts; 'num_multicast_pkts': Received multicasts; 'num_tx_pkts': Transmitted packtes; 'num_total_tx_bytes': Transmitte bytes; 'num_unicast_tx_pkts': Trasnmitted unicasts; 'num_broadcast_tx_pkts': Transmitted broadcasts; 'num_multicast_tx_pkts': Transmitted multicasts; 'rate_pkt_sent': Packet sent rate packets/sec; 'rate_byte_sent': Byte sent rate bits/sec; 'rate_pkt_rcvd': Packet received rate packets/sec; 'rate_byte_rcvd': Byte received rate bits/sec; 'load_interval': Load Interval; ", "format": "enum"}}}]}
     :param action: {"optional": true, "enum": ["enable", "disable"], "type": "string", "description": "'enable': Enable; 'disable': Disable; ", "format": "enum"}
     :param l3_vlan_fwd_disable: {"default": 0, "optional": true, "type": "number", "description": "Disable L3 forwarding between VLANs for incoming packets on this interface", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -143,11 +169,13 @@ class Ve(A10BaseClass):
         self.mtu = ""
         self.access_list = {}
         self.ifnum = ""
+        self.sampling_enable = []
         self.lw_4o6 = {}
         self.ipv6 = {}
         self.action = ""
         self.l3_vlan_fwd_disable = ""
         self.ddos = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

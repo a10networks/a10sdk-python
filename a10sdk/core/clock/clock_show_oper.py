@@ -5,11 +5,12 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param date: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param timezone: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param time: {"type": "string", "format": "string"}
+    :param offset: {"type": "string", "format": "string"}
+    :param date: {"type": "string", "format": "string"}
+    :param timezone: {"type": "string", "format": "string"}
     :param source_type: {"type": "number", "format": "number"}
-    :param day: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param day: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -21,11 +22,12 @@ class Oper(A10BaseClass):
         
         self.b_key = "oper"
         self.DeviceProxy = ""
+        self.time = ""
+        self.offset = ""
         self.date = ""
         self.timezone = ""
         self.source_type = ""
         self.day = ""
-        self.time = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

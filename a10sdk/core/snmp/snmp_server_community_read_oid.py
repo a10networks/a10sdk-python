@@ -108,6 +108,7 @@ class Oid(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param oid_val: {"description": "specific the oid (The oid value, object-key)", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -128,6 +129,7 @@ class Oid(A10BaseClass):
         self.DeviceProxy = ""
         self.remote = {}
         self.oid_val = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

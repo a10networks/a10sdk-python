@@ -34,6 +34,7 @@ class RestartPortList(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ethernet_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "flap-ethernet-end": {"type": "number", "description": "Ethernet Port", "format": "interface"}, "flap-ethernet-start": {"type": "number", "description": "Ethernet Port", "format": "interface"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -52,6 +53,7 @@ class RestartPortList(A10BaseClass):
         self.a10_url="/axapi/v3/vrrp-a/restart-port-list"
         self.DeviceProxy = ""
         self.ethernet_cfg = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

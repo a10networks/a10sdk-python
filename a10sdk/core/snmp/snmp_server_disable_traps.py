@@ -9,10 +9,11 @@ class Traps(A10BaseClass):
     Class traps supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param gslb: {"default": 0, "optional": true, "type": "number", "description": "Disable all gslb traps on this partition", "format": "flag"}
     :param all: {"default": 0, "optional": true, "type": "number", "description": "Disable all traps on this partition", "format": "flag"}
     :param slb_change: {"default": 0, "optional": true, "type": "number", "description": "Disable all slb-change traps on this partition", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param snmp: {"default": 0, "optional": true, "type": "number", "description": "Disable all snmp traps on this partition", "format": "flag"}
+    :param gslb: {"default": 0, "optional": true, "type": "number", "description": "Disable all gslb traps on this partition", "format": "flag"}
     :param slb: {"default": 0, "optional": true, "type": "number", "description": "Disable all slb traps on this partition", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -31,10 +32,11 @@ class Traps(A10BaseClass):
         self.b_key = "traps"
         self.a10_url="/axapi/v3/snmp-server/disable/traps"
         self.DeviceProxy = ""
-        self.gslb = ""
         self.A10WW_all = ""
         self.slb_change = ""
+        self.uuid = ""
         self.snmp = ""
+        self.gslb = ""
         self.slb = ""
 
         for keys, value in kwargs.items():

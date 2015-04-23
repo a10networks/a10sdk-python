@@ -59,6 +59,7 @@ class Ip(A10BaseClass):
 
     :param generate_membership_query: {"default": 0, "optional": true, "type": "number", "description": "Enable Membership Query", "format": "flag"}
     :param max_resp_time: {"description": "Max Response Time (Default is 100)", "format": "number", "default": 100, "optional": true, "maximum": 255, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param generate_membership_query_val: {"description": "1 - 255 (Default is 125)", "format": "number", "default": 125, "optional": true, "maximum": 255, "minimum": 1, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -79,6 +80,7 @@ class Ip(A10BaseClass):
         self.DeviceProxy = ""
         self.generate_membership_query = ""
         self.max_resp_time = ""
+        self.uuid = ""
         self.generate_membership_query_val = ""
         self.address = {}
 

@@ -5,7 +5,7 @@ class PortList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param action: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param action: {"type": "string", "format": "string"}
     :param ethernet: {"type": "number", "format": "number"}
     :param management: {"type": "number", "format": "number"}
     :param ve: {"type": "number", "format": "number"}
@@ -33,7 +33,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param port_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"action": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "ethernet": {"type": "number", "format": "number"}, "management": {"type": "number", "format": "number"}, "optional": true, "ve": {"type": "number", "format": "number"}}}]}
+    :param port_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"action": {"type": "string", "format": "string"}, "ethernet": {"type": "number", "format": "number"}, "management": {"type": "number", "format": "number"}, "optional": true, "ve": {"type": "number", "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

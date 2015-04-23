@@ -5,7 +5,7 @@ class IpCfg(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param ip: {"not-list": ["service-group", "ipv6"], "type": "string", "description": "IP address of netflow collector", "format": "ipv4-address"}
+    :param ip: {"not": "ipv6", "type": "string", "description": "IP address of netflow collector", "format": "ipv4-address"}
     :param port4: {"description": "Port number, default is 9996", "format": "number", "default": 9996, "maximum": 65535, "minimum": 1, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -57,7 +57,8 @@ class Destination(A10BaseClass):
     Class destination supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param service_group: {"description": "Service-group for load balancing between multiple collector servers", "format": "string-rlx", "minLength": 1, "not-list": ["ip", "ipv6"], "optional": true, "maxLength": 63, "type": "string"}
+    :param service_group: {"description": "Service-group for load balancing between multiple collector servers", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "not": "ipv6", "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -77,6 +78,7 @@ class Destination(A10BaseClass):
         self.DeviceProxy = ""
         self.ip_cfg = {}
         self.service_group = ""
+        self.uuid = ""
         self.ipv6_cfg = {}
 
         for keys, value in kwargs.items():

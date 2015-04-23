@@ -3,19 +3,20 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class Export(A10BaseClass):
     
-    """    :param geo_location: {"description": "Geo-location CSV File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    """    :param geo_location: {"description": "Geo-location CSV File", "partition-visibility": "shared", "minLength": 1, "format": "string", "optional": true, "maxLength": 63, "type": "string"}
     :param ssl_cert_key: {"description": "Local SSL Key/Certificate file name", "format": "string", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
     :param bw_list: {"description": "Black white List File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param running_config: {"default": 0, "optional": true, "type": "number", "description": "Running Config", "format": "flag"}
     :param merged_pcap: {"default": 0, "optional": true, "type": "number", "description": "Export the merged pcap file when there are multiple Export sessions", "format": "flag"}
     :param syslog: {"description": "Syslog file", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param auth_portal: {"description": "Portal file for http authentication", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
-    :param aflex: {"description": "aFleX Script Source File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param aflex: {"description": "aFleX Script Source File", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param fixed_nat: {"description": "Fixed NAT Port Mapping File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param saml_idp_name: {"description": "SAML metadata of identity provider", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param class_list: {"description": "Class List File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param debug_monitor: {"description": "Debug Monitor Output", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param policy: {"description": "WAF policy File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
-    :param running_config: {"default": 0, "optional": true, "type": "number", "description": "Running Config", "format": "flag"}
+    :param thales_secworld: {"description": "Thales security world files", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param auth_portal_image: {"description": "Image file for default portal", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param ssl_crl: {"description": "SSL Crl File", "format": "string", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
     :param remote_file: {"not": "store-name", "optional": true, "type": "string", "description": "profile name for remote url", "format": "url"}
@@ -28,7 +29,7 @@ class Export(A10BaseClass):
     :param use_mgmt_port: {"default": 0, "optional": true, "type": "number", "description": "Use management port as source port", "format": "flag"}
     :param store_name: {"description": "Export store name", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "not": "remote-file", "type": "string"}
     :param axdebug: {"description": "AX Debug Packet File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
-    :param lw_4o6: {"description": "LW-4over6 Binding Table File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param lw_4o6: {"description": "LW-4over6 Binding Table File", "partition-visibility": "shared", "minLength": 1, "format": "string", "optional": true, "maxLength": 63, "type": "string"}
     :param xml_schema: {"description": "XML-Schema File", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param startup_config: {"default": 0, "optional": true, "type": "number", "description": "Startup Config", "format": "flag"}
     :param ssl_cert: {"description": "SSL Cert File(enter bulk when import an archive file)", "format": "string", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
@@ -59,6 +60,7 @@ Class Description::
         self.geo_location = ""
         self.ssl_cert_key = ""
         self.bw_list = ""
+        self.running_config = ""
         self.merged_pcap = ""
         self.syslog = ""
         self.auth_portal = ""
@@ -68,7 +70,7 @@ Class Description::
         self.class_list = ""
         self.debug_monitor = ""
         self.policy = ""
-        self.running_config = ""
+        self.thales_secworld = ""
         self.auth_portal_image = ""
         self.ssl_crl = ""
         self.remote_file = ""

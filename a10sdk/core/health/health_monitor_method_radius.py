@@ -18,6 +18,7 @@ class Radius(A10BaseClass):
     :param radius_secret: {"description": "Specify the shared secret of RADIUS server (Shared Crypto Key)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param radius_password: {"default": 0, "optional": true, "type": "number", "description": "Specify the user password", "format": "flag"}
     :param radius_port: {"description": "Specify the RADIUS port, default is 1812 (Port number (default 1812))", "format": "number", "default": 1812, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -44,6 +45,7 @@ class Radius(A10BaseClass):
         self.radius_secret = ""
         self.radius_password = ""
         self.radius_port = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

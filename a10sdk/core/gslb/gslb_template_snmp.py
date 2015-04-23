@@ -12,6 +12,7 @@ class Snmp(A10BaseClass):
     :param username: {"description": "Specify username (User name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param interval: {"description": "Specify interval, default is 3 (Interval, unit: second, default is 3)", "format": "number", "default": 3, "optional": true, "maximum": 999, "minimum": 1, "type": "number"}
     :param priv_proto: {"description": "'aes': AES; 'des': DES; ", "format": "enum", "default": "des", "type": "string", "enum": ["aes", "des"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param context_name: {"description": "Specify context name", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param auth_key: {"description": "Specify authentication key (Specify key)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param oid: {"description": "Specify OID", "format": "string", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
@@ -20,7 +21,7 @@ class Snmp(A10BaseClass):
     :param port: {"description": "Specify port, default is 161 (Port Number, default is 161)", "format": "number", "default": 161, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
     :param host: {"description": "Specify host (Host name or ip address)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param version: {"description": "'v1': Version 1; 'v2c': Version 2c; 'v3': Version 3; ", "format": "enum", "default": "v3", "type": "string", "enum": ["v1", "v2c", "v3"], "optional": true}
-    :param interface: {"optional": true, "type": "number", "description": "Specify Interface ID", "format": "number"}
+    :param interface: {"description": "Specify Interface ID", "format": "number", "type": "number", "maximum": 2147483647, "minimum": 0, "optional": true}
     :param priv_key: {"description": "Specify privacy key (Specify key)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param auth_proto: {"description": "'sha': SHA; 'md5': MD5; ", "format": "enum", "default": "md5", "type": "string", "enum": ["sha", "md5"], "optional": true}
     :param security_engine_id: {"description": "Specify security engine ID", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
@@ -47,6 +48,7 @@ class Snmp(A10BaseClass):
         self.username = ""
         self.interval = ""
         self.priv_proto = ""
+        self.uuid = ""
         self.context_name = ""
         self.auth_key = ""
         self.oid = ""

@@ -10,6 +10,7 @@ class Vni(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param segment: {"description": "VNI configured for the remote VTEP", "format": "number", "type": "number", "maximum": 16777215, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,6 +30,7 @@ class Vni(A10BaseClass):
         self.a10_url="/axapi/v3/overlay-tunnel/vtep/{id}/destination-ip-address/{ip_address}/vni/{segment}"
         self.DeviceProxy = ""
         self.segment = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -35,6 +35,7 @@ class Ipv6Addr(A10BaseClass):
     Class ipv6-addr supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ipv6: {"optional": false, "type": "string", "description": "Configure lldp management-address, subtype is ipv6 (lldp management-address ipv6 address)", "format": "ipv6-address"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -55,6 +56,7 @@ class Ipv6Addr(A10BaseClass):
         self.a10_url="/axapi/v3/network/lldp/management-address/ipv6-addr/{ipv6}"
         self.DeviceProxy = ""
         self.interface_ipv6 = {}
+        self.uuid = ""
         self.ipv6 = ""
 
         for keys, value in kwargs.items():

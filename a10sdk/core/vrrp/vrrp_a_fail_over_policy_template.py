@@ -32,10 +32,9 @@ class Ipv6DestinationCfg(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param distance: {"description": "Route's administrative distance (default: match any)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
-    :param v6mask: {"description": "IPv6 Destination Prefix", "minimum": 0, "type": "number", "maximum": 128, "format": "number"}
-    :param protocol: {"enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}
+    :param protocol: {"default": "any", "enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}
     :param weight: {"description": "The amount the priority will decrease if the route is missing (The amount the priority will decrease if the route is not present)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
-    :param ipv6_destination: {"type": "string", "description": "IPv6 Destination Prefix", "format": "ipv6-address"}
+    :param ipv6_destination: {"type": "string", "description": "IPv6 Destination Prefix", "format": "ipv6-address-plen"}
     :param gatewayv6: {"type": "string", "description": "Match the route's gateway (next-hop) (default: match any)", "format": "ipv6-address"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -49,7 +48,6 @@ class Ipv6DestinationCfg(A10BaseClass):
         self.b_key = "ipv6-destination-cfg"
         self.DeviceProxy = ""
         self.distance = ""
-        self.v6mask = ""
         self.protocol = ""
         self.weight = ""
         self.ipv6_destination = ""
@@ -64,7 +62,7 @@ class IpDestinationCfg(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param distance: {"description": "Route's administrative distance(default: match any)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
-    :param protocol: {"enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}
+    :param protocol: {"default": "any", "enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}
     :param weight: {"description": "The amount the priority will decrease if the route is missing (The amount the priority will decrease if the route is not present)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}
     :param mask: {"type": "string", "description": "Destination prefix mask", "format": "ipv4-netmask"}
     :param ip_destination: {"type": "string", "description": "Destination prefix", "format": "ipv4-address"}
@@ -95,8 +93,8 @@ class Route(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param ipv6_destination_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"distance": {"description": "Route's administrative distance (default: match any)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "v6mask": {"description": "IPv6 Destination Prefix", "minimum": 0, "type": "number", "maximum": 128, "format": "number"}, "protocol": {"enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}, "weight": {"description": "The amount the priority will decrease if the route is missing (The amount the priority will decrease if the route is not present)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "ipv6-destination": {"type": "string", "description": "IPv6 Destination Prefix", "format": "ipv6-address"}, "gatewayv6": {"type": "string", "description": "Match the route's gateway (next-hop) (default: match any)", "format": "ipv6-address"}, "optional": true}}]}
-    :param ip_destination_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"distance": {"description": "Route's administrative distance(default: match any)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "protocol": {"enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}, "weight": {"description": "The amount the priority will decrease if the route is missing (The amount the priority will decrease if the route is not present)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "mask": {"type": "string", "description": "Destination prefix mask", "format": "ipv4-netmask"}, "ip-destination": {"type": "string", "description": "Destination prefix", "format": "ipv4-address"}, "optional": true, "gateway": {"type": "string", "format": "ipv4-address"}}}]}
+    :param ipv6_destination_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"distance": {"description": "Route's administrative distance (default: match any)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "protocol": {"default": "any", "enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}, "weight": {"description": "The amount the priority will decrease if the route is missing (The amount the priority will decrease if the route is not present)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "ipv6-destination": {"type": "string", "description": "IPv6 Destination Prefix", "format": "ipv6-address-plen"}, "gatewayv6": {"type": "string", "description": "Match the route's gateway (next-hop) (default: match any)", "format": "ipv6-address"}, "optional": true}}]}
+    :param ip_destination_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"distance": {"description": "Route's administrative distance(default: match any)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "protocol": {"default": "any", "enum": ["any", "static", "dynamic"], "type": "string", "description": "'any': Match any routing protocol (default); 'static': Match only static routes (added by user); 'dynamic': Match routes added by dynamic routing protocols (e.g. OSPF); ", "format": "enum"}, "weight": {"description": "The amount the priority will decrease if the route is missing (The amount the priority will decrease if the route is not present)", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "mask": {"type": "string", "description": "Destination prefix mask", "format": "ipv4-netmask"}, "ip-destination": {"type": "string", "description": "Destination prefix", "format": "ipv4-address"}, "optional": true, "gateway": {"type": "string", "format": "ipv4-address"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -249,6 +247,7 @@ class FailOverPolicyTemplate(A10BaseClass):
     :param name: {"description": "VRRP-A fail over policy template name", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
     :param interface: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ethernet": {"type": "number", "description": "Ethernet Interface (Ethernet interface number)", "format": "interface"}, "optional": true, "weight": {"description": "The failover event weight", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}}}]}
     :param trunk_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"per-port-weight": {"description": "Per port failover weight", "format": "number", "default": 1, "maximum": 255, "minimum": 1, "type": "number"}, "optional": true, "weight": {"description": "failover event weight", "minimum": 1, "type": "number", "maximum": 255, "format": "number"}, "trunk": {"description": "trunk tracking (trunk id)", "minimum": 1, "type": "number", "maximum": 16, "format": "number"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -273,6 +272,7 @@ class FailOverPolicyTemplate(A10BaseClass):
         self.interface = []
         self.gateway = {}
         self.trunk_cfg = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

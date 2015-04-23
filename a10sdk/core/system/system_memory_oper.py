@@ -142,7 +142,7 @@ class Oper(A10BaseClass):
     :param Free: {"type": "number", "format": "number"}
     :param aFleX_memory: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Max": {"type": "number", "format": "number"}, "Allocated": {"type": "number", "format": "number"}, "optional": true, "Object-size": {"type": "number", "format": "number"}}}]}
     :param SSL_memory: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Max": {"type": "number", "format": "number"}, "Allocated": {"type": "number", "format": "number"}, "optional": true, "Object-size": {"type": "number", "format": "number"}}}]}
-    :param Usage: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Usage: {"type": "string", "format": "string"}
     :param Total: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

@@ -4,12 +4,13 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 class Options(A10BaseClass):
     
     """Class Description::
-    Partition specific overlay-tunnel configuration.
+    Global overlay-tunnel configuration options.
 
     Class options supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
     :param nvgre_key_mode_lower24: {"default": 0, "optional": true, "type": "number", "description": "Use the lower 24-bits of the GRE key as the VSID", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param tcp_mss_adjust_disable: {"default": 0, "optional": true, "type": "number", "description": "Disable TCP MSS adjustment in SYN packet for tunnels", "format": "flag"}
     :param gateway_mac: {"optional": true, "type": "string", "description": "MAC to be used with Gateway segment Id (MAC Address for the Gateway segment)", "format": "mac-address"}
     :param ip_dscp_preserve: {"default": 0, "optional": true, "type": "number", "description": "Copy DSCP bits from inner IP to outer IP header", "format": "flag"}
@@ -33,6 +34,7 @@ class Options(A10BaseClass):
         self.a10_url="/axapi/v3/overlay-tunnel/options"
         self.DeviceProxy = ""
         self.nvgre_key_mode_lower24 = ""
+        self.uuid = ""
         self.tcp_mss_adjust_disable = ""
         self.gateway_mac = ""
         self.ip_dscp_preserve = ""

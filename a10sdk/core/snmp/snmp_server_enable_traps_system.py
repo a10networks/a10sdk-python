@@ -11,6 +11,7 @@ class System(A10BaseClass):
 
     :param all: {"default": 0, "optional": true, "type": "number", "description": "Enable all system group traps", "format": "flag"}
     :param data_cpu_high: {"default": 0, "optional": true, "type": "number", "description": "Enable data CPU usage high trap", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param power: {"default": 0, "optional": true, "type": "number", "description": "Enable system power supply trap", "format": "flag"}
     :param start: {"default": 0, "optional": true, "type": "number", "description": "Enable system start trap", "format": "flag"}
     :param high_memory_use: {"default": 0, "optional": true, "type": "number", "description": "Enable system high memory usage trap", "format": "flag"}
@@ -44,6 +45,7 @@ class System(A10BaseClass):
         self.DeviceProxy = ""
         self.A10WW_all = ""
         self.data_cpu_high = ""
+        self.uuid = ""
         self.power = ""
         self.start = ""
         self.high_memory_use = ""

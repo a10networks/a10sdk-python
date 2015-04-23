@@ -11,6 +11,7 @@ class TacacsServer(A10BaseClass):
 
     :param interval: {"description": "The moniter interval in seconds (default 60)", "format": "number", "default": 60, "optional": true, "maximum": 120, "minimum": 1, "type": "number"}
     :param monitor: {"default": 0, "optional": true, "type": "number", "description": "Configure TACACS+ servers", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class TacacsServer(A10BaseClass):
         self.host = {}
         self.interval = ""
         self.monitor = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

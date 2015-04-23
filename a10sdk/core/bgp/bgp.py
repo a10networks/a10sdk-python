@@ -34,6 +34,7 @@ class Bgp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param extended_asn_cap: {"default": 0, "optional": true, "type": "number", "description": "Enable the router to send 4-octet ASN capabilities", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -53,6 +54,7 @@ class Bgp(A10BaseClass):
         self.DeviceProxy = ""
         self.nexthop_trigger = {}
         self.extended_asn_cap = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

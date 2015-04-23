@@ -38,6 +38,7 @@ class IpList(A10BaseClass):
     :param gslb_ip_list_addr_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ip": {"type": "string", "description": "Specify IP address", "format": "ipv4-address"}, "ip-mask": {"type": "string", "description": "IP mask", "format": "ipv4-netmask"}, "optional": true, "id": {"description": "ID Number", "minimum": 0, "type": "number", "maximum": 31, "format": "number"}}}]}
     :param gslb_ip_list_filename: {"description": "Load IP List file (IP List filename)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param gslb_ip_list_obj_name: {"description": "Specify IP List name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -59,6 +60,7 @@ class IpList(A10BaseClass):
         self.gslb_ip_list_addr_list = []
         self.gslb_ip_list_filename = ""
         self.gslb_ip_list_obj_name = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

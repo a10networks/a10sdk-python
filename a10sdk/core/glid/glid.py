@@ -74,6 +74,7 @@ class Glid(A10BaseClass):
     :param over_limit_action: {"default": 0, "optional": true, "type": "number", "description": "Action when exceeds limit", "format": "flag"}
     :param log_interval: {"description": "Log interval (minute, by default system will log every over limit instance)", "format": "number", "type": "number", "maximum": 255, "minimum": 1, "optional": true}
     :param use_nat_pool: {"description": "Use NAT pool specified to do reverse NAT for class list members bound to the lid", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -107,6 +108,7 @@ class Glid(A10BaseClass):
         self.over_limit_action = ""
         self.log_interval = ""
         self.use_nat_pool = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -28,7 +28,7 @@ class Host(A10BaseClass):
 class Instance(A10BaseClass):
     
     """Class Description::
-    Radius Authentication Server instance.
+    RADIUS Authentication Server instance.
 
     Class instance supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
@@ -42,8 +42,9 @@ class Instance(A10BaseClass):
     :param interval: {"description": "Specify the interval time for resend the request (second), default is 3 seconds (The interval time(second), default is 3 seconds)", "format": "number", "default": 3, "optional": true, "maximum": 1024, "minimum": 1, "type": "number"}
     :param secret: {"default": 0, "optional": true, "type": "number", "description": "Specify the RADIUS server's secret", "format": "flag"}
     :param health_check: {"description": "Check server's health status", "format": "flag", "default": 0, "optional": true, "not": "health-check-disable", "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param health_check_disable: {"description": "Disable configured health check configuration", "format": "flag", "default": 0, "optional": true, "not": "health-check", "type": "number"}
-    :param port: {"description": "Specify the RADIUS server's authentication port, default is 1812", "format": "number", "default": 1812, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param port: {"description": "Specify the RADIUS server's authentication port, default is 1812", "format": "number", "default": 1812, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
     :param secret_string: {"description": "The RADIUS server's secret", "format": "password", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -73,6 +74,7 @@ class Instance(A10BaseClass):
         self.secret = ""
         self.health_check = ""
         self.host = {}
+        self.uuid = ""
         self.health_check_disable = ""
         self.port = ""
         self.secret_string = ""

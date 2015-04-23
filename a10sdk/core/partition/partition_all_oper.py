@@ -5,10 +5,10 @@ class PartitionList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param status: {"type": "string", "format": "string"}
     :param partition_id: {"type": "number", "format": "number"}
-    :param app_Type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param partition_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param app_Type: {"type": "string", "format": "string"}
+    :param partition_name: {"type": "string", "format": "string"}
     :param admin_Count: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -35,7 +35,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param partition_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "partition-id": {"type": "number", "format": "number"}, "app-Type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "partition-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "admin-Count": {"type": "number", "format": "number"}, "optional": true}}]}
+    :param partition_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"status": {"type": "string", "format": "string"}, "partition-id": {"type": "number", "format": "number"}, "app-Type": {"type": "string", "format": "string"}, "partition-name": {"type": "string", "format": "string"}, "admin-Count": {"type": "number", "format": "number"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

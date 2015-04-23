@@ -11,6 +11,7 @@ class Audit(A10BaseClass):
 
     :param privilege: {"default": 0, "optional": true, "type": "number", "description": "Enable privilege command for audit service", "format": "flag"}
     :param enable: {"default": 0, "optional": true, "type": "number", "description": "Enable audit service", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param size: {"description": "Config audit buffer size, default is 20,000 (Audit buffer size(in items), default is 20,000)", "format": "number", "type": "number", "maximum": 30000, "minimum": 1000, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -31,6 +32,7 @@ class Audit(A10BaseClass):
         self.DeviceProxy = ""
         self.privilege = ""
         self.enable = ""
+        self.uuid = ""
         self.size = ""
 
         for keys, value in kwargs.items():

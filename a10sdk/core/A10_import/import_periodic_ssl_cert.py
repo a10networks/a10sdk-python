@@ -16,6 +16,7 @@ class SslCert(A10BaseClass):
     :param period: {"description": "Specify the period in second", "format": "number", "type": "number", "maximum": 31536000, "minimum": 60, "optional": true}
     :param certificate_type: {"optional": true, "enum": ["pem", "der", "pfx", "p7b"], "type": "string", "description": "'pem': pem; 'der': der; 'pfx': pfx; 'p7b': p7b; ", "format": "enum"}
     :param ssl_cert: {"description": "SSL Cert File(enter bulk when import an archive file)", "format": "string", "minLength": 1, "optional": false, "maxLength": 255, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -41,6 +42,7 @@ class SslCert(A10BaseClass):
         self.period = ""
         self.certificate_type = ""
         self.ssl_cert = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

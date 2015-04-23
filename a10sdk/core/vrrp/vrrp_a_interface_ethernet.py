@@ -10,6 +10,7 @@ class Ethernet(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param both: {"description": "both a router and server interface", "format": "flag", "default": 0, "optional": true, "not-list": ["router-interface", "server-interface"], "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param vlan: {"description": "VLAN ID", "format": "number", "optional": true, "maximum": 4094, "minimum": 1, "not": "no-heartbeat", "type": "number"}
     :param ethernet_val: {"optional": false, "type": "number", "description": "Ethernet Interface", "format": "interface"}
     :param router_interface: {"description": "interface to upstream router", "format": "flag", "default": 0, "optional": true, "not-list": ["server-interface", "both"], "type": "number"}
@@ -34,6 +35,7 @@ class Ethernet(A10BaseClass):
         self.a10_url="/axapi/v3/vrrp-a/interface/ethernet/{ethernet_val}"
         self.DeviceProxy = ""
         self.both = ""
+        self.uuid = ""
         self.vlan = ""
         self.ethernet_val = ""
         self.router_interface = ""

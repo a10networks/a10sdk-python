@@ -33,7 +33,7 @@ class AuthProtocol(A10BaseClass):
     :param kport_hm_disable: {"default": 0, "not": "kport-hm", "type": "number", "description": "Disable configured Kerberos port health check configuration", "format": "flag"}
     :param kerberos_disable: {"default": 0, "type": "number", "description": "Disable Kerberos authentication protocol", "format": "flag"}
     :param ntlm_health_check_disable: {"default": 0, "not": "ntlm-health-check", "type": "number", "description": "Disable configured NTLM port health check configuration", "format": "flag"}
-    :param kerberos_port: {"description": "Specify the Kerbros port, default is 88", "format": "number", "default": 88, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param kerberos_port: {"description": "Specify the Kerbros port, default is 88", "format": "number", "default": 88, "maximum": 65534, "minimum": 1, "type": "number"}
     :param ntlm_version: {"description": "Specify NTLM version, default is 2", "format": "number", "default": 2, "maximum": 2, "minimum": 1, "type": "number"}
     :param ntlm_disable: {"default": 0, "type": "number", "description": "Disable NTLM authentication protocol", "format": "flag"}
     :param kport_hm: {"description": "Check Kerberos port's health status", "format": "string", "minLength": 1, "maxLength": 31, "not": "kport-hm-disable", "type": "string", "$ref": "/axapi/v3/health/monitor"}
@@ -74,7 +74,9 @@ class Instance(A10BaseClass):
     :param name: {"description": "Specify Windows authentication server name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param health_check_disable: {"description": "Disable configured health check configuration", "format": "flag", "default": 0, "optional": true, "not": "health-check", "type": "number"}
     :param timeout: {"description": "Specify connection timeout to server, default is 10 seconds", "format": "number", "default": 10, "optional": true, "maximum": 255, "minimum": 1, "type": "number"}
+    :param support_apacheds_kdc: {"default": 0, "optional": true, "type": "number", "description": "Enable weak cipher (DES CRC/MD5/MD4) and merge AS-REQ in single packet", "format": "flag"}
     :param health_check: {"description": "Check server's health status", "format": "flag", "default": 0, "optional": true, "not": "health-check-disable", "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -100,7 +102,9 @@ class Instance(A10BaseClass):
         self.host = {}
         self.auth_protocol = {}
         self.timeout = ""
+        self.support_apacheds_kdc = ""
         self.health_check = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

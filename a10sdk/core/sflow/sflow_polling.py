@@ -51,17 +51,18 @@ class VeList(A10BaseClass):
 
 class Polling(A10BaseClass):
     
-    """Class Description::
+    """    :param cpu_usage: {"default": 0, "optional": true, "type": "number", "description": "Polling CPU usage", "format": "flag"}
+    :param eth_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"eth-end": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}, "optional": true, "eth-start": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}}}]}
+    :param http_counter: {"default": 0, "optional": true, "type": "number", "description": "Polling HTTP counters", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param ve_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve-end": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "ve-start": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "optional": true}}]}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Configure sFlow counter polling on specified source.
 
     Class polling supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param cpu_usage: {"default": 0, "optional": true, "type": "number", "description": "Polling CPU usage", "format": "flag"}
-    :param eth_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"eth-end": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}, "optional": true, "eth-start": {"type": "number", "description": "Ethernet interface to sample", "format": "interface"}}}]}
-    :param http_counter: {"default": 0, "optional": true, "type": "number", "description": "Polling HTTP counters", "format": "flag"}
-    :param ve_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve-end": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "ve-start": {"$ref": "/axapi/v3/interface/ve", "type": "number", "description": "VE interface to sample", "format": "number"}, "optional": true}}]}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -81,6 +82,7 @@ class Polling(A10BaseClass):
         self.cpu_usage = ""
         self.eth_list = []
         self.http_counter = ""
+        self.uuid = ""
         self.ve_list = []
 
         for keys, value in kwargs.items():

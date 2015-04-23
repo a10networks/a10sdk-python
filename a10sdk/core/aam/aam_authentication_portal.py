@@ -36,6 +36,7 @@ class Portal(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param name: {"optional": false, "enum": ["default-portal"], "type": "string", "description": "'default-portal': Default portal configuration; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -54,11 +55,15 @@ class Portal(A10BaseClass):
         self.b_key = "portal"
         self.a10_url="/axapi/v3/aam/authentication/portal/{name}"
         self.DeviceProxy = ""
-        self.logon_fail = {}
+        self.name = ""
         self.logon = {}
         self.logo_cfg = {}
-        self.name = ""
+        self.reset_logon = {}
+        self.reset_logon_fail = {}
+        self.reset_change_password = {}
+        self.logon_fail = {}
         self.change_password = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

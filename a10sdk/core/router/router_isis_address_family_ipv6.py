@@ -62,6 +62,7 @@ class Ipv6(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param distance: {"description": "ISIS Administrative Distance (Distance value)", "format": "number", "default": 115, "optional": true, "maximum": 255, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param adjacency_check: {"default": 1, "optional": true, "type": "number", "description": "Check ISIS neighbor protocol support", "format": "flag"}
     :param summary_prefix_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"prefix": {"type": "string", "description": "IPv6 prefix", "format": "ipv6-address-plen"}, "optional": true, "level": {"default": "level-2", "enum": ["level-1", "level-1-2", "level-2"], "type": "string", "description": "'level-1': Summarize into level-1 area; 'level-1-2': Summarize into both area and sub-domain; 'level-2': Summarize into level-2 sub-domain; ", "format": "enum"}}}]}
     :param default_information: {"optional": true, "enum": ["originate"], "type": "string", "description": "'originate': Distribute a default route; ", "format": "enum"}
@@ -84,6 +85,7 @@ class Ipv6(A10BaseClass):
         self.DeviceProxy = ""
         self.distance = ""
         self.redistribute = {}
+        self.uuid = ""
         self.multi_topology_cfg = {}
         self.adjacency_check = ""
         self.summary_prefix_list = []

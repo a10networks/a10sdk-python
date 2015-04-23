@@ -44,30 +44,6 @@ class Inside(A10BaseClass):
             setattr(self,keys, value)
 
 
-class Icmp(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param send_on_user_quota_exceeded: {"default": "admin-filtered", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMP destination host unreachable; 'admin-filtered': Send ICMP admin filtered (default); 'disable': Disable ICMP quota exceeded message; ", "format": "enum"}
-    :param send_on_port_unavailable: {"default": "disable", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMPv6 destination host unreachable; 'admin-filtered': Send ICMPv6 admin filtered; 'disable': Disable ICMPv6 port unavailable message (default); ", "format": "enum"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "icmp"
-        self.DeviceProxy = ""
-        self.send_on_user_quota_exceeded = ""
-        self.send_on_port_unavailable = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
 class MssClamp(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -140,16 +116,43 @@ class Tcp(A10BaseClass):
             setattr(self,keys, value)
 
 
+class Icmp(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param send_on_user_quota_exceeded: {"default": "admin-filtered", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMP destination host unreachable; 'admin-filtered': Send ICMP admin filtered (default); 'disable': Disable ICMP quota exceeded message; ", "format": "enum"}
+    :param send_on_port_unavailable: {"default": "disable", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMPv6 destination host unreachable; 'admin-filtered': Send ICMPv6 admin filtered; 'disable': Disable ICMPv6 port unavailable message (default); ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "icmp"
+        self.DeviceProxy = ""
+        self.send_on_user_quota_exceeded = ""
+        self.send_on_port_unavailable = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class Global(A10BaseClass):
     
-    """Class Description::
+    """    :param user_quota_prefix_length: {"description": "User Quota Prefix Length (Default: 128)", "format": "number", "default": 128, "optional": true, "maximum": 128, "minimum": 1, "type": "number"}
+    :param all: {"default": 0, "optional": true, "type": "number", "description": "All packet sizes", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param force_non_zero_ipv4_id: {"default": 0, "optional": true, "type": "number", "description": "Enable non-zero Identification field in IPv4 header when no IPv6 Fragment for packet size more than 88 & less than 1280 bytes", "format": "flag"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Configure NAT64 parameters.
 
     Class global supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param user_quota_prefix_length: {"description": "User Quota Prefix Length (Default: 128)", "format": "number", "default": 128, "optional": true, "maximum": 128, "minimum": 1, "type": "number"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -167,9 +170,12 @@ class Global(A10BaseClass):
         self.a10_url="/axapi/v3/cgnv6/nat64/global"
         self.DeviceProxy = ""
         self.user_quota_prefix_length = ""
+        self.A10WW_all = ""
+        self.uuid = ""
         self.inside = {}
-        self.icmp = {}
         self.tcp = {}
+        self.force_non_zero_ipv4_id = ""
+        self.icmp = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

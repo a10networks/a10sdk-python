@@ -29,7 +29,7 @@ class UsernameCfg(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param username: {"minLength": 1, "maxLength": 31, "type": "string", "description": "Configure SMTP login username", "format": "string"}
+    :param username: {"minLength": 1, "maxLength": 31, "type": "string", "description": "Configure SMTP login username", "format": "string-rlx"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -57,6 +57,7 @@ class Smtp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param mailfrom: {"description": "Configure email source address", "format": "email-addr", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param smtp_server: {"description": "Configure SMTP Server (length:1-31)", "format": "host", "minLength": 1, "optional": true, "maxLength": 31, "not": "smtp-server-v6", "type": "string"}
     :param needauthentication: {"default": 0, "optional": true, "type": "number", "description": "Configure SMTP server need authtication", "format": "flag"}
     :param port: {"description": "Configure SMTP Port (Configure SMTP port, default is 25)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}
@@ -79,6 +80,7 @@ class Smtp(A10BaseClass):
         self.a10_url="/axapi/v3/smtp"
         self.DeviceProxy = ""
         self.mailfrom = ""
+        self.uuid = ""
         self.smtp_server = ""
         self.username_cfg = {}
         self.needauthentication = ""

@@ -13,6 +13,7 @@ class StaticDestMapping(A10BaseClass):
     :param v6_address: {"optional": false, "type": "string", "description": "IPv6 address", "format": "ipv6-address"}
     :param v4_address: {"optional": false, "type": "string", "description": "IPv4 address", "format": "ipv4-address"}
     :param vrid: {"description": "VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "optional": true, "maximum": 31, "minimum": 1, "modify-not-allowed": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -35,6 +36,7 @@ class StaticDestMapping(A10BaseClass):
         self.v6_address = ""
         self.v4_address = ""
         self.vrid = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

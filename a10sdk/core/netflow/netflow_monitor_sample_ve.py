@@ -9,6 +9,7 @@ class Ve(A10BaseClass):
     Class ve supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ve_num: {"description": "VE interface number", "format": "number", "optional": false, "maximum": 4094, "minimum": 2, "type": "number", "$ref": "/axapi/v3/interface/ve"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -28,6 +29,7 @@ class Ve(A10BaseClass):
         self.b_key = "ve"
         self.a10_url="/axapi/v3/netflow/monitor/{name}/sample/ve/{ve_num}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.ve_num = ""
 
         for keys, value in kwargs.items():

@@ -44,6 +44,7 @@ class Common(A10BaseClass):
     :param ttl_threshold: {"description": "Only cache DNS response with longer TTL", "format": "number", "type": "number", "maximum": 10000000, "minimum": 1, "optional": true}
     :param response_type: {"optional": true, "enum": ["single-answer", "round-robin"], "type": "string", "description": "'single-answer': Only cache DNS response with single answer; 'round-robin': Round robin; ", "format": "enum"}
     :param enable_l7_req_acct: {"default": 0, "optional": true, "type": "number", "description": "Enable L7 request accounting", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param snat_on_vip: {"default": 0, "optional": true, "type": "number", "description": "Enable source NAT traffic against VIP", "format": "flag"}
     :param disable_server_auto_reselect: {"default": 0, "optional": true, "type": "number", "description": "Disable auto reselection of server", "format": "flag"}
     :param interval: {"description": "Specify the healthcheck interval, default is 5 seconds (Interval Value, in seconds (default 5))", "format": "number", "type": "number", "maximum": 180, "minimum": 1, "optional": true}
@@ -106,6 +107,7 @@ class Common(A10BaseClass):
         self.ttl_threshold = ""
         self.response_type = ""
         self.enable_l7_req_acct = ""
+        self.uuid = ""
         self.snat_on_vip = ""
         self.disable_server_auto_reselect = ""
         self.interval = ""

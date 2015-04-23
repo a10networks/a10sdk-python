@@ -11,6 +11,7 @@ class List(A10BaseClass):
 
     :param list_name: {"description": "IPv6 access-list name", "format": "string", "minLength": 1, "optional": false, "maxLength": 16, "type": "string", "$ref": "/axapi/v3/ipv6/access-list"}
     :param pool: {"description": "IPv6 NAT Pool (Pool Name)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/ipv6/nat/pool-group"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,6 +32,7 @@ class List(A10BaseClass):
         self.DeviceProxy = ""
         self.list_name = ""
         self.pool = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -10,6 +10,7 @@ class Ospf(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param display_route_single_line: {"default": 0, "optional": true, "type": "number", "description": "Print an entry in single line", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class Ospf(A10BaseClass):
         self.a10_url="/axapi/v3/ipv6/ospf"
         self.DeviceProxy = ""
         self.display_route_single_line = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

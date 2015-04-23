@@ -5,14 +5,14 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param Status: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Remote_IP: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Hash: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Encryption: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Responder_SPI: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Local_IP: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Status: {"type": "string", "format": "string"}
+    :param Remote_IP: {"type": "string", "format": "string"}
+    :param Hash: {"type": "string", "format": "string"}
+    :param Encryption: {"type": "string", "format": "string"}
+    :param Responder_SPI: {"type": "string", "format": "string"}
+    :param Local_IP: {"type": "string", "format": "string"}
     :param Lifetime: {"type": "number", "format": "number"}
-    :param Initiator_SPI: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Initiator_SPI: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

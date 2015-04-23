@@ -10,6 +10,7 @@ class Ethernet(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ifindex: {"optional": false, "$ref": "/axapi/v3/interface/ethernet", "type": "number", "description": "Ethernet interface number", "format": "interface"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,6 +30,7 @@ class Ethernet(A10BaseClass):
         self.a10_url="/axapi/v3/netflow/monitor/{name}/sample/ethernet/{ifindex}"
         self.DeviceProxy = ""
         self.ifindex = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -5,17 +5,17 @@ class SessionList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param protocol: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param protocol: {"type": "string", "format": "string"}
     :param inbound: {"type": "number", "format": "number"}
-    :param age: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param age: {"type": "string", "format": "string"}
     :param cpu: {"type": "number", "format": "number"}
     :param nat_address: {"type": "string", "format": "ipv4-address"}
     :param nat_port: {"type": "number", "format": "number"}
-    :param flags: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param nat_pool_name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param flags: {"type": "string", "format": "string"}
+    :param nat_pool_name: {"type": "string", "format": "string"}
     :param inside_port: {"type": "number", "format": "number"}
     :param outbound: {"type": "number", "format": "number"}
-    :param inside_address: {"type": "string", "format": "ipv6-address"}
+    :param inside_address: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -47,7 +47,9 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"protocol": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "inbound": {"type": "number", "format": "number"}, "age": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "cpu": {"type": "number", "format": "number"}, "nat-address": {"type": "string", "format": "ipv4-address"}, "nat-port": {"type": "number", "format": "number"}, "flags": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "nat-pool-name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "inside-port": {"type": "number", "format": "number"}, "outbound": {"type": "number", "format": "number"}, "optional": true, "inside-address": {"type": "string", "format": "ipv6-address"}}}]}
+    :param all_paritions: {"enum": ["true"], "type": "string", "format": "enum"}
+    :param partition: {"type": "string", "format": "string"}
+    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"protocol": {"type": "string", "format": "string"}, "inbound": {"type": "number", "format": "number"}, "age": {"type": "string", "format": "string"}, "cpu": {"type": "number", "format": "number"}, "nat-address": {"type": "string", "format": "ipv4-address"}, "nat-port": {"type": "number", "format": "number"}, "flags": {"type": "string", "format": "string"}, "nat-pool-name": {"type": "string", "format": "string"}, "inside-port": {"type": "number", "format": "number"}, "outbound": {"type": "number", "format": "number"}, "optional": true, "inside-address": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -59,6 +61,8 @@ class Oper(A10BaseClass):
         
         self.b_key = "oper"
         self.DeviceProxy = ""
+        self.all_paritions = ""
+        self.partition = ""
         self.session_list = []
 
         for keys, value in kwargs.items():

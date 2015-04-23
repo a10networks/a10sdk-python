@@ -63,6 +63,7 @@ class RouterAdver(A10BaseClass):
     :param default_lifetime: {"description": "Set Router Advertisement Default Lifetime (default: 1800) (Default Lifetime (seconds))", "format": "number", "default": 1800, "maximum": 9000, "minimum": 0, "type": "number"}
     :param ha_use_floating_ip: {"default": 0, "type": "number", "description": "Use a floating IP as the source address for Router advertisements", "format": "flag"}
     :param reachable_time: {"description": "Set Router Advertisement Reachable ime (default: 0) (Reachable Time (milliseconds))", "format": "number", "default": 0, "maximum": 3600000, "minimum": 0, "type": "number"}
+    :param floating_ip_default_vrid: {"type": "string", "description": "Use a floating IP as the source address for Router advertisements", "format": "ipv6-address"}
     :param adver_ha_group_id: {"description": "HA Group ID", "minimum": 1, "type": "number", "maximum": 31, "format": "number"}
     :param ha_floating_ip: {"type": "string", "description": "Use a floating IP as the source address for Router advertisements", "format": "ipv6-address"}
     :param prefix_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"not-autonomous": {"default": 0, "type": "number", "description": "Specify that the Prefix is not usable for autoconfiguration (default:autonomous)", "format": "flag"}, "valid-lifetime": {"description": "Specify Valid Lifetime (default:2592000) (Prefix Advertised Valid Lifetime (default: 2592000))", "format": "number", "default": 2592000, "maximum": 4294967295, "minimum": 0, "type": "number"}, "not-on-link": {"default": 0, "type": "number", "description": "Specify that the Prefix is not On-Link (default: on-link)", "format": "flag"}, "prefix": {"type": "string", "description": "Set Router Advertisement On-Link Prefix (IPv6 On-Link Prefix)", "format": "ipv6-address-plen"}, "preferred-lifetime": {"description": "Specify Prefix Preferred Lifetime (default:604800) (Prefix Advertised Preferred Lifetime (default: 604800))", "format": "number", "default": 604800, "maximum": 4294967295, "minimum": 0, "type": "number"}, "optional": true}}]}
@@ -71,12 +72,13 @@ class RouterAdver(A10BaseClass):
     :param min_interval: {"description": "Set Router Advertisement Min Interval (default: 200) (Min Router Advertisement Interval (seconds))", "format": "number", "default": 200, "maximum": 1350, "minimum": 3, "type": "number"}
     :param floating_ip: {"type": "string", "description": "Use a floating IP as the source address for Router advertisements", "format": "ipv6-address"}
     :param adver_vrid: {"description": "Specify ha VRRP-A vrid", "partition-visibility": "shared", "format": "number", "maximum": 31, "minimum": 1, "not": "adver-vrid-default", "type": "number"}
+    :param use_floating_ip_default_vrid: {"default": 0, "type": "number", "description": "Use a floating IP as the source address for Router advertisements", "format": "flag"}
     :param action: {"default": "enable", "enum": ["enable", "disable"], "type": "string", "description": "'enable': Enable Router Advertisements on this interface; 'disable': Disable Router Advertisements on this interface; ", "format": "enum"}
     :param adver_vrid_default: {"default": 0, "not": "adver-vrid", "type": "number", "description": "Default VRRP-A vrid", "format": "flag"}
     :param adver_mtu: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Set Router Advertisement MTU Option", "format": "number", "not": "adver-mtu-disable", "type": "number"}
     :param retransmit_timer: {"description": "Set Router Advertisement Retransmit Timer (default: 0)", "format": "number", "default": 0, "maximum": 4294967295, "minimum": 0, "type": "number"}
     :param hop_limit: {"description": "Set Router Advertisement Hop Limit (default: 255)", "format": "number", "default": 255, "maximum": 255, "minimum": 0, "type": "number"}
-    :param use_floating_ip: {"default": 0, "type": "number", "description": "Use a floating IP as the source address for Router advertisements", "format": "flag"}
+    :param use_floating_ip: {"default": 0, "partition-visibility": "shared", "type": "number", "description": "Use a floating IP as the source address for Router advertisements", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -92,6 +94,7 @@ class RouterAdver(A10BaseClass):
         self.default_lifetime = ""
         self.ha_use_floating_ip = ""
         self.reachable_time = ""
+        self.floating_ip_default_vrid = ""
         self.adver_ha_group_id = ""
         self.ha_floating_ip = ""
         self.prefix_list = []
@@ -100,6 +103,7 @@ class RouterAdver(A10BaseClass):
         self.min_interval = ""
         self.floating_ip = ""
         self.adver_vrid = ""
+        self.use_floating_ip_default_vrid = ""
         self.action = ""
         self.adver_vrid_default = ""
         self.adver_mtu = ""
@@ -143,6 +147,7 @@ class Ipv6(A10BaseClass):
     Class ipv6 supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param address_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"address-type": {"enum": ["anycast", "link-local"], "type": "string", "description": "'anycast': Configure an IPv6 anycast address; 'link-local': Configure an IPv6 link local address; ", "format": "enum"}, "ipv6-addr": {"type": "string", "description": "Set the IPv6 address of an interface", "format": "ipv6-address-plen"}, "optional": true}}]}
     :param outside: {"default": 0, "optional": true, "type": "number", "description": "Configure interface as outside", "format": "flag"}
     :param ipv6_enable: {"default": 0, "optional": true, "type": "number", "description": "Enable IPv6 processing", "format": "flag"}
@@ -164,6 +169,7 @@ class Ipv6(A10BaseClass):
         self.b_key = "ipv6"
         self.a10_url="/axapi/v3/interface/ethernet/{ifnum}/ipv6"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.address_list = []
         self.router_adver = {}
         self.outside = ""

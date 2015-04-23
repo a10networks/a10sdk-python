@@ -168,6 +168,7 @@ class Rip(A10BaseClass):
     Class rip supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param receive_packet: {"default": 1, "optional": true, "type": "number", "description": "Enable receiving packet through the specified interface", "format": "flag"}
     :param send_packet: {"default": 1, "optional": true, "type": "number", "description": "Enable sending packets through the specified interface", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -188,6 +189,7 @@ class Rip(A10BaseClass):
         self.a10_url="/axapi/v3/interface/loopback/{ifnum}/ip/rip"
         self.DeviceProxy = ""
         self.receive_cfg = {}
+        self.uuid = ""
         self.receive_packet = ""
         self.split_horizon_cfg = {}
         self.authentication = {}

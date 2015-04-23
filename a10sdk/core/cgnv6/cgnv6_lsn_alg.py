@@ -3,13 +3,13 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class Alg(A10BaseClass):
     
-    """Class Description::
+    """    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Change LSN ALG Settings.
 
     Class alg supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 

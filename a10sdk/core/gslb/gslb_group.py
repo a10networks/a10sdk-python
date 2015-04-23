@@ -36,6 +36,7 @@ class Group(A10BaseClass):
     :param standalone: {"default": 0, "optional": true, "type": "number", "description": "Run GSLB Group in standalone mode", "format": "flag"}
     :param learn: {"default": 1, "optional": true, "type": "number", "description": "Learn neighbour information from other controllers", "format": "flag"}
     :param mgmt_interface: {"default": 1, "optional": true, "type": "number", "description": "Management Interface IP Address", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param dns_discover: {"default": 1, "optional": true, "type": "number", "description": "Discover member via DNS Protocol", "format": "flag"}
     :param priority: {"description": "Specify Local Priority, default is 100", "format": "number", "default": 100, "optional": true, "maximum": 255, "minimum": 1, "type": "number"}
     :param config_anywhere: {"default": 0, "optional": true, "type": "number", "description": "Every member can do config", "format": "flag"}
@@ -70,6 +71,7 @@ class Group(A10BaseClass):
         self.standalone = ""
         self.learn = ""
         self.mgmt_interface = ""
+        self.uuid = ""
         self.dns_discover = ""
         self.priority = ""
         self.config_anywhere = ""

@@ -13,6 +13,7 @@ class StatefulFirewall(A10BaseClass):
     :param inside: {"default": 0, "optional": true, "type": "number", "description": "Inside (private) interface for stateful firewall", "format": "flag"}
     :param acl_id: {"description": "ACL id", "format": "number", "type": "number", "maximum": 199, "minimum": 1, "optional": true}
     :param outside: {"default": 0, "optional": true, "type": "number", "description": "Outside (public) interface for stateful firewall", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -34,6 +35,7 @@ class StatefulFirewall(A10BaseClass):
         self.inside = ""
         self.acl_id = ""
         self.outside = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

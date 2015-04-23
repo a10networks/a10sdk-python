@@ -37,6 +37,7 @@ class Ipv6(A10BaseClass):
 
     :param address_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"link-local": {"default": 0, "type": "number", "description": "Configure an IPv6 link local address", "format": "flag"}, "anycast": {"default": 0, "type": "number", "description": "Configure an IPv6 anycast address", "format": "flag"}, "ipv6-addr": {"type": "string", "description": "Set the IPv6 address of an interface", "format": "ipv6-address-plen"}, "optional": true}}]}
     :param ipv6_enable: {"default": 0, "optional": true, "type": "number", "description": "Enable IPv6 processing", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -56,6 +57,7 @@ class Ipv6(A10BaseClass):
         self.DeviceProxy = ""
         self.address_cfg = []
         self.ipv6_enable = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

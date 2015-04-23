@@ -83,6 +83,7 @@ class Ddos(A10BaseClass):
 
     :param outside: {"default": 0, "type": "number", "description": "DDoS inside (trusted) or outside (untrusted) interface", "format": "flag"}
     :param inside: {"default": 0, "type": "number", "description": "DDoS inside (trusted) or outside (untrusted) interface", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -96,6 +97,7 @@ class Ddos(A10BaseClass):
         self.DeviceProxy = ""
         self.outside = ""
         self.inside = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -110,7 +112,7 @@ class Trunk(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param name: {"description": "Name for the interface", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 32, "type": "string"}
-    :param trap_source: {"default": 0, "optional": true, "type": "number", "description": "The trap source", "format": "flag"}
+    :param trap_source: {"description": "The trap source", "partition-visibility": "shared", "default": 0, "type": "number", "format": "flag", "optional": true}
     :param timer: {"description": "Timer to re-check the threshold under certain conditions (Time in seconds (Default: 10))", "format": "number", "default": 10, "optional": true, "maximum": 300, "minimum": 1, "type": "number"}
     :param mtu: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Interface mtu (Interface MTU, default 1500 (min MTU is 1280 for IPv6))", "format": "number", "optional": true, "type": "number"}
     :param ports_threshold: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Threshold for the minimum number of ports that need to be UP for the trunk to remain UP", "format": "number", "optional": true, "type": "number"}
@@ -118,6 +120,7 @@ class Trunk(A10BaseClass):
     :param do_auto_recovery: {"default": 0, "optional": true, "type": "number", "description": "(Only for LACP trunks) Attempt auto-recovery after ports-treshold is triggered", "format": "flag"}
     :param action: {"optional": true, "enum": ["enable", "disable"], "type": "string", "description": "'enable': Enable; 'disable': Disable; ", "format": "enum"}
     :param l3_vlan_fwd_disable: {"default": 0, "optional": true, "type": "number", "description": "Disable L3 forwarding between VLANs", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -148,12 +151,13 @@ class Trunk(A10BaseClass):
         self.mtu = ""
         self.ports_threshold = ""
         self.ifnum = ""
+        self.lw_4o6 = {}
         self.do_auto_recovery = ""
         self.ipv6 = {}
         self.action = ""
         self.l3_vlan_fwd_disable = ""
         self.ddos = {}
-        self.lw_4o6 = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -36,7 +36,7 @@ class Acl(A10BaseClass):
     
 
     URL for this object::
-    `https://<Hostname|Ip address>//axapi/v3/counter/acl/stats`.
+    `https://<Hostname|Ip address>//axapi/v3/counter/acl/{sampling_enable}/stats`.
 
     
 
@@ -44,9 +44,10 @@ class Acl(A10BaseClass):
     """
     def __init__(self, **kwargs):
         self.ERROR_MSG = ""
-        self.required=[]
+        self.required = [ "sampling_enable"]
+
         self.b_key = "acl"
-        self.a10_url="/axapi/v3/counter/acl/stats"
+        self.a10_url="/axapi/v3/counter/acl/{sampling_enable}/stats"
         self.DeviceProxy = ""
         self.stats = {}
 

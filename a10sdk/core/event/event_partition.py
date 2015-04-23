@@ -12,6 +12,7 @@ class Partition(A10BaseClass):
     :param vnp_events: {"optional": false, "enum": ["part-create", "part-del"], "type": "string", "description": "'part-create': Create new partition; 'part-del': Delete a partition; ", "format": "enum"}
     :param logging: {"optional": true, "enum": ["on", "off"], "type": "string", "description": "'on': enable this action; 'off': disable this action; ", "format": "enum"}
     :param email: {"optional": true, "enum": ["on", "off"], "type": "string", "description": "'on': enable this action; 'off': disable this action; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -33,6 +34,7 @@ class Partition(A10BaseClass):
         self.vnp_events = ""
         self.logging = ""
         self.email = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

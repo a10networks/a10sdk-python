@@ -34,6 +34,7 @@ class Ip(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param address_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ipv4-address": {"type": "string", "description": "IP address", "format": "ipv4-address"}, "optional": true, "ipv4-netmask": {"type": "string", "description": "IP subnet mask", "format": "ipv4-netmask"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -53,6 +54,7 @@ class Ip(A10BaseClass):
         self.DeviceProxy = ""
         self.address_list = []
         self.ospf = {}
+        self.uuid = ""
         self.rip = {}
         self.router = {}
 

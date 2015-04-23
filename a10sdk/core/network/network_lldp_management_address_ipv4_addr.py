@@ -35,6 +35,7 @@ class Ipv4Addr(A10BaseClass):
     Class ipv4-addr supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ipv4: {"optional": false, "type": "string", "description": "Configure lldp management-address, subtype is ipv4 (lldp management-address ipv4 address)", "format": "ipv4-address"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -54,6 +55,7 @@ class Ipv4Addr(A10BaseClass):
         self.b_key = "ipv4-addr"
         self.a10_url="/axapi/v3/network/lldp/management-address/ipv4-addr/{ipv4}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.ipv4 = ""
         self.interface_ipv4 = {}
 

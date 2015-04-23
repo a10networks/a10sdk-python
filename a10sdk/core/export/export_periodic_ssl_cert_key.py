@@ -9,6 +9,7 @@ class SslCertKey(A10BaseClass):
     Class ssl-cert-key supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ssl_cert_key: {"description": "Local SSL Key/Certificate file name", "format": "string", "minLength": 1, "optional": false, "maxLength": 255, "type": "string"}
     :param remote_file: {"optional": true, "type": "string", "description": "profile name for remote url", "format": "url"}
     :param use_mgmt_port: {"default": 0, "optional": true, "type": "number", "description": "Use management port as source port", "format": "flag"}
@@ -31,6 +32,7 @@ class SslCertKey(A10BaseClass):
         self.b_key = "ssl-cert-key"
         self.a10_url="/axapi/v3/export-periodic/ssl-cert-key/{ssl_cert_key}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.ssl_cert_key = ""
         self.remote_file = ""
         self.use_mgmt_port = ""

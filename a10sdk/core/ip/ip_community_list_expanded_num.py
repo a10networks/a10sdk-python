@@ -35,6 +35,7 @@ class ExpandedNum(A10BaseClass):
 
     :param ext_list_num: {"description": "Community list number (expanded)", "format": "number", "type": "number", "maximum": 199, "minimum": 100, "optional": false}
     :param rules_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "ext-list-value": {"type": "string", "description": "An ordered list as a regular-expression", "format": "string-rlx"}, "ext-list-action": {"enum": ["deny", "permit"], "type": "string", "description": "'deny': Specify community to reject; 'permit': Specify community to accept; ", "format": "enum"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -55,6 +56,7 @@ class ExpandedNum(A10BaseClass):
         self.DeviceProxy = ""
         self.ext_list_num = ""
         self.rules_list = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

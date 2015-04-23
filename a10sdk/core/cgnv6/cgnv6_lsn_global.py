@@ -99,18 +99,19 @@ class Icmp(A10BaseClass):
 
 class Global(A10BaseClass):
     
-    """Class Description::
-    Set Large-Scale NAT config parameters.
-
-    Class global supports CRUD Operations and inherits from `common/A10BaseClass`.
-    This class is the `"PARENT"` class for this module.`
-
+    """    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param inbound_refresh: {"optional": true, "enum": ["disable"], "type": "string", "description": "'disable': Disable NAT Inbound Refresh Behavior; ", "format": "enum"}
     :param hairpinning: {"description": "'filter-none': Allow self-hairpinning (default). Warning: Only applies to UDP.  TCP will use filter-self-ip-port; 'filter-self-ip': Block hairpinning to the user's own IP; 'filter-self-ip-port': Block hairpinning to the user's same IP and port combination; ", "format": "enum", "default": "filter-none", "type": "string", "enum": ["filter-none", "filter-self-ip", "filter-self-ip-port"], "optional": true}
     :param attempt_port_preservation: {"optional": true, "enum": ["disable"], "type": "string", "description": "'disable': Don't attempt port preservation for NAT allocation; ", "format": "enum"}
     :param ip_selection: {"description": "'random': Random (long-run uniformly distributed) NAT IP selection (default); 'round-robin': Round-robin; 'least-used-strict': Fewest NAT ports used; 'least-udp-used-strict': Fewest UDP NAT ports used; 'least-tcp-used-strict': Fewest TCP NAT ports used; 'least-reserved-strict': Fewest NAT ports reserved; 'least-udp-reserved-strict': Fewest UDP NAT ports reserved; 'least-tcp-reserved-strict': Fewest TCP NAT ports reserved; 'least-users-strict': Fewest number of users; ", "format": "enum", "default": "random", "type": "string", "enum": ["random", "round-robin", "least-used-strict", "least-udp-used-strict", "least-tcp-used-strict", "least-reserved-strict", "least-udp-reserved-strict", "least-tcp-reserved-strict", "least-users-strict"], "optional": true}
     :param syn_timeout: {"description": "Set LSN SYN timeout (SYN idle-timeout in seconds (default: 4 seconds))", "format": "number", "default": 4, "optional": true, "maximum": 30, "minimum": 2, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    Set Large-Scale NAT config parameters.
+
+    Class global supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
 
     
 
@@ -128,6 +129,7 @@ class Global(A10BaseClass):
         self.a10_url="/axapi/v3/cgnv6/lsn/global"
         self.DeviceProxy = ""
         self.logging = {}
+        self.uuid = ""
         self.inbound_refresh = ""
         self.hairpinning = ""
         self.port_batching = {}

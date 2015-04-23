@@ -10,6 +10,7 @@ class RunningConfig(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param aflex: {"default": 0, "optional": true, "type": "number", "description": "Show aFleX scripts", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param class_list: {"default": 0, "optional": true, "type": "number", "description": "Show class-list files", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -29,6 +30,7 @@ class RunningConfig(A10BaseClass):
         self.a10_url="/axapi/v3/running-config"
         self.DeviceProxy = ""
         self.aflex = ""
+        self.uuid = ""
         self.class_list = ""
 
         for keys, value in kwargs.items():

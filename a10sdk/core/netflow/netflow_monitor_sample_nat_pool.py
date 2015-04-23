@@ -9,6 +9,7 @@ class NatPool(A10BaseClass):
     Class nat-pool supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param pool_name: {"description": "Name of nat pool", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -28,6 +29,7 @@ class NatPool(A10BaseClass):
         self.b_key = "nat-pool"
         self.a10_url="/axapi/v3/netflow/monitor/{name}/sample/nat-pool/{pool_name}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.pool_name = ""
 
         for keys, value in kwargs.items():

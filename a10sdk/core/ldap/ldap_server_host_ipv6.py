@@ -35,9 +35,10 @@ class Ipv6(A10BaseClass):
     Class ipv6 supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param dn_value: {"description": "LDAP distinguished name (dn)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param dn_value: {"description": "LDAP distinguished name (dn)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param cn_value: {"description": "LDAP common name identifier (i.e.: cn, uid)", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param ipv6_addr: {"optional": false, "type": "string", "description": "IPV6 address of ldap server", "format": "ipv6-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -60,6 +61,7 @@ class Ipv6(A10BaseClass):
         self.dn_value = ""
         self.cn_value = ""
         self.ipv6_addr = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

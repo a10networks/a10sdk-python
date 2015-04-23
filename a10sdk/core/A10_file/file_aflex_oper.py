@@ -5,7 +5,7 @@ class VportList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param vserver: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param vserver: {"type": "string", "format": "string"}
     :param port: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -32,7 +32,7 @@ class Events(A10BaseClass):
     :param failures: {"type": "number", "format": "number"}
     :param aborts: {"type": "number", "format": "number"}
     :param total_executions: {"type": "number", "format": "number"}
-    :param event_type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param event_type: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -57,11 +57,11 @@ class FileList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param syntax: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param vport_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"vserver": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "port": {"type": "number", "format": "number"}}}]}
-    :param file: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param vport: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param events: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"failures": {"type": "number", "format": "number"}, "aborts": {"type": "number", "format": "number"}, "optional": true, "total-executions": {"type": "number", "format": "number"}, "event-type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param syntax: {"type": "string", "format": "string"}
+    :param vport_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"vserver": {"type": "string", "format": "string"}, "optional": true, "port": {"type": "number", "format": "number"}}}]}
+    :param file: {"type": "string", "format": "string"}
+    :param vport: {"type": "string", "format": "string"}
+    :param events: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"failures": {"type": "number", "format": "number"}, "aborts": {"type": "number", "format": "number"}, "optional": true, "total-executions": {"type": "number", "format": "number"}, "event-type": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -87,7 +87,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"syntax": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "vport-list": {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"vserver": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "port": {"type": "number", "format": "number"}}}]}, "file": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "vport": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "events": {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"failures": {"type": "number", "format": "number"}, "aborts": {"type": "number", "format": "number"}, "optional": true, "total-executions": {"type": "number", "format": "number"}, "event-type": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}}}]}
+    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"syntax": {"type": "string", "format": "string"}, "vport-list": {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"vserver": {"type": "string", "format": "string"}, "optional": true, "port": {"type": "number", "format": "number"}}}]}, "file": {"type": "string", "format": "string"}, "vport": {"type": "string", "format": "string"}, "optional": true, "events": {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"failures": {"type": "number", "format": "number"}, "aborts": {"type": "number", "format": "number"}, "optional": true, "total-executions": {"type": "number", "format": "number"}, "event-type": {"type": "string", "format": "string"}}}]}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

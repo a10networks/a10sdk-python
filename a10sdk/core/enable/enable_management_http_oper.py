@@ -7,9 +7,9 @@ class PortList(A10BaseClass):
 
     :param management: {"type": "number", "format": "number"}
     :param ve: {"type": "number", "format": "number"}
-    :param ipv6_acl: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param ipv4_acl: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param action: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param ipv6_acl: {"type": "string", "format": "string"}
+    :param ipv4_acl: {"type": "string", "format": "string"}
+    :param action: {"type": "string", "format": "string"}
     :param ethernet: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -37,7 +37,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param port_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"management": {"type": "number", "format": "number"}, "ve": {"type": "number", "format": "number"}, "ipv6-acl": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "ipv4-acl": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "action": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "ethernet": {"type": "number", "format": "number"}, "optional": true}}]}
+    :param port_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"management": {"type": "number", "format": "number"}, "ve": {"type": "number", "format": "number"}, "ipv6-acl": {"type": "string", "format": "string"}, "ipv4-acl": {"type": "string", "format": "string"}, "action": {"type": "string", "format": "string"}, "ethernet": {"type": "number", "format": "number"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

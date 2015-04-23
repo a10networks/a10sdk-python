@@ -10,6 +10,7 @@ class MacAgeTime(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param aging_time: {"description": "Set aging period in seconds for all MAC interfaces (default 300 seconds)", "format": "number", "default": 300, "optional": true, "maximum": 600, "minimum": 10, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class MacAgeTime(A10BaseClass):
         self.a10_url="/axapi/v3/network/mac-age-time"
         self.DeviceProxy = ""
         self.aging_time = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

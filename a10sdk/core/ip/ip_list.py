@@ -6,7 +6,7 @@ class Ipv6PrefixConfig(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param ipv6_prefix_to: {"type": "string", "description": "IPv6 Prefix Range End", "format": "ipv6-address-plen"}
-    :param count: {"type": "number", "description": "Number of IPv6 prefixes", "format": "number"}
+    :param count: {"description": "Number of IPv6 prefixes", "minimum": 0, "type": "number", "maximum": 2147483647, "format": "number"}
     :param ipv6_addr_prefix: {"type": "string", "description": "IPv6 Prefix Range Start / IPv6 Prefix", "format": "ipv6-address-plen"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -83,7 +83,8 @@ class IpList(A10BaseClass):
     Class ip-list supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param ipv6_prefix_config: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ipv6-prefix-to": {"type": "string", "description": "IPv6 Prefix Range End", "format": "ipv6-address-plen"}, "count": {"type": "number", "description": "Number of IPv6 prefixes", "format": "number"}, "optional": true, "ipv6-addr-prefix": {"type": "string", "description": "IPv6 Prefix Range Start / IPv6 Prefix", "format": "ipv6-address-plen"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param ipv6_prefix_config: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ipv6-prefix-to": {"type": "string", "description": "IPv6 Prefix Range End", "format": "ipv6-address-plen"}, "count": {"description": "Number of IPv6 prefixes", "minimum": 0, "type": "number", "maximum": 2147483647, "format": "number"}, "optional": true, "ipv6-addr-prefix": {"type": "string", "description": "IPv6 Prefix Range Start / IPv6 Prefix", "format": "ipv6-address-plen"}}}]}
     :param name: {"description": "Specify name of the ip list", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param ipv6_config: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ipv6-end-addr": {"type": "string", "description": "IPv6 Range End Address", "format": "ipv6-address"}, "optional": true, "ipv6-start-addr": {"type": "string", "description": "IPv6 Range Start Address / IPv6 Address", "format": "ipv6-address"}}}]}
     :param ipv4_config: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ipv4-start-addr": {"type": "string", "description": "IPv4 Range Start Address / IPv4 Address", "format": "ipv4-address"}, "ipv4-end-addr": {"type": "string", "description": "IPv4 Range End Address", "format": "ipv4-address"}, "optional": true}}]}
@@ -105,6 +106,7 @@ class IpList(A10BaseClass):
         self.b_key = "ip-list"
         self.a10_url="/axapi/v3/ip-list/{name}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.ipv6_prefix_config = []
         self.name = ""
         self.ipv6_config = []

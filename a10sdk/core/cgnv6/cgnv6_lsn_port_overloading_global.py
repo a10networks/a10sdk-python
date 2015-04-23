@@ -11,6 +11,7 @@ class Global(A10BaseClass):
 
     :param unique: {"description": "'destination-address': Allow overloading when the destination addresses is unique; 'destination-address-and-port': Allow overloading when the destination address and port 2-tuple is unique (default); ", "format": "enum", "default": "destination-address-and-port", "type": "string", "enum": ["destination-address", "destination-address-and-port"], "optional": true}
     :param allow_different_user: {"default": 0, "optional": true, "type": "number", "description": "Allow different users to overload the same port (default: disabled)", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -30,6 +31,7 @@ class Global(A10BaseClass):
         self.DeviceProxy = ""
         self.unique = ""
         self.allow_different_user = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

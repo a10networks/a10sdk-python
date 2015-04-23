@@ -3,13 +3,7 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class ResourceUsage(A10BaseClass):
     
-    """Class Description::
-    Configure SLB Resource Usage.
-
-    Class resource-usage supports CRUD Operations and inherits from `common/A10BaseClass`.
-    This class is the `"PARENT"` class for this module.`
-
-    :param virtual_server_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total Virtual Servers in the System", "format": "number", "optional": true, "type": "number"}
+    """    :param virtual_server_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total Virtual Servers in the System", "format": "number", "optional": true, "type": "number"}
     :param nat_pool_addr_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable NAT Pool addresses in the System", "format": "number", "optional": true, "type": "number"}
     :param fast_tcp_template_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable Fast TCP Templates in the System", "format": "number", "optional": true, "type": "number"}
     :param virtual_port_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total Virtual Server Ports in the System", "format": "number", "optional": true, "type": "number"}
@@ -17,7 +11,6 @@ class ResourceUsage(A10BaseClass):
     :param fast_udp_template_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable Fast UDP Templates in the System", "format": "number", "optional": true, "type": "number"}
     :param client_ssl_template_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable Client SSL Templates in the System", "format": "number", "optional": true, "type": "number"}
     :param service_group_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total Service Groups in the System", "format": "number", "optional": true, "type": "number"}
-    :param class_list_ipv6_addr_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total IPv6 addresses for class-list", "format": "number", "optional": true, "type": "number"}
     :param stream_template_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable Streaming media in the System", "format": "number", "optional": true, "type": "number"}
     :param conn_reuse_template_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable Connection reuse Templates in the System", "format": "number", "optional": true, "type": "number"}
     :param persist_cookie_template_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable Persistent cookie Templates in the System", "format": "number", "optional": true, "type": "number"}
@@ -26,7 +19,14 @@ class ResourceUsage(A10BaseClass):
     :param real_server_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total Real Servers in the System", "format": "number", "optional": true, "type": "number"}
     :param real_port_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total Real Server Ports in the System", "format": "number", "optional": true, "type": "number"}
     :param http_template_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable HTTP Templates in the System", "format": "number", "optional": true, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    Configure SLB Resource Usage.
+
+    Class resource-usage supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
 
     
 
@@ -51,7 +51,6 @@ class ResourceUsage(A10BaseClass):
         self.fast_udp_template_count = ""
         self.client_ssl_template_count = ""
         self.service_group_count = ""
-        self.class_list_ipv6_addr_count = ""
         self.stream_template_count = ""
         self.conn_reuse_template_count = ""
         self.persist_cookie_template_count = ""
@@ -60,6 +59,7 @@ class ResourceUsage(A10BaseClass):
         self.real_server_count = ""
         self.real_port_count = ""
         self.http_template_count = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

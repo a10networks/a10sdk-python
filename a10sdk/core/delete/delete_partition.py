@@ -4,7 +4,7 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 class Partition(A10BaseClass):
     
     """    :param partition_name: {"description": "Object partition name", "format": "string", "minLength": 1, "optional": true, "maxLength": 14, "type": "string"}
-    :param id: {"description": "Specify unique Partition id", "format": "number", "optional": true, "maximum": 127, "minimum": 1, "modify-not-allowed": 1, "type": "number"}
+    :param id: {"description": "Specify unique Partition id", "format": "number", "optional": true, "maximum": 1023, "minimum": 1, "modify-not-allowed": 1, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

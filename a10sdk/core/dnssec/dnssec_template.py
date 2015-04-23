@@ -83,6 +83,7 @@ class Template(A10BaseClass):
     :param dnskey_ttl_v: {"description": "in seconds, 14400 seconds by default", "format": "number", "default": 14400, "optional": true, "maximum": 864000, "minimum": 1, "type": "number"}
     :param dnssec_temp_name: {"description": "DNSSEC Template Name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param signature_validity_period_v: {"description": "in days, 10 days by default", "format": "number", "default": 10, "optional": true, "maximum": 30, "minimum": 5, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -113,6 +114,7 @@ class Template(A10BaseClass):
         self.dnssec_temp_name = ""
         self.signature_validity_period_v = ""
         self.dnssec_template_zsk = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

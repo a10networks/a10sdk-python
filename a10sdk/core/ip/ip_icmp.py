@@ -11,6 +11,7 @@ class Icmp(A10BaseClass):
 
     :param redirect: {"default": 0, "optional": true, "type": "number", "description": "Disable outbound ICMP redirect messages", "format": "flag"}
     :param unreachable: {"default": 0, "optional": true, "type": "number", "description": "Disable outbound ICMP unreachable messages", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -30,6 +31,7 @@ class Icmp(A10BaseClass):
         self.DeviceProxy = ""
         self.redirect = ""
         self.unreachable = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

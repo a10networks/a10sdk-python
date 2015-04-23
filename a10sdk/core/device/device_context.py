@@ -3,7 +3,7 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class DeviceContext(A10BaseClass):
     
-    """    :param device_id: {"description": "Device ID", "format": "number", "type": "number", "maximum": 8, "minimum": 1, "optional": true}
+    """    :param device_id: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Device ID", "format": "number", "optional": true, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

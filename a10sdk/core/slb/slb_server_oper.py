@@ -5,7 +5,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param state: {"enum": ["UP", "DOWN", "DELETE", "DISABLED", "MAINTENANCE"], "type": "string", "format": "enum"}
+    :param state: {"enum": ["Up", "Down", "Disabled", "Maintenance", "Unknown", "Functional Up", "DIS-UP", "DIS-DOWN", "DIS-MAINTENANCE", "DIS-UNKNOWN"], "type": "string", "format": "enum"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,7 +31,7 @@ class Server(A10BaseClass):
     Class server supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param port_list: {"minItems": 1, "items": {"type": "port"}, "uniqueItems": true, "array": [{"required": ["port-number", "protocol"], "properties": {"oper": {"type": "object", "properties": {"alloc_failed": {"type": "number", "format": "number"}, "vrid": {"enum": ["default"], "type": "string", "format": "enum"}, "ha_group_id": {"enum": ["default"], "type": "string", "format": "enum"}, "ip": {"type": "string", "format": "ipv4-address"}, "ports_consumed": {"type": "number", "format": "number"}, "state": {"enum": ["UP", "DOWN", "DELETE", "DISABLED", "MAINTENANCE"], "type": "string", "format": "enum"}, "ipv6": {"type": "string", "format": "ipv6-address"}, "ports_freed_total": {"type": "number", "format": "number"}, "ports_consumed_total": {"type": "number", "format": "number"}}}, "protocol": {"enum": ["tcp", "udp"], "description": "'tcp': TCP Port; 'udp': UDP Port; ", "format": "enum", "type": "string", "oid": "1002", "optional": false}, "port-number": {"description": "Port Number", "format": "number", "optional": false, "oid": "1001", "maximum": 65534, "minimum": 0, "type": "number"}}}], "type": "array", "$ref": "/axapi/v3/slb/server/{name}/port/{port-number}+{protocol}"}
+    :param port_list: {"minItems": 1, "items": {"type": "port"}, "uniqueItems": true, "array": [{"required": ["port-number", "protocol"], "properties": {"oper": {"type": "object", "properties": {"alloc_failed": {"type": "number", "format": "number"}, "vrid": {"enum": ["default"], "type": "string", "format": "enum"}, "ha_group_id": {"enum": ["default"], "type": "string", "format": "enum"}, "ip": {"type": "string", "format": "ipv4-address"}, "ports_consumed": {"type": "number", "format": "number"}, "state": {"enum": ["Up", "Down", "Disabled", "Maintenance", "Unknown", "DIS-UP", "DIS-DOWN", "DIS-MAINTENANCE"], "type": "string", "format": "enum"}, "ipv6": {"type": "string", "format": "ipv6-address"}, "ports_freed_total": {"type": "number", "format": "number"}, "ports_consumed_total": {"type": "number", "format": "number"}}}, "protocol": {"enum": ["tcp", "udp"], "description": "'tcp': TCP Port; 'udp': UDP Port; ", "format": "enum", "type": "string", "oid": "1002", "optional": false}, "port-number": {"description": "Port Number", "format": "number", "optional": false, "oid": "1001", "maximum": 65534, "minimum": 0, "type": "number"}}}], "type": "array", "$ref": "/axapi/v3/slb/server/{name}/port/{port-number}+{protocol}"}
     :param name: {"description": "Server Name", "format": "string-rlx", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

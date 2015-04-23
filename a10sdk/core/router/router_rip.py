@@ -211,6 +211,7 @@ class OffsetList(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param acl_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}, "metric": {"description": "Metric value", "minimum": 0, "type": "number", "maximum": 16, "format": "number"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "acl": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Access-list name", "format": "string"}, "offset-list-direction": {"enum": ["in", "out"], "type": "string", "description": "'in': Filter incoming updates; 'out': Filter outgoing updates; ", "format": "enum"}, "ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -223,6 +224,7 @@ class OffsetList(A10BaseClass):
         self.b_key = "offset-list"
         self.DeviceProxy = ""
         self.acl_cfg = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -296,6 +298,7 @@ class Prefix(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "maxLength": 64, "type": "string"}
     :param prefix_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}, "prefix-list": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Filter prefixes in routing updates (Name of a prefix list)", "format": "string"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "prefix-list-direction": {"enum": ["in", "out"], "type": "string", "description": "'in': Filter incoming routing updates; 'out': Filter outgoing routing updates; ", "format": "enum"}, "ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -308,6 +311,7 @@ class Prefix(A10BaseClass):
         
         self.b_key = "prefix"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.prefix_cfg = []
 
         for keys, value in kwargs.items():
@@ -319,6 +323,7 @@ class DistributeList(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param acl_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"acl-direction": {"enum": ["in", "out"], "type": "string", "description": "'in': Filter incoming routing updates; 'out': Filter outgoing routing updates; ", "format": "enum"}, "ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}, "acl": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Access-list name", "format": "string"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -332,6 +337,7 @@ class DistributeList(A10BaseClass):
         self.DeviceProxy = ""
         self.acl_cfg = []
         self.prefix = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -395,7 +401,8 @@ class Rip(A10BaseClass):
 
     :param default_metric: {"description": "Set a metric of redistribute routes (Default metric)", "format": "number", "default": 1, "optional": true, "maximum": 16, "minimum": 1, "type": "number"}
     :param recv_buffer_size: {"description": "Set the RIP UDP receive buffer size (the RIP UDP receive buffer size value)", "format": "number", "type": "number", "maximum": 2147483647, "minimum": 8192, "optional": true}
-    :param cisco_metric_behavior: {"optional": true, "enum": ["enable", "disable"], "type": "string", "description": "'enable': Enables updating metric consistent with Cisco; 'disable': Disables updating metric consistent with Cisco;  (Enable/Disable updating metric consistent with Cisco)", "format": "enum"}
+    :param cisco_metric_behavior: {"description": "'enable': Enables updating metric consistent with Cisco; 'disable': Disables updating metric consistent with Cisco;  (Enable/Disable updating metric consistent with Cisco)", "format": "enum", "default": "disable", "type": "string", "enum": ["enable", "disable"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param route_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"route": {"type": "string", "description": "Static route advertisement (debugging purpose) (IP prefix network/length)", "format": "ipv4-cidr"}, "optional": true}}]}
     :param passive_interface_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "optional": true, "ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}}}]}
     :param network_interface_list_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "optional": true, "ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}}}]}
@@ -424,6 +431,7 @@ class Rip(A10BaseClass):
         self.default_metric = ""
         self.recv_buffer_size = ""
         self.cisco_metric_behavior = ""
+        self.uuid = ""
         self.rip_maximum_prefix_cfg = {}
         self.route_cfg = []
         self.passive_interface_list = []

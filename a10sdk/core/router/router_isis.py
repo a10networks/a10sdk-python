@@ -261,6 +261,28 @@ class Authentication(A10BaseClass):
             setattr(self,keys, value)
 
 
+class ProtocolList(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param protocol_topology: {"default": 0, "type": "number", "description": "Protocol Topology", "format": "flag"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "protocol-list"
+        self.DeviceProxy = ""
+        self.protocol_topology = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class LogAdjacencyChangesCfg(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -470,9 +492,11 @@ class Isis(A10BaseClass):
     :param tag: {"description": "ISO routing area tag", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
     :param lsp_refresh_interval: {"description": "Set LSP refresh interval (LSP refresh time in seconds)", "format": "number", "default": 900, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
     :param net_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"net": {"minLength": 1, "maxLength": 63, "type": "string", "description": "A Network Entity Title for this process (XX.XXXX. ... .XXXX.XX  Network entity title (NET))", "format": "nasp-string"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param bfd: {"optional": true, "enum": ["all-interfaces"], "type": "string", "description": "'all-interfaces': Enable BFD on all interfaces; ", "format": "enum"}
     :param metric_style_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "type": {"default": "narrow", "enum": ["narrow", "wide", "transition", "narrow-transition", "wide-transition"], "type": "string", "description": "'narrow': Use old style of TLVs with narrow metric; 'wide': Use new style of TLVs to carry wider metric; 'transition': Send and accept both styles of TLVs during transition; 'narrow-transition': Send old style of TLVs with narrow metric with accepting both styles of TLVs; 'wide-transition': Send new style of TLVs to carry wider metric with accepting both styles of TLVs; ", "format": "enum"}, "level": {"default": "level-1-2", "enum": ["level-1", "level-1-2", "level-2"], "type": "string", "description": "'level-1': Level-1 only; 'level-1-2': Level-1-2; 'level-2': Level-2 only; ", "format": "enum"}}}]}
     :param ignore_lsp_errors: {"default": 0, "optional": true, "type": "number", "description": "Ignore LSPs with bad checksums", "format": "flag"}
+    :param protocol_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "protocol-topology": {"default": 0, "type": "number", "description": "Protocol Topology", "format": "flag"}}}]}
     :param spf_interval_exp_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"max": {"description": "Maximum Delay between receiving a change to SPF calculation in milliseconds", "format": "number", "default": 50000, "maximum": 2147483647, "minimum": 0, "type": "number"}, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Set interval for level 1 only; 'level-2': Set interval for level 2 only; ", "format": "enum"}, "optional": true, "min": {"description": "Minimum Delay between receiving a change to SPF calculation in milliseconds", "format": "number", "default": 500, "maximum": 2147483647, "minimum": 0, "type": "number"}}}]}
     :param passive_interface_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"lif": {"type": "number", "description": "Logical interface (Lif interface number)", "format": "interface"}, "ve": {"type": "number", "description": "Virtual ethernet interface (Virtual ethernet interface number)", "format": "interface"}, "loopback": {"type": "number", "description": "Loopback interface (Port number)", "format": "interface"}, "trunk": {"type": "number", "description": "Trunk interface (Trunk interface number)", "format": "interface"}, "ethernet": {"type": "number", "description": "Ethernet interface (Port number)", "format": "interface"}, "optional": true}}]}
     :param summary_address_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"prefix": {"type": "string", "description": "IP network prefix", "format": "ipv4-cidr"}, "optional": true, "level": {"default": "level-2", "enum": ["level-1", "level-1-2", "level-2"], "type": "string", "description": "'level-1': Summarize into level-1 area; 'level-1-2': Summarize into both area and sub-domain; 'level-2': Summarize into level-2 sub-domain; ", "format": "enum"}}}]}
@@ -480,7 +504,6 @@ class Isis(A10BaseClass):
     :param default_information: {"optional": true, "enum": ["originate"], "type": "string", "description": "'originate': Distribute a default route; ", "format": "enum"}
     :param lsp_gen_interval_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"interval": {"description": "Minimum interval in seconds", "format": "number", "default": 30, "maximum": 120, "minimum": 1, "type": "number"}, "optional": true, "level": {"enum": ["level-1", "level-2"], "type": "string", "description": "'level-1': Set interval for level 1 only; 'level-2': Set interval for level 2 only; ", "format": "enum"}}}]}
     :param is_type: {"description": "'level-1': Act as a station router only; 'level-1-2': Act as both a station router and an area router; 'level-2-only': Act as an area router only; ", "format": "enum", "default": "level-1", "type": "string", "enum": ["level-1", "level-1-2", "level-2-only"], "optional": true}
-    :param protocol_topology: {"default": 0, "optional": true, "type": "number", "description": "Protocol Topology", "format": "flag"}
     :param distance_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"distance": {"description": "ISIS Administrative Distance (Distance value)", "format": "number", "default": 115, "maximum": 255, "minimum": 1, "type": "number"}, "System-ID": {"minLength": 1, "maxLength": 128, "type": "string", "description": "System-ID in XXXX.XXXX.XXXX", "format": "string"}, "optional": true, "acl": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Access list name", "format": "string"}}}]}
     :param ha_standby_extra_cost: {"description": "Extra IS-IS metric when there is any standby ha group (The extra cost value)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -507,10 +530,12 @@ class Isis(A10BaseClass):
         self.lsp_refresh_interval = ""
         self.set_overload_bit_cfg = {}
         self.net_list = []
+        self.uuid = ""
         self.bfd = ""
         self.metric_style_list = []
         self.authentication = {}
         self.ignore_lsp_errors = ""
+        self.protocol_list = []
         self.log_adjacency_changes_cfg = {}
         self.spf_interval_exp_list = []
         self.passive_interface_list = []
@@ -522,7 +547,6 @@ class Isis(A10BaseClass):
         self.area_password_cfg = {}
         self.lsp_gen_interval_list = []
         self.is_type = ""
-        self.protocol_topology = ""
         self.distance_list = []
         self.ha_standby_extra_cost = ""
 

@@ -45,6 +45,7 @@ class PrefixList(A10BaseClass):
 
     :param rules: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"le": {"description": "Maximum prefix length to be matched", "minimum": 0, "type": "number", "maximum": 32, "format": "number"}, "description": {"minLength": 1, "maxLength": 80, "type": "string", "description": "Prefix-list specific description (Up to 80 characters describing this prefix-list)", "format": "string"}, "seq": {"description": "Sequence number of an entry", "minimum": 1, "type": "number", "maximum": 4294967295, "format": "number"}, "ipaddr": {"type": "string", "description": "IP prefix, e.g., 35.0.0.0/8", "format": "ipv4-cidr"}, "ge": {"description": "Minimum prefix length to be matched", "minimum": 0, "type": "number", "maximum": 32, "format": "number"}, "action": {"enum": ["deny", "permit"], "type": "string", "description": "'deny': Specify packets to reject; 'permit': Specify packets to forward; ", "format": "enum"}, "optional": true, "any": {"default": 0, "type": "number", "description": "Any prefix match. Same as \"0.0.0.0/0 le 32\"", "format": "flag"}}}]}
     :param name: {"description": "Name of a prefix list", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -65,6 +66,7 @@ class PrefixList(A10BaseClass):
         self.DeviceProxy = ""
         self.rules = []
         self.name = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

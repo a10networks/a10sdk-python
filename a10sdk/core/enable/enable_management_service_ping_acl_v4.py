@@ -59,6 +59,7 @@ class AclV4(A10BaseClass):
 
     :param ve_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ve-end": {"type": "number", "description": "VE port", "format": "number"}, "ve-start": {"type": "number", "description": "VE port (VE Interface number)", "format": "number"}, "optional": true}}]}
     :param acl_id: {"description": "ACL id", "format": "number", "type": "number", "maximum": 199, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param eth_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"ethernet-start": {"type": "number", "description": "Ethernet port (Ethernet Interface number)", "format": "interface"}, "ethernet-end": {"type": "number", "description": "Ethernet port", "format": "interface"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -80,6 +81,7 @@ class AclV4(A10BaseClass):
         self.DeviceProxy = ""
         self.ve_cfg = []
         self.acl_id = ""
+        self.uuid = ""
         self.eth_cfg = []
 
         for keys, value in kwargs.items():

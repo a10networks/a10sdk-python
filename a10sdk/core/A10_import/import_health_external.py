@@ -5,7 +5,7 @@ class HealthExternal(A10BaseClass):
     
     """    :param remote_file: {"optional": true, "type": "string", "format": "url"}
     :param use_mgmt_port: {"default": 0, "optional": true, "type": "number", "description": "Use management port as source port", "format": "flag"}
-    :param description: {"description": "Describe the Program Function briefly", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param description: {"description": "Describe the Program Function briefly", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param externalfilename: {"description": "Specify the Program Name", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param overwrite: {"default": 0, "optional": true, "type": "number", "description": "Overwrite existing file", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`

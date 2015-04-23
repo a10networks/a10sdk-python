@@ -102,18 +102,19 @@ class PromptCfg(A10BaseClass):
 
 class Terminal(A10BaseClass):
     
-    """Class Description::
-    Set Terminal Startup Parameters.
-
-    Class terminal supports CRUD Operations and inherits from `common/A10BaseClass`.
-    This class is the `"PARENT"` class for this module.`
-
+    """    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param idle_timeout: {"description": "Set interval for closing connection when there is no input detected (Timeout in minutes, 0 means never timeout, default is 15)", "format": "number", "default": 15, "optional": true, "maximum": 60, "minimum": 0, "type": "number"}
     :param width: {"description": "Set width of the display terminal (Number of characters on a screen line, 0 means infinite, default is 80)", "format": "number", "default": 80, "optional": true, "maximum": 512, "minimum": 0, "type": "number"}
     :param length: {"description": "Set number of lines on a screen(0 for no pausing) (Number of lines on screen, 0 for no pausing, default is 24)", "format": "number", "default": 24, "optional": true, "maximum": 512, "minimum": 0, "type": "number"}
     :param editing: {"default": 0, "optional": true, "type": "number", "description": "Enable command line editing", "format": "flag"}
     :param auto_size: {"default": 1, "optional": true, "type": "number", "description": "Enable terminal length and width automatically (not work if width or length set to 0)", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    Set Terminal Startup Parameters.
+
+    Class terminal supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
 
     
 
@@ -130,6 +131,7 @@ class Terminal(A10BaseClass):
         self.b_key = "terminal"
         self.a10_url="/axapi/v3/terminal"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.gslb_cfg = {}
         self.history_cfg = {}
         self.idle_timeout = ""

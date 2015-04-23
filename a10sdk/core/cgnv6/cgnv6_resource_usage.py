@@ -3,16 +3,17 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class ResourceUsage(A10BaseClass):
     
-    """Class Description::
+    """    :param lsn_nat_addr_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable CGNV6 NAT Pool addresses", "format": "number", "optional": true, "type": "number"}
+    :param fixed_nat_ip_addr_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable CGNV6 Fixed NAT addresses", "format": "number", "optional": true, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param fixed_nat_inside_user_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable CGNV6 Fixed NAT inside users", "format": "number", "optional": true, "type": "number"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Configure CGNV6 Resource Usage.
 
     Class resource-usage supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param lsn_nat_addr_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable CGNV6 NAT Pool addresses", "format": "number", "optional": true, "type": "number"}
-    :param fixed_nat_ip_addr_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable CGNV6 Fixed NAT addresses", "format": "number", "optional": true, "type": "number"}
-    :param fixed_nat_inside_user_count: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Total configurable CGNV6 Fixed NAT inside users", "format": "number", "optional": true, "type": "number"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -31,6 +32,7 @@ class ResourceUsage(A10BaseClass):
         self.DeviceProxy = ""
         self.lsn_nat_addr_count = ""
         self.fixed_nat_ip_addr_count = ""
+        self.uuid = ""
         self.fixed_nat_inside_user_count = ""
 
         for keys, value in kwargs.items():

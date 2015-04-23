@@ -5,9 +5,9 @@ class FileList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param url: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param template: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param file: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param url: {"type": "string", "format": "string"}
+    :param template: {"type": "string", "format": "string"}
+    :param file: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -31,7 +31,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"url": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "template": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "file": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"url": {"type": "string", "format": "string"}, "optional": true, "template": {"type": "string", "format": "string"}, "file": {"type": "string", "format": "string"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

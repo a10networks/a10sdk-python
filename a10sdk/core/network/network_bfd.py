@@ -36,6 +36,7 @@ class Bfd(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param enable: {"default": 0, "optional": true, "type": "number", "description": "Enable BFD", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param echo: {"default": 0, "optional": true, "type": "number", "description": "Enable BFD Echo", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -56,6 +57,7 @@ class Bfd(A10BaseClass):
         self.DeviceProxy = ""
         self.interval_cfg = {}
         self.enable = ""
+        self.uuid = ""
         self.echo = ""
 
         for keys, value in kwargs.items():

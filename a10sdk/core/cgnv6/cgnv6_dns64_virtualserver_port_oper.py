@@ -5,7 +5,7 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param state: {"enum": ["All-Up", "Functional-Up", "Partial-Up", "Down", "Disb", "Unkn"], "type": "string", "format": "enum"}
+    :param state: {"enum": ["All Up", "Functional Up", "Partial Up", "Down", "Disb", "Unkn"], "type": "string", "format": "enum"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

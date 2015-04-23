@@ -41,7 +41,7 @@ class AaaPolicy(A10BaseClass):
     Class aaa-policy supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param aaa_rule_list: {"minItems": 1, "items": {"type": "aaa-rule"}, "uniqueItems": true, "array": [{"required": ["index"], "properties": {}}], "type": "array", "$ref": "/axapi/v3/aam/aaa-policy/{name}/aaa-rule/{index}"}
+    :param aaa_rule_list: {"minItems": 1, "items": {"type": "aaa-rule"}, "uniqueItems": true, "array": [{"required": ["index"], "properties": {"index": {"description": "Specify AAA rule index", "format": "number", "optional": false, "oid": "1001", "maximum": 256, "minimum": 1, "type": "number"}, "stats": {"type": "object", "properties": {"total_count": {"optional": true, "size": "8", "type": "number", "oid": "1", "format": "counter"}, "hit_count": {"optional": true, "size": "8", "type": "number", "oid": "1", "format": "counter"}}}}}], "type": "array", "$ref": "/axapi/v3/aam/aaa-policy/{name}/aaa-rule/{index}"}
     :param name: {"description": "Specify AAA policy name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 63, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

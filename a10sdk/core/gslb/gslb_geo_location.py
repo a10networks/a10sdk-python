@@ -43,6 +43,7 @@ class GeoLocation(A10BaseClass):
 
     :param geo_locn_obj_name: {"description": "Specify geo-location name, section range is (1-15)", "format": "string", "minLength": 1, "optional": false, "maxLength": 127, "type": "string"}
     :param geo_locn_multiple_addresses: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"first-ip-address": {"type": "string", "description": "Specify IP information (Specify IP address)", "format": "ipv4-address"}, "first-ipv6-address": {"type": "string", "description": "Specify IPv6 address", "format": "ipv6-address"}, "geol-ipv4-mask": {"not": "ip-addr2", "type": "string", "description": "Specify IPv4 mask", "format": "ipv4-netmask"}, "ip-addr2": {"not": "geol-ipv4-mask", "type": "string", "description": "Specify IP address range", "format": "ipv4-address"}, "ipv6-addr2": {"not": "geol-ipv6-mask", "type": "string", "description": "Specify IPv6 address range", "format": "ipv6-address"}, "geol-ipv6-mask": {"description": "Specify IPv6 mask", "format": "number", "maximum": 128, "minimum": 0, "not": "ipv6-addr2", "type": "number"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -63,6 +64,7 @@ class GeoLocation(A10BaseClass):
         self.DeviceProxy = ""
         self.geo_locn_obj_name = ""
         self.geo_locn_multiple_addresses = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

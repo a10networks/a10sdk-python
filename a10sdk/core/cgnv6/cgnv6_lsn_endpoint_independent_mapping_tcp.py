@@ -34,6 +34,7 @@ class Tcp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param port_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "port": {"type": "number", "description": "Single Destination Port or Port Range Start", "format": "number"}, "port-end": {"type": "number", "description": "Port Range End", "format": "number"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -52,6 +53,7 @@ class Tcp(A10BaseClass):
         self.a10_url="/axapi/v3/cgnv6/lsn/endpoint-independent-mapping/tcp"
         self.DeviceProxy = ""
         self.port_list = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

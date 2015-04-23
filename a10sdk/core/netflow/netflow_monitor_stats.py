@@ -96,13 +96,8 @@ class Monitor(A10BaseClass):
         self.b_key = "monitor"
         self.a10_url="/axapi/v3/netflow/monitor/{name}/stats"
         self.DeviceProxy = ""
-        self.resend_template = {}
         self.stats = {}
         self.name = ""
-        self.source_address = {}
-        self.destination = {}
-        self.sample = {}
-        self.record = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

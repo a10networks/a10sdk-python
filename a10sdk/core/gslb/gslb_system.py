@@ -27,13 +27,7 @@ class GslbLoadFileList(A10BaseClass):
 
 class System(A10BaseClass):
     
-    """Class Description::
-    GSLB system options.
-
-    Class system supports CRUD Operations and inherits from `common/A10BaseClass`.
-    This class is the `"PARENT"` class for this module.`
-
-    :param gslb_service_ip: {"default": 0, "optional": true, "type": "number", "description": "GSLB Service-IP", "format": "flag"}
+    """    :param gslb_service_ip: {"default": 0, "optional": true, "type": "number", "description": "GSLB Service-IP", "format": "flag"}
     :param gslb_site: {"default": 0, "optional": true, "type": "number", "description": "GSLB Site", "format": "flag"}
     :param ip_ttl: {"description": "TTL of IP packets, default is 0 (IP TTL value, default is 0)", "format": "number", "default": 0, "optional": true, "maximum": 255, "minimum": 0, "type": "number"}
     :param gslb_group: {"default": 0, "optional": true, "type": "number", "description": "GSLB Group", "format": "flag"}
@@ -48,6 +42,12 @@ class System(A10BaseClass):
     :param gslb_load_file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "geo-location-load-filename": {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify file to be loaded", "format": "string-rlx"}, "template-name": {"description": "CSV template to load this file", "format": "string", "minLength": 1, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/gslb/template/csv"}}}]}
     :param wait: {"description": "Disable GSLB until timeout if system is not ready (Time, unit: sec, default is 0)", "format": "number", "default": 0, "optional": true, "maximum": 16384, "minimum": 0, "type": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
+    GSLB system options.
+
+    Class system supports CRUD Operations and inherits from `common/A10BaseClass`.
+    This class is the `"PARENT"` class for this module.`
 
     
 

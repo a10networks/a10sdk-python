@@ -65,20 +65,20 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param bios_version: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param fpga_summary: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param bios_version: {"type": "string", "format": "string"}
+    :param fpga_summary: {"type": "string", "format": "string"}
     :param cpu_cores: {"type": "number", "format": "number"}
-    :param l23_asic: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param bios_release_date: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param ipmi: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param storage: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param l23_asic: {"type": "string", "format": "string"}
+    :param bios_release_date: {"type": "string", "format": "string"}
+    :param ipmi: {"type": "string", "format": "string"}
+    :param storage: {"type": "string", "format": "string"}
     :param cpu_stepping: {"type": "number", "format": "number"}
-    :param fpga_date: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param memory: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param platform_description: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param serial: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param cpu: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param ports: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param fpga_date: {"type": "string", "format": "string"}
+    :param memory: {"type": "string", "format": "string"}
+    :param platform_description: {"type": "string", "format": "string"}
+    :param serial: {"type": "string", "format": "string"}
+    :param cpu: {"type": "string", "format": "string"}
+    :param ports: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

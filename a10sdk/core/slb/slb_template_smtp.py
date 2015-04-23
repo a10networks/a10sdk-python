@@ -57,12 +57,13 @@ class Smtp(A10BaseClass):
     Class smtp supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param name: {"description": "SMTP Template Name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param name: {"description": "SMTP Template Name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param starttls: {"description": "'disabled': Disable STARTTLS; 'optional': STARTTLS is optional requirement; 'enforced': Must issue STARTTLS command before mail transaction; ", "format": "enum", "default": "disabled", "type": "string", "enum": ["disabled", "optional", "enforced"], "optional": true}
     :param server_domain: {"description": "Config the domain of the email servers (Server's domain, default is \"mail-server-domain\")", "format": "string-rlx", "default": "mail-server-domain", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param client_domain_switching: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"service-group": {"description": "Select service group (Service group name)", "format": "string-rlx", "minLength": 1, "maxLength": 127, "type": "string", "$ref": "/axapi/v3/slb/service-group"}, "match-string": {"minLength": 1, "maxLength": 31, "type": "string", "description": "Domain name string", "format": "string-rlx"}, "optional": true, "switching-type": {"enum": ["contains", "ends-with", "starts-with"], "type": "string", "description": "'contains': Specify domain name string if domain contains another string; 'ends-with': Specify domain name string if domain ends with another string; 'starts-with': Specify domain string if domain starts with another string; ", "format": "enum"}}}]}
     :param command_disable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "disable-type": {"enum": ["expn", "turn", "vrfy"], "type": "string", "description": "'expn': Disable SMTP EXPN commands; 'turn': Disable SMTP TURN commands; 'vrfy': Disable SMTP VRFY commands; ", "format": "enum"}}}]}
     :param service_ready_msg: {"description": "Set SMTP service ready message (SMTP service ready message, default is \"ESMTP mail service ready\")", "format": "string-rlx", "default": "ESMTP mail service ready", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -87,6 +88,7 @@ class Smtp(A10BaseClass):
         self.client_domain_switching = []
         self.command_disable = []
         self.service_ready_msg = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

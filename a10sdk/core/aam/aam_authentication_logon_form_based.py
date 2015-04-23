@@ -41,6 +41,7 @@ class LogonPageCfg(A10BaseClass):
 
     :param action_url: {"minLength": 1, "maxLength": 127, "type": "string", "description": "Specify form submission action url", "format": "string-rlx"}
     :param username_variable: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify username variable name in form submission", "format": "string-rlx"}
+    :param passcode_variable: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify passcode variable name in form submission", "format": "string-rlx"}
     :param password_variable: {"minLength": 1, "maxLength": 63, "type": "string", "description": "Specify password variable name in form submission", "format": "string-rlx"}
     :param login_failure_message: {"minLength": 1, "maxLength": 127, "type": "string", "description": "Specify login failure message shown in logon page (Specify error string, default is \"Invalid username or password. Please try again.\")", "format": "string-rlx"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -56,6 +57,7 @@ class LogonPageCfg(A10BaseClass):
         self.DeviceProxy = ""
         self.action_url = ""
         self.username_variable = ""
+        self.passcode_variable = ""
         self.password_variable = ""
         self.login_failure_message = ""
 
@@ -113,6 +115,7 @@ class FormBased(A10BaseClass):
     :param name: {"description": "Specify form-based authentication logon name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param next_token_variable: {"description": "Specify next-token variable name in form submission", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param new_pin_variable: {"description": "Specify new-pin variable name in form submission", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -138,6 +141,7 @@ class FormBased(A10BaseClass):
         self.portal = {}
         self.logon_page_cfg = {}
         self.cp_page_cfg = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

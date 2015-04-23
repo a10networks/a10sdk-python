@@ -81,6 +81,7 @@ class Logging(A10BaseClass):
 
     :param facility: {"description": "'kernel': 0: Kernel; 'user': 1: User-level; 'mail': 2: Mail; 'daemon': 3: System daemons; 'security-authorization': 4: Security/authorization; 'syslog': 5: Syslog internal; 'line-printer': 6: Line printer; 'news': 7: Network news; 'uucp': 8: UUCP subsystem; 'cron': 9: Time-related; 'security-authorization-private': 10: Private security/authorization; 'ftp': 11: FTP; 'ntp': 12: NTP; 'audit': 13: Audit; 'alert': 14: Alert; 'clock': 15: Clock-related; 'local0': 16: Local use 0; 'local1': 17: Local use 1; 'local2': 18: Local use 2; 'local3': 19: Local use 3; 'local4': 20: Local use 4; 'local5': 21: Local use 5; 'local6': 22: Local use 6; 'local7': 23: Local use 7; ", "format": "enum", "default": "local0", "type": "string", "enum": ["kernel", "user", "mail", "daemon", "security-authorization", "syslog", "line-printer", "news", "uucp", "cron", "security-authorization-private", "ftp", "ntp", "audit", "alert", "clock", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7"], "optional": true}
     :param include_destination: {"default": 0, "optional": true, "type": "number", "description": "Include the destination IP and port in logs", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param service_group: {"description": "Set NAT logging service-group", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/service-group"}
     :param include_rip_rport: {"default": 0, "optional": true, "type": "number", "description": "Include the IP and port of real server in logs", "format": "flag"}
     :param name: {"description": "NAT logging template name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
@@ -105,6 +106,7 @@ class Logging(A10BaseClass):
         self.severity = {}
         self.facility = ""
         self.include_destination = ""
+        self.uuid = ""
         self.service_group = ""
         self.log = {}
         self.source_port = {}

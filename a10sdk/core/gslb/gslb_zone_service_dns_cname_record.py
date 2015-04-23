@@ -13,6 +13,7 @@ class DnsCnameRecord(A10BaseClass):
     :param alias_name: {"description": "Specify the alias name", "format": "string", "minLength": 1, "optional": false, "maxLength": 127, "type": "string"}
     :param admin_preference: {"description": "Specify Administrative Preference, default is 100", "format": "number", "default": 100, "optional": true, "maximum": 255, "minimum": 0, "type": "number"}
     :param weight: {"description": "Specify Weight, default is 1", "format": "number", "default": 1, "optional": true, "maximum": 100, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -35,6 +36,7 @@ class DnsCnameRecord(A10BaseClass):
         self.alias_name = ""
         self.admin_preference = ""
         self.weight = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

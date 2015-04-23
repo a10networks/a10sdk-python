@@ -12,6 +12,7 @@ class Group(A10BaseClass):
     :param read: {"description": "specify a read view for the group (read view name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
     :param groupname: {"description": "Name of the group", "format": "string", "minLength": 1, "optional": false, "maxLength": 31, "type": "string"}
     :param v3: {"optional": true, "enum": ["auth", "noauth", "priv"], "type": "string", "description": "'auth': group using the authNoPriv Security Level; 'noauth': group using the noAuthNoPriv Security Level; 'priv': group using SNMPv3 authPriv security level; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -33,6 +34,7 @@ class Group(A10BaseClass):
         self.read = ""
         self.groupname = ""
         self.v3 = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -10,6 +10,7 @@ class Connect(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param connect: {"description": "Connect to license manager to activate", "partition-visibility": "shared", "default": 0, "type": "number", "format": "flag", "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class Connect(A10BaseClass):
         self.a10_url="/axapi/v3/license-manager/connect"
         self.DeviceProxy = ""
         self.connect = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

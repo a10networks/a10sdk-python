@@ -69,6 +69,7 @@ class TacacsHostname(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param hostname: {"description": "Hostname of TACACS+ server", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -89,6 +90,7 @@ class TacacsHostname(A10BaseClass):
         self.DeviceProxy = ""
         self.secret = {}
         self.hostname = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

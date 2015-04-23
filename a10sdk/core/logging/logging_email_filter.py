@@ -12,6 +12,7 @@ class Filter(A10BaseClass):
     :param filter_id: {"description": "Logging via email filter settings", "format": "number", "type": "number", "maximum": 8, "minimum": 1, "optional": false}
     :param trigger: {"default": 0, "optional": true, "type": "number", "description": "Trigger email, override buffer settings", "format": "flag"}
     :param expression: {"description": "Reverse Polish Notation, consists of level 0-7, module AFLEX/HMON/..., pattern log-content-pattern, and or/and/not", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 511, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -33,6 +34,7 @@ class Filter(A10BaseClass):
         self.filter_id = ""
         self.trigger = ""
         self.expression = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

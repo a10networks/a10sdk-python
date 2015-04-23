@@ -76,11 +76,8 @@ class Lif(A10BaseClass):
         self.b_key = "lif"
         self.a10_url="/axapi/v3/interface/lif/{ifnum}/stats"
         self.DeviceProxy = ""
-        self.ip = {}
         self.ifnum = ""
-        self.isis = {}
         self.stats = {}
-        self.bfd = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

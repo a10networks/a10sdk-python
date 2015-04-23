@@ -11,6 +11,7 @@ class Static(A10BaseClass):
 
     :param nat_address: {"optional": false, "type": "string", "description": "NAT Address", "format": "ipv4-address"}
     :param vrid: {"description": "VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "type": "number", "maximum": 31, "minimum": 1, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param src_address: {"optional": false, "type": "string", "description": "Original Source Address", "format": "ipv4-address"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -32,6 +33,7 @@ class Static(A10BaseClass):
         self.DeviceProxy = ""
         self.nat_address = ""
         self.vrid = ""
+        self.uuid = ""
         self.src_address = ""
 
         for keys, value in kwargs.items():

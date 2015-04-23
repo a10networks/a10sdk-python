@@ -8,7 +8,7 @@ class Oper(A10BaseClass):
     :param weight: {"type": "number", "format": "number"}
     :param priority: {"type": "number", "format": "number"}
     :param state: {"enum": ["Active", "Standby"], "type": "string", "format": "enum"}
-    :param became_active: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param became_active: {"type": "string", "format": "string"}
     :param force_standby: {"type": "number", "format": "number"}
     :param unit: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -28,71 +28,6 @@ class Oper(A10BaseClass):
         self.became_active = ""
         self.force_standby = ""
         self.unit = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class Gateway(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "gateway"
-        self.DeviceProxy = ""
-        self.oper = {}
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class TrackingOptions(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "tracking-options"
-        self.DeviceProxy = ""
-        self.oper = {}
-        self.gateway = {}
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class BladeParameters(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "blade-parameters"
-        self.DeviceProxy = ""
-        self.oper = {}
-        self.tracking_options = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -125,7 +60,6 @@ class Vrid(A10BaseClass):
         self.a10_url="/axapi/v3/vrrp-a/vrid/{vrid_val}/oper"
         self.DeviceProxy = ""
         self.oper = {}
-        self.blade_parameters = {}
         self.vrid_val = ""
 
         for keys, value in kwargs.items():

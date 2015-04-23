@@ -6,7 +6,7 @@ class Ipv6Routes(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param Distance: {"type": "number", "format": "number"}
-    :param Interface: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param Interface: {"type": "string", "format": "string"}
     :param Metric: {"type": "number", "format": "number"}
     :param Nexthop: {"type": "string", "format": "ipv6-address"}
     :param Subtype: {"enum": ["inter-area", "nssa-type-1", "nssa-type-2", "external-type-1", "external-type-2", "level-1", "level-2"], "type": "string", "format": "enum"}
@@ -41,10 +41,10 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param IPv6_routes: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Distance": {"type": "number", "format": "number"}, "Interface": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "Metric": {"type": "number", "format": "number"}, "Nexthop": {"type": "string", "format": "ipv6-address"}, "Subtype": {"enum": ["inter-area", "nssa-type-1", "nssa-type-2", "external-type-1", "external-type-2", "level-1", "level-2"], "type": "string", "format": "enum"}, "Prefix": {"type": "string", "format": "ipv6-address"}, "PrefixLen": {"type": "number", "format": "number"}, "Type": {"enum": ["kernel", "connected", "static", "rip", "ospf", "bgp", "isis", "vip", "selected-vip", "ip-nat-list", "ip-nat", "floating-ip", "a10"], "type": "string", "format": "enum"}}}]}
+    :param IPv6_routes: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"Distance": {"type": "number", "format": "number"}, "Interface": {"type": "string", "format": "string"}, "optional": true, "Metric": {"type": "number", "format": "number"}, "Nexthop": {"type": "string", "format": "ipv6-address"}, "Subtype": {"enum": ["inter-area", "nssa-type-1", "nssa-type-2", "external-type-1", "external-type-2", "level-1", "level-2"], "type": "string", "format": "enum"}, "Prefix": {"type": "string", "format": "ipv6-address"}, "PrefixLen": {"type": "number", "format": "number"}, "Type": {"enum": ["kernel", "connected", "static", "rip", "ospf", "bgp", "isis", "vip", "selected-vip", "ip-nat-list", "ip-nat", "floating-ip", "a10"], "type": "string", "format": "enum"}}}]}
     :param Total: {"type": "number", "format": "number"}
     :param Limit: {"type": "number", "format": "number"}
-    :param Description: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string-rlx"}
+    :param Description: {"type": "string", "format": "string-rlx"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

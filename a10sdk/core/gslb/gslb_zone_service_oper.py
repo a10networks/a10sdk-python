@@ -8,9 +8,9 @@ class CacheList(A10BaseClass):
     :param cache_ttl: {"type": "number", "format": "number"}
     :param additional_records: {"type": "number", "format": "number"}
     :param question_records: {"type": "number", "format": "number"}
-    :param cache_dns_flag: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param cache_dns_flag: {"type": "string", "format": "string"}
     :param answer_records: {"type": "number", "format": "number"}
-    :param alias: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param alias: {"type": "string", "format": "string"}
     :param cache_length: {"type": "number", "format": "number"}
     :param authority_records: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -44,11 +44,11 @@ class SessionList(A10BaseClass):
     :param aging: {"type": "number", "format": "number"}
     :param hits: {"type": "number", "format": "number"}
     :param update: {"type": "number", "format": "number"}
-    :param client: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param client: {"type": "string", "format": "string"}
     :param last_second_hits: {"type": "number", "format": "number"}
-    :param mode: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param ttl: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param best: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param mode: {"type": "string", "format": "string"}
+    :param ttl: {"type": "string", "format": "string"}
+    :param best: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -78,9 +78,9 @@ class Oper(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param total_sessions: {"type": "number", "format": "number"}
-    :param cache_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"cache-ttl": {"type": "number", "format": "number"}, "additional-records": {"type": "number", "format": "number"}, "question-records": {"type": "number", "format": "number"}, "cache-dns-flag": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "answer-records": {"type": "number", "format": "number"}, "alias": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "cache-length": {"type": "number", "format": "number"}, "optional": true, "authority-records": {"type": "number", "format": "number"}}}]}
-    :param state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"aging": {"type": "number", "format": "number"}, "hits": {"type": "number", "format": "number"}, "update": {"type": "number", "format": "number"}, "client": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "last-second-hits": {"type": "number", "format": "number"}, "mode": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "ttl": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true, "best": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}]}
+    :param cache_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"cache-ttl": {"type": "number", "format": "number"}, "additional-records": {"type": "number", "format": "number"}, "question-records": {"type": "number", "format": "number"}, "cache-dns-flag": {"type": "string", "format": "string"}, "answer-records": {"type": "number", "format": "number"}, "alias": {"type": "string", "format": "string"}, "cache-length": {"type": "number", "format": "number"}, "optional": true, "authority-records": {"type": "number", "format": "number"}}}]}
+    :param state: {"type": "string", "format": "string"}
+    :param session_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"aging": {"type": "number", "format": "number"}, "hits": {"type": "number", "format": "number"}, "update": {"type": "number", "format": "number"}, "client": {"type": "string", "format": "string"}, "last-second-hits": {"type": "number", "format": "number"}, "mode": {"type": "string", "format": "string"}, "ttl": {"type": "string", "format": "string"}, "optional": true, "best": {"type": "string", "format": "string"}}}]}
     :param matched: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -103,27 +103,6 @@ class Oper(A10BaseClass):
             setattr(self,keys, value)
 
 
-class DnsARecord(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "dns-a-record"
-        self.DeviceProxy = ""
-        self.oper = {}
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
 class Service(A10BaseClass):
     
     """Class Description::
@@ -132,9 +111,9 @@ class Service(A10BaseClass):
     Class service supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param dns_ns_record_list: {"minItems": 1, "items": {"type": "dns-ns-record"}, "uniqueItems": true, "array": [{"required": ["ns-name"], "properties": {"oper": {"type": "object", "properties": {"last-server": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}, "ns-name": {"description": "Specify Domain Name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}}}], "type": "array", "$ref": "/axapi/v3/gslb/zone/{name}/service/{service-port}+{service-name}/dns-mx-record/{mx-name}/dns-ns-record/{ns-name}"}
     :param service_port: {"description": "Port number of the service", "format": "number", "optional": false, "oid": "1001", "maximum": 65534, "minimum": 0, "type": "number"}
-    :param dns_mx_record_list: {"minItems": 1, "items": {"type": "dns-mx-record"}, "uniqueItems": true, "array": [{"required": ["mx-name"], "properties": {"oper": {"type": "object", "properties": {"last-server": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}}}, "mx-name": {"description": "Specify Domain Name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}}}], "type": "array", "$ref": "/axapi/v3/gslb/zone/{name}/service/{service-port}+{service-name}/dns-mx-record/{mx-name}"}
+    :param dns_mx_record_list: {"minItems": 1, "items": {"type": "dns-mx-record"}, "uniqueItems": true, "array": [{"required": ["mx-name"], "properties": {"oper": {"type": "object", "properties": {"last-server": {"type": "string", "format": "string"}}}, "mx-name": {"description": "Specify Domain Name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}}}], "type": "array", "$ref": "/axapi/v3/gslb/zone/{name}/service/{service-port}+{service-name}/dns-mx-record/{mx-name}"}
+    :param dns_ns_record_list: {"minItems": 1, "items": {"type": "dns-ns-record"}, "uniqueItems": true, "array": [{"required": ["ns-name"], "properties": {"oper": {"type": "object", "properties": {"last-server": {"type": "string", "format": "string"}}}, "ns-name": {"description": "Specify Domain Name", "format": "string", "minLength": 1, "oid": "1001", "optional": false, "maxLength": 127, "type": "string"}}}], "type": "array", "$ref": "/axapi/v3/gslb/zone/{name}/service/{service-port}+{service-name}/dns-mx-record/{mx-name}/dns-ns-record/{ns-name}"}
     :param service_name: {"description": "Specify the service name for the zone, * for wildcard", "format": "string-rlx", "minLength": 1, "oid": "1002", "optional": false, "maxLength": 63, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -154,10 +133,9 @@ class Service(A10BaseClass):
         self.a10_url="/axapi/v3/gslb/zone/{name}/service/{service_port}+{service_name}/oper"
         self.DeviceProxy = ""
         self.oper = {}
-        self.dns_a_record = {}
-        self.dns_ns_record_list = []
         self.service_port = ""
         self.dns_mx_record_list = []
+        self.dns_ns_record_list = []
         self.service_name = ""
 
         for keys, value in kwargs.items():

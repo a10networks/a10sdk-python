@@ -38,6 +38,7 @@ class Https(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param https_kerberos_realm: {"description": "Specify realm of Kerberos server", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param post_type: {"optional": true, "enum": ["postdata", "postfile"], "type": "string", "description": "'postdata': Specify the HTTP post data; 'postfile': Specify the HTTP post data; ", "format": "enum"}
     :param url_path: {"description": "Specify URL path, default is \"/\"", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 500, "type": "string"}
     :param https_username: {"description": "Specify the username", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 31, "type": "string"}
@@ -81,6 +82,7 @@ class Https(A10BaseClass):
         self.a10_url="/axapi/v3/health/monitor/{name}/method/https"
         self.DeviceProxy = ""
         self.https_kerberos_realm = ""
+        self.uuid = ""
         self.post_type = ""
         self.url_path = ""
         self.https_username = ""

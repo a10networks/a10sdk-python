@@ -10,6 +10,7 @@ class Udp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param udp: {"default": 0, "optional": true, "type": "number", "description": "UDP type", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param udp_port: {"description": "Specify UDP port (Specify port number)", "format": "number", "type": "number", "maximum": 65534, "minimum": 1, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -29,6 +30,7 @@ class Udp(A10BaseClass):
         self.a10_url="/axapi/v3/health/monitor/{name}/method/udp"
         self.DeviceProxy = ""
         self.udp = ""
+        self.uuid = ""
         self.udp_port = ""
 
         for keys, value in kwargs.items():

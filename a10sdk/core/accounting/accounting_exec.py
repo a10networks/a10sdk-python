@@ -11,6 +11,7 @@ class Exec(A10BaseClass):
 
     :param accounting_exec_type: {"optional": true, "enum": ["start-stop", "stop-only"], "type": "string", "description": "'start-stop': Record start and stop without waiting; 'stop-only': Record stop when service terminates; ", "format": "enum"}
     :param accounting_exec_method: {"optional": true, "enum": ["tacplus", "radius"], "type": "string", "description": "'tacplus': Use TACACS+ servers for accounting; 'radius': Use radius servers for accounting; ", "format": "enum"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -30,6 +31,7 @@ class Exec(A10BaseClass):
         self.DeviceProxy = ""
         self.accounting_exec_type = ""
         self.accounting_exec_method = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

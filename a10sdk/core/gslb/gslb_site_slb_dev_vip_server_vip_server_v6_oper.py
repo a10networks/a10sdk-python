@@ -6,7 +6,7 @@ class DevVipPortList(A10BaseClass):
     """This class does not support CRUD Operations please use parent.
 
     :param dev_vip_port_num: {"type": "number", "format": "number"}
-    :param dev_vip_port_state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param dev_vip_port_state: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,9 +29,9 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param dev_vip_addr: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param dev_vip_state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param dev_vip_port_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"dev-vip-port-num": {"type": "number", "format": "number"}, "dev-vip-port-state": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "optional": true}}]}
+    :param dev_vip_addr: {"type": "string", "format": "string"}
+    :param dev_vip_state: {"type": "string", "format": "string"}
+    :param dev_vip_port_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"dev-vip-port-num": {"type": "number", "format": "number"}, "dev-vip-port-state": {"type": "string", "format": "string"}, "optional": true}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

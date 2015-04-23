@@ -29,9 +29,11 @@ class Vrid(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param floating_ip: {"type": "string", "description": "Use a floating IP as the source address for Router advertisements", "format": "ipv6-address"}
-    :param adver_vrid_default: {"default": 0, "not": "adver-vrid", "type": "number", "description": "Default VRRP-A vrid", "format": "flag"}
+    :param use_floating_ip_default_vrid: {"default": 0, "type": "number", "description": "Use a floating IP as the source address for Router advertisements", "format": "flag"}
     :param adver_vrid: {"description": "Specify ha VRRP-A vrid", "format": "number", "maximum": 31, "minimum": 1, "not": "adver-vrid-default", "type": "number"}
+    :param floating_ip_default_vrid: {"type": "string", "description": "Use a floating IP as the source address for Router advertisements", "format": "ipv6-address"}
+    :param adver_vrid_default: {"default": 0, "not": "adver-vrid", "type": "number", "description": "Default VRRP-A vrid", "format": "flag"}
+    :param floating_ip: {"type": "string", "description": "Use a floating IP as the source address for Router advertisements", "format": "ipv6-address"}
     :param use_floating_ip: {"default": 0, "type": "number", "description": "Use a floating IP as the source address for Router advertisements", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -44,9 +46,11 @@ class Vrid(A10BaseClass):
         
         self.b_key = "vrid"
         self.DeviceProxy = ""
-        self.floating_ip = ""
-        self.adver_vrid_default = ""
+        self.use_floating_ip_default_vrid = ""
         self.adver_vrid = ""
+        self.floating_ip_default_vrid = ""
+        self.adver_vrid_default = ""
+        self.floating_ip = ""
         self.use_floating_ip = ""
 
         for keys, value in kwargs.items():
@@ -230,6 +234,7 @@ class Ipv6(A10BaseClass):
     Class ipv6 supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param address_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"address-type": {"enum": ["anycast", "link-local"], "type": "string", "description": "'anycast': Configure an IPv6 anycast address; 'link-local': Configure an IPv6 link local address; ", "format": "enum"}, "ipv6-addr": {"type": "string", "description": "Set the IPv6 address of an interface", "format": "ipv6-address-plen"}, "optional": true}}]}
     :param ipv6_enable: {"default": 0, "optional": true, "type": "number", "description": "Enable IPv6 processing", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
@@ -249,6 +254,7 @@ class Ipv6(A10BaseClass):
         self.b_key = "ipv6"
         self.a10_url="/axapi/v3/interface/trunk/{ifnum}/ipv6"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.address_list = []
         self.router_adver = {}
         self.rip = {}

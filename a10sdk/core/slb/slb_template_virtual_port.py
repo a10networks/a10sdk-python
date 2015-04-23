@@ -13,7 +13,7 @@ class VirtualPort(A10BaseClass):
     :param conn_limit: {"description": "Connection limit", "format": "number", "type": "number", "maximum": 8000000, "minimum": 1, "optional": true}
     :param conn_rate_limit_no_logging: {"default": 0, "optional": true, "type": "number", "description": "Do not log connection over limit event", "format": "flag"}
     :param drop_unknown_conn: {"default": 0, "optional": true, "type": "number", "description": "Drop conection if receives TCP packet without SYN or RST flag and it does not belong to any existing connections", "format": "flag"}
-    :param name: {"description": "Virtual port template name", "format": "string", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param name: {"description": "Virtual port template name", "format": "string-rlx", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param allow_vip_to_rport_mapping: {"default": 0, "optional": true, "type": "number", "description": "Allow mapping of VIP to real port", "format": "flag"}
     :param conn_limit_reset: {"default": 0, "optional": true, "type": "number", "description": "Send client reset when connection over limit", "format": "flag"}
     :param conn_rate_limit_reset: {"default": 0, "optional": true, "type": "number", "description": "Send client reset when connection rate over limit", "format": "flag"}
@@ -23,6 +23,7 @@ class VirtualPort(A10BaseClass):
     :param snat_port_preserve: {"default": 0, "optional": true, "type": "number", "description": "Source NAT Port Preservation", "format": "flag"}
     :param conn_rate_limit: {"description": "Connection rate limit", "format": "number", "type": "number", "maximum": 1048575, "minimum": 1, "optional": true}
     :param reset_l7_on_failover: {"default": 0, "optional": true, "type": "number", "description": "Send reset to L7 client and server connection upon a failover", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param conn_limit_no_logging: {"default": 0, "optional": true, "type": "number", "description": "Do not log connection over limit event", "format": "flag"}
     :param snat_msl: {"description": "Source NAT MSL (Source NAT MSL value)", "format": "number", "type": "number", "maximum": 1800, "minimum": 1, "optional": true}
     :param allow_syn_otherflags: {"default": 0, "optional": true, "type": "number", "description": "Allow initial SYN packet with other flags", "format": "flag"}
@@ -59,6 +60,7 @@ class VirtualPort(A10BaseClass):
         self.snat_port_preserve = ""
         self.conn_rate_limit = ""
         self.reset_l7_on_failover = ""
+        self.uuid = ""
         self.conn_limit_no_logging = ""
         self.snat_msl = ""
         self.allow_syn_otherflags = ""

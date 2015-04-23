@@ -35,6 +35,7 @@ class Role(A10BaseClass):
 
     :param name: {"description": "Name for the RBA role", "format": "string", "minLength": 1, "optional": false, "maxLength": 32, "type": "string"}
     :param rule_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"operation": {"enum": ["no-access", "read", "write"], "type": "string", "description": "'no-access': no-access; 'read': read; 'write': write; ", "format": "enum"}, "object": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Lineage of object class for permitted operation", "format": "string"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -55,6 +56,7 @@ class Role(A10BaseClass):
         self.DeviceProxy = ""
         self.name = ""
         self.rule_list = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

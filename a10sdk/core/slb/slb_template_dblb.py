@@ -9,8 +9,9 @@ class Dblb(A10BaseClass):
     Class dblb supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param server_version: {"optional": true, "enum": ["MSSQL2008", "MSSQL2012", "MySQL"], "type": "string", "description": "'MSSQL2008': MSSQL server 2008 or 2008 R2; 'MSSQL2012': MSSQL server 2012; 'MySQL': MySQL server (any version); ", "format": "enum"}
-    :param name: {"description": "DBLB template name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param name: {"description": "DBLB template name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param class_list: {"description": "Specify user/password string class list (Class list name)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/class-list"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -30,6 +31,7 @@ class Dblb(A10BaseClass):
         self.b_key = "dblb"
         self.a10_url="/axapi/v3/slb/template/dblb/{name}"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.server_version = ""
         self.name = ""
         self.calc_sha1 = {}

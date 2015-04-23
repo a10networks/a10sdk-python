@@ -9,12 +9,13 @@ class IpMask(A10BaseClass):
     Class ip-mask supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param description: {"optional": true, "type": "string", "description": "Network specific description (Up to 80 characters describing this network)", "format": "string-rlx"}
+    :param description: {"description": "Network specific description (Up to 80 characters describing this network)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 80, "type": "string"}
     :param route_map: {"description": "Route-map to modify the attributes (Name of the route map)", "format": "string", "minLength": 1, "optional": true, "maxLength": 128, "type": "string"}
     :param mask: {"optional": false, "type": "string", "description": "Specify network mask (Network mask, e.g., 255.255.0.0)", "format": "ipv4-netmask"}
     :param comm_value: {"optional": true, "type": "string", "description": "community value in the format 1-4294967295|AA:NN|internet|local-AS|no-advertise|no-export", "format": "string-rlx"}
     :param backdoor: {"default": 0, "optional": true, "type": "number", "description": "Specify a BGP backdoor route", "format": "flag"}
     :param network_ipv4: {"optional": false, "type": "string", "description": "IP prefix", "format": "ipv4-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -39,6 +40,7 @@ class IpMask(A10BaseClass):
         self.comm_value = ""
         self.backdoor = ""
         self.network_ipv4 = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

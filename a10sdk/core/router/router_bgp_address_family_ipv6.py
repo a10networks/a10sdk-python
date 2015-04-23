@@ -100,6 +100,7 @@ class Ipv6(A10BaseClass):
     :param auto_summary: {"default": 0, "optional": true, "type": "number", "description": "Enable automatic network number summarization", "format": "flag"}
     :param maximum_paths_value: {"description": "Supported BGP multipath numbers", "format": "number", "default": 1, "optional": true, "maximum": 10, "minimum": 1, "type": "number"}
     :param synchronization: {"default": 0, "optional": true, "type": "number", "description": "Perform IGP synchronization", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -123,10 +124,11 @@ class Ipv6(A10BaseClass):
         self.originate = ""
         self.auto_summary = ""
         self.bgp = {}
+        self.network = {}
         self.maximum_paths_value = ""
         self.synchronization = ""
         self.neighbor = {}
-        self.network = {}
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

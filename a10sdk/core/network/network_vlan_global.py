@@ -10,6 +10,7 @@ class VlanGlobal(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param l3_vlan_fwd_disable: {"default": 0, "optional": true, "type": "number", "description": "Disable L3 forwarding between VLANs", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param enable_def_vlan_l2_forwarding: {"default": 0, "optional": true, "type": "number", "description": "Enable layer 2 forwarding on default vlan", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -29,6 +30,7 @@ class VlanGlobal(A10BaseClass):
         self.a10_url="/axapi/v3/network/vlan-global"
         self.DeviceProxy = ""
         self.l3_vlan_fwd_disable = ""
+        self.uuid = ""
         self.enable_def_vlan_l2_forwarding = ""
 
         for keys, value in kwargs.items():

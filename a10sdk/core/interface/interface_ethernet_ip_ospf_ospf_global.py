@@ -163,6 +163,7 @@ class OspfGlobal(A10BaseClass):
     :param mtu_ignore: {"default": 0, "optional": true, "type": "number", "description": "Ignores the MTU in DBD packets", "format": "flag"}
     :param retransmit_interval: {"description": "Time between retransmitting lost link state advertisements (Seconds)", "format": "number", "default": 5, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
     :param transmit_delay: {"description": "Link state transmit delay (Seconds)", "format": "number", "default": 1, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param disable: {"optional": true, "enum": ["all"], "type": "string", "description": "'all': All functionality; ", "format": "enum"}
     :param cost: {"description": "Interface cost", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}
     :param hello_interval: {"description": "Time between HELLO packets (Seconds)", "format": "number", "default": 10, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
@@ -192,6 +193,7 @@ class OspfGlobal(A10BaseClass):
         self.mtu_ignore = ""
         self.retransmit_interval = ""
         self.transmit_delay = ""
+        self.uuid = ""
         self.disable = ""
         self.authentication_cfg = {}
         self.database_filter_cfg = {}

@@ -11,8 +11,9 @@ class Monitor(A10BaseClass):
 
     :param sample_threshold: {"description": "Number of samples in one epoch above which passive HC is enabled. If below or equal to the threshold, passive HC is disabled (Specify number of samples in one second (Default is 50). If the number of samples is 0, no action is taken)", "format": "number", "default": 50, "optional": true, "maximum": 10000, "minimum": 1, "type": "number"}
     :param override_ipv4: {"optional": true, "type": "string", "description": "Override implicitly inherited IPv4 address from target", "format": "ipv4-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param retry: {"description": "Specify the Healthcheck Retries (Retry Count (default 3))", "format": "number", "optional": true, "maximum": 10, "minimum": 1, "default-depends-on": "health.global::retry", "type": "number"}
-    :param name: {"description": "Monitor Name", "format": "string", "minLength": 1, "optional": false, "maxLength": 29, "type": "string"}
+    :param name: {"description": "Monitor Name", "format": "string-rlx", "minLength": 1, "optional": false, "maxLength": 29, "type": "string"}
     :param strict_retry_on_server_err_resp: {"default": 0, "optional": true, "type": "number", "description": "Require strictly retry", "format": "flag"}
     :param passive_interval: {"description": "Interval to do manual health checking while in passive mode (Specify value in seconds (Default is 10 s))", "format": "number", "default": 10, "optional": true, "maximum": 180, "minimum": 1, "type": "number"}
     :param override_port: {"description": "Override implicitly inherited port from target (Port number (1-65534))", "format": "number", "type": "number", "maximum": 65534, "minimum": 1, "optional": true}
@@ -44,6 +45,7 @@ class Monitor(A10BaseClass):
         self.DeviceProxy = ""
         self.sample_threshold = ""
         self.override_ipv4 = ""
+        self.uuid = ""
         self.retry = ""
         self.name = ""
         self.strict_retry_on_server_err_resp = ""

@@ -25,13 +25,14 @@ class SynCookie(A10BaseClass):
 
 class Tcp(A10BaseClass):
     
-    """Class Description::
+    """    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Global TCP parameters.
 
     Class tcp supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -48,6 +49,7 @@ class Tcp(A10BaseClass):
         self.b_key = "tcp"
         self.a10_url="/axapi/v3/ip/tcp"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.syn_cookie = {}
 
         for keys, value in kwargs.items():

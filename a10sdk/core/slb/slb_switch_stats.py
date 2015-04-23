@@ -45,6 +45,7 @@ class Stats(A10BaseClass):
     :param ipfrag_reasmfails: {"description": "IP Fragment Reasm Fails", "format": "counter", "type": "number", "oid": "28", "optional": true, "size": "8"}
     :param ipv6_jumbo_frag_drop: {"description": "IPv6 Jumbo Frag Drop", "format": "counter", "type": "number", "oid": "64", "optional": true, "size": "8"}
     :param ipv6_ndisc_dad_adverts: {"description": "IPv6 DAD on Adverts", "format": "counter", "type": "number", "oid": "67", "optional": true, "size": "8"}
+    :param sp_non_ctrl_pkt_drop: {"description": "Shared IP mode non ctrl packet to linux drop", "format": "counter", "type": "number", "oid": "70", "optional": true, "size": "8"}
     :param l4_in_ctrl_cpu: {"description": "L4 In Ctrl CPU", "format": "counter", "type": "number", "oid": "61", "optional": true, "size": "8"}
     :param fpga_error_pkt1: {"description": "FPGA Error PKT1", "format": "counter", "type": "number", "oid": "54", "optional": true, "size": "8"}
     :param fpga_error_pkt2: {"description": "FPGA Error PKT2", "format": "counter", "type": "number", "oid": "55", "optional": true, "size": "8"}
@@ -125,6 +126,7 @@ class Stats(A10BaseClass):
         self.ipfrag_reasmfails = ""
         self.ipv6_jumbo_frag_drop = ""
         self.ipv6_ndisc_dad_adverts = ""
+        self.sp_non_ctrl_pkt_drop = ""
         self.l4_in_ctrl_cpu = ""
         self.fpga_error_pkt1 = ""
         self.fpga_error_pkt2 = ""

@@ -117,6 +117,7 @@ class Management(A10BaseClass):
     Class management supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param duplexity: {"description": "'Full': Full; 'Half': Half; 'auto': Auto; ", "format": "enum", "default": "auto", "type": "string", "enum": ["Full", "Half", "auto"], "optional": true}
     :param speed: {"description": "'10': 10 Mbs/sec; '100': 100 Mbs/sec; '1000': 1 Gb/sec; 'auto': Auto Negotiate Speed;  (Interface Speed)", "format": "enum", "default": "auto", "type": "string", "enum": ["10", "100", "1000", "auto"], "optional": true}
     :param action: {"optional": true, "enum": ["enable", "disable"], "type": "string", "description": "'enable': Enable Management Port; 'disable': Disable Management Port; ", "format": "enum"}
@@ -140,6 +141,7 @@ class Management(A10BaseClass):
         self.DeviceProxy = ""
         self.lldp = {}
         self.broadcast_rate_limit = {}
+        self.uuid = ""
         self.duplexity = ""
         self.speed = ""
         self.ipv6 = {}

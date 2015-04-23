@@ -11,7 +11,7 @@ class VirtualServer(A10BaseClass):
 
     :param conn_limit: {"description": "Connection limit", "format": "number", "type": "number", "maximum": 8000000, "minimum": 1, "optional": true}
     :param conn_rate_limit_no_logging: {"default": 0, "optional": true, "type": "number", "description": "Do not log connection over limit event", "format": "flag"}
-    :param name: {"description": "Virtual server template name", "format": "string", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param name: {"description": "Virtual server template name", "format": "string-rlx", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param conn_limit_reset: {"default": 0, "optional": true, "type": "number", "description": "Send client reset when connection over limit", "format": "flag"}
     :param conn_rate_limit_reset: {"default": 0, "optional": true, "type": "number", "description": "Send client reset when connection rate over limit", "format": "flag"}
     :param rate_interval: {"description": "'100ms': Use 100 ms as sampling interval; 'second': Use 1 second as sampling interval; ", "format": "enum", "default": "second", "type": "string", "enum": ["100ms", "second"], "optional": true}
@@ -24,6 +24,7 @@ class VirtualServer(A10BaseClass):
     :param conn_limit_no_logging: {"default": 0, "optional": true, "type": "number", "description": "Do not log connection over limit event", "format": "flag"}
     :param icmp_rate_limit: {"description": "ICMP rate limit (Normal rate limit. If exceeds this limit, drop the ICMP packet that goes over the limit)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}
     :param icmp_lockup: {"description": "Enter lockup state when ICMP rate exceeds lockup rate limit (Maximum rate limit. If exceeds this limit, drop all ICMP packet for a time period)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -57,6 +58,7 @@ class VirtualServer(A10BaseClass):
         self.conn_limit_no_logging = ""
         self.icmp_rate_limit = ""
         self.icmp_lockup = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

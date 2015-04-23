@@ -25,6 +25,28 @@ class Bind(A10BaseClass):
             setattr(self,keys, value)
 
 
+class SamplingEnable(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param counters1: {"enum": ["all", "packets-encrypted", "packets-decrypted", "anti-replay-num", "rekey-num", "packets-err-inactive", "packets-err-encryption", "packets-err-pad-check", "packets-err-pkt-sanity", "packets-err-icv-check", "packets-err-badspi", "packets-err-lifetime-lifebytes", "bytes-encrypted", "bytes-decrypted", "prefrag-success", "prefrag-error", "frags-created", "frags-reassembled", "cavium-err-enc", "cavium-err-dec"], "type": "string", "description": "'all': all; 'packets-encrypted': packets-encrypted; 'packets-decrypted': packets-decrypted; 'anti-replay-num': anti-replay-num; 'rekey-num': rekey-num; 'packets-err-inactive': packets-err-inactive; 'packets-err-encryption': packets-err-encryption; 'packets-err-pad-check': packets-err-pad-check; 'packets-err-pkt-sanity': packets-err-pkt-sanity; 'packets-err-icv-check': packets-err-icv-check; 'packets-err-badspi': packets-err-badspi; 'packets-err-lifetime-lifebytes': packets-err-lifetime-lifebytes; 'bytes-encrypted': bytes-encrypted; 'bytes-decrypted': bytes-decrypted; 'prefrag-success': prefrag-success; 'prefrag-error': prefrag-error; 'frags-created': frags-created; 'frags-reassembled': frags-reassembled; 'cavium-err-enc': cavium-err-enc; 'cavium-err-dec': cavium-err-dec; ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "sampling-enable"
+        self.DeviceProxy = ""
+        self.counters1 = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class Ipv4(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -123,9 +145,11 @@ class Ipsec(A10BaseClass):
     :param proto: {"description": "'esp': Encapsulating security protocol (Default); ", "format": "enum", "default": "esp", "type": "string", "enum": ["esp"], "optional": true}
     :param up: {"default": 0, "optional": true, "type": "number", "description": "Initiates SA negotiation to bring the IPsec connection up", "format": "flag"}
     :param anti_replay_window: {"optional": true, "enum": ["0", "16", "32", "64", "128", "256"], "type": "string", "description": "'0': Disable Anti-Replay Window Check; '16': Window Size of 16 bits; '32': Window Size of 32 bits; '64': Window Size of 64 bits; '128': Window Size of 128 bits; '256': Window Size of 256 bits; ", "format": "enum"}
+    :param sampling_enable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "packets-encrypted", "packets-decrypted", "anti-replay-num", "rekey-num", "packets-err-inactive", "packets-err-encryption", "packets-err-pad-check", "packets-err-pkt-sanity", "packets-err-icv-check", "packets-err-badspi", "packets-err-lifetime-lifebytes", "bytes-encrypted", "bytes-decrypted", "prefrag-success", "prefrag-error", "frags-created", "frags-reassembled", "cavium-err-enc", "cavium-err-dec"], "type": "string", "description": "'all': all; 'packets-encrypted': packets-encrypted; 'packets-decrypted': packets-decrypted; 'anti-replay-num': anti-replay-num; 'rekey-num': rekey-num; 'packets-err-inactive': packets-err-inactive; 'packets-err-encryption': packets-err-encryption; 'packets-err-pad-check': packets-err-pad-check; 'packets-err-pkt-sanity': packets-err-pkt-sanity; 'packets-err-icv-check': packets-err-icv-check; 'packets-err-badspi': packets-err-badspi; 'packets-err-lifetime-lifebytes': packets-err-lifetime-lifebytes; 'bytes-encrypted': bytes-encrypted; 'bytes-decrypted': bytes-decrypted; 'prefrag-success': prefrag-success; 'prefrag-error': prefrag-error; 'frags-created': frags-created; 'frags-reassembled': frags-reassembled; 'cavium-err-enc': cavium-err-enc; 'cavium-err-dec': cavium-err-dec; ", "format": "enum"}}}]}
     :param mode: {"description": "'tunnel': Encapsulating the packet in IPsec tunnel mode (Default); ", "format": "enum", "default": "tunnel", "type": "string", "enum": ["tunnel"], "optional": true}
     :param lifetime: {"description": "IPsec SA age in seconds", "format": "number", "default": 28800, "optional": true, "maximum": 28800, "minimum": 30, "type": "number"}
     :param enc_cfg: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"priority": {"description": "Prioritizes (1-10) security protocol, least value has highest priority", "format": "number", "default": 5, "maximum": 10, "minimum": 1, "type": "number"}, "encryption": {"enum": ["des", "3des", "aes-128", "aes-192", "aes-256", "null"], "type": "string", "description": "'des': Data Encryption Standard algorithm; '3des': Triple Data Encryption Standard algorithm; 'aes-128': Advanced Encryption Standard algorithm (key size: 128 bits); 'aes-192': Advanced Encryption Standard algorithm (key size: 192 bits); 'aes-256': Advanced Encryption Standard algorithm (key size: 256 bits); 'null': No encryption algorithm; ", "format": "enum"}, "hash": {"enum": ["md5", "sha1", "sha256", "null"], "type": "string", "description": "'md5': MD5 Dessage-Digest Algorithm; 'sha1': Secure Hash Algorithm 1; 'sha256': Secure Hash Algorithm 256; 'null': No hash algorithm; ", "format": "enum"}, "optional": true}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -152,10 +176,12 @@ class Ipsec(A10BaseClass):
         self.bind = {}
         self.up = ""
         self.anti_replay_window = ""
+        self.sampling_enable = []
         self.traffic_selector = {}
         self.mode = ""
         self.lifetime = ""
         self.enc_cfg = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

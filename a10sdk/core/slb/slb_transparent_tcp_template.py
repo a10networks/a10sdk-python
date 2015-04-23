@@ -9,7 +9,8 @@ class TransparentTcpTemplate(A10BaseClass):
     Class transparent-tcp-template supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
-    :param name: {"description": "Specify template name", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/tcp"}
+    :param name: {"description": "Specify template name", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string", "$ref": "/axapi/v3/slb/template/tcp"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class TransparentTcpTemplate(A10BaseClass):
         self.a10_url="/axapi/v3/slb/transparent-tcp-template"
         self.DeviceProxy = ""
         self.name = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

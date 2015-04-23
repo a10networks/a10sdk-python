@@ -12,6 +12,7 @@ class IcmpRateLimit(A10BaseClass):
     :param icmp_normal_rate_limit: {"description": "Normal rate limit. If exceeds this limit, drop the ICMP packet that goes over the limit", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}
     :param icmp_lockup: {"description": "Enter lockup state when ICMP rate exceeds lockup rate limit (Maximum rate limit. If exceeds this limit, drop all ICMP packet for a time period)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": true}
     :param icmp_lockup_period: {"description": "Lockup period (second)", "format": "number", "type": "number", "maximum": 16383, "minimum": 1, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,6 +33,7 @@ class IcmpRateLimit(A10BaseClass):
         self.icmp_normal_rate_limit = ""
         self.icmp_lockup = ""
         self.icmp_lockup_period = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

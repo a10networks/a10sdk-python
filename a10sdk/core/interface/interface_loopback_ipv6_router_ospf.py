@@ -38,6 +38,7 @@ class Ospf(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param area_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"area-id-addr": {"type": "string", "description": "OSPF area ID in IP address format", "format": "ipv4-address"}, "tag": {"minLength": 1, "maxLength": 128, "type": "string", "description": "Set the OSPFv3 process tag", "format": "string"}, "optional": true, "instance-id": {"description": "Set the interface instance ID", "format": "number", "default": 0, "maximum": 255, "minimum": 0, "type": "number"}, "area-id-num": {"description": "OSPF area ID as a decimal value", "minimum": 0, "type": "number", "maximum": 4294967295, "format": "number"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -56,6 +57,7 @@ class Ospf(A10BaseClass):
         self.a10_url="/axapi/v3/interface/loopback/{ifnum}/ipv6/router/ospf"
         self.DeviceProxy = ""
         self.area_list = []
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

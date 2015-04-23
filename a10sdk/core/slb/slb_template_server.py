@@ -15,6 +15,7 @@ class Server(A10BaseClass):
     :param weight: {"description": "Weight for the Real Servers (Connection Weight)", "format": "number", "type": "number", "maximum": 100, "minimum": 1, "optional": true}
     :param slow_start: {"default": 0, "optional": true, "type": "number", "description": "Slowly ramp up the connection number after server is up", "format": "flag"}
     :param conn_limit: {"description": "Connection limit", "format": "number", "type": "number", "maximum": 8000000, "minimum": 1, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param initial_slow_start: {"description": "Initial slow start connection limit (default 128)", "format": "number", "default": 128, "optional": true, "maximum": 4095, "minimum": 1, "type": "number"}
     :param max_dynamic_server: {"description": "Maximum dynamic server number (Maximum dynamic server number (default is 255))", "format": "number", "default": 255, "optional": true, "maximum": 1023, "minimum": 1, "type": "number"}
     :param rate_interval: {"description": "'100ms': Use 100 ms as sampling interval; 'second': Use 1 second as sampling interval; ", "format": "enum", "default": "second", "type": "string", "enum": ["100ms", "second"], "optional": true}
@@ -27,7 +28,7 @@ class Server(A10BaseClass):
     :param conn_limit_no_logging: {"default": 0, "optional": true, "type": "number", "description": "Do not log connection over limit event", "format": "flag"}
     :param extended_stats: {"default": 0, "optional": true, "type": "number", "description": "Enable extended statistics on real server", "format": "flag"}
     :param conn_rate_limit_no_logging: {"default": 0, "optional": true, "type": "number", "description": "Do not log connection over limit event", "format": "flag"}
-    :param name: {"description": "Server template name", "format": "string", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
+    :param name: {"description": "Server template name", "format": "string-rlx", "default": "default", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
     :param times: {"description": "Slow start connection limit multiply by a number every interval (default 2) (Multiply by this number every interval)", "format": "number", "default": 2, "optional": true, "maximum": 10, "minimum": 2, "not": "add", "type": "number"}
     :param log_selection_failure: {"default": 0, "optional": true, "type": "number", "description": "Enable real-time logging for server selection failure event", "format": "flag"}
     :param conn_rate_limit: {"description": "Connection rate limit", "format": "number", "type": "number", "maximum": 1048575, "minimum": 1, "optional": true}
@@ -57,6 +58,7 @@ class Server(A10BaseClass):
         self.weight = ""
         self.slow_start = ""
         self.conn_limit = ""
+        self.uuid = ""
         self.initial_slow_start = ""
         self.max_dynamic_server = ""
         self.rate_interval = ""

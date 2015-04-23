@@ -248,6 +248,7 @@ class LsnLid(A10BaseClass):
     :param drop_on_nat_pool_mismatch: {"default": 0, "optional": true, "type": "number", "description": "Drop traffic from users if their current NAT pool does not match the lid's (default: off)", "format": "flag"}
     :param user_quota_prefix_length: {"description": "NAT64 user quota prefix length (Prefix Length (Default: Uses the global NAT64 configured value))", "format": "number", "type": "number", "maximum": 128, "minimum": 1, "optional": true}
     :param lid_number: {"description": "LSN Lid", "format": "number", "type": "number", "maximum": 1023, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param override: {"description": "'none': Apply source NAT if configured (default); 'drop': Drop packets that match this LSN lid; 'pass-through': Layer-3 route packets that match this LSN lid and do not apply source NAT; ", "format": "enum", "default": "none", "type": "string", "enum": ["none", "drop", "pass-through"], "optional": true}
     :param respond_to_user_mac: {"default": 0, "optional": true, "type": "number", "description": "Use the user's source MAC for the next hop rather than the routing table (default: off)", "format": "flag"}
     :param name: {"description": "LSN Lid Name", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
@@ -275,6 +276,7 @@ class LsnLid(A10BaseClass):
         self.extended_user_quota = {}
         self.ds_lite = {}
         self.user_quota = {}
+        self.uuid = ""
         self.override = ""
         self.source_nat_pool = {}
         self.conn_rate_limit = {}

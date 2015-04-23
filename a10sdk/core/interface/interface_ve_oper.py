@@ -5,10 +5,12 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param state: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param line_protocol: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param line_protocol: {"enum": ["UP", "DOWN"], "type": "string", "format": "enum"}
+    :param ipv4_netmask: {"type": "string", "description": "IP subnet mask", "format": "ipv4-netmask"}
     :param mac: {"minLength": 11, "maxLength": 17, "type": "string", "format": "mac-address"}
-    :param link_type: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param state: {"enum": ["UP", "DISABLED", "DOWN"], "type": "string", "format": "enum"}
+    :param ipv4_address: {"type": "string", "description": "IP address", "format": "ipv4-address"}
+    :param link_type: {"type": "string", "format": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -20,118 +22,12 @@ class Oper(A10BaseClass):
         
         self.b_key = "oper"
         self.DeviceProxy = ""
-        self.state = ""
         self.line_protocol = ""
+        self.ipv4_netmask = ""
         self.mac = ""
+        self.state = ""
+        self.ipv4_address = ""
         self.link_type = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class Router(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "router"
-        self.DeviceProxy = ""
-        self.oper = {}
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class Ospf(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "ospf"
-        self.DeviceProxy = ""
-        self.oper = {}
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class Ip(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "ip"
-        self.DeviceProxy = ""
-        self.oper = {}
-        self.router = {}
-        self.ospf = {}
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class Router(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "router"
-        self.DeviceProxy = ""
-        self.oper = {}
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
-class Ipv6(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "ipv6"
-        self.DeviceProxy = ""
-        self.oper = {}
-        self.router = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -164,9 +60,7 @@ class Ve(A10BaseClass):
         self.a10_url="/axapi/v3/interface/ve/{ifnum}/oper"
         self.DeviceProxy = ""
         self.oper = {}
-        self.ip = {}
         self.ifnum = ""
-        self.ipv6 = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -12,6 +12,7 @@ class Smtp(A10BaseClass):
     :param smtp_port: {"description": "Specify SMTP port, default is 25 (Port Number (default 25))", "format": "number", "default": 25, "optional": true, "maximum": 65534, "minimum": 1, "type": "number"}
     :param smtp_domain: {"description": "Specify domain name of 'helo' command", "format": "string", "minLength": 1, "optional": true, "maxLength": 255, "type": "string"}
     :param smtp: {"default": 0, "optional": true, "type": "number", "description": "SMTP type", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,6 +33,7 @@ class Smtp(A10BaseClass):
         self.smtp_port = ""
         self.smtp_domain = ""
         self.smtp = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

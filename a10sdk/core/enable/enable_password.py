@@ -3,7 +3,7 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class EnablePassword(A10BaseClass):
     
-    """    :param password: {"description": "The password", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    """    :param password: {"description": "The password", "format": "password", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
 Class Description::

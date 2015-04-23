@@ -14,7 +14,7 @@ class Reboot(A10BaseClass):
     :param reason: {"description": "Reason for Reboot", "format": "string", "minLength": 1, "optional": true, "maxLength": 127, "type": "string"}
     :param at: {"default": 0, "optional": true, "type": "number", "description": "Reboot at a Specific time/date", "format": "flag"}
     :param in: {"optional": true, "type": "string", "description": "Reboot after a time interval (Time in hours and minutes)", "format": "time-hhmm"}
-    :param device: {"description": "Reboot a specific device when VCS is enabled (device id)", "format": "number", "type": "number", "maximum": 8, "minimum": 1, "optional": true}
+    :param device: {"platform-specific-range": 1, "platform-specific-default": 1, "description": "Reboot a specific device when VCS is enabled (device id)", "format": "number", "optional": true, "type": "number"}
     :param day_of_month_2: {"description": "Day of the Month", "format": "number", "type": "number", "maximum": 31, "minimum": 1, "optional": true}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 

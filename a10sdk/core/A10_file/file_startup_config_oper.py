@@ -5,8 +5,8 @@ class FileList(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param update_time: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param Profile_Name: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
+    :param update_time: {"type": "string", "format": "string"}
+    :param Profile_Name: {"type": "string", "format": "string"}
     :param Size: {"type": "number", "format": "number"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -31,10 +31,10 @@ class Oper(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param current_startup_config: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param sec_startup_config: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param pri_startup_config: {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}
-    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "update-time": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "Profile-Name": {"minLength": 1, "maxLength": 63, "type": "string", "format": "string"}, "Size": {"type": "number", "format": "number"}}}]}
+    :param current_startup_config: {"type": "string", "format": "string"}
+    :param sec_startup_config: {"type": "string", "format": "string"}
+    :param pri_startup_config: {"type": "string", "format": "string"}
+    :param file_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "update-time": {"type": "string", "format": "string"}, "Profile-Name": {"type": "string", "format": "string"}, "Size": {"type": "number", "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     

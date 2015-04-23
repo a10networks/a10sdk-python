@@ -59,6 +59,7 @@ class Iplist(A10BaseClass):
 
     :param ports_per_user: {"description": "Configure Ports per Inside User (ports-per-user)", "format": "number", "type": "number", "maximum": 64512, "minimum": 1, "optional": true}
     :param vrid: {"description": "VRRP-A vrid (Specify ha VRRP-A vrid)", "format": "number", "type": "number", "maximum": 31, "minimum": 1, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param nat_end_address: {"optional": true, "type": "string", "description": "IPv4 End NAT Address", "format": "ipv4-address"}
     :param partition: {"description": "Inside User Partition (Partition Name)", "partition-visibility": "shared", "minLength": 1, "format": "string", "optional": false, "maxLength": 63, "type": "string"}
     :param nat_netmask: {"optional": true, "type": "string", "description": "NAT Addresses IP Netmask", "format": "ipv4-netmask"}
@@ -90,6 +91,7 @@ class Iplist(A10BaseClass):
         self.DeviceProxy = ""
         self.ports_per_user = ""
         self.vrid = ""
+        self.uuid = ""
         self.nat_end_address = ""
         self.partition = ""
         self.nat_netmask = ""

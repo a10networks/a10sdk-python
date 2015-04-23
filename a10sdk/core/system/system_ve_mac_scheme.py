@@ -10,6 +10,7 @@ class VeMacScheme(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ve_mac_scheme_val: {"description": "'hash-based': Hash-based using the VE number; 'round-robin': Round Robin scheme; 'system-mac': Use system MAC address; ", "format": "enum", "default": "hash-based", "type": "string", "enum": ["hash-based", "round-robin", "system-mac"], "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class VeMacScheme(A10BaseClass):
         self.a10_url="/axapi/v3/system/ve-mac-scheme"
         self.DeviceProxy = ""
         self.ve_mac_scheme_val = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

@@ -3,17 +3,18 @@ from a10sdk.common.A10BaseClass import A10BaseClass
 
 class AllVlanLimit(A10BaseClass):
     
-    """Class Description::
+    """    :param unknown_ucast: {"description": "unknown unicast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param bcast: {"description": "broadcast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param mcast: {"description": "multicast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param ipmcast: {"description": "IP multicast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     all vlan flooding packet limit.
 
     Class all-vlan-limit supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param unknown_ucast: {"description": "unknown unicast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
-    :param bcast: {"description": "broadcast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
-    :param mcast: {"description": "multicast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
-    :param ipmcast: {"description": "IP multicast packets (per second limit)", "format": "number", "default": 1000, "optional": true, "maximum": 65535, "minimum": 1, "type": "number"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -34,6 +35,7 @@ class AllVlanLimit(A10BaseClass):
         self.bcast = ""
         self.mcast = ""
         self.ipmcast = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

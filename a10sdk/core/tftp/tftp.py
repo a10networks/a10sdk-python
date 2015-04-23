@@ -10,6 +10,7 @@ class Tftp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param blksize: {"description": "TFTP client block size value (Block size (Blksize/Max file size. Example: 1K/64M, 8K/512M, 32K/2048M))", "format": "number", "type": "number", "maximum": 32768, "minimum": 512, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -28,6 +29,7 @@ class Tftp(A10BaseClass):
         self.a10_url="/axapi/v3/tftp"
         self.DeviceProxy = ""
         self.blksize = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

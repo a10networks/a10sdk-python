@@ -10,6 +10,7 @@ class Icmp(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ip: {"not": "ipv6", "optional": true, "type": "string", "description": "Specify IPv4 address of destination behind monitored node", "format": "ipv4-address"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param icmp: {"default": 0, "optional": true, "type": "number", "description": "ICMP type", "format": "flag"}
     :param transparent: {"default": 0, "optional": true, "type": "number", "description": "Apply transparent mode", "format": "flag"}
     :param ipv6: {"not": "ip", "optional": true, "type": "string", "description": "Specify IPv6 address of destination behind monitored node", "format": "ipv6-address"}
@@ -31,6 +32,7 @@ class Icmp(A10BaseClass):
         self.a10_url="/axapi/v3/health/monitor/{name}/method/icmp"
         self.DeviceProxy = ""
         self.ip = ""
+        self.uuid = ""
         self.icmp = ""
         self.transparent = ""
         self.ipv6 = ""

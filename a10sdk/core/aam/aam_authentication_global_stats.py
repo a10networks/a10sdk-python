@@ -12,10 +12,13 @@ class Stats(A10BaseClass):
     :param Created_timer: {"description": "Total AAM Timer Created", "format": "counter", "type": "number", "oid": "10", "optional": true, "size": "8"}
     :param Misses: {"description": "Total Authentication Request Missed", "format": "counter", "type": "number", "oid": "3", "optional": true, "size": "8"}
     :param Connect_failed: {"description": "Total AAM Connect Failed", "format": "counter", "type": "number", "oid": "9", "optional": true, "size": "8"}
+    :param Get_socket_option_failed: {"description": "Total AAM Get Socket Option Failed", "format": "counter", "type": "number", "oid": "13", "optional": true, "size": "8"}
     :param Opened_socket: {"description": "Total AAM Socket Opened", "format": "counter", "type": "number", "oid": "6", "optional": true, "size": "8"}
     :param Connect: {"description": "Total AAM Connection", "format": "counter", "type": "number", "oid": "8", "optional": true, "size": "8"}
+    :param Aflex_authz_succ: {"description": "Total Authorization success number in aFleX", "format": "counter", "type": "number", "oid": "14", "optional": true, "size": "8"}
     :param Requests: {"description": "Total Authentication Request", "format": "counter", "type": "number", "oid": "1", "optional": true, "size": "8"}
     :param Total_request: {"description": "Total Request Received by A10 Auth Service", "format": "counter", "type": "number", "oid": "12", "optional": true, "size": "8"}
+    :param Aflex_authz_fail: {"description": "Total Authorization failure number in aFleX", "format": "counter", "type": "number", "oid": "15", "optional": true, "size": "8"}
     :param Create_timer_failed: {"description": "Total AAM Timer Creation Failed", "format": "counter", "type": "number", "oid": "11", "optional": true, "size": "8"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -35,10 +38,13 @@ class Stats(A10BaseClass):
         self.Created_timer = ""
         self.Misses = ""
         self.Connect_failed = ""
+        self.Get_socket_option_failed = ""
         self.Opened_socket = ""
         self.Connect = ""
+        self.Aflex_authz_succ = ""
         self.Requests = ""
         self.Total_request = ""
+        self.Aflex_authz_fail = ""
         self.Create_timer_failed = ""
 
         for keys, value in kwargs.items():

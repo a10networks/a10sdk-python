@@ -10,6 +10,7 @@ class Ospf(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param ospfLsdbOverflow: {"default": 0, "optional": true, "type": "number", "description": "Enable ospfLsdbOverflow traps", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param ospfVirtIfRxBadPacket: {"default": 0, "optional": true, "type": "number", "description": "Enable ospfVirtIfRxBadPacket traps", "format": "flag"}
     :param ospfNbrStateChange: {"default": 0, "optional": true, "type": "number", "description": "Enable ospfNbrStateChange traps", "format": "flag"}
     :param ospfIfStateChange: {"default": 0, "optional": true, "type": "number", "description": "Enable ospfIfStateChange traps", "format": "flag"}
@@ -43,6 +44,7 @@ class Ospf(A10BaseClass):
         self.a10_url="/axapi/v3/snmp-server/enable/traps/routing/ospf"
         self.DeviceProxy = ""
         self.ospfLsdbOverflow = ""
+        self.uuid = ""
         self.ospfVirtIfRxBadPacket = ""
         self.ospfNbrStateChange = ""
         self.ospfIfStateChange = ""

@@ -12,6 +12,7 @@ class Tcp(A10BaseClass):
     :param port_start: {"description": "Port Range (Port Range Start)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
     :param port_end: {"description": "Port Range (Port Range End)", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
     :param timeout: {"description": "STUN timeout in minutes (default: 2 minutes)", "format": "number", "type": "number", "maximum": 60, "minimum": 0, "optional": true}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -33,6 +34,7 @@ class Tcp(A10BaseClass):
         self.port_start = ""
         self.port_end = ""
         self.timeout = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

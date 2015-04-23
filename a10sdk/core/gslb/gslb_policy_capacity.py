@@ -12,6 +12,7 @@ class Capacity(A10BaseClass):
     :param threshold: {"description": "Specify capacity threshold, default is 90", "format": "number", "default": 90, "optional": true, "maximum": 100, "minimum": 0, "type": "number"}
     :param capacity_enable: {"default": 0, "optional": true, "type": "number", "description": "Enable capacity", "format": "flag"}
     :param capacity_fail_break: {"default": 0, "optional": true, "type": "number", "description": "Break when exceed threshold", "format": "flag"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -32,6 +33,7 @@ class Capacity(A10BaseClass):
         self.threshold = ""
         self.capacity_enable = ""
         self.capacity_fail_break = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

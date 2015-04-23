@@ -77,8 +77,7 @@ class EnableCfg(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
 
-    :param enable_auth_type: {"enum": ["local", "tacplus"], "type": "string", "format": "enum-list"}
-    :param enable: {"default": 0, "type": "number", "description": "The enable-password authentication type", "format": "flag"}
+    :param enable_auth_type: {"default": "local", "enum": ["local", "tacplus"], "type": "string", "description": "The enable-password authentication type", "format": "enum-list"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -91,7 +90,6 @@ class EnableCfg(A10BaseClass):
         self.b_key = "enable-cfg"
         self.DeviceProxy = ""
         self.enable_auth_type = ""
-        self.enable = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -105,6 +103,7 @@ class Authentication(A10BaseClass):
     Class authentication supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param multiple_auth_reject: {"default": 0, "optional": true, "type": "number", "description": "Multiple same user login reject", "format": "flag"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -124,6 +123,7 @@ class Authentication(A10BaseClass):
         self.a10_url="/axapi/v3/authentication"
         self.DeviceProxy = ""
         self.console = {}
+        self.uuid = ""
         self.mode_cfg = {}
         self.type_cfg = {}
         self.multiple_auth_reject = ""

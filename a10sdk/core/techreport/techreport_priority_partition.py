@@ -10,6 +10,7 @@ class PriorityPartition(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param part_name: {"description": "Name of partition always want to show in showtech (shared is always shown by default)", "format": "string", "minLength": 1, "optional": false, "maxLength": 14, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
@@ -29,6 +30,7 @@ class PriorityPartition(A10BaseClass):
         self.a10_url="/axapi/v3/techreport/priority-partition/{part_name}"
         self.DeviceProxy = ""
         self.part_name = ""
+        self.uuid = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

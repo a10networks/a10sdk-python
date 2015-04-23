@@ -44,30 +44,6 @@ class Inside(A10BaseClass):
             setattr(self,keys, value)
 
 
-class Icmp(A10BaseClass):
-    
-    """This class does not support CRUD Operations please use parent.
-
-    :param send_on_user_quota_exceeded: {"default": "admin-filtered", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMP destination host unreachable; 'admin-filtered': Send ICMP admin filtered (default); 'disable': Disable ICMP quota exceeded message; ", "format": "enum"}
-    :param send_on_port_unavailable: {"default": "disable", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMP destination host unreachable; 'admin-filtered': Send ICMP admin filtered; 'disable': Disable ICMP port unavailable message (default); ", "format": "enum"}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
-
-    
-
-    
-    """
-    def __init__(self, **kwargs):
-        self.ERROR_MSG = ""
-        
-        self.b_key = "icmp"
-        self.DeviceProxy = ""
-        self.send_on_user_quota_exceeded = ""
-        self.send_on_port_unavailable = ""
-
-        for keys, value in kwargs.items():
-            setattr(self,keys, value)
-
-
 class MssClamp(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -140,17 +116,42 @@ class Tcp(A10BaseClass):
             setattr(self,keys, value)
 
 
+class Icmp(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param send_on_user_quota_exceeded: {"default": "admin-filtered", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMP destination host unreachable; 'admin-filtered': Send ICMP admin filtered (default); 'disable': Disable ICMP quota exceeded message; ", "format": "enum"}
+    :param send_on_port_unavailable: {"default": "disable", "enum": ["host-unreachable", "admin-filtered", "disable"], "type": "string", "description": "'host-unreachable': Send ICMP destination host unreachable; 'admin-filtered': Send ICMP admin filtered; 'disable': Disable ICMP port unavailable message (default); ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "icmp"
+        self.DeviceProxy = ""
+        self.send_on_user_quota_exceeded = ""
+        self.send_on_port_unavailable = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class Global(A10BaseClass):
     
-    """Class Description::
+    """    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
+    :param l4_checksum_error: {"description": "'propagate': Propagate the bad checksum (default); 'fix': Fix the bad checksum; 'drop': Drop packets with a bad checksum; ", "format": "enum", "default": "propagate", "type": "string", "enum": ["propagate", "fix", "drop"], "optional": true}
+    :param ip_checksum_error: {"description": "'fix': Fix the bad checksum (default); 'drop': Drop packets with a bad checksum; ", "format": "enum", "default": "fix", "type": "string", "enum": ["fix", "drop"], "optional": true}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+Class Description::
     Configure Dual-Stack Lite (DS-Lite) config parameters.
 
     Class global supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
-
-    :param l4_checksum_error: {"description": "'propagate': Propagate the bad checksum (default); 'fix': Fix the bad checksum; 'drop': Drop packets with a bad checksum; ", "format": "enum", "default": "propagate", "type": "string", "enum": ["propagate", "fix", "drop"], "optional": true}
-    :param ip_checksum_error: {"description": "'fix': Fix the bad checksum (default); 'drop': Drop packets with a bad checksum; ", "format": "enum", "default": "fix", "type": "string", "enum": ["fix", "drop"], "optional": true}
-    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
     
 
@@ -167,11 +168,12 @@ class Global(A10BaseClass):
         self.b_key = "global"
         self.a10_url="/axapi/v3/cgnv6/ds-lite/global"
         self.DeviceProxy = ""
+        self.uuid = ""
+        self.inside = {}
+        self.tcp = {}
         self.l4_checksum_error = ""
         self.ip_checksum_error = ""
-        self.inside = {}
         self.icmp = {}
-        self.tcp = {}
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)

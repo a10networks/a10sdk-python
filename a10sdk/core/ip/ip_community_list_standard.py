@@ -34,6 +34,7 @@ class Standard(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param rules_list: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"standard-action": {"enum": ["deny", "permit"], "type": "string", "description": "'deny': Specify community to reject; 'permit': Specify community to accept; ", "format": "enum"}, "optional": true, "standard-comm-value": {"type": "string", "description": "community value in the format 1-4294967295|AA:NN|internet|local-AS|no-advertise|no-export", "format": "string-rlx"}}}]}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param standard: {"description": "Add a standard community-list entry (Community list name)", "format": "string", "minLength": 1, "optional": false, "maxLength": 128, "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -54,6 +55,7 @@ class Standard(A10BaseClass):
         self.a10_url="/axapi/v3/ip/community-list/standard/{standard}"
         self.DeviceProxy = ""
         self.rules_list = []
+        self.uuid = ""
         self.standard = ""
 
         for keys, value in kwargs.items():

@@ -9,6 +9,7 @@ class EnableCore(A10BaseClass):
     Class enable-core supports CRUD Operations and inherits from `common/A10BaseClass`.
     This class is the `"PARENT"` class for this module.`
 
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param core_level: {"description": "'a10': Enable A10 core dump, by default; 'system': Enable system coredump; ", "format": "enum", "default": "a10", "optional": true, "enum": ["a10", "system"], "not": "full", "type": "string"}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -27,6 +28,7 @@ class EnableCore(A10BaseClass):
         self.b_key = "enable-core"
         self.a10_url="/axapi/v3/enable-core"
         self.DeviceProxy = ""
+        self.uuid = ""
         self.core_level = ""
 
         for keys, value in kwargs.items():

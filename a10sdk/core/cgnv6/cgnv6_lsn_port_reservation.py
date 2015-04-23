@@ -10,6 +10,7 @@ class PortReservation(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param inside_port_start: {"description": "Inside Start Port", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param nat_port_start: {"description": "NAT Start Port", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
     :param inside_port_end: {"description": "Inside End Port", "format": "number", "type": "number", "maximum": 65535, "minimum": 1, "optional": false}
     :param inside: {"optional": false, "type": "string", "description": "Inside User Address and Port Range (Inside User IP address)", "format": "ipv4-address"}
@@ -34,6 +35,7 @@ class PortReservation(A10BaseClass):
         self.a10_url="/axapi/v3/cgnv6/lsn/port-reservation/{inside}+{inside_port_start}+{inside_port_end}+{nat}+{nat_port_start}+{nat_port_end}"
         self.DeviceProxy = ""
         self.inside_port_start = ""
+        self.uuid = ""
         self.nat_port_start = ""
         self.inside_port_end = ""
         self.inside = ""

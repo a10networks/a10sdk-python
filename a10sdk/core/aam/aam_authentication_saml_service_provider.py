@@ -73,6 +73,28 @@ class AssertionConsumingService(A10BaseClass):
             setattr(self,keys, value)
 
 
+class SamplingEnable(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param counters1: {"enum": ["all", "SP-metadata-export-req", "SP-metadata-export-success", "Login-auth-req", "Login-auth-resp", "ACS-req", "ACS-success", "ACS-authz-fail", "ACS-error", "SLO-req", "SLO-success", "SLO-error", "Other-error"], "type": "string", "description": "'all': all; 'SP-metadata-export-req': Metadata Export Request; 'SP-metadata-export-success': Metadata Export Success; 'Login-auth-req': Login Authentication Request; 'Login-auth-resp': Login Authentication Response; 'ACS-req': SAML Single-Sign-On Request; 'ACS-success': SAML Single-Sign-On Success; 'ACS-authz-fail': SAML Single-Sign-On Authorization Fail; 'ACS-error': SAML Single-Sign-On Error; 'SLO-req': Single Logout Request; 'SLO-success': Single Logout Success; 'SLO-error': Single Logout Error; 'Other-error': Other Error; ", "format": "enum"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "sampling-enable"
+        self.DeviceProxy = ""
+        self.counters1 = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
 class SamlRequestSigned(A10BaseClass):
     
     """This class does not support CRUD Operations please use parent.
@@ -90,6 +112,28 @@ class SamlRequestSigned(A10BaseClass):
         self.b_key = "saml-request-signed"
         self.DeviceProxy = ""
         self.saml_request_signed_disable = ""
+
+        for keys, value in kwargs.items():
+            setattr(self,keys, value)
+
+
+class AdfsWsFederation(A10BaseClass):
+    
+    """This class does not support CRUD Operations please use parent.
+
+    :param ws_federation_enable: {"default": 0, "type": "number", "description": "Enable ADFS WS-Federation", "format": "flag"}
+    :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
+
+    
+
+    
+    """
+    def __init__(self, **kwargs):
+        self.ERROR_MSG = ""
+        
+        self.b_key = "adfs-ws-federation"
+        self.DeviceProxy = ""
+        self.ws_federation_enable = ""
 
         for keys, value in kwargs.items():
             setattr(self,keys, value)
@@ -176,11 +220,13 @@ class ServiceProvider(A10BaseClass):
     This class is the `"PARENT"` class for this module.`
 
     :param name: {"description": "Specify SAML authentication service provider name", "format": "string", "minLength": 1, "optional": false, "maxLength": 63, "type": "string"}
-    :param certificate: {"description": "SAML service provider certificate file", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param certificate: {"description": "SAML service provider certificate file (PFX format is required.)", "format": "string", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param single_logout_service: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "SLO-binding": {"enum": ["post", "redirect", "soap"], "type": "string", "description": "'post': POST binding of single logout service; 'redirect': Redirect binding of single logout service; 'soap': SOAP binding of single logout service; ", "format": "enum"}, "SLO-location": {"minLength": 1, "maxLength": 63, "type": "string", "description": "The location of name-id management service. (ex. /SAML/POST)", "format": "string-rlx"}}}]}
     :param service_url: {"description": "SAML service provider service URL (ex. https://www.a10networks.com/saml.sso)", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
     :param entity_id: {"description": "SAML service provider entity ID", "format": "string-rlx", "minLength": 1, "optional": true, "maxLength": 63, "type": "string"}
+    :param uuid: {"description": "uuid of the object", "format": "string", "minLength": 1, "modify-not-allowed": 1, "optional": true, "maxLength": 64, "type": "string"}
     :param assertion_consuming_service: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "assertion-index": {"description": "The index of assertion consuming service", "minimum": 0, "type": "number", "maximum": 5, "format": "number"}, "assertion-binding": {"enum": ["artifact", "paos", "post"], "type": "string", "description": "'artifact': Artifact binding of assertion consuming service; 'paos': PAOS binding of assertion consuming service; 'post': POST binding of assertion consuming service; ", "format": "enum"}, "assertion-location": {"minLength": 1, "maxLength": 63, "type": "string", "description": "The location of assertion consuming service endpoint. (ex. /SAML/POST)", "format": "string-rlx"}}}]}
+    :param sampling_enable: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"optional": true, "counters1": {"enum": ["all", "SP-metadata-export-req", "SP-metadata-export-success", "Login-auth-req", "Login-auth-resp", "ACS-req", "ACS-success", "ACS-authz-fail", "ACS-error", "SLO-req", "SLO-success", "SLO-error", "Other-error"], "type": "string", "description": "'all': all; 'SP-metadata-export-req': Metadata Export Request; 'SP-metadata-export-success': Metadata Export Success; 'Login-auth-req': Login Authentication Request; 'Login-auth-resp': Login Authentication Response; 'ACS-req': SAML Single-Sign-On Request; 'ACS-success': SAML Single-Sign-On Success; 'ACS-authz-fail': SAML Single-Sign-On Authorization Fail; 'ACS-error': SAML Single-Sign-On Error; 'SLO-req': Single Logout Request; 'SLO-success': Single Logout Success; 'SLO-error': Single Logout Error; 'Other-error': Other Error; ", "format": "enum"}}}]}
     :param artifact_resolution_service: {"minItems": 1, "items": {"type": "object"}, "uniqueItems": true, "type": "array", "array": [{"properties": {"artifact-location": {"minLength": 1, "maxLength": 63, "type": "string", "description": "The location of artifact resolution service. (ex. /SAML/POST)", "format": "string-rlx"}, "optional": true, "artifact-binding": {"enum": ["soap"], "type": "string", "description": "'soap': SOAP binding of artifact resolution service; ", "format": "enum"}, "artifact-index": {"description": "The index of artifact resolution service", "minimum": 0, "type": "number", "maximum": 5, "format": "number"}}}]}
     :param DeviceProxy: The device proxy for REST operations and session handling. Refer to `common/device_proxy.py`
 
@@ -206,8 +252,11 @@ class ServiceProvider(A10BaseClass):
         self.single_logout_service = []
         self.service_url = ""
         self.entity_id = ""
+        self.uuid = ""
         self.assertion_consuming_service = []
+        self.sampling_enable = []
         self.saml_request_signed = {}
+        self.adfs_ws_federation = {}
         self.soap_tls_certificate_validate = {}
         self.artifact_resolution_service = []
         self.metadata_export_service = {}
